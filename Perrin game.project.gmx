@@ -140,6 +140,7 @@
         <sprite>sprites\spr_skeleton_walk_up</sprite>
         <sprite>sprites\spr_skeleton_slash</sprite>
         <sprite>sprites\spr_skeleton_walk</sprite>
+        <sprite>sprites\spr_skeleton_idle</sprite>
         <sprite>sprites\spr_skeleton_death</sprite>
         <sprite>sprites\spr_skeleton_attack_side</sprite>
         <sprite>sprites\spr_skeleton_attack_up</sprite>
@@ -197,6 +198,7 @@
         </sprites>
         <sprites name="General">
           <sprite>sprites\spr_room_boss_map</sprite>
+          <sprite>sprites\spr_room_shop_map</sprite>
           <sprite>sprites\spr_room_focus</sprite>
           <sprite>sprites\spr_room_start_map</sprite>
           <sprite>sprites\spr_room_wings</sprite>

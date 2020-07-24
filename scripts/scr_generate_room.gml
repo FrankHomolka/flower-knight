@@ -102,13 +102,17 @@ for(genX = 0; genX < 24; genX++) {//20
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_next_room);
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 break;
+            // Shop spawn
+            case $e21d98:
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_dungeon_shop);
+                tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                break;
             // Player spawn
             case $ff0000:
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 obj_player.x = startX + (genX * 16);
                 obj_player.y = startY + (genY * 16);
                 instance_create(startX + (genX * 16),startY + (genY * 16),obj_pit_respawn);
-                instance_create(startX + (genX * 16),startY + (genY * 16),obj_dungeon_shop);
                 break;
             default:
                 break;

@@ -49,6 +49,11 @@ yDistance = 0;
 bossCellX = 0;
 bossCellY = 0;
 
+/* Placing shop room */
+shopRoomSpawned = false;
+shopCellX = 0;
+shopCellY = 0;
+
 /* Set center cell */
 ds_grid_set(mapGrid, centerCellX, centerCellY, "spawn");
 currentCellX = centerCellX; 
@@ -117,6 +122,8 @@ for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
             } else if(xx == bossCellX &amp;&amp; yy == bossCellY) {
                 ds_grid_set(mapGrid, bossCellX, bossCellY, "boss");
                 scr_generate_room(startX, startY, spr_room_boss_map);
+            } else if(xx == shopCellX &amp;&amp; yy == shopCellY){
+                scr_generate_room(startX, startY, spr_room_shop_map);
             } else {
                 scr_generate_room(startX, startY, roomSprite);
             }

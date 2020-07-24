@@ -37,6 +37,7 @@ moneyMultiplier = 200;
 
 canBuy = true;
 checkIfUnique = true;
+uniqueColor = make_colour_hsv(34, 133, 247);
 </string>
           </argument>
         </arguments>
@@ -135,9 +136,9 @@ if(itemMap[? "unique"]) {
 
 if(mouseInside) {
     if(!canBuy) {
-        message = "Already Bought";
+        message = "Cannot buy multiple unique items";
     } else if(!unlocked)  {
-        message = "LOCKED (unlock at dungeon entrance)";
+        message = "LOCKED";
     } else {    
         message = "Buy " + string(itemMap[? "name"]) + " [" + string(itemMap[? "price"] * moneyMultiplier) + " COINS]";
     }
@@ -150,7 +151,7 @@ if(mouseInside) {
     draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
     draw_set_color(c_white);
     if(itemMap[? "unique"])
-        draw_set_color(c_aqua);
+        draw_set_color(uniqueColor);
     draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
     
     if((obj_money_controller.coins &lt; (itemMap[? "price"] * moneyMultiplier)) &amp;&amp; canBuy &amp;&amp; unlocked) {

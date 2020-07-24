@@ -38,8 +38,8 @@ attackObject = obj_skeleton_attack;
 goldDropOnDeath = 10;
 
 /* Animation and Sprites */
-sprite = spr_skeleton_walk;
-idleSprite = spr_skeleton_walk;
+sprite = spr_skeleton_idle;
+idleSprite = spr_skeleton_idle;
 walkSprite = spr_skeleton_walk;
 walkUpSprite = spr_skeleton_walk_up;
 attackSprite = spr_skeleton_attack_side;

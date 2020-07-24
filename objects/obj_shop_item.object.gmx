@@ -29,6 +29,7 @@
 depth = -10000000;
 mouseInside = false;
 message = "";
+uniqueColor = make_colour_hsv(34, 133, 247);
 </string>
           </argument>
         </arguments>
@@ -104,6 +105,11 @@ if(unlocked) {
     draw_sprite_ext(spr_focus_locked, 0,  x, y, 1, 1, 0, c_white, 1); 
 }
 
+if(itemMap[? "unique"]) {
+    draw_sprite_ext(spr_focus_unique, 0,  x, y, 1, 1, 0, c_white, 1); 
+}
+
+
 if(mouseInside) {
     if(unlocked) {
         message = "Already unlocked";
@@ -118,6 +124,8 @@ if(mouseInside) {
     draw_set_color(c_black);
     draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
     draw_set_color(c_white);
+    if(itemMap[? "unique"])
+        draw_set_color(uniqueColor);
     draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
     
     if(obj_money_controller.money &lt; itemMap[? "price"] &amp;&amp; !unlocked) {

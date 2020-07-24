@@ -95,7 +95,7 @@ currentRoom = room;
                     if(other.level == 2) {
                         boss = obj_boss_1;
                     } else {
-                        boss = obj_boss_2;
+                        boss = obj_enemy_archer_boss;
                     }
                     background_color = $181611;
                     instance_change(obj_level_generator,true);

@@ -11,6 +11,10 @@ if(ds_grid_get(mapGrid, currentCellX + xOffset, currentCellY + yOffset) == 0) {
     
     if(sqrt(sqr(xDistance) + sqr(yDistance)) > maxDistance) {
         maxDistance = sqrt(sqr(xDistance) + sqr(yDistance));
+        if(bossCellX != 0) {
+            shopCellX = bossCellX;
+            shopCellY = bossCellY;   
+        }
         bossCellX = currentCellX + xOffset;
         bossCellY = currentCellY + yOffset;   
     }
