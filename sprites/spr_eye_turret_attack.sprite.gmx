@@ -29,6 +29,5 @@
     <frame index="6">images\spr_eye_turret_attack_6.png</frame>
     <frame index="7">images\spr_eye_turret_attack_7.png</frame>
     <frame index="8">images\spr_eye_turret_attack_8.png</frame>
-    <frame index="9">images\spr_eye_turret_attack_9.png</frame>
   </frames>
 </sprite>

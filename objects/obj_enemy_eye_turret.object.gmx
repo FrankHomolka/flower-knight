@@ -43,6 +43,7 @@ idleSprite = spr_eye_turret_idle;
 walkSprite = spr_eye_turret_idle;
 walkUpSprite = spr_eye_turret_idle;
 attackSprite = spr_eye_turret_attack;
+attackUpSprite = spr_eye_turret_attack;
 deathSprite = spr_eye_turret_death;
 hitSprite = spr_eye_turret_idle;
 walkAnimationSpeed = 0.1;
@@ -59,7 +60,7 @@ attackCooldownMax = 100;
 attackDistance = 80;
 attackTime = 100;
 attackCounter = attackTime;
-attackFrame = 6;
+attackFrame = 8;
 
 /* Knockback */
 kbAmount = 0;
@@ -101,13 +102,19 @@ switch(state) {
         scr_enemy_walk();
         break;
     case states.attack:
-        if(!instance_exists(attackProjectile))
+        if(!instance_exists(attackProjectile)) {
             scr_enemy_ranged_attack();
+        } else {
+            sprite_index = spr_eye_turret_channeling;
+        }
         break;
     case states.hit:
         scr_enemy_hit();
-        if(!instance_exists(attackProjectile))
+        if(!instance_exists(attackProjectile)) {
             scr_enemy_ranged_attack();
+        } else {
+            sprite_index = spr_eye_turret_channeling;
+        }
         break;
     case states.death:
         if(instance_exists(attackProjectile))

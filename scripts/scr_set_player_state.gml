@@ -72,6 +72,10 @@ if(room == rm_shop ) {
         state = states.idle;
 }
 
+if(room == rm_procedural && instance_exists(obj_dungeon_shop))
+    if(obj_dungeon_shop.activated)
+        state = states.idle;
+
 /* Execute State */
 switch(state) {
     case states.walk: scr_player_walk_state(); break;

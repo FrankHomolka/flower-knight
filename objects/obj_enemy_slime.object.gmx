@@ -42,6 +42,7 @@ idleSprite = spr_slime;
 walkSprite = spr_slime;
 walkUpSprite = spr_slime;
 attackSprite = spr_slime_attack;
+attackUpSprite = spr_slime_attack;
 deathSprite = spr_slime_death;
 hitSprite = spr_slime_hit;
 walkAnimationSpeed = 0.1;

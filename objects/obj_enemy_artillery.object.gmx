@@ -43,6 +43,7 @@ idleSprite = spr_artillery_idle;
 walkSprite = spr_artillery_idle;
 walkUpSprite = spr_artillery_idle;
 attackSprite = spr_artillery_attack;
+attackUpSprite = spr_artillery_attack;
 deathSprite = spr_artillery_death;
 hitSprite = spr_artillery_hit;
 walkAnimationSpeed = 0;

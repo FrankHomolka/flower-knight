@@ -44,6 +44,7 @@ idleSprite = spr_bomber_idle;
 walkSprite = spr_bomber_walk;
 walkUpSprite = spr_bomber_walk;
 attackSprite = spr_bomber_attack;
+attackUpSprite = spr_bomber_attack;
 deathSprite = spr_bomber_death;
 hitSprite = spr_bomber_idle;
 walkAnimationSpeed = 0.1;

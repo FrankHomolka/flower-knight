@@ -42,6 +42,9 @@ hurtSound = snd_enemy_hit;
 deathSound = snd_enemy_death;
 deathSprite = spr_boss_2_top_dead;
 hitSprite = spr_boss_2_top;
+kbAmount = 0;
+kbCounter = kbAmount;
+attacking = true;
 </string>
           </argument>
         </arguments>
@@ -67,20 +70,30 @@ hitSprite = spr_boss_2_top;
             <string>event_inherited();
 
 if(chargeCounter &lt; 0) {
-
-    if(hp &gt; 0) {
-        state = states.attack;
-    } 
     
     if(hp &lt;= 0) {
         state = states.death;
+    } else if(attacking) {
+        state = states.attack;
     }
     
-    if(hit) 
+    /* Hit state */
+    if(tryHit) {
+        if(!hit) {
+            previousState = state;
+            hit = true;
+            currentHp = hp;
+        } else {
+            damageSource = false;
+            tryHit = false;
+        }
+    }
+    
+    if(hit) {
         state = states.hit;
-        
-    if(place_meeting(x,y,obj_player_attack) &amp;&amp; state != states.idle) 
-        scr_try_hit_enemy(obj_player.attackDamage, self, true);
+    } else {
+        attacking = true;
+    }
 } 
 
 switch(state) {

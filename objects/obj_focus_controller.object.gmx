@@ -30,19 +30,19 @@
 global.itemList = ds_list_create();
 
 // Item Double Damage
-scr_add_item(global.itemList, "RUNNER", spr_focus_double_speed, scr_focus_double_speed, 1);
-scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_double_damage, 1);
-scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 1);
-scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 1);
-scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 1);
-scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 2);
-scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 2);
-scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 2);
-scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 3);
-scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 3);
-scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 3);
-scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 4);
-scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 5);
+scr_add_item(global.itemList, "RUNNER", spr_focus_double_speed, scr_focus_double_speed, 1, false);
+scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_double_damage, 1, false);
+scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 1, true);
+scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 1, false);
+scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 1, true);
+scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 2, true);
+scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 2, true);
+scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 2, false);
+scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 3, false);
+scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 3, true);
+scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 3, false);
+scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 4, false);
+scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 5, true);
 
 /*             List of items bought this run                  */
 global.equippedItemsList = ds_list_create();

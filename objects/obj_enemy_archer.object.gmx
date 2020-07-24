@@ -43,6 +43,7 @@ idleSprite = spr_archer_idle;
 walkSprite = spr_archer_walk;
 walkUpSprite = spr_archer_walk_up;
 attackSprite = spr_archer_attack;
+attackUpSprite = spr_archer_attack;
 deathSprite = spr_archer_death;
 hitSprite = spr_archer_hit;
 walkAnimationSpeed = 0.1;

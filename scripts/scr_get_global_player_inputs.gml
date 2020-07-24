@@ -60,7 +60,7 @@ if(obj_gui_controller.drawingLoadingScreen && goToNextRoom) {
         show_debug_message("destroyed");
     }
     if(room == rm_procedural) {
-        room_goto(rm_choose_focus);
+        room_goto(rm_loading);
     } else {
         room_goto(rm_procedural);
     }

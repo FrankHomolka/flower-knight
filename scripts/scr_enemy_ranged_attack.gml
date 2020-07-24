@@ -1,7 +1,11 @@
 //scr_enemy_ranged_attack
 
 /* Face player */
-sprite_index = attackSprite;
+if(obj_player.y + 32 < y) {
+    sprite_index = attackUpSprite;
+} else {
+    sprite_index = attackSprite;
+}
 image_index = floor(sprite_get_number(attackSprite) * (1 - (attackCounter / attackTime)));
 
 /* happens once */

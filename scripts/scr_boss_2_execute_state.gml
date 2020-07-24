@@ -13,6 +13,7 @@ switch(state) {
         break; 
     case states.hit:
         scr_boss_2_hit_state();
+        scr_boss_2_attack_state();
         break; 
     case states.death:
         scr_boss_2_death_state();

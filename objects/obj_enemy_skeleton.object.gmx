@@ -42,7 +42,8 @@ sprite = spr_skeleton_walk;
 idleSprite = spr_skeleton_walk;
 walkSprite = spr_skeleton_walk;
 walkUpSprite = spr_skeleton_walk_up;
-attackSprite = spr_skeleton_walk;
+attackSprite = spr_skeleton_attack_side;
+attackUpSprite = spr_skeleton_attack_up;
 deathSprite = spr_skeleton_death;
 hitSprite = spr_skeleton_walk;
 walkAnimationSpeed = 0.1;
@@ -51,7 +52,7 @@ minDistance = 17;
 
 /* Sounds */
 walkSound = snd_slime;
-deathSound = snd_enemy_death;
+deathSound = snd_skeleton_hit;
 attackSound = snd_skeleton_attack;
 hurtSound = snd_skeleton_hit;
 
@@ -62,7 +63,7 @@ attackCooldownCounter = 0;
 attackDistance = 17;
 attackTime = 40;
 attackCounter = attackTime;
-attackFrame = 0;
+attackFrame = 5;
 attackPause = true;
 
 /* Hit timer */

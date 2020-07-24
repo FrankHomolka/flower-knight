@@ -94,10 +94,10 @@ switch(currentScreen) {
         stringToDraw = "The goal is to go to the deepest depths of the dungeon to kill the king of hell";
         break;
     case 2:
-        stringToDraw = "To help defeat the king of hell you must kill his minions and collect their heads to unlock new items";
+        stringToDraw = "Gather the heads of bosses to unlock NEW ITEMS";
         break;
     case 3:
-        stringToDraw = "After unlocking an item at the shop, you can purchase it using coins collected from enemies from a traveling merchant after you defeat a boss.";
+        stringToDraw = "Every level contains a hidden shop where you can buy items youve unlocked";
         break;
     case 4:
         stringToDraw = "Use ARROW KEYS to move, 'Q' to attack, and 'W' to dash";

@@ -99,6 +99,7 @@
         <sprite>sprites\spr_boss_1_spin</sprite>
         <sprite>sprites\spr_boss_1_spin_attack</sprite>
         <sprite>sprites\spr_boss_1_shockwave_attack</sprite>
+        <sprite>sprites\spr_boss_1_slash</sprite>
       </sprites>
       <sprites name="Boss 2">
         <sprite>sprites\spr_boss_2_top</sprite>
@@ -131,16 +132,17 @@
         <sprite>sprites\spr_eye_turret_idle</sprite>
         <sprite>sprites\spr_eye_turret_death</sprite>
         <sprite>sprites\spr_eye_turret_attack</sprite>
+        <sprite>sprites\spr_eye_turret_channeling</sprite>
         <sprite>sprites\spr_magic_ball</sprite>
         <sprite>sprites\spr_magic_ball_particle</sprite>
       </sprites>
       <sprites name="Skeleton">
         <sprite>sprites\spr_skeleton_walk_up</sprite>
         <sprite>sprites\spr_skeleton_slash</sprite>
-        <sprite>sprites\spr_boss_1_slash</sprite>
         <sprite>sprites\spr_skeleton_walk</sprite>
-        <sprite>sprites\spr_skeleton_walk_down</sprite>
         <sprite>sprites\spr_skeleton_death</sprite>
+        <sprite>sprites\spr_skeleton_attack_side</sprite>
+        <sprite>sprites\spr_skeleton_attack_up</sprite>
       </sprites>
       <sprites name="General">
         <sprite>sprites\spr_blood</sprite>
@@ -244,6 +246,7 @@
     <sprites name="Shop">
       <sprite>sprites\spr_focus_unlocked</sprite>
       <sprite>sprites\spr_focus_locked</sprite>
+      <sprite>sprites\spr_focus_unique</sprite>
       <sprite>sprites\spr_shop_item</sprite>
       <sprite>sprites\spr_shop</sprite>
       <sprite>sprites\spr_enter_dungeon</sprite>
@@ -391,21 +394,25 @@
         </scripts>
       </scripts>
       <scripts name="Boss 2">
-        <script>scripts\scr_boss_2_idle_state.gml</script>
-        <script>scripts\scr_boss_2_death_state.gml</script>
-        <script>scripts\scr_boss_2_hit_state.gml</script>
-        <script>scripts\scr_boss_2_chase_state.gml</script>
-        <script>scripts\scr_boss_2_artillery_state.gml</script>
-        <script>scripts\scr_boss_2_choose_attack_state.gml</script>
-        <script>scripts\scr_boss_2_attack_state.gml</script>
         <scripts name="Head">
           <script>scripts\scr_boss_2_head_death_state.gml</script>
           <script>scripts\scr_boss_2_head_chase_state.gml</script>
           <script>scripts\scr_boss_2_head_idle_state.gml</script>
           <script>scripts\scr_boss_2_head_hit_state.gml</script>
         </scripts>
-        <script>scripts\scr_boss_2_set_state.gml</script>
-        <script>scripts\scr_boss_2_execute_state.gml</script>
+        <scripts name="States">
+          <script>scripts\scr_boss_2_choose_attack_state.gml</script>
+          <script>scripts\scr_boss_2_attack_state.gml</script>
+          <script>scripts\scr_boss_2_idle_state.gml</script>
+          <script>scripts\scr_boss_2_artillery_state.gml</script>
+          <script>scripts\scr_boss_2_death_state.gml</script>
+          <script>scripts\scr_boss_2_hit_state.gml</script>
+          <script>scripts\scr_boss_2_chase_state.gml</script>
+        </scripts>
+        <scripts name="State Control">
+          <script>scripts\scr_boss_2_execute_state.gml</script>
+          <script>scripts\scr_boss_2_set_state.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="Missile Scripts">
@@ -476,6 +483,7 @@
       <object>objects\obj_pit</object>
       <object>objects\obj_heart_pickup</object>
       <object>objects\obj_pit_respawn</object>
+      <object>objects\obj_next</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_controller_spawner</object>
@@ -544,14 +552,13 @@
         <object>objects\obj_archer_miniboss_attack</object>
       </objects>
     </objects>
-    <objects name="Rooms">
-      <object>objects\obj_focus_room</object>
-    </objects>
     <objects name="Shop">
       <object>objects\obj_shop</object>
       <object>objects\obj_shop_controller</object>
       <object>objects\obj_shop_item</object>
+      <object>objects\obj_dungeon_shop_item</object>
       <object>objects\obj_enter_dungeon</object>
+      <object>objects\obj_dungeon_shop</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>
@@ -566,6 +573,7 @@
     <room>rooms\rm_shop</room>
     <room>rooms\rm_procedural</room>
     <room>rooms\rm_choose_focus</room>
+    <room>rooms\rm_loading</room>
     <room>rooms\rm_win</room>
   </rooms>
   <help>

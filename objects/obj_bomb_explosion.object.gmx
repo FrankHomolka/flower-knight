@@ -58,10 +58,10 @@ audio_play_sound(snd_explosion, 5, false);
     scr_try_hit_player(attackDamage, noone);
 }
 
-enemyHit = instance_place(x,y,obj_enemy_general_parent);
-
-if(enemyHit != -1) {
-    scr_try_hit_enemy(attackDamage, enemyHit, false);
+with(obj_enemy_general_parent) {
+    if(place_meeting(x,y,other)) {
+        scr_try_hit_enemy(other.attackDamage, self, false);
+    }
 }
 
 if(image_index &gt; (image_number - 1)) {

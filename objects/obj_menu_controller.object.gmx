@@ -39,19 +39,8 @@ view_vspeed[0] = 100;
 view_visible[0] = true;
 view_enabled = true;
 
-
-if(keyboard_check_pressed(ord('V'))) {
-      if window_get_fullscreen() {
-        window_set_fullscreen(false);
-      } else {
-        window_set_fullscreen(true);
-      }
-    if(surface_exists(light)) {
-        surface_resize(light, view_wview, view_hview);
-    }
-}
-
 instance_create(x,y,obj_settings_controller);
+instance_create(x,y,obj_view_controller);
 </string>
           </argument>
         </arguments>
@@ -74,7 +63,8 @@ instance_create(x,y,obj_settings_controller);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room != currentRoom) {
+            <string>
+if(room != currentRoom) {
     currentRoom = room;
     if(room == rm_menu) {
         with(instance_create(20,20,obj_blank)) {
@@ -165,7 +155,12 @@ instance_create(x,y,obj_settings_controller);
             <string>draw_set_color(c_white);
 draw_set_font(fnt_1);
 if(room == rm_menu) {
+    tutorialTextSize = 0.8;
     draw_text_transformed(room_width / 2, 20, "UNNAMED GAME", 2, 2, 0);
+    draw_text_transformed(room_width / 5, 80, "Arrow keys to move", tutorialTextSize, tutorialTextSize, 0);
+    draw_text_transformed(room_width / 5, 100, "'Q' to attack", tutorialTextSize, tutorialTextSize, 0);
+    draw_text_transformed(room_width / 5, 120, "'W' to dash", tutorialTextSize, tutorialTextSize, 0);
+    draw_text_transformed(room_width / 5, 140, "'V' for fullscreen", tutorialTextSize, tutorialTextSize, 0);
 } else {
     draw_text_transformed(room_width / 2, 20, "SETTINGS", 2, 2, 0);
 }

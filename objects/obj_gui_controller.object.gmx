@@ -108,7 +108,7 @@ if(room != rm_win &amp;&amp; room != rm_game_start) {
 }
 
 /* Draw minimap background */
-if(loading == false &amp;&amp; room == rm_procedural) {
+if(loading == false &amp;&amp; room == rm_procedural &amp;&amp; instance_exists(obj_level_generator)) {
     scr_draw_minimap();
 }
 

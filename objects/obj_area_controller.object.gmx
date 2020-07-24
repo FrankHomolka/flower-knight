@@ -60,12 +60,6 @@ currentRoom = room;
         area = 1;
     }
     
-    // Increment level
-    if(room == rm_choose_focus) {
-        level++;
-        background_color = $272f35;
-    }
-    
     // Increment area
     if(level == 3) {
         level = 0;
@@ -73,7 +67,7 @@ currentRoom = room;
     }
     
     // Go to win screen
-    if(area == 4) {
+    if(area == 3) {
         show_debug_message("YOU WIN");
         room_goto(rm_win);
     }
@@ -101,7 +95,7 @@ currentRoom = room;
                     if(other.level == 2) {
                         boss = obj_boss_1;
                     } else {
-                        boss = obj_enemy_archer_boss;
+                        boss = obj_boss_2;
                     }
                     background_color = $181611;
                     instance_change(obj_level_generator,true);
@@ -160,6 +154,7 @@ currentRoom = room;
             default:
                 break;
         }
+        level++;
     }
     if(!background_showcolour) {
         background_showcolour  = true;

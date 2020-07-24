@@ -7,10 +7,10 @@ if(x < obj_player.x) {
     image_xscale = 1;
 }
 
-if(obj_player.y > y) {
-    sprite_index = walkSprite;
-} else {
+if(obj_player.y + 32 < y) {
     sprite_index = walkUpSprite;
+} else {
+    sprite_index = walkSprite;
 }
 
 image_speed = walkAnimationSpeed;
