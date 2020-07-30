@@ -69,6 +69,7 @@ obj_gui_controller.drawingLoadingScreen = false;
     ds_list_clear(obj_focus_controller.playerHitFocusList);
     ds_list_clear(obj_focus_controller.playerAttackFocusList);
     ds_list_clear(obj_focus_controller.playerDashFocusList);
+    ds_list_clear(obj_focus_controller.playerDashingFocusList);
     ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
     obj_money_controller.coins = 0;
         

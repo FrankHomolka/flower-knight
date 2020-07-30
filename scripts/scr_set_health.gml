@@ -16,5 +16,5 @@ if(currentHp == hp) {
         randomHit = hitDamage;
     }
     hp -= randomHit;
-    scr_show_damage_number(randomHit);
+    scr_show_damage_number(randomHit, c_red, self);
 }

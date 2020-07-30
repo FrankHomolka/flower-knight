@@ -30,19 +30,24 @@
 global.itemList = ds_list_create();
 
 // Item Double Damage
-scr_add_item(global.itemList, "RUNNER", spr_focus_double_speed, scr_focus_double_speed, 1, false);
-scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_double_damage, 1, false);
-scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 1, true);
-scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 1, false);
-scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 1, true);
-scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 2, true);
-scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 2, true);
-scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 2, false);
-scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 3, false);
-scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 3, true);
-scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 3, false);
-scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 4, false);
-scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 5, true);
+scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 2, true, 1, scr_focus_speed);
+scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 1, true, 1, scr_focus_damage);
+scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 2, false, 1, scr_focus_burn_enemy_effect);
+scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 1, false, 1, scr_focus_shield_effect);
+scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 1, false, 1, scr_focus_thorns_effect);
+scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 2, true, 1, scr_focus_crit_chance_increase);
+scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 4, false, 1, scr_focus_vampire_effect);
+scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 4, false, 1, scr_focus_bomb_effect);
+scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 2, false, 1, scr_focus_shadow_effect);
+scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 2, false, 1, scr_focus_freeze_enemy_effect);
+scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 3, false, 1, scr_focus_fireball_effect);
+scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 2, false, 1, scr_focus_knockback_effect);
+scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 3, true, 1, scr_focus_angel);
+scr_add_item(global.itemList, "SLIME", spr_focus_slime, scr_focus_slime, 4, false, 1, scr_focus_slime_effect);
+scr_add_item(global.itemList, "RHINO", spr_focus_rhino, scr_focus_rhino, 4, false, 1, scr_focus_rhino_effect);
+scr_add_item(global.itemList, "STRIKE", spr_focus_strike, scr_focus_strike, 3, false, 1, scr_focus_strike_effect);
+scr_add_item(global.itemList, "ZOOM ZOOM", spr_focus_attack_speed, scr_focus_attack_speed, 2, true, 1, scr_focus_attack_speed);
+scr_add_item(global.itemList, "PARRY", spr_focus_parry, scr_focus_parry, 3, true, 1, scr_focus_parry);
 
 /*             List of items bought this run                  */
 global.equippedItemsList = ds_list_create();
@@ -72,10 +77,11 @@ if(file_exists("savedgame.sav")) {
     show_debug_message("file does not exist");
 }
 
-/*                      Lists of types of focus *        */
+/*                  Lists of types of focus                  */
 playerHitFocusList = ds_list_create();
 playerAttackFocusList = ds_list_create();
 playerDashFocusList = ds_list_create();
+playerDashingFocusList = ds_list_create();
 playerHitEnemyFocusList = ds_list_create();
 madeList = true;
 </string>
@@ -106,6 +112,7 @@ ds_list_destroy(global.itemsUnlocked);
 ds_list_destroy(playerHitFocusList);
 ds_list_destroy(playerAttackFocusList);
 ds_list_destroy(playerDashFocusList);
+ds_list_destroy(playerDashingFocusList);
 ds_list_destroy(playerHitEnemyFocusList);
 ds_map_destroy(global.wrapper);
 </string>

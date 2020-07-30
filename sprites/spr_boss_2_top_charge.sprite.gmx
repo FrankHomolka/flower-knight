@@ -3,14 +3,14 @@
   <type>0</type>
   <xorig>64</xorig>
   <yorigin>64</yorigin>
-  <colkind>2</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>34</bbox_left>
-  <bbox_right>88</bbox_right>
-  <bbox_top>25</bbox_top>
-  <bbox_bottom>66</bbox_bottom>
+  <bbox_left>37</bbox_left>
+  <bbox_right>95</bbox_right>
+  <bbox_top>26</bbox_top>
+  <bbox_bottom>84</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -22,5 +22,9 @@
   <frames>
     <frame index="0">images\spr_boss_2_top_charge_0.png</frame>
     <frame index="1">images\spr_boss_2_top_charge_1.png</frame>
+    <frame index="2">images\spr_boss_2_top_charge_2.png</frame>
+    <frame index="3">images\spr_boss_2_top_charge_3.png</frame>
+    <frame index="4">images\spr_boss_2_top_charge_4.png</frame>
+    <frame index="5">images\spr_boss_2_top_charge_5.png</frame>
   </frames>
 </sprite>

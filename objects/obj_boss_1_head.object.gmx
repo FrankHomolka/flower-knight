@@ -36,6 +36,8 @@ image_speed = 0.4;
 dead = false;
 state = states.death;
 hp = 0;
+kbAmount = 0;
+kbCounter = 0;
 </string>
           </argument>
         </arguments>

@@ -120,43 +120,56 @@ for(genX = 0; genX < 24; genX++) {//20
         
         /* Generate walls if not adjacent */
         if(numDoors < 4) {
-            tile = tile_layer_find(1000001, startX + (genX * 16), startY + (genY * 16));
+            tile1 = tile_layer_find(1000000, startX + (genX * 16), startY + (genY * 16));
+            tile2 = tile_layer_find(1000001, startX + (genX * 16), startY + (genY * 16));
             /* Left Side */
             if(genX == 0 && !doorLeft) {
                 if(genY >= 4 && genY < 10) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_wall);
-                    if(tile != -1) {
-                        tile_delete(tile);
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001);
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
             /* Right Side */
             } else if(genX == 24 - 1 && !doorRight) {
                 if(genY >= 4 && genY < 10) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_wall);
-                    if(tile != -1) {
-                        tile_delete(tile);
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001);
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
             }
             /* Up side */
             if(genY == 0 && !doorUp) {
                 if(genX >= 10 && genX < 14) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_wall);
-                    if(tile != -1) {
-                        tile_delete(tile);
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
                     }
-                    tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 16, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001);
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 16, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
             /* Down Side */
             } else if(genY == 16 - 1 && !doorDown) {
                 if(genX >= 10 && genX < 14) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_wall);
-                    if(tile != -1) {
-                        tile_delete(tile);
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001);
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
             }
         }

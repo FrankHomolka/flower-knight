@@ -98,4 +98,7 @@ critChance = 10;
 previousState = states.idle;
 pitLagTime = 2;
 pitLagCounter = pitLagTime;
+
+/* Focus vars */
 ignorePit = false;
+canParry = false;

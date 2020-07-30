@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hitPlayer = false;
+            <string>event_inherited();
+
+hitPlayer = false;
 hitWall = false;
 despawnTimer = 300;
 landingDir = false;

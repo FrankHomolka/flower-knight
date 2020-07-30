@@ -7,6 +7,8 @@ if(dashCounter == dashTime) {
     x_goal = obj_player_dash.x;
     y_goal = obj_player_dash.y;
     dashDirection = point_direction(x, y,x_goal,y_goal);
+    effectCounterMax = 1;
+    effectCounter = effectCounterMax;
 }
 
 /* Done for duration of dash */
@@ -40,6 +42,10 @@ if(dashCounter > 1.3) {
             sprite = other.sprite_index;
             index = other.image_index;
         }
+    }
+    for(i = 0; i < ds_list_size(obj_focus_controller.playerDashingFocusList); i++) {
+        var item = obj_focus_controller.playerDashingFocusList[| i];
+        script_execute(item[? 'effectScript']);
     }
     
 }

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_dynamic_depth_parent</parentName>
+  <parentName>obj_enemy_projectile_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lightSize = 50;
+            <string>event_inherited();
+
+lightSize = 50;
 critChance = 0;
 scr_magic_ball_particle();
 life = 0;
 image_speed = 0.12;
-//image_angle = dir + 90;
 spd = 4;
 attackDamage = 20;
 part_type_direction(fireParticle, 0, 360, 0, 0.2);
@@ -109,8 +110,6 @@ if(life % 5 == 0) {
 }
 
 if(chasePlayer) {
-    //show_debug_message('point dir' + string(point_direction(x,y,obj_player.x, obj_player.y)));
-    //show_debug_message('my dir' + string(direction));
     if(abs(point_direction(x,y,obj_player.x, obj_player.y) - image_angle) &gt; 300) {
         move_towards_point(obj_player.x, obj_player.y, speed);
     } if(point_direction(x,y,obj_player.x, obj_player.y) &gt; image_angle) {

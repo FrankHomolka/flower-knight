@@ -13,6 +13,7 @@ if(!dead) {
     xRange = 192 / 2;
     yRange = 128 / 2;
     attackLength = artilleryAttackLength * 2;
+    deathCounter = 80;
 }
 
 if(place_meeting(x,y,obj_player) && attackLength > 0) {
@@ -35,7 +36,15 @@ if(attackLength % 4 == 0) {
 }
 
 if(attackLength < 0) {
-    sprite_index = spr_boss_2_death;
+    if(deathCounter > 0) {
+        deathCounter--;
+        sprite_index = spr_boss_2_death;
+        image_speed = 0;
+    } else {
+        image_speed = 0.1;
+    }
+    if(image_index > image_number - 1)
+        image_speed = 0;
 } else {
     attackLength--;
 }

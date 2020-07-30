@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>deathCounter = 30;
+            <string>x = target.x;
+y = target.y;
+deathCounter = 30;
 angle = random_range(-10, 10);
 direction = 90;
 speed = 1.3;
@@ -87,7 +89,7 @@ fontSize = 0.3 + ( 0.3 * (damage / 50));
 draw_set_alpha(1);
 draw_set_color(c_white);
 draw_text_transformed(x - xoff, y - yoff, damage, fontSize, fontSize, angle);
-draw_set_color(c_red);
+draw_set_color(color);
 draw_text_transformed(x, y, damage, fontSize, fontSize, angle);
 </string>
           </argument>

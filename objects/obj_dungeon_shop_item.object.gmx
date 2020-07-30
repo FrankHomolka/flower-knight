@@ -33,11 +33,9 @@ message = "";
 counter = random_range(0, 10);
 startY = y;
 startX = x;
-moneyMultiplier = 200;
+moneyMultiplier = 100;
 
-canBuy = true;
-checkIfUnique = true;
-uniqueColor = make_colour_hsv(34, 133, 247);
+price = 0;
 </string>
           </argument>
         </arguments>
@@ -60,37 +58,29 @@ uniqueColor = make_colour_hsv(34, 133, 247);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(checkIfUnique) {
-    if(itemMap[? "unique"]) {
-        if(ds_list_find_index(global.equippedItemsList, itemMap) != -1) {
-            canBuy = false;
-        }
-    }
-    checkIfUnique = false;
-}
-
-if(collision_point( mouse_x, mouse_y, id, true, false)) {
+            <string>if(collision_point( mouse_x, mouse_y, id, true, false)) {
     mouseInside = true;
 } else {
     mouseInside = false;
 }
 
+price = (itemMap[? "price"] * itemMap[? "numBought"] * moneyMultiplier);
 
 if(unlocked) {
     if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
-        if(canBuy) {
-            if((obj_money_controller.coins &gt;= (itemMap[? "price"] * moneyMultiplier))) {
-                obj_money_controller.coins -= (itemMap[? "price"] * moneyMultiplier);
-                audio_play_sound(snd_explosion, 5, false);
-                itemBought = true;
+        if((obj_money_controller.coins &gt;= price)) {
+            obj_money_controller.coins -= price;
+            audio_play_sound(snd_explosion, 5, false);
+            alreadyBought = ds_list_find_index(global.equippedItemsList, itemMap);
+            if(alreadyBought != -1) {
+                item = global.equippedItemsList[| alreadyBought];
+                ds_map_replace( item, 'numBought', item[? "numBought"] + 1);
+                if(itemMap[? "effectOnBuy"]) {
+                    script_execute(itemMap[? "script"]);
+                }
+            } else {
                 ds_list_add(global.equippedItemsList, itemMap);
                 script_execute(itemMap[? "script"]);
-                moneyMultiplier *= 2;
-            }
-        }
-        if(itemMap[? "unique"]) {
-            if(ds_list_find_index(global.equippedItemsList, itemMap) != -1) {
-                canBuy = false;
             }
         }
     }
@@ -117,51 +107,36 @@ if(unlocked) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -3000;
-scr_draw_entity_shadow(10, 4, 0, 0);
-if(!canBuy || !unlocked) {
-    draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_gray, 1); 
-} else {
-    draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_white, 1); 
-}
-
-if(!unlocked) {
-    draw_sprite_ext(spr_focus_locked, 0,  x, y, 1, 1, 0, c_white, 1); 
-}
-
-if(itemMap[? "unique"]) {
-    draw_sprite_ext(spr_focus_unique, 0,  x, y, 1, 1, 0, c_white, 1); 
-}
-
-
-if(mouseInside) {
-    if(!canBuy) {
-        message = "Cannot buy multiple unique items";
-    } else if(!unlocked)  {
-        message = "LOCKED";
-    } else {    
-        message = "Buy " + string(itemMap[? "name"]) + " [" + string(itemMap[? "price"] * moneyMultiplier) + " COINS]";
-    }
-
-    draw_set_alpha(1);
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_black);
-    draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
-    draw_set_color(c_white);
-    if(itemMap[? "unique"])
-        draw_set_color(uniqueColor);
-    draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
-    
-    if((obj_money_controller.coins &lt; (itemMap[? "price"] * moneyMultiplier)) &amp;&amp; canBuy &amp;&amp; unlocked) {
-        draw_set_color(c_red);
-        draw_text_transformed(mouse_x, mouse_y - 8, "(need more money)", 0.5, 0.5, 0);
+            <string>if(unlocked) {
+    depth = -3000;
+    scr_draw_entity_shadow(10, 4, 0, 0);
+    if((obj_money_controller.coins &gt;= price)) {
+        draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_white, 1); 
+    } else {
+        draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_gray, 1); 
     }
     
-    draw_set_color(c_black);
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_left);
+    if(mouseInside) {
+        message = "Buy " + string(itemMap[? "name"]) + " [" + string(price) + " COINS]";
+        
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_color(c_black);
+        draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
+        draw_set_color(c_white);
+        draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
+        
+        if((obj_money_controller.coins &lt; price)) {
+            draw_set_color(c_red);
+            draw_text_transformed(mouse_x, mouse_y - 8, "(need more money)", 0.5, 0.5, 0);
+        }
+        
+        draw_set_color(c_black);
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+    }
 }
 </string>
           </argument>

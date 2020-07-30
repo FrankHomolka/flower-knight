@@ -1,4 +1,5 @@
 ///scr_focus_freeze_enemy_effect
 
+scr_find_item('FREEZE');
 drawColor = c_teal;
-moveSpeed = moveSpeed / 2;
+moveSpeed = moveSpeed / (item[? 'numBought'] + 2);

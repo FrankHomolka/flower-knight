@@ -1,7 +1,7 @@
 //scr_enemy_death
 
 if(!dead) {
-    show_debug_message("KILLED ENEMY id = " + string(id));
+    //show_debug_message("KILLED ENEMY id = " + string(id));
     path_end();
     dead = true;
     obj_player.enemiesKilled++;

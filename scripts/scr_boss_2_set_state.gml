@@ -17,7 +17,7 @@ if(hp <= 0) {
     }
     
     /* Hit state */
-    if(sprite_index != spr_boss_2)
+    if(sprite_index != spr_boss_2_walk)
         tryHit = false;
     if(tryHit) {
         if(!hit) {

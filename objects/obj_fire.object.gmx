@@ -28,7 +28,6 @@
             <string>hitCooldownMax = 90;
 hitCooldown = hitCooldownMax;
 life = hitCooldown * 4;
-hitDamage = 5;
 critChance = 0;
 image_speed = 0.1;
 lightSize = 70;

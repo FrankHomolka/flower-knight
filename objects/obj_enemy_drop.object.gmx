@@ -89,6 +89,14 @@ if(pickedUp) {
         if(bounce &gt; 0) {
             event_inherited();
         } else {
+            if(place_meeting(x,y,obj_pit) &amp;&amp; life &gt; 0) {
+                if(image_xscale &gt; 0) {
+                    image_xscale -= 0.02;
+                    image_yscale -= 0.02;
+                } else {
+                    instance_destroy();
+                }
+            }
             if(distance_to_point(obj_player.x, obj_player.y) &lt; 30)
                 move_towards_point(obj_player.x, obj_player.y, 0.9);
         }

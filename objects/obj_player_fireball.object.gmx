@@ -72,7 +72,6 @@ image_angle = dir + 90;
 spd = 4;
 x += lengthdir_x(5, dir);
 y += lengthdir_y(5, dir);
-attackDamage = obj_player.attackDamage / 2;
 </string>
           </argument>
         </arguments>
@@ -140,6 +139,7 @@ enemyHit = instance_place(x,y,obj_enemy_general_parent);
 if(enemyHit &gt; 0) {
     if(!place_meeting(x,y,obj_fire)) {
         with(instance_create(x,y,obj_fire)) {
+            hitDamage = other.attackDamage / 2;
             target = other.enemyHit;
         }
     }

@@ -44,25 +44,34 @@
       <sound>sound\snd_open_shop</sound>
       <sound>sound\snd_close_shop</sound>
     </sounds>
+    <sounds name="Focus">
+      <sound>sound\snd_strike</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Focus">
-      <sprite>sprites\spr_focus_double_speed</sprite>
+      <sprite>sprites\spr_focus_speed</sprite>
       <sprite>sprites\spr_focus_double_damage</sprite>
+      <sprite>sprites\spr_focus_parry</sprite>
       <sprite>sprites\spr_focus_thorns</sprite>
       <sprite>sprites\spr_focus_crit_chance</sprite>
+      <sprite>sprites\spr_focus_strike</sprite>
       <sprite>sprites\spr_focus_fireball</sprite>
       <sprite>sprites\spr_focus_freeze</sprite>
       <sprite>sprites\spr_focus_fire</sprite>
       <sprite>sprites\spr_focus_angel</sprite>
       <sprite>sprites\spr_focus_vampire</sprite>
       <sprite>sprites\spr_focus_shield</sprite>
+      <sprite>sprites\spr_focus_rhino</sprite>
       <sprite>sprites\spr_focus_shadow</sprite>
       <sprite>sprites\spr_focus_bomb</sprite>
       <sprite>sprites\spr_focus_knockback</sprite>
+      <sprite>sprites\spr_focus_slime</sprite>
+      <sprite>sprites\spr_focus_attack_speed</sprite>
       <sprite>sprites\spr_fireball</sprite>
       <sprite>sprites\spr_fire_particle</sprite>
       <sprite>sprites\spr_fire</sprite>
+      <sprite>sprites\spr_strike</sprite>
     </sprites>
     <sprites name="Enemy">
       <sprites name="Slime">
@@ -108,15 +117,20 @@
         <sprite>sprites\spr_boss_2_artillery</sprite>
         <sprite>sprites\spr_boss_2_death</sprite>
         <sprite>sprites\spr_boss_2_chase</sprite>
-        <sprite>sprites\spr_boss_2</sprite>
+        <sprite>sprites\spr_boss_2_idle</sprite>
         <sprite>sprites\spr_boss_2_target</sprite>
         <sprite>sprites\spr_boss_2_slime</sprite>
         <sprite>sprites\spr_boss_2_missile</sprite>
-        <sprite>sprites\spr_boss_2_explosion</sprite>
         <sprite>sprites\spr_boss_2_head_arrow</sprite>
+        <sprite>sprites\spr_boss_2_walk</sprite>
+        <sprite>sprites\spr_boss_2</sprite>
       </sprites>
       <sprites name="Miniboss">
+        <sprite>sprites\scr_skeleton_dodge</sprite>
+        <sprite>sprites\spr_skeleton_head</sprite>
+        <sprite>sprites\spr_skeleton_spear</sprite>
         <sprite>sprites\spr_archer_miniboss_arrow</sprite>
+        <sprite>sprites\spr_skeleton_miniboss_death</sprite>
       </sprites>
       <sprites name="Bomber">
         <sprite>sprites\spr_bomber_idle</sprite>
@@ -195,6 +209,7 @@
           <sprite>sprites\spr_room_pillar</sprite>
           <sprite>sprites\spr_room_group</sprite>
           <sprite>sprites\spr_room_bombers</sprite>
+          <sprite>sprites\spr_room_corners</sprite>
         </sprites>
         <sprites name="General">
           <sprite>sprites\spr_room_boss_map</sprite>
@@ -337,30 +352,49 @@
       <script>scripts\scr_get_adjacent_doors.gml</script>
     </scripts>
     <scripts name="Focus">
-      <script>scripts\scr_focus_double_speed.gml</script>
-      <script>scripts\scr_focus_double_damage.gml</script>
-      <script>scripts\scr_focus_crit_chance_increase.gml</script>
-      <script>scripts\scr_focus_thorns.gml</script>
-      <script>scripts\scr_focus_thorns_effect.gml</script>
-      <script>scripts\scr_focus_shadow.gml</script>
-      <script>scripts\scr_focus_shadow_effect.gml</script>
-      <script>scripts\scr_focus_bomb.gml</script>
-      <script>scripts\scr_focus_bomb_effect.gml</script>
-      <script>scripts\scr_focus_freeze_enemy.gml</script>
-      <script>scripts\scr_focus_freeze_enemy_effect.gml</script>
-      <script>scripts\scr_focus_burn_enemy.gml</script>
-      <script>scripts\scr_focus_burn_enemy_effect.gml</script>
-      <script>scripts\scr_focus_fireball.gml</script>
-      <script>scripts\scr_focus_fireball_effect.gml</script>
-      <script>scripts\scr_focus_angel.gml</script>
-      <script>scripts\scr_focus_shield.gml</script>
-      <script>scripts\scr_focus_shield_effect.gml</script>
+      <scripts name="One time">
+        <script>scripts\scr_focus_speed.gml</script>
+        <script>scripts\scr_focus_attack_speed.gml</script>
+        <script>scripts\scr_focus_parry.gml</script>
+        <script>scripts\scr_focus_damage.gml</script>
+        <script>scripts\scr_focus_crit_chance_increase.gml</script>
+        <script>scripts\scr_focus_angel.gml</script>
+      </scripts>
       <scripts name="Player Hit Enemy">
         <script>scripts\scr_focus_knockback.gml</script>
-        <script>scripts\scr_focus_vampire_effect.gml</script>
         <script>scripts\scr_focus_knockback_effect.gml</script>
         <script>scripts\scr_focus_vampire.gml</script>
+        <script>scripts\scr_focus_vampire_effect.gml</script>
+        <script>scripts\scr_focus_freeze_enemy_effect.gml</script>
+        <script>scripts\scr_focus_freeze_enemy.gml</script>
+        <script>scripts\scr_focus_burn_enemy.gml</script>
+        <script>scripts\scr_focus_burn_enemy_effect.gml</script>
       </scripts>
+      <scripts name="Dashing">
+        <script>scripts\scr_focus_slime.gml</script>
+        <script>scripts\scr_focus_slime_effect.gml</script>
+        <script>scripts\scr_focus_rhino.gml</script>
+        <script>scripts\scr_focus_rhino_effect.gml</script>
+      </scripts>
+      <scripts name="Player Hit">
+        <script>scripts\scr_focus_shadow.gml</script>
+        <script>scripts\scr_focus_shadow_effect.gml</script>
+        <script>scripts\scr_focus_thorns.gml</script>
+        <script>scripts\scr_focus_thorns_effect.gml</script>
+        <script>scripts\scr_focus_shield.gml</script>
+        <script>scripts\scr_focus_shield_effect.gml</script>
+      </scripts>
+      <scripts name="Dash">
+        <script>scripts\scr_focus_bomb.gml</script>
+        <script>scripts\scr_focus_bomb_effect.gml</script>
+      </scripts>
+      <scripts name="Player Attack">
+        <script>scripts\scr_focus_strike.gml</script>
+        <script>scripts\scr_focus_strike_effect.gml</script>
+        <script>scripts\scr_focus_fireball.gml</script>
+        <script>scripts\scr_focus_fireball_effect.gml</script>
+      </scripts>
+      <script>scripts\scr_find_item.gml</script>
     </scripts>
     <scripts name="Save &amp; Load">
       <script>scripts\scr_save_string_to_file.gml</script>
@@ -443,6 +477,7 @@
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
+    <font>fonts\fnt_ui</font>
     <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
@@ -511,13 +546,11 @@
         <object>objects\obj_enemy_archer</object>
         <object>objects\obj_enemy_bomber</object>
         <object>objects\obj_enemy_eye_turret</object>
-        <object>objects\obj_magic_ball</object>
-        <object>objects\obj_wolf</object>
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
+        <object>objects\obj_magic_ball</object>
         <object>objects\obj_enemy_slime_trail</object>
-        <object>objects\obj_wolf_bite</object>
         <object>objects\obj_enemy_archer_attack</object>
         <object>objects\obj_enemy_drop</object>
         <object>objects\obj_artillery_attack</object>
@@ -525,12 +558,13 @@
       </objects>
     </objects>
     <objects name="Focus">
-      <object>objects\obj_buy_item</object>
       <object>objects\obj_shadow_timer</object>
       <object>objects\obj_bomb</object>
       <object>objects\obj_bomb_explosion</object>
       <object>objects\obj_fire</object>
+      <object>objects\obj_player_slime</object>
       <object>objects\obj_player_fireball</object>
+      <object>objects\obj_player_strike</object>
     </objects>
     <objects name="Bosses">
       <objects name="Boss 1">
@@ -550,6 +584,9 @@
         <object>objects\obj_spawned</object>
       </objects>
       <objects name="Minibosses">
+        <object>objects\obj_skeleton_general</object>
+        <object>objects\obj_skeleton_miniboss_head</object>
+        <object>objects\obj_enemy_skeleton_general_attack</object>
         <object>objects\obj_enemy_archer_boss</object>
         <object>objects\obj_archer_miniboss_attack</object>
       </objects>

@@ -1,3 +1,5 @@
 //scr_focus_shadow
 
-ds_list_add(obj_focus_controller.playerHitFocusList, scr_focus_shadow_effect);
+scr_find_item('SHADOW');
+
+ds_list_add(obj_focus_controller.playerHitFocusList, global.itemList[| index]);

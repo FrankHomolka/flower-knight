@@ -39,7 +39,8 @@ if(hp <= 0) {
         if(!hit) {
             if(effect) {
                 for(i = 0; i < ds_list_size(obj_focus_controller.playerHitEnemyFocusList); i++) {
-                    script_execute(obj_focus_controller.playerHitEnemyFocusList[| i]);
+                    var item = obj_focus_controller.playerHitEnemyFocusList[| i];
+                    script_execute(item[? 'effectScript']);
                 }
                 part_type_direction(enemyHitParticle, point_direction(x, y, obj_player.x, obj_player.y) - 50, point_direction(x, y, obj_player.x, obj_player.y) + 50, 0, 0.2);
                 part_emitter_region(enemyHit, enemyHitEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);

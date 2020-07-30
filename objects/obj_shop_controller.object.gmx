@@ -39,6 +39,8 @@ if(ds_list_size(global.itemsUnlocked) == 0) {
     ds_list_add(global.itemsUnlocked, global.itemList[| 2]);
     ds_list_add(global.itemsUnlocked, global.itemList[| 3]);
     ds_list_add(global.itemsUnlocked, global.itemList[| 4]);
+    ds_list_add(global.itemsUnlocked, global.itemList[| 5]);
+    ds_list_add(global.itemsUnlocked, global.itemList[| 6]);
     scr_save_item_list();
 }
 

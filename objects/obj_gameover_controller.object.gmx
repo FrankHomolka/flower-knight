@@ -33,6 +33,7 @@
     ds_list_clear(obj_focus_controller.playerHitFocusList);
     ds_list_clear(obj_focus_controller.playerAttackFocusList);
     ds_list_clear(obj_focus_controller.playerDashFocusList);
+    ds_list_clear(obj_focus_controller.playerDashingFocusList);
     ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
     instance_create(x,y,obj_player);
     obj_money_controller.coins = 0;

@@ -13,7 +13,8 @@ if(left || right || up || down) {
 if(attack) {
     if(!isAttacking) {
         for(i = 0; i < ds_list_size(obj_focus_controller.playerAttackFocusList); i++) {
-            script_execute(obj_focus_controller.playerAttackFocusList[| i]);
+            var item = obj_focus_controller.playerAttackFocusList[| i];
+            script_execute(item[? 'effectScript']);
         }
     }
     isAttacking = true;
@@ -27,7 +28,8 @@ if(isAttacking) {
 if(dodge && state != states.attack && state != states.idle && (move_x != 0 || move_y != 0)) {
     if(!isDashing) {
         for(i = 0; i < ds_list_size(obj_focus_controller.playerDashFocusList); i++) {
-            script_execute(obj_focus_controller.playerDashFocusList[| i]);
+            var item = obj_focus_controller.playerDashFocusList[| i];
+            script_execute(item[? 'effectScript']);
         }
     }
     isDashing = true;
@@ -41,7 +43,8 @@ if(isDashing) {
 if(tryHit) {
     if(state != states.dash && !hit) {
         for(i = 0; i < ds_list_size(obj_focus_controller.playerHitFocusList); i++) {
-            script_execute(obj_focus_controller.playerHitFocusList[| i]);
+            var item = obj_focus_controller.playerHitFocusList[| i];
+            script_execute(item[? 'effectScript']);
         }
         hit = true;
         shake = true;

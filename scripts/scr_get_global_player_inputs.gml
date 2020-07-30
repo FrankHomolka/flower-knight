@@ -47,7 +47,7 @@ if(keyboard_check_pressed(ord('N'))) {
 
 if(keyboard_check_pressed(ord('U'))) {
     obj_money_controller.money+=10;
-    obj_money_controller.coins+=100;
+    obj_money_controller.coins+=100000;
 }
 
 if(obj_gui_controller.drawingLoadingScreen && goToNextRoom) {

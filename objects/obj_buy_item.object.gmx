@@ -64,7 +64,14 @@ if(place_meeting(x,y,obj_player) &amp;&amp; !itemBought) {
         obj_money_controller.coins -= (itemMap[? "price"] * moneyMultiplier);
         audio_play_sound(snd_explosion, 5, false);
         itemBought = true;
-        ds_list_add(global.equippedItemsList, itemMap);
+        alreadyBought = ds_list_find_index(global.equippedItemsList, itemMap);
+        show_debug_message('index = ' + string(alreadyBought));
+        if(alreadyBought &gt; 0) {
+            item = global.equippedItemsList[| alreadyBought];
+            ds_map_replace( item, numBought, item[? "numBought"] + 1);
+        } else {
+            ds_list_add(global.equippedItemsList, itemMap);
+        }
         script_execute(itemMap[? "script"]);
         shake = true;
     }
