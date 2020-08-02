@@ -6,7 +6,7 @@ if(!dead) {
     dead = true;
     obj_player.enemiesKilled++;
     image_xscale = 1;
-    for(var i = 0; i < goldDropOnDeath; i++)
+    for(var i = 0; i < goldDropOnDeath * goldMultiplier; i++)
         instance_create(x,y,obj_enemy_drop);
     if(!pit) {
         part_type_direction(enemyHitParticle, point_direction(x, y, obj_player.x, obj_player.y) - 50, point_direction(x, y, obj_player.x, obj_player.y) + 50, 0, 0.2);

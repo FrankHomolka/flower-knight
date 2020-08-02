@@ -47,6 +47,7 @@ hurtSound = snd_enemy_hit;
 deathSound = snd_enemy_death;
 deathSprite = spr_boss_2_artillery;
 hitSprite = spr_boss_2;
+
 </string>
           </argument>
         </arguments>

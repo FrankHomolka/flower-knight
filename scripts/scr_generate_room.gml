@@ -107,6 +107,10 @@ for(genX = 0; genX < 24; genX++) {//20
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_dungeon_shop);
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 break;
+            // Bomb room 
+            case $d5db64:
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_bomb_room);
+                break;
             // Player spawn
             case $ff0000:
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
@@ -203,6 +207,31 @@ for(genX = 0; genX < 24; genX++) {//20
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
+                }
+            }
+        }
+        
+        // If BOMB room
+        if(argument2 == spr_bomb_room) {
+            if(genX == 0 && doorLeft) {
+                if(genY >= 5 && genY < 10) {
+                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                }
+            /* Right Side */
+            } else if(genX == 24 - 1 && doorRight) {
+                if(genY >= 5 && genY < 10) {
+                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                }
+            }
+            /* Up side */
+            if(genY == 0 && doorUp) {
+                if(genX >= 10 && genX < 14) {
+                   instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                }
+            /* Down Side */
+            } else if(genY == 16 - 1 && doorDown) {
+                if(genX >= 10 && genX < 14) {
+                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
                 }
             }
         }

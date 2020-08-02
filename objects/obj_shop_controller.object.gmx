@@ -116,7 +116,7 @@ if(object_exists(obj_focus_controller)) {
                     for(var k = 0; k &lt; ds_list_size(global.itemsUnlocked); k++) {
                         var checkItem = global.itemsUnlocked[| k];
                         if(itemMap[? "name"] == checkItem[? "name"]) {
-                            show_debug_message("ALREADY UNLOCKED " + string(checkItem[? "name"]));
+                            //show_debug_message("ALREADY UNLOCKED " + string(checkItem[? "name"]));
                             unlocked = true;
                             break;
                         }

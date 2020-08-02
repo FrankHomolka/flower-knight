@@ -88,6 +88,9 @@ currentRoom = room;
                         ds_list_add(roomList, spr_room_group);
                     for(i = 0; i &lt; 4; i++) 
                         ds_list_add(roomList, spr_room_empty);
+                    for(i = 0; i &lt; 10; i++) 
+                        ds_list_add(roomList, spr_room_corners); 
+                        
                     ds_list_add(roomList, spr_room_bombers);
                     ds_list_add(roomList, spr_room_maze);
                     maxNumRooms = 8;
@@ -112,8 +115,12 @@ currentRoom = room;
                         ds_list_add(roomList, spr_room_open)
                     for(i = 0; i &lt; 5; i++) 
                         ds_list_add(roomList, spr_room_pillars)
-                    for(i = 0; i &lt; 10; i++) 
-                        ds_list_add(roomList, spr_room_group)
+                    for(i = 0; i &lt; 6; i++) 
+                        ds_list_add(roomList, spr_room_group_2)
+                    for(i = 0; i &lt; 5; i++) 
+                        ds_list_add(roomList, spr_room_pit_ring)
+                    for(i = 0; i &lt; 6; i++) 
+                        ds_list_add(roomList, spr_room_corners); 
                     for(i = 0; i &lt; 3; i++) 
                         ds_list_add(roomList, spr_room_empty)
                     ds_list_add(roomList, spr_room_wings);

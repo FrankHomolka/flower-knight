@@ -42,6 +42,7 @@ damageSource = obj_player;
 pitLagTime = 10;
 pitLagCounter = pitLagTime;
 goldDropOnDeath = 10;
+goldMultiplier = 1;
 
 // Hit vars
 damageAmount = 0;

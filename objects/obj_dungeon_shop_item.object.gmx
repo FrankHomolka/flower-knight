@@ -36,6 +36,10 @@ startX = x;
 moneyMultiplier = 100;
 
 price = 0;
+
+initial_gw = 1600;
+initial_gh = 900;
+counter = random(300);
 </string>
           </argument>
         </arguments>
@@ -58,19 +62,14 @@ price = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(collision_point( mouse_x, mouse_y, id, true, false)) {
-    mouseInside = true;
-} else {
-    mouseInside = false;
-}
-
+            <string>
 price = (itemMap[? "price"] * itemMap[? "numBought"] * moneyMultiplier);
 
 if(unlocked) {
     if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
         if((obj_money_controller.coins &gt;= price)) {
             obj_money_controller.coins -= price;
-            audio_play_sound(snd_explosion, 5, false);
+            audio_play_sound(snd_buy_item, 5, false);
             alreadyBought = ds_list_find_index(global.equippedItemsList, itemMap);
             if(alreadyBought != -1) {
                 item = global.equippedItemsList[| alreadyBought];
@@ -83,6 +82,92 @@ if(unlocked) {
                 script_execute(itemMap[? "script"]);
             }
         }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+gw = display_get_gui_width();
+gh = display_get_gui_height();
+horBlock = gw / 32;
+vertBlock = gh / 32;
+
+drawX = (gw / 5) + (horBlock * rowX * 2);
+drawY = (gh / 3) + (vertBlock /2) * rowY + (sin(counter) * 4);
+
+if(!mouseInside) {
+    counter += 0.1;
+    scaleFactor = (gw / initial_gw);
+} else {
+    scaleFactor = (gw / initial_gw) * 1.3;
+}
+
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
+
+if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
+    drawX - (4 * scaleFactor * 8), drawY - (4 * scaleFactor * 8), 
+    drawX + (4 * scaleFactor * 8), drawY + (4 * scaleFactor * 8))) {
+    if(!mouseInside) {
+        audio_play_sound(snd_hover_item, 10, false);
+    }
+    mouseInside = true;
+} else {
+    mouseInside = false;
+}
+
+if(unlocked) {
+    depth = -3000;
+    // Draw shadow
+    draw_set_alpha(0.3);
+    draw_set_color(c_black);
+    draw_ellipse(drawX - (horBlock / 2), drawY + (vertBlock / 2), drawX + (horBlock / 2), drawY + (vertBlock * 1.5), false);
+    draw_set_alpha(1);
+    if((obj_money_controller.coins &gt;= price)) {
+        draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
+        draw_set_color(c_black);
+        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_set_color(c_yellow);
+        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), price, 2 * scaleFactor, 2 * scaleFactor, 0);
+    } else {
+        draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_gray, 1); 
+        draw_set_color(c_black);
+        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_set_color(c_red);
+        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), price, 2 * scaleFactor, 2 * scaleFactor, 0);
+    }
+    
+    if(mouseInside) {
+        message = "Buy " + string(itemMap[? "name"]);
+        
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_color(c_black);
+        draw_text_transformed(drawX, drawY - (2 * vertBlock) - 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_set_color(c_white);
+        draw_text_transformed(drawX, drawY - (2 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
     }
 }
 </string>
@@ -107,7 +192,7 @@ if(unlocked) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(unlocked) {
+            <string>/*if(unlocked) {
     depth = -3000;
     scr_draw_entity_shadow(10, 4, 0, 0);
     if((obj_money_controller.coins &gt;= price)) {

@@ -125,7 +125,7 @@ if(foundPlayer) {
         case states.death:
             inFight = false;
             if(!instance_exists(obj_next_room)) {
-                instance_create(x,y-15,obj_boss_1_head);
+                instance_create(x,y-15,obj_archer_miniboss_head);
                 instance_create(spawnX, spawnY, obj_next_room);
             }
             scr_enemy_death();

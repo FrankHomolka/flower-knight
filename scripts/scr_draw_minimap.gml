@@ -38,8 +38,13 @@ for(xx = 0; xx < mapWidth; xx++) {
         } else if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "boss" && global.showBossRoom) {
             minimapSprite = spr_gui_boss_room;
         } else if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) != 0) {
-            if(global.foundRoomsGrid[# xx, yy] == 'found') {
+            if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "bomb") {
+                minimapSprite = false;
+            } else if(global.foundRoomsGrid[# xx, yy] == 'found') {
                 minimapSprite = spr_gui_room;
+                if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "boss") {
+                    minimapSprite = spr_gui_boss_room;
+                }
             } else {
                 minimapSprite = false;
             }

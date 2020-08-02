@@ -7,6 +7,8 @@ alteredMoveSpeed = 1;
 baseMoveSpeed = 1;
 moveSpeed = baseMoveSpeed;
 speedAltered = false;
+move_x = 0;
+move_y = 0;
 
 /* Animations & sprites */
 sprite = spr_player_right;

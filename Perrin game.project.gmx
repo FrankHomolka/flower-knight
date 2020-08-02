@@ -31,6 +31,7 @@
       <sound>sound\snd_skeleton_hit</sound>
       <sound>sound\snd_skeleton_attack</sound>
       <sound>sound\snd_eyeball_attack</sound>
+      <sound>sound\snd_pickup_head</sound>
     </sounds>
     <sounds name="Environment">
       <sound>sound\snd_destructible</sound>
@@ -41,11 +42,15 @@
     </sounds>
     <sounds name="UI">
       <sound>sound\snd_button_click</sound>
-      <sound>sound\snd_open_shop</sound>
-      <sound>sound\snd_close_shop</sound>
     </sounds>
     <sounds name="Focus">
       <sound>sound\snd_strike</sound>
+    </sounds>
+    <sounds name="Shop">
+      <sound>sound\snd_hover_item</sound>
+      <sound>sound\snd_buy_item</sound>
+      <sound>sound\snd_open_shop</sound>
+      <sound>sound\snd_close_shop</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -72,6 +77,7 @@
       <sprite>sprites\spr_fire_particle</sprite>
       <sprite>sprites\spr_fire</sprite>
       <sprite>sprites\spr_strike</sprite>
+      <sprite>sprites\spr_focus_greed</sprite>
     </sprites>
     <sprites name="Enemy">
       <sprites name="Slime">
@@ -126,11 +132,16 @@
         <sprite>sprites\spr_boss_2</sprite>
       </sprites>
       <sprites name="Miniboss">
-        <sprite>sprites\scr_skeleton_dodge</sprite>
-        <sprite>sprites\spr_skeleton_head</sprite>
-        <sprite>sprites\spr_skeleton_spear</sprite>
-        <sprite>sprites\spr_archer_miniboss_arrow</sprite>
-        <sprite>sprites\spr_skeleton_miniboss_death</sprite>
+        <sprites name="Skellie">
+          <sprite>sprites\scr_skeleton_dodge</sprite>
+          <sprite>sprites\spr_skeleton_miniboss_death</sprite>
+          <sprite>sprites\spr_skeleton_spear</sprite>
+          <sprite>sprites\spr_skeleton_head</sprite>
+        </sprites>
+        <sprites name="Archer">
+          <sprite>sprites\spr_archer_miniboss_arrow</sprite>
+          <sprite>sprites\spr_archer_miniboss_head</sprite>
+        </sprites>
       </sprites>
       <sprites name="Bomber">
         <sprite>sprites\spr_bomber_idle</sprite>
@@ -184,6 +195,7 @@
       <sprite>sprites\spr_treasure</sprite>
       <sprite>sprites\spr_treasure_open</sprite>
       <sprite>sprites\spr_player_spawn</sprite>
+      <sprite>sprites\spr_bombable_wall</sprite>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_enemies_killed</sprite>
@@ -212,6 +224,7 @@
           <sprite>sprites\spr_room_corners</sprite>
         </sprites>
         <sprites name="General">
+          <sprite>sprites\spr_bomb_room</sprite>
           <sprite>sprites\spr_room_boss_map</sprite>
           <sprite>sprites\spr_room_shop_map</sprite>
           <sprite>sprites\spr_room_focus</sprite>
@@ -219,13 +232,16 @@
           <sprite>sprites\spr_room_wings</sprite>
         </sprites>
         <sprites name="Dungeon 2">
+          <sprite>sprites\spr_room_group_2</sprite>
           <sprite>sprites\spr_room_open</sprite>
           <sprite>sprites\spr_room_run</sprite>
+          <sprite>sprites\spr_room_pit_ring</sprite>
         </sprites>
       </sprites>
       <sprites name="GUI">
         <sprite>sprites\spr_gui_room</sprite>
         <sprite>sprites\spr_gui_boss_room</sprite>
+        <sprite>sprites\spr_gui_bomb_room</sprite>
         <sprite>sprites\spr_gui_start_room</sprite>
         <sprite>sprites\spr_map_selected</sprite>
       </sprites>
@@ -363,6 +379,8 @@
       <scripts name="Player Hit Enemy">
         <script>scripts\scr_focus_knockback.gml</script>
         <script>scripts\scr_focus_knockback_effect.gml</script>
+        <script>scripts\scr_focus_greed.gml</script>
+        <script>scripts\scr_focus_greed_effect.gml</script>
         <script>scripts\scr_focus_vampire.gml</script>
         <script>scripts\scr_focus_vampire_effect.gml</script>
         <script>scripts\scr_focus_freeze_enemy_effect.gml</script>
@@ -521,6 +539,8 @@
       <object>objects\obj_heart_pickup</object>
       <object>objects\obj_pit_respawn</object>
       <object>objects\obj_next</object>
+      <object>objects\obj_bombable_wall</object>
+      <object>objects\obj_bomb_room</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_controller_spawner</object>
@@ -586,6 +606,7 @@
       <objects name="Minibosses">
         <object>objects\obj_skeleton_general</object>
         <object>objects\obj_skeleton_miniboss_head</object>
+        <object>objects\obj_archer_miniboss_head</object>
         <object>objects\obj_enemy_skeleton_general_attack</object>
         <object>objects\obj_enemy_archer_boss</object>
         <object>objects\obj_archer_miniboss_attack</object>

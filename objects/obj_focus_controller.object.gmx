@@ -48,6 +48,7 @@ scr_add_item(global.itemList, "RHINO", spr_focus_rhino, scr_focus_rhino, 4, fals
 scr_add_item(global.itemList, "STRIKE", spr_focus_strike, scr_focus_strike, 3, false, 1, scr_focus_strike_effect);
 scr_add_item(global.itemList, "ZOOM ZOOM", spr_focus_attack_speed, scr_focus_attack_speed, 2, true, 1, scr_focus_attack_speed);
 scr_add_item(global.itemList, "PARRY", spr_focus_parry, scr_focus_parry, 3, true, 1, scr_focus_parry);
+scr_add_item(global.itemList, "GREED", spr_focus_greed, scr_focus_greed, 2, false, 1, scr_focus_greed_effect);
 
 /*             List of items bought this run                  */
 global.equippedItemsList = ds_list_create();

@@ -54,6 +54,11 @@ shopRoomSpawned = false;
 shopCellX = 0;
 shopCellY = 0;
 
+/* Secret room */
+secretRoomSpawned = false;
+secretCellX = 0;
+secretCellY = 0;
+
 /* Set center cell */
 ds_grid_set(mapGrid, centerCellX, centerCellY, "spawn");
 currentCellX = centerCellX; 
@@ -122,8 +127,15 @@ for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
             } else if(xx == bossCellX &amp;&amp; yy == bossCellY) {
                 ds_grid_set(mapGrid, bossCellX, bossCellY, "boss");
                 scr_generate_room(startX, startY, spr_room_boss_map);
+                show_debug_message('bossCellX = ' + string(bossCellX) + ' bossCellY = ' + string(bossCellY));
+                show_debug_message('boss room');
             } else if(xx == shopCellX &amp;&amp; yy == shopCellY){
                 scr_generate_room(startX, startY, spr_room_shop_map);
+            } else if(numDoors == 1){
+                show_debug_message('startX = ' + string(startX) + ' startY = ' + string(startY));
+                show_debug_message('bomb room');
+                ds_grid_set(mapGrid, startX / cellWidth, startY / cellHeight, "bomb");
+                scr_generate_room(startX, startY, spr_bomb_room);
             } else {
                 scr_generate_room(startX, startY, roomSprite);
             }
