@@ -14,6 +14,8 @@
     </sounds>
     <sounds name="Music">
       <sound>sound\music_1</sound>
+      <sound>sound\music_2</sound>
+      <sound>sound\snd_boss_music_1</sound>
     </sounds>
     <sounds name="Enemy">
       <sound>sound\snd_wolf_attack</sound>
@@ -39,6 +41,7 @@
       <sound>sound\snd_coin_pickup_2</sound>
       <sound>sound\snd_coin_pickup_3</sound>
       <sound>sound\snd_heart_pickup</sound>
+      <sound>sound\snd_open_chest</sound>
     </sounds>
     <sounds name="UI">
       <sound>sound\snd_button_click</sound>
@@ -193,9 +196,11 @@
       <sprite>sprites\spr_crate_two</sprite>
       <sprite>sprites\spr_crate_particle</sprite>
       <sprite>sprites\spr_treasure</sprite>
+      <sprite>sprites\spr_treasure_tile</sprite>
       <sprite>sprites\spr_treasure_open</sprite>
       <sprite>sprites\spr_player_spawn</sprite>
       <sprite>sprites\spr_bombable_wall</sprite>
+      <sprite>sprites\spr_spikes</sprite>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_enemies_killed</sprite>
@@ -216,6 +221,7 @@
       <sprites name="Rooms">
         <sprites name="Dungeon 1">
           <sprite>sprites\spr_room_empty</sprite>
+          <sprite>sprites\spr_room_spikes</sprite>
           <sprite>sprites\spr_room_maze</sprite>
           <sprite>sprites\spr_room_pillars</sprite>
           <sprite>sprites\spr_room_pillar</sprite>
@@ -290,6 +296,7 @@
     <background>background\bck_outside</background>
     <background>background\bck_dungeon</background>
     <background>background\bck_area_1</background>
+    <background>background\bck_treasure_room</background>
     <background>background\bck_area_2</background>
     <background>background\bck_area_3</background>
     <background>background\background7</background>
@@ -527,20 +534,28 @@
       <object>objects\obj_dash_ghost</object>
     </objects>
     <objects name="Environment">
-      <object>objects\obj_level_generator</object>
-      <object>objects\obj_wall</object>
       <object>objects\obj_boss_wall</object>
+      <object>objects\obj_spikes</object>
       <object>objects\obj_player_spawn</object>
-      <object>objects\obj_next_room</object>
-      <object>objects\obj_torch</object>
-      <object>objects\obj_destructible</object>
-      <object>objects\obj_treasure</object>
+      <object>objects\obj_wall</object>
       <object>objects\obj_pit</object>
+      <object>objects\obj_next_room</object>
       <object>objects\obj_heart_pickup</object>
       <object>objects\obj_pit_respawn</object>
-      <object>objects\obj_next</object>
-      <object>objects\obj_bombable_wall</object>
-      <object>objects\obj_bomb_room</object>
+      <object>objects\obj_treasure</object>
+      <objects name="Destructible">
+        <object>objects\obj_destructible</object>
+        <object>objects\obj_bombable_wall</object>
+      </objects>
+      <objects name="Decoration">
+        <object>objects\obj_torch</object>
+      </objects>
+      <objects name="Control">
+        <object>objects\obj_level_generator</object>
+        <object>objects\obj_next</object>
+        <object>objects\obj_bomb_room</object>
+        <object>objects\obj_boss_activator</object>
+      </objects>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_controller_spawner</object>

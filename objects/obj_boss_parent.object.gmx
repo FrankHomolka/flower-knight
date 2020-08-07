@@ -36,6 +36,16 @@ shake = false;
 shakeForce = 5;
 shakeDurMax = 12;
 shakeDur = shakeDurMax;
+playedCutscene = false;
+
+/* Draw hp */
+initial_gw = 1600;
+initial_gh = 900;
+hpColor = make_colour_rgb(197, 53, 70);
+loadingText = false;
+life = 200;
+lifeCounter = life;
+alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -86,30 +96,93 @@ shakeDur = shakeDurMax;
             <string>event_inherited();
 
 /* Activate boss */
-if(distance_to_point(obj_player.x,obj_player.y) &lt; chaseDistance &amp;&amp;
-    !collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,true) &amp;&amp;
-    !foundPlayer) {
+if(!playedCutscene &amp;&amp;
+    foundPlayer) {
     switch(obj_level_generator.boss) {
         case obj_boss_1:
             name = "KING KNIGHT";
             break;
         case obj_enemy_archer_boss:
-            name = "BIG ARCHER";
+            name = "KING ARCHER";
             break;
         case obj_boss_2:
             name = "PLANT KING";
+            break;
+        case obj_skeleton_general:
+            name = "SKELETON KING";
             break;
         default:
             name = "THE BOSS";
             break;
     }
-    with(instance_create(x,y,obj_show_message)) {
-        message = "DEFEAT " + other.name;
-    }
     audio_play_sound(snd_explosion, 8, false);
+    if(instance_exists(obj_settings_controller)) {
+        obj_settings_controller.playNext = obj_settings_controller.bossMusic;
+    }
     shake = true;
     inFight = true;
     foundPlayer = true;
+    playedCutscene = true;
+    loadingText = true;
+}
+
+if(loadingText) {
+    lifeCounter--;
+    if(lifeCounter &lt; life / 4) {
+        loadingText = false;
+    } else {
+        alpha += 0.01;   
+    }
+}
+
+if(!inFight &amp;&amp; playedCutscene) {
+    obj_settings_controller.playNext = obj_settings_controller.themeMusic;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(inFight) {
+    gw = display_get_gui_width();
+    gh = display_get_gui_height();
+    horBlock = gw / 32;
+    vertBlock = gh / 32;
+    scaleFactor = (gw / initial_gw);
+    
+    draw_set_alpha(alpha);
+    
+    draw_set_color(c_white);
+    draw_rectangle((gw / 3) - (horBlock / 10), (vertBlock / 2) - (vertBlock / 8), (gw / 3) + (gw / 3) + (horBlock / 10), (vertBlock * 2) + (vertBlock / 8), false);
+    draw_set_color(hpColor);
+    draw_rectangle((gw / 3), (vertBlock / 2), (gw / 3) +((gw / 3) * (hp / maxHp)), vertBlock * 2, false);
+
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_black);
+    draw_text_transformed((gw / 2) - 6, (gh / 6) - (vertBlock * 2) - 6, name, 4 * scaleFactor, 4* scaleFactor, 0);
+    draw_set_color(c_white);
+    draw_text_transformed(gw / 2, (gh / 6) - (vertBlock * 2), name, 4* scaleFactor, 4* scaleFactor, 0);
+    draw_set_color(c_black);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
 }
 </string>
           </argument>

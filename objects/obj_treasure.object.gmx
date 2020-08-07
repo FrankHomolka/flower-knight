@@ -30,6 +30,21 @@ opened = false;
 interactable = false;
 image_speed = 0.2;
 counter = 0;
+fireSystem = part_system_create();
+part_system_depth(fireSystem, -y - 100);
+
+fireParticle = part_type_create();
+part_type_sprite(fireParticle, spr_gold, false, 0, true);
+part_type_size(fireParticle, 1, 1, 0, 0);
+part_type_scale(fireParticle, 1, 1);
+part_type_alpha1(fireParticle, 1);
+part_type_speed(fireParticle, 1, 2, 0, 0);
+part_type_orientation(fireParticle, 0, 0, 0, 0.2, 1);
+part_type_blend(fireParticle, false);
+part_type_life(fireParticle, 10, 20);
+part_type_colour1(fireParticle, c_yellow); 
+
+fireEmitter = part_emitter_create(fireParticle);
 </string>
           </argument>
         </arguments>
@@ -61,11 +76,18 @@ counter = 0;
     if(interactable &amp;&amp; obj_player.interact) {
         sprite_index = spr_treasure_open;
         opened = true;
+        part_type_direction(fireParticle, 40, 140, 0, 0.2);
+        part_emitter_region(fireSystem, fireEmitter, x + 8, x + 8,  y + 4, y + 4, ps_shape_ellipse, ps_distr_linear);
+        part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(30, 50));
+        audio_play_sound(snd_open_shop, 10, false);
     }
 } else {
     if(counter &lt; 120) {
-        if(counter % 3 == 0)
-            instance_create(x + 8,y, obj_enemy_drop);
+        if(counter % 3 == 0) {
+            audio_play_sound(snd_open_chest, 10, false);
+            part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(3, 7));
+            instance_create(x + 8,y - 8, obj_enemy_drop);
+        }
         counter++;
     }
     
@@ -92,7 +114,7 @@ counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(12, 8, 0, 8);
+            <string>scr_draw_entity_shadow(18, 8, 7, 6);
 draw_self();
 
 if(interactable &amp;&amp; !opened) {

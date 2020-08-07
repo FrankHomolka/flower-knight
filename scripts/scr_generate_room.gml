@@ -5,6 +5,12 @@ roomSprite = draw_sprite(argument2, 0, 0, 0);
 surface_reset_target();
 startX = argument0;
 startY = argument1;
+temp = false;
+
+if(argument2 == spr_bomb_room) {
+    temp = tileSheet;
+    tileSheet = bck_treasure_room;
+}
 
 for(genX = 0; genX < 24; genX++) {//20
     for(genY = 0; genY < 16; genY++) {//14
@@ -82,6 +88,11 @@ for(genX = 0; genX < 24; genX++) {//20
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 instance_create(startX + (genX * 16), startY + (genY * 16), enemyList[| 2]);
                 break; 
+            // Spikes
+            case $3c3204:
+                tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_spikes);
+                break;
             //Boss
             case $ffff00:
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
@@ -109,6 +120,7 @@ for(genX = 0; genX < 24; genX++) {//20
                 break;
             // Bomb room 
             case $d5db64:
+                tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_bomb_room);
                 break;
             // Player spawn
@@ -185,11 +197,17 @@ for(genX = 0; genX < 24; genX++) {//20
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
+                    with(instance_create(startX + (genX * 16) + 16, startY + (genY * 16), obj_boss_activator)) {
+                        boss = other.boss;
+                    }
                 }
             /* Right Side */
             } else if(genX == 24 - 1 && doorRight) {
                 if(genY >= 5 && genY < 10) {
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
+                        boss = other.boss;
+                    }
+                    with(instance_create(startX + (genX * 16) - 16, startY + (genY * 16), obj_boss_activator)) {
                         boss = other.boss;
                     }
                 }
@@ -200,11 +218,17 @@ for(genX = 0; genX < 24; genX++) {//20
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
+                    with(instance_create(startX + (genX * 16), startY + (genY * 16) + 16, obj_boss_activator)) {
+                        boss = other.boss;
+                    }
                 }
             /* Down Side */
             } else if(genY == 16 - 1 && doorDown) {
                 if(genX >= 10 && genX < 14) {
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
+                        boss = other.boss;
+                    }
+                    with(instance_create(startX + (genX * 16), startY + (genY * 16) - 16, obj_boss_activator)) {
                         boss = other.boss;
                     }
                 }
@@ -237,5 +261,5 @@ for(genX = 0; genX < 24; genX++) {//20
         }
     }
 }
-
+if(temp != false) tileSheet = temp;
 roomSprite = draw_clear(argument0);

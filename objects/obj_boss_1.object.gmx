@@ -42,6 +42,7 @@ stunLength = 100;
 stunCounter = stunLength;
 stunned = false;
 hp = 300;
+maxHp = hp;
 minDistance = 3;
 attacking = false;
 attackLength = 0;

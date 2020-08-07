@@ -88,6 +88,8 @@ currentRoom = room;
                         ds_list_add(roomList, spr_room_group);
                     for(i = 0; i &lt; 4; i++) 
                         ds_list_add(roomList, spr_room_empty);
+                    for(i = 0; i &lt; 2; i++) 
+                        ds_list_add(roomList, spr_room_spikes);
                     for(i = 0; i &lt; 10; i++) 
                         ds_list_add(roomList, spr_room_corners); 
                         

@@ -37,6 +37,7 @@ canAttack = true;
 moveSpeed = 0.3;
 attackPause = false;
 hp = 100;
+maxHp = hp;
 currentHp = hp;
 attackDamage = 20;
 customWalk = false;

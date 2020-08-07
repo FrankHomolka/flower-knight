@@ -41,6 +41,12 @@ if(file_exists("settings.ini")) {
     ini_close(); 
     show_debug_message("settings file does not exist");
 }
+themeMusic = music_2;
+bossMusic = snd_boss_music_1;
+
+
+currentMusic = false;
+playNext = themeMusic;
 </string>
           </argument>
         </arguments>
@@ -64,11 +70,20 @@ if(file_exists("settings.ini")) {
           <argument>
             <kind>1</kind>
             <string>if(global.playMusic) {
-    if(!audio_is_playing(music_1)) 
-        audio_play_sound(music_1, 10, true);
+    if(currentMusic != playNext) {
+        audio_stop_sound(currentMusic);
+        currentMusic = playNext;
+    }
+    if(audio_is_paused(currentMusic)) {
+        audio_resume_sound(currentMusic);
+    }
+    if(!audio_is_playing(currentMusic)) {
+        audio_play_sound(currentMusic, 20, true);
+    }
 } else {
-    if(audio_is_playing(music_1)) 
-        audio_stop_sound(music_1);
+    if(audio_is_playing(currentMusic)) 
+        audio_pause_sound(currentMusic);
+    currentMusic = false;
 }
 </string>
           </argument>

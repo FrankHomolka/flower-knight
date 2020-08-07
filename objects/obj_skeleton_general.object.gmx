@@ -37,6 +37,7 @@ destroyOnDeath = false;
 /* Mob values */
 moveSpeed = 1.2;
 hp = 100;
+maxHp = hp;
 attackDamage = 10;
 customWalk = true;
 attackObject = obj_enemy_skeleton_general_attack;
