@@ -29,6 +29,7 @@
 
 state = states.idle;
 previousState = state;
+goldDropOnDeath = 600;
 
 moveSpeed = 0.7;
 attackCooldown = 100;
@@ -39,7 +40,7 @@ chaseAttackLength = 400;
 attackLength = artilleryAttackLength;
 spikeDamage = 20;
 hp = 300;
-
+maxHp = hp;
 /* Hit timer */
 kbAmount = 0;
 kbCounter = kbAmount;
@@ -97,11 +98,11 @@ scr_boss_2_execute_state();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(25, 8, 0,8);
+            <string>if(!dead) scr_draw_entity_shadow(25, 8, 0,8);
 
 event_inherited();
 /* Debug */
-draw_text(x,y + 30, state);
+//draw_text(x,y + 30, state);
 </string>
           </argument>
         </arguments>

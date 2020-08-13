@@ -63,6 +63,7 @@ image_speed = 0.25;
             <string>if(place_meeting(x,y,obj_player) &amp;&amp; !pickedUp) {
     scr_heal_player(healAmount);
     audio_play_sound(snd_heart_pickup, 5, false);
+    obj_quest_controller.numHeartsCollected++;
     pickedUp = true;
 }
 

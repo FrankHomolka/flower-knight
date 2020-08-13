@@ -32,7 +32,7 @@ critChance = 0;
 scr_magic_ball_particle();
 life = 0;
 image_speed = 0.12;
-spd = 4;
+spd = 6;
 attackDamage = 20;
 part_type_direction(fireParticle, 0, 360, 0, 0.2);
 part_emitter_region(fireSystem, fireEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);

@@ -12,6 +12,8 @@ if(!dead) {
     sprite_index = spr_boss_1_death;
     image_speed = 0.05;
     path_end();
+    for(var i = 0; i < goldDropOnDeath * goldMultiplier; i++)
+        instance_create(x,y,obj_enemy_drop);
 }
 
 if(image_index > image_number - 1)   

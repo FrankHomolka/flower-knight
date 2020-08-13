@@ -44,7 +44,7 @@ customWalk = false;
 destroyOnDeath = false;
 attackObject = obj_archer_miniboss_attack;
 minDistance = 10;
-goldDropOnDeath = 40;
+goldDropOnDeath = 200;
 
 /* Animation and Sprites */
 sprite = spr_archer_idle;

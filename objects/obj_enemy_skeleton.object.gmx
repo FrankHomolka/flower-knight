@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_ranged_enemy_parent</parentName>
+  <parentName>obj_enemy_parent</parentName>
   <maskName>spr_skeleton_walk_up</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -98,6 +98,28 @@ deathCounter = deathTime;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+
+/* Execute State */
+switch(state) {
+    case states.idle:
+        scr_enemy_idle();
+        break;
+    case states.walk:
+        scr_enemy_walk();
+        break;
+    case states.attack:
+        scr_enemy_ranged_attack();
+        break;
+    case states.hit:
+        scr_enemy_hit();
+        if(attacking)
+            scr_enemy_ranged_attack();
+        break;
+    case states.death:
+        if(!dead) obj_quest_controller.skeletonKills++;
+        scr_enemy_death();
+        break;
+}
 </string>
           </argument>
         </arguments>

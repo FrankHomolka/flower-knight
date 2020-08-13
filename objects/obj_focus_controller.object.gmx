@@ -30,9 +30,9 @@
 global.itemList = ds_list_create();
 
 // Item Double Damage
-scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 2, true, 1, scr_focus_speed);
-scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 1, true, 1, scr_focus_damage);
-scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 2, false, 1, scr_focus_burn_enemy_effect);
+scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 2, true, 1, scr_focus_speed, scr_speed_quest, 'Kill 10 Skeletons', 10);
+scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 1, true, 1, scr_focus_damage, scr_damage_quest, 'Amass 600 gold', 20);
+scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 2, false, 1, scr_focus_burn_enemy_effect, scr_burn_enemy_quest, 'Collect 3 hearts', 20);
 scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 1, false, 1, scr_focus_shield_effect);
 scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 1, false, 1, scr_focus_thorns_effect);
 scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 2, true, 1, scr_focus_crit_chance_increase);

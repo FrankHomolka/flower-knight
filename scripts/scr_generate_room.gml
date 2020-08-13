@@ -93,6 +93,11 @@ for(genX = 0; genX < 24; genX++) {//20
                 tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_spikes);
                 break;
+            // Crossbow
+            case $1235ad:
+                tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_crossbow_trap);
+                break;
             //Boss
             case $ffff00:
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);

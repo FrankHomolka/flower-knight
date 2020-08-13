@@ -28,6 +28,13 @@
             <string>event_inherited();
 
 
+with(instance_create(x,y,obj_eyeball)) {
+    source = other;
+    startX = other.x;
+    startY = other.y - 7;
+    depth = (-other.y) - 100;
+}
+
 /* Mob values */
 chaseDistance = 250;
 moveSpeed = 0;
@@ -60,7 +67,7 @@ attackCooldownMax = 100;
 attackDistance = 80;
 attackTime = 100;
 attackCounter = attackTime;
-attackFrame = 8;
+attackFrame = 7;
 
 /* Knockback */
 kbAmount = 0;

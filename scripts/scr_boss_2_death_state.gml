@@ -14,6 +14,8 @@ if(!dead) {
     yRange = 128 / 2;
     attackLength = artilleryAttackLength * 2;
     deathCounter = 80;
+    for(var i = 0; i < goldDropOnDeath * goldMultiplier; i++)
+        instance_create(x,y,obj_enemy_drop);
 }
 
 if(place_meeting(x,y,obj_player) && attackLength > 0) {

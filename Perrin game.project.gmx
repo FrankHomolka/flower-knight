@@ -163,6 +163,8 @@
         <sprite>sprites\spr_eye_turret_channeling</sprite>
         <sprite>sprites\spr_magic_ball</sprite>
         <sprite>sprites\spr_magic_ball_particle</sprite>
+        <sprite>sprites\spr_eyeball</sprite>
+        <sprite>sprites\spr_eyeball_death</sprite>
       </sprites>
       <sprites name="Skeleton">
         <sprite>sprites\spr_skeleton_walk_up</sprite>
@@ -201,6 +203,9 @@
       <sprite>sprites\spr_player_spawn</sprite>
       <sprite>sprites\spr_bombable_wall</sprite>
       <sprite>sprites\spr_spikes</sprite>
+      <sprite>sprites\spr_crossbow_right</sprite>
+      <sprite>sprites\spr_crossbow_down</sprite>
+      <sprite>sprites\spr_crossbow_up</sprite>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_enemies_killed</sprite>
@@ -209,6 +214,8 @@
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_half_heart</sprite>
       <sprite>sprites\spr_no_heart</sprite>
+      <sprite>sprites\spr_hp_gui</sprite>
+      <sprite>sprites\spr_hp_bar</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shadow</sprite>
@@ -378,10 +385,12 @@
       <scripts name="One time">
         <script>scripts\scr_focus_speed.gml</script>
         <script>scripts\scr_focus_attack_speed.gml</script>
+        <script>scripts\scr_speed_quest.gml</script>
         <script>scripts\scr_focus_parry.gml</script>
         <script>scripts\scr_focus_damage.gml</script>
         <script>scripts\scr_focus_crit_chance_increase.gml</script>
         <script>scripts\scr_focus_angel.gml</script>
+        <script>scripts\scr_damage_quest.gml</script>
       </scripts>
       <scripts name="Player Hit Enemy">
         <script>scripts\scr_focus_knockback.gml</script>
@@ -394,6 +403,7 @@
         <script>scripts\scr_focus_freeze_enemy.gml</script>
         <script>scripts\scr_focus_burn_enemy.gml</script>
         <script>scripts\scr_focus_burn_enemy_effect.gml</script>
+        <script>scripts\scr_burn_enemy_quest.gml</script>
       </scripts>
       <scripts name="Dashing">
         <script>scripts\scr_focus_slime.gml</script>
@@ -545,6 +555,7 @@
       <object>objects\obj_treasure</object>
       <objects name="Destructible">
         <object>objects\obj_destructible</object>
+        <object>objects\obj_crossbow_trap</object>
         <object>objects\obj_bombable_wall</object>
       </objects>
       <objects name="Decoration">
@@ -571,6 +582,8 @@
       <object>objects\obj_gameover_controller</object>
       <object>objects\obj_win_controller</object>
       <object>objects\obj_blank</object>
+      <object>objects\obj_quest_controller</object>
+      <object>objects\obj_quest_generator_controller</object>
     </objects>
     <objects name="Enemy">
       <objects name="Characters">
@@ -590,6 +603,7 @@
         <object>objects\obj_enemy_drop</object>
         <object>objects\obj_artillery_attack</object>
         <object>objects\obj_skeleton_attack</object>
+        <object>objects\obj_eyeball</object>
       </objects>
     </objects>
     <objects name="Focus">
@@ -646,6 +660,7 @@
     <room>rooms\rm_settings</room>
     <room>rooms\rm_game_start</room>
     <room>rooms\rm_shop</room>
+    <room>rooms\rm_quest</room>
     <room>rooms\rm_procedural</room>
     <room>rooms\rm_choose_focus</room>
     <room>rooms\rm_loading</room>

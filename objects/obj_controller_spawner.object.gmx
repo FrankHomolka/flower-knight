@@ -33,6 +33,7 @@ instance_create(x, y, obj_focus_controller);
 instance_create(x,y,obj_deactivate_controller);
 instance_create(x,y,obj_money_controller);
 instance_create(x,y,obj_game_start_controller);
+instance_create(x,y,obj_quest_controller);
 </string>
           </argument>
         </arguments>

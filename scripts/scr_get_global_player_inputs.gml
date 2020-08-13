@@ -3,11 +3,6 @@ if(keyboard_check_pressed(ord('B'))) {
     game_restart();
 }
 
-/* ONLY FOR TESTING REMOVE ME */
-if(keyboard_check_pressed(ord('K'))) {
-    scr_clear_save();
-}
-
 if(keyboard_check_pressed(ord('P'))) {
     if(obj_gui_controller.drawDebug == true) {
         obj_gui_controller.drawDebug = false;

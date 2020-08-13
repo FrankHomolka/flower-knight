@@ -66,7 +66,7 @@ if(hp <= 0) {
 
 scr_check_pit();
 
-if(room == rm_game_start || room == rm_win) {
+if(room == rm_game_start || room == rm_win || room == rm_quest) {
     state = states.inactive;
 }
 

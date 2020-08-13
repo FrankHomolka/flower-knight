@@ -41,7 +41,7 @@ maxHp = hp;
 attackDamage = 10;
 customWalk = true;
 attackObject = obj_enemy_skeleton_general_attack;
-goldDropOnDeath = 50;
+goldDropOnDeath = 100;
 dodging = false;
 
 /* Animation and Sprites */

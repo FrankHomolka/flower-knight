@@ -29,6 +29,7 @@
 
 state = states.idle;
 previousState = state;
+goldDropOnDeath = 200;
 
 moveSpeed = 0.7;
 attackCooldown = 165;
