@@ -32,10 +32,17 @@ initial_gh = 900;
 questSelectionList = ds_list_create();
 obj_gui_controller.loading = false;
 
-for(j = 0; j &lt; ds_list_size(global.itemsUnlocked); j++) {
-    currentItem = global.itemsUnlocked[| j];
-    for(rarity = 0 ; rarity &lt; currentItem[? 'questRarity']; rarity++) {
-        ds_list_add(questSelectionList, currentItem);
+show_debug_message('itmeList length' + string(ds_list_size(global.itemList)));
+show_debug_message('itemsUnlocked length' + string(ds_list_size(global.itemsUnlocked)));
+for(j = 0; j &lt; ds_list_size(global.itemList); j++) {
+    currentItem = global.itemList[| j];
+    if(ds_list_find_index(global.itemsUnlocked, currentItem) == -1) {
+        show_debug_message(string(currentItem[? 'name']) + ' is not unlocked yet');
+        for(rarity = 0 ; rarity &lt; currentItem[? 'questRarity']; rarity++) {
+            ds_list_add(questSelectionList, currentItem);
+        }
+    } else {
+        show_debug_message('item already UNLOCKED' + string(currentItem[? 'name']));
     }
 }
 
@@ -43,51 +50,16 @@ while(i &lt; numQuests) {
     rand = floor(random(ds_list_size(questSelectionList)));
     itemTest = questSelectionList[| rand];
     itemExists = ds_list_find_index(obj_quest_controller.questList, itemTest);
-    show_debug_message(itemTest[? 'name']);
     if(itemExists == -1) {
-        obj_quest_controller.questList[| i] = questSelectionList[| rand];
+        show_debug_message('QUEST ---------------');
+        show_debug_message(itemTest[? 'name']);
+        ds_list_add(obj_quest_controller.questList, itemTest);
         i++;
     }
 }
 
 ds_list_destroy(questSelectionList);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-gw = display_get_gui_width();
-gh = display_get_gui_height();
-horBlock = gw / 32;
-vertBlock = gh / 32;
-scaleFactor = (gw / initial_gw);
-
-for(r = 0; r &lt; ds_list_size(obj_quest_controller.questList); r++) {
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    item = obj_quest_controller.questList[| r];
-    draw_text_transformed(gw / 2, vertBlock, 'Quests', 6 * scaleFactor, 6 * scaleFactor, 0);
-    draw_text_transformed(gw / 2, 6 * vertBlock * (r + 1), item[? 'questText'], 3 * scaleFactor, 3 * scaleFactor, 0);
-    draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4 * horBlock), 6.5 * vertBlock * (r + 1), 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
-}
+instance_create(x,y,obj_quest_display_controller);
 </string>
           </argument>
         </arguments>

@@ -308,6 +308,7 @@
     <background>background\bck_area_3</background>
     <background>background\background7</background>
     <background>background\bck_shop</background>
+    <background>background\bck_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -430,6 +431,7 @@
         <script>scripts\scr_focus_fireball_effect.gml</script>
       </scripts>
       <script>scripts\scr_find_item.gml</script>
+      <script>scripts\scr_quest_unlock_item.gml</script>
     </scripts>
     <scripts name="Save &amp; Load">
       <script>scripts\scr_save_string_to_file.gml</script>
@@ -584,6 +586,7 @@
       <object>objects\obj_blank</object>
       <object>objects\obj_quest_controller</object>
       <object>objects\obj_quest_generator_controller</object>
+      <object>objects\obj_quest_display_controller</object>
     </objects>
     <objects name="Enemy">
       <objects name="Characters">

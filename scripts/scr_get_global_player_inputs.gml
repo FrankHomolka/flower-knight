@@ -1,6 +1,17 @@
 //scr_get_global_player_inputs
 if(keyboard_check_pressed(ord('B'))) {
-    game_restart();
+    with(obj_player) {
+        instance_destroy();
+    }
+    ds_list_clear(global.equippedItemsList);
+    ds_list_clear(obj_focus_controller.playerHitFocusList);
+    ds_list_clear(obj_focus_controller.playerAttackFocusList);
+    ds_list_clear(obj_focus_controller.playerDashFocusList);
+    ds_list_clear(obj_focus_controller.playerDashingFocusList);
+    ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
+    instance_create(x,y,obj_player);
+    obj_money_controller.coins = 0;
+    room_goto(rm_shop);
 }
 
 if(keyboard_check_pressed(ord('P'))) {

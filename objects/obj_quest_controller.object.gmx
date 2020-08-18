@@ -27,21 +27,7 @@
             <kind>1</kind>
             <string>skeletonKills = 0;
 numHeartsCollected = 0;
-
 questList = ds_list_create();
-/*
-scr_find_item('RUNNER');
-
-ds_list_add(questList, global.itemList[| index]);
-
-scr_find_item('ASSASSIN');
-
-ds_list_add(questList, global.itemList[| index]);
-
-scr_find_item('BURN BABY BURN');
-
-ds_list_add(questList, global.itemList[| index]);
-*/
 counter = 100;
 </string>
           </argument>
@@ -65,13 +51,26 @@ counter = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>counter--;
+            <string>
+// Clear list
+if(room == rm_shop) {
+    if(ds_list_size(questList) &gt; 0) {
+        ds_list_clear(questList);
+        show_debug_message('cleared quest list');
+    }
+    skeletonKills = 0;
+    numHeartsCollected = 0;
+}
+
+counter--;
+
 if(counter &lt;= 0) {
     counter = 100;
     for(i = 0; i &lt; ds_list_size(questList); i++) {
-        var item = questList[| i];
-        show_debug_message(item[? 'questText']);
-        script_execute(item[? 'questScript']);
+        item = questList[| i];
+        if(ds_list_find_index(global.itemsUnlocked, item) == -1) {
+            script_execute(item[? 'questScript']);
+        }
     }
 }
 </string>

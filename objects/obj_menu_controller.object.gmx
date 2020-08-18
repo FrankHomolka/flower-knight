@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>currentRoom = noone;
 
+// REMOVE TO TEST WITH SAME SEED
+randomize();
+
 view_wview[0] = 320;
 view_hview[0] = 180;
 
@@ -156,7 +159,6 @@ if(room != currentRoom) {
 draw_set_font(fnt_1);
 if(room == rm_menu) {
     tutorialTextSize = 0.8;
-    draw_text_transformed(room_width / 2, 20, "UNNAMED GAME", 2, 2, 0);
     draw_text_transformed(room_width / 5, 80, "Arrow keys to move", tutorialTextSize, tutorialTextSize, 0);
     draw_text_transformed(room_width / 5, 100, "'Q' to attack", tutorialTextSize, tutorialTextSize, 0);
     draw_text_transformed(room_width / 5, 120, "'W' to dash", tutorialTextSize, tutorialTextSize, 0);

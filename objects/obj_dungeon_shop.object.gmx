@@ -76,6 +76,9 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
 }
 
 if(!spawnedItems) {
+    with(obj_dungeon_shop_item) {
+        instance_destroy();
+    }
     j = 0;
     while(j &lt; ds_list_size(global.itemList)) {
         for(i = 0; i &lt; rowLength; i++) {
@@ -186,7 +189,8 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>// don't remove me
+</string>
           </argument>
         </arguments>
       </action>
