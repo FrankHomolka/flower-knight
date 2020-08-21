@@ -70,25 +70,37 @@ instance_create(x,y,obj_view_controller);
 if(room != currentRoom) {
     currentRoom = room;
     if(room == rm_menu) {
-        with(instance_create(20,20,obj_blank)) {
+        with(instance_create(0,0,obj_blank)) {
             text = "START";
             offsetY = -10;
+            offsetX = 0;
             type = "normal";
             onClick = scr_goto_game_start;
             instance_change(obj_button, true);
         }
-        with(instance_create(20,40,obj_blank)) {
+        with(instance_create(0,0,obj_blank)) {
             text = "SETTINGS";
             offsetY = 20;
+            offsetX = 0;
             type = "normal";
             onClick = scr_goto_settings_room;
             instance_change(obj_button, true);
         }
-        with(instance_create(20,40,obj_blank)) {
+        with(instance_create(0,0,obj_blank)) {
             text = "QUIT";
             offsetY = 50;
+            offsetX = 0;
             type = "normal";
             onClick = scr_quit_game;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(0,0,obj_blank)) {
+            text = "HARD";
+            offsetY = 20;
+            offsetX = 90;
+            type = "normal"; 
+            onClick = scr_toggle_difficulty;
+            
             instance_change(obj_button, true);
         }
     } else if(room == rm_settings) {
@@ -100,6 +112,7 @@ if(room != currentRoom) {
             }
             type = "wide";
             offsetY = -10;
+            offsetX = 0;
             onClick = scr_toggle_music;
             instance_change(obj_button, true);
         }
@@ -111,12 +124,14 @@ if(room != currentRoom) {
             }
             type = "wide";
             offsetY = 20;
+            offsetX = 0;
             onClick = scr_toggle_tutorial;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
             text = "CLEAR SAVE (DANGER)";
             offsetY = 50;
+            offsetX = 0;
             type = "wide";
             onClick = scr_clear_save;
             instance_change(obj_button, true);
@@ -124,6 +139,7 @@ if(room != currentRoom) {
         with(instance_create(20,20,obj_blank)) {
             text = "BACK";
             offsetY = 80;
+            offsetX = 0;
             type = "normal";
             onClick = scr_goto_menu;
             instance_change(obj_button, true);

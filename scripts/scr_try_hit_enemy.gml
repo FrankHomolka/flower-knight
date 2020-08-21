@@ -1,15 +1,12 @@
-///scr_try_hit_enemy(damage, target, effect)
+///scr_try_hit_enemy(damage, target, effect, knockbackMultiplier)
 
 damage = argument0;
 target = argument1;
 effect = argument2;
+knockbackMultiplier = argument3;
 
 if(instance_exists(target)) {
-    if(target.pit) {
-        target.kbCounter = 0;
-    } else {
-        target.kbCounter = target.kbAmount;
-    }
+    target.knockbackCounter = target.baseKnockback * knockbackMultiplier;
     target.tryHit = true;
     target.hitDamage = damage;
     target.effect = effect;

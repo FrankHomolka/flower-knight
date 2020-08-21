@@ -28,6 +28,8 @@
             <string>global.showBossRoom = true;
 global.showTutorial = true;
 global.playMusic = true;
+global.difficulty = 'HARD';
+global.unlockAllItems = true;
 /* Read saved settings */
 if(file_exists("settings.ini")) {
     ini_open("settings.ini");

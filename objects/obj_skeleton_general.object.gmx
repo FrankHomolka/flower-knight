@@ -74,14 +74,12 @@ attackFrame = 5;
 attackPause = true;
 
 /* Knockback */
-kbAmount = 2;
-kbCounter = kbAmount;
+baseKnockback = 2;
+knockbackCounter = baseKnockback;
 
 /* Hit timer */
 flashTime = 20;
 flashCounter = flashTime;
-kbAmount = 2;
-kbCounter = kbAmount;
 
 /* Death */
 deathTime = 20;

@@ -60,6 +60,9 @@ currentRoom = room;
         area = 1;
     }
     
+    // Unlock item
+    if(instance_exists(obj_quest_controller)) obj_quest_controller.level = level;
+    
     // Increment area
     if(level == 3) {
         level = 0;

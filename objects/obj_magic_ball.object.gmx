@@ -34,6 +34,7 @@ life = 0;
 image_speed = 0.12;
 spd = 6;
 attackDamage = 20;
+playerDodged = false;
 part_type_direction(fireParticle, 0, 360, 0, 0.2);
 part_emitter_region(fireSystem, fireEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
 part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(15, 30));
@@ -64,7 +65,7 @@ turnSpeed = 1.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_light(light, lightSize, c_teal);
+            <string>scr_draw_light(light, lightSize, c_red);
 </string>
           </argument>
         </arguments>
@@ -93,13 +94,20 @@ if(place_meeting(x,y,obj_wall)) {
     instance_destroy();
 }
 
-if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.state != states.dash) {
-    scr_try_hit_player(attackDamage, noone);
-    part_type_direction(fireParticle, 0, 360, 0, 0.2);
-    part_emitter_region(fireSystem, fireEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-    part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(18, 25));
-    instance_destroy();
-}
+if(place_meeting(x,y,obj_player)) {
+    if(obj_player.state == states.dash) {
+        if(playerDodged == false) {
+            playerDodged = true;
+            if(instance_exists(obj_quest_controller)) obj_quest_controller.eyemissileDodges++;
+        }
+    } else {
+        scr_try_hit_player(attackDamage, noone);
+        part_type_direction(fireParticle, 0, 360, 0, 0.2);
+        part_emitter_region(fireSystem, fireEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
+        part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(18, 25));
+        instance_destroy();
+    }
+} 
 
 life++;
 

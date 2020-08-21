@@ -63,8 +63,8 @@ attackCounter = attackTime;
 attackFrame = 0;
 
 /* Knockback */
-kbAmount = 0;
-kbCounter = kbAmount;
+baseKnockback = 0;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;

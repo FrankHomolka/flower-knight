@@ -53,7 +53,7 @@ audio_play_sound(snd_strike, 10, false);
             <string>if(image_index == 5) {
     with(obj_enemy_general_parent) {
         if(place_meeting(x,y,other)) {
-            scr_try_hit_enemy(other.attackDamage, self, false);
+            scr_try_hit_enemy(other.attackDamage, self, false, 0);
         }
     }
 }

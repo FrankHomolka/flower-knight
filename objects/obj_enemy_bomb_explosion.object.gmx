@@ -60,6 +60,7 @@ audio_play_sound(snd_explosion, 5, false);
 
 with(obj_enemy_general_parent) {
     if(place_meeting(x,y,other)) {
+        lastDamageSource = obj_enemy_bomb_explosion;
         scr_try_hit_enemy(other.attackDamage, self, false, obj_player.knockbackMultiplier * 1.5);
     }
 }

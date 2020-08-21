@@ -70,8 +70,8 @@ attackCounter = attackTime;
 attackFrame = 7;
 
 /* Knockback */
-kbAmount = 0;
-kbCounter = kbAmount;
+baseKnockback = 0;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;
@@ -124,6 +124,7 @@ switch(state) {
         }
         break;
     case states.death:
+        if(!dead) obj_quest_controller.eyeturretKills++;
         if(instance_exists(attackProjectile))
             with(attackProjectile)
                 instance_destroy();

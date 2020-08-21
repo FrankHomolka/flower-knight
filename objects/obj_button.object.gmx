@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = room_width / 2;
+            <string>x = room_width / 2 + offsetX;
 y = room_height / 2 + offsetY;
 textScale = 0.8;
 xScale = 1.5;

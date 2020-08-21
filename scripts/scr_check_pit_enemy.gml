@@ -9,7 +9,7 @@ if(collision_rectangle(x - 1, y + 7, x + 1, y + 8, obj_pit, false, true)) {
 
 if(pitLagCounter < 0) {
     if(pit = false)
-        scr_try_hit_enemy(hp, self, false);
+        scr_try_hit_enemy(hp, self, false, 0);
     pit = true;
     damageSource = obj_pit;
     deathSprite = sprite;

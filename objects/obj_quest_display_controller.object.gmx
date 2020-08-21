@@ -32,8 +32,32 @@ initial_gh = 900;
 showQuests = true;
 mouseInside = false;
 unlockedItem = false;
-unlockedItemName = '';
-unlockedItemCounter = 300;
+unlockedItemMap = '';
+unlockedItemCounter = 450;
+unlockedItemQueue = ds_queue_create();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_queue_destroy(unlockedItemQueue);
 </string>
           </argument>
         </arguments>
@@ -81,7 +105,8 @@ unlockedItemCounter = 300;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(showQuests) {
+            <string>depth = -1000000;
+if(showQuests) {
     gw = display_get_gui_width();
     gh = display_get_gui_height();
     horBlock = gw / 32;
@@ -93,12 +118,13 @@ unlockedItemCounter = 300;
     draw_rectangle(0, 0, gw, gh, false);
     draw_set_alpha(1);
     draw_set_color(c_white);
-    draw_set_halign(fa_center);
     draw_set_valign(fa_top);
-    draw_text_transformed(gw / 2, vertBlock, 'Quests', 6 * scaleFactor, 6 * scaleFactor, 0);
+    draw_set_halign(fa_center);
+    draw_text_transformed(gw / 2 , vertBlock, 'Quests', 6 * scaleFactor, 6 * scaleFactor, 0);
+    draw_set_halign(fa_left);
     for(r = 0; r &lt; ds_list_size(obj_quest_controller.questList); r++) {
         item = obj_quest_controller.questList[| r];
-        draw_text_transformed(gw / 2, 6 * vertBlock * (r + 1), item[? 'questText'], 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(gw / 2 - (3.5*horBlock), 6 * vertBlock * (r + 1), item[? 'questText'], 3 * scaleFactor, 3 * scaleFactor, 0);
         draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4 * horBlock), (6 * vertBlock * (r + 1)) + vertBlock, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
     }
     
@@ -107,6 +133,7 @@ unlockedItemCounter = 300;
         draw_set_alpha(1);
         draw_rectangle(gw / 3, gh / 1.5, gw / 1.5, gh / 1.2, false);
         draw_set_color(c_black);
+        draw_set_halign(fa_center);
         draw_text_transformed(gw / 2, gh / 1.45, 'Accept Quests', 5 * scaleFactor, 5 * scaleFactor, 0);
         if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
             gw / 3, gh / 1.5, gw / 1.5, gh / 1.2)) {
@@ -125,16 +152,26 @@ unlockedItemCounter = 300;
         }  
     }  
 }
+
+if(ds_queue_size(unlockedItemQueue) &gt; 0 &amp;&amp; !unlockedItem) {
+    unlockedItem = true;
+    unlockedItemMap = ds_queue_dequeue(unlockedItemQueue);
+    unlockedItemCounter = 450;
+    audio_play_sound(snd_unlocked_item, 10, false);
+}
+
 if(unlockedItem &amp;&amp; unlockedItemCounter &gt; 0) {
     draw_set_halign(fa_center);
     draw_set_valign(fa_top);
-    draw_set_color(c_white);
     draw_set_alpha(1);
-    draw_text_transformed(gw / 2, gh / 2 + (verBlock), 'Unlocked ' + string(unlockedItemName) + '!', 4 * scaleFactor, 4 * scaleFactor, 0);
+    draw_set_color(c_yellow);
+    draw_text_transformed(gw / 2, gh / 2 + (4 * vertBlock), 'QUEST COMPLETE ' + string(unlockedItemMap[? 'name']) + '!', 5 * scaleFactor, 5 * scaleFactor, 0);
+    draw_set_color(c_white);
+    draw_text_transformed(gw / 2, gh / 2 + (8 * vertBlock), string(unlockedItemMap[? 'questText']) + '!', 4 * scaleFactor, 4 * scaleFactor, 0);
+    draw_sprite_ext(unlockedItemMap[? 'sprite'], 0, gw / 2, gh / 2 + (12 * vertBlock), 6 * scaleFactor, 6 * scaleFactor, 0, c_white, 1);
     unlockedItemCounter--;
 } else {
     unlockedItem = false;
-    unlockedItemCounter = 300;
 }
 </string>
           </argument>

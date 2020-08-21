@@ -1,4 +1,4 @@
 ///scr_damage_quest
-if(obj_money_controller.coins >= 600) {
+if(level == 1) {
     scr_quest_unlock_item();
 }

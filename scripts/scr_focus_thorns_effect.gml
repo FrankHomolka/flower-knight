@@ -14,7 +14,7 @@ for(var j = 0; j < item[? 'numBought']; j++) {
 if(damageSource != noone) {
     with(damageSource) {
         if(state != states.hit) {
-            scr_try_hit_enemy(other.thornsDamage, self, false);
+            scr_try_hit_enemy(other.thornsDamage, self, false, obj_player.knockbackMultiplier);
         }
     }
 }

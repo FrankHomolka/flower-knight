@@ -6,6 +6,5 @@ if(instance_exists(obj_dungeon_shop)) {
     obj_dungeon_shop.spawnedItems = false;
 }
 if(instance_exists(obj_quest_display_controller)) {
-    obj_quest_display_controller.unlockedItem = true;
-    obj_quest_display_controller.unlockedItemName = item[? 'name'];
+    ds_queue_enqueue(obj_quest_display_controller.unlockedItemQueue, item);
 }

@@ -69,8 +69,8 @@ attackPointY = 0;
 chosenTarget = false;
 
 /* Knockback */
-kbAmount = 0.5;
-kbCounter = kbAmount;
+baseKnockback = 0.5;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;

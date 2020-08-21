@@ -43,6 +43,7 @@ pitLagTime = 10;
 pitLagCounter = pitLagTime;
 goldDropOnDeath = 10;
 goldMultiplier = 1;
+lastDamageSource = '';
 
 // Hit vars
 damageAmount = 0;

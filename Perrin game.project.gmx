@@ -48,6 +48,7 @@
     </sounds>
     <sounds name="Focus">
       <sound>sound\snd_strike</sound>
+      <sound>sound\snd_unlocked_item</sound>
     </sounds>
     <sounds name="Shop">
       <sound>sound\snd_hover_item</sound>
@@ -392,6 +393,7 @@
         <script>scripts\scr_focus_crit_chance_increase.gml</script>
         <script>scripts\scr_focus_angel.gml</script>
         <script>scripts\scr_damage_quest.gml</script>
+        <script>scripts\scr_crit_chance_quest.gml</script>
       </scripts>
       <scripts name="Player Hit Enemy">
         <script>scripts\scr_focus_knockback.gml</script>
@@ -419,10 +421,10 @@
         <script>scripts\scr_focus_thorns_effect.gml</script>
         <script>scripts\scr_focus_shield.gml</script>
         <script>scripts\scr_focus_shield_effect.gml</script>
-      </scripts>
-      <scripts name="Dash">
+        <script>scripts\scr_shield_quest.gml</script>
         <script>scripts\scr_focus_bomb.gml</script>
         <script>scripts\scr_focus_bomb_effect.gml</script>
+        <script>scripts\scr_thorns_quest.gml</script>
       </scripts>
       <scripts name="Player Attack">
         <script>scripts\scr_focus_strike.gml</script>
@@ -500,6 +502,7 @@
       <script>scripts\scr_goto_settings_room.gml</script>
       <script>scripts\scr_toggle_music.gml</script>
       <script>scripts\scr_toggle_tutorial.gml</script>
+      <script>scripts\scr_toggle_difficulty.gml</script>
       <script>scripts\scr_goto_menu.gml</script>
       <script>scripts\scr_clear_save.gml</script>
     </scripts>
@@ -607,6 +610,7 @@
         <object>objects\obj_artillery_attack</object>
         <object>objects\obj_skeleton_attack</object>
         <object>objects\obj_eyeball</object>
+        <object>objects\obj_enemy_bomb_explosion</object>
       </objects>
     </objects>
     <objects name="Focus">

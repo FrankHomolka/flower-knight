@@ -42,8 +42,8 @@ hurtSound = snd_enemy_hit;
 deathSound = snd_enemy_death;
 deathSprite = spr_boss_2_top_dead;
 hitSprite = spr_boss_2_top;
-kbAmount = 0;
-kbCounter = kbAmount;
+baseKnockback = 0;
+knockbackCounter = baseKnockback;
 attacking = true;
 headCount = 6;
 </string>

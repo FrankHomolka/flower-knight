@@ -2,4 +2,4 @@
 
 scr_find_item('BOMB');
 
-ds_list_add(obj_focus_controller.playerDashFocusList, global.itemList[| index]);
+ds_list_add(obj_focus_controller.playerHitFocusList, global.itemList[| index]);

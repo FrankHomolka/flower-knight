@@ -29,17 +29,19 @@
 /* Minimap */
 minimapRoomWidth = 24;
 minimapRoomHeight = 16;
-minimapScale = 2;
+minimapScale = 2.5;
 minimapX = 0;
 minimapY = 0;
 smallestX = 100;
 smallestY = 100;
 minimapSprite = false;
+findMapStart = false;
+enlargeMap = false;
 
-dotRadiusMin = 2;
-dotRadius = 3;
-dotRadiusIncrement = 1/10;
-dotRadiusMax = 3;
+dotRadiusMin = 1;
+dotRadius = 1.5;
+dotRadiusIncrement = 1/30;
+dotRadiusMax = 2;
 minimapGrid = ds_list_create();
 
 realFps = floor(fps_real);
@@ -55,6 +57,40 @@ initial_gh = 900;
 currentRoom = room;
 
 hpColor = make_colour_rgb(242, 79, 70);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(obj_player.map) {
+    enlargeMap = !enlargeMap;
+    if(enlargeMap) {
+       minimapScale = 5;
+       minimapX = 3;
+       minimapY = 1;
+    } else {
+       minimapScale = 2.5;
+       minimapX = 0;
+       minimapY = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -94,21 +130,16 @@ if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) 
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
     /* Bosses killed */
-    draw_sprite_ext(spr_enemies_killed, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+    /*draw_sprite_ext(spr_enemies_killed, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
     draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_money_controller.money, 3 * scaleFactor, 3 * scaleFactor, 0);
     
     /* Money gained */
-    draw_sprite_ext(spr_gold_gui, 0, horBlock * 3, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
-    draw_text_transformed(horBlock * 3.5, vertBlock * 5, obj_money_controller.coins, 3 * scaleFactor, 3 * scaleFactor, 0);
+    draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+    draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_money_controller.coins, 3 * scaleFactor, 3 * scaleFactor, 0);
     
     /* Player hp */
-    /*draw_set_color(c_white);
-    draw_rectangle((horBlock / 2) - (horBlock / 10), (vertBlock / 2) - (vertBlock / 8), (7 * horBlock) + horBlock + (horBlock / 10), (vertBlock * 1.5) + (vertBlock / 8), false);
-    draw_set_color(hpColor);
-    draw_rectangle((horBlock / 2), (vertBlock / 2), (7 * horBlock) * (obj_player.hp / 100) + horBlock, vertBlock * 1.5, false);
-    */
     draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, 1);
-    draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / 100), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, 1);
+    draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, 1);
     if(obj_player.hp &gt; 0) {
         hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
         draw_set_color(c_black);
@@ -174,7 +205,7 @@ if(loading) {
     draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "LOADING...", 7, 7, 0);
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);
-    
+    findMapStart = true;
     drawingLoadingScreen = true;
 }
 </string>

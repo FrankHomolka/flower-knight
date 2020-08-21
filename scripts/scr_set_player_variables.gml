@@ -27,8 +27,13 @@ spawnedAttack = false;
 attackDistance = 10;
 basicAttackLength = 7;
 basicAttackCounter = basicAttackLength;
-attackDamage = 10;
+if(global.difficulty == 'HARD') {
+    attackDamage = 10;
+} else {
+    attackDamage = 25;
+}
 hitDamage = 0;
+knockbackMultiplier = 1;
 
 /* Player States */
 enum states {
@@ -51,7 +56,11 @@ state = states.idle;
 depth = -y;
 tryHit = false;
 hit = false;
-maxHp = 100;
+if(global.difficulty == 'HARD') {
+    maxHp = 100;
+} else {
+    maxHp = 300;
+}
 hp = maxHp;
 dead = false;
 

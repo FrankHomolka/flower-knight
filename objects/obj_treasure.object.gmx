@@ -74,6 +74,7 @@ fireEmitter = part_emitter_create(fireParticle);
         interactable = false;
     }
     if(interactable &amp;&amp; obj_player.interact) {
+        if(instance_exists(obj_quest_controller)) obj_quest_controller.numChestsOpened++;
         sprite_index = spr_treasure_open;
         opened = true;
         part_type_direction(fireParticle, 40, 140, 0, 0.2);

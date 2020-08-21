@@ -68,9 +68,12 @@ price = (itemMap[? "price"] * itemMap[? "numBought"] * moneyMultiplier);
 if(unlocked) {
     if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
         if((obj_money_controller.coins &gt;= price)) {
+            show_debug_message('itemMap[? "name"]');
+            show_debug_message(itemMap[? "name"]);
             obj_money_controller.coins -= price;
             audio_play_sound(snd_buy_item, 5, false);
             alreadyBought = ds_list_find_index(global.equippedItemsList, itemMap);
+            show_debug_message('alreadyBought = ' + string(alreadyBought));
             if(alreadyBought != -1) {
                 item = global.equippedItemsList[| alreadyBought];
                 ds_map_replace( item, 'numBought', item[? "numBought"] + 1);
@@ -78,6 +81,7 @@ if(unlocked) {
                     script_execute(itemMap[? "script"]);
                 }
             } else {
+                show_debug_message(itemMap[? "script"]);
                 ds_list_add(global.equippedItemsList, itemMap);
                 script_execute(itemMap[? "script"]);
             }

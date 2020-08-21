@@ -29,6 +29,7 @@
 
 hitPlayer = false;
 hitWall = false;
+hitBoss = false;
 despawnTimer = 300;
 landingDir = false;
 move_towards_point(obj_player.x, obj_player.y, 3);
@@ -71,11 +72,38 @@ if(distance_to_point(obj_player.x,obj_player.y) &lt; 5 &amp;&amp; landingDir == 
     landingDir = point_direction(x,y,obj_player.x,obj_player.y);
 }
 
-if(place_meeting(x,y,obj_player_basic_attack) &amp;&amp; spawnMinion) {
-    audio_play_sound(snd_destructible, 8, false);
-    part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-    part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
-    instance_destroy();
+if(place_meeting(x,y,obj_player_basic_attack)) {
+    if(spawnMinion) {
+        audio_play_sound(snd_destructible, 8, false);
+        part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
+        part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
+        instance_destroy();
+    } else {
+        if(obj_player.canParry == false) {
+            if(!reflected) {
+                var rand = random_range(20, 20);
+                direction -= (180 + rand);
+                image_angle -= (180 + rand);
+                reflected = true;
+                reflectedCounter = 10;
+                healValue = 5;
+                scr_show_damage_number(healValue, c_green, obj_player);
+                scr_heal_player(5);
+            }
+        }
+    }
+}
+
+// Can reflect to hit skeleton
+if(reflected 
+    &amp;&amp; hitPlayer == false 
+    &amp;&amp; hitWall == false 
+    &amp;&amp; hitBoss = false
+    &amp;&amp; place_meeting(x,y,obj_skeleton_general)) {
+    hitBoss = true;
+    with(obj_skeleton_general) {
+        scr_try_hit_enemy(other.attackDamage, self, false, obj_player.knockbackMultiplier);
+    }
 }
 
 if(place_meeting(x, y, obj_player) 

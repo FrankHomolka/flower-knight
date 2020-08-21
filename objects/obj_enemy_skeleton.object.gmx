@@ -69,8 +69,8 @@ attackPause = true;
 /* Hit timer */
 flashTime = 20;
 flashCounter = flashTime;
-kbAmount = 2;
-kbCounter = kbAmount;
+baseKnockback = 2;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;
@@ -116,7 +116,12 @@ switch(state) {
             scr_enemy_ranged_attack();
         break;
     case states.death:
-        if(!dead) obj_quest_controller.skeletonKills++;
+        if(!dead) {
+            if(lastDamageSource == obj_enemy_bomb_explosion) {
+                obj_quest_controller.skeletonBombKills++;
+            }
+            obj_quest_controller.skeletonKills++;
+        }
         scr_enemy_death();
         break;
 }

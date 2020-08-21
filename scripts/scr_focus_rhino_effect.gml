@@ -10,6 +10,6 @@ for(var j = 0; j < item[? 'numBought']; j++) {
 
 with(obj_enemy_general_parent) {
     if(place_meeting(x,y,other) && state != states.hit) {
-        scr_try_hit_enemy(other.rhinoDamage, self, true);
+        scr_try_hit_enemy(other.rhinoDamage, self, true, obj_player.knockbackMultiplier * 2);
     }
 }

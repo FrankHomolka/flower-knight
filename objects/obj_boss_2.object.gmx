@@ -42,8 +42,8 @@ spikeDamage = 20;
 hp = 300;
 maxHp = hp;
 /* Hit timer */
-kbAmount = 0;
-kbCounter = kbAmount;
+baseKnockback = 0;
+knockbackCounter = baseKnockback;
 hurtSound = snd_enemy_hit;
 deathSound = snd_enemy_death;
 deathSprite = spr_boss_2_artillery;

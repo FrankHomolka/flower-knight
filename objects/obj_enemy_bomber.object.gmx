@@ -35,7 +35,7 @@ moveSpeed = 1.2;
 hp = 25;
 attackDamage = 40;
 customWalk = false;
-attackObject = obj_bomb_explosion;
+attackObject = obj_enemy_bomb_explosion;
 goldDropOnDeath = 7;
 
 /* Animation and Sprites */
@@ -64,8 +64,8 @@ attackCounter = attackTime;
 attackFrame = 4;
 
 /* Knockback */
-kbAmount = 3;
-kbCounter = kbAmount;
+baseKnockback = 3;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;

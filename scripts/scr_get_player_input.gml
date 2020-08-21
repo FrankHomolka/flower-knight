@@ -9,6 +9,7 @@ dodge = keyboard_check_pressed(keyDodge);
 interact = keyboard_check_pressed(keyInteract);
 restart = keyboard_check_pressed(keyRestart);
 close = keyboard_check_pressed(keyClose);
+map = keyboard_check_pressed(keyMap);
 
 // Store direction of player
 scr_get_player_direction();

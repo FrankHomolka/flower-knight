@@ -10,3 +10,4 @@ keyPotion = ord('I');
 keyDodge = ord('W');
 keyRestart = ord('R');
 keyClose = vk_escape;
+keyMap = ord('M');

@@ -31,7 +31,7 @@ life = hitCooldown * 4;
 critChance = 0;
 image_speed = 0.1;
 lightSize = 70;
-
+show_debug_message('made fire');
 </string>
           </argument>
         </arguments>
@@ -85,7 +85,7 @@ lightSize = 70;
         hitCooldown = hitCooldownMax;
         with(target) {
             damageSource = other;
-            scr_try_hit_enemy(other.hitDamage, self, false);
+            scr_try_hit_enemy(other.hitDamage, self, false, 0);
         }
     }
     life--;

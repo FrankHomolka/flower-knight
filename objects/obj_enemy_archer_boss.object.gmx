@@ -74,8 +74,8 @@ burstCounter = 0;
 burstNumber = 3;
 
 /* Knockback */
-kbAmount = 4;
-kbCounter = kbAmount;
+baseKnockback = 4;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;

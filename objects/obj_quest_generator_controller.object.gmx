@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>numQuests = 3;
-i = 0;
+            <string>i = 0;
+itemsLocked = 0;
 initial_gw = 1600;
 initial_gh = 900;
 questSelectionList = ds_list_create();
@@ -38,12 +38,19 @@ for(j = 0; j &lt; ds_list_size(global.itemList); j++) {
     currentItem = global.itemList[| j];
     if(ds_list_find_index(global.itemsUnlocked, currentItem) == -1) {
         show_debug_message(string(currentItem[? 'name']) + ' is not unlocked yet');
+        itemsLocked++;
         for(rarity = 0 ; rarity &lt; currentItem[? 'questRarity']; rarity++) {
             ds_list_add(questSelectionList, currentItem);
         }
     } else {
         show_debug_message('item already UNLOCKED' + string(currentItem[? 'name']));
     }
+}
+
+if(itemsLocked &lt; 3) {
+    numQuests = itemsLocked;
+} else {
+    numQuests = 3;
 }
 
 while(i &lt; numQuests) {

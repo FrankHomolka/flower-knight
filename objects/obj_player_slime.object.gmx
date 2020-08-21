@@ -76,7 +76,7 @@ if((lifeCounter / lifeStartAnimaton) &gt; 0.3) {
     }
     with(obj_enemy_general_parent) {
         if(place_meeting(x,y,other)) {
-            scr_try_hit_enemy(other.damage, self, false);
+            scr_try_hit_enemy(other.damage, self, false, 0);
         }
     }
 }

@@ -1,10 +1,10 @@
 ///scr_draw_minimap
 
 /* Done on room change */
-if(room != currentRoom) {
+if(findMapStart) {
+    show_debug_message('set smallest x & y');
     smallestX = 100;
     smallestY = 100;
-    currentRoom = room;
     
     /* Determine map start */
     for(var xx = 0; xx < ds_grid_width(obj_level_generator.mapGrid); xx++) {
@@ -21,16 +21,30 @@ if(room != currentRoom) {
     mapWidth = ds_grid_width(global.foundRoomsGrid);
     mapHeight = ds_grid_height(global.foundRoomsGrid);
     
-    minimapX = -(smallestX * minimapRoomWidth);
-    minimapY = -(smallestY * minimapRoomHeight);
+    show_debug_message('smallestX = ' + string(smallestX));
+    show_debug_message('smallestY = ' + string(smallestY));
+    findMapStart = false;
 }
 
+
+if(enlargeMap) {
+    draw_set_alpha(0.4);
+    draw_set_color(c_black);
+    draw_rectangle(0, 0, gw, gh, false);
+    draw_set_color(c_white);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_center);
+    draw_set_alpha(1);
+    draw_text_transformed(gw / 2 , vertBlock, 'Dungeon Map', 6 * scaleFactor, 6 * scaleFactor, 0);
+}
 draw_set_alpha(1);
 
 /* Draw minimap rooms */
 for(xx = 0; xx < mapWidth; xx++) {
     for(yy = 0; yy < mapHeight; yy++) {
         draw_set_color(c_black);
+        baseX = ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor);
+        baseY = ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor);
         
         /* Set minimap sprite */
         if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "spawn") {
@@ -54,40 +68,42 @@ for(xx = 0; xx < mapWidth; xx++) {
         
         /* Draw room */
         if(minimapSprite != false) {
-            draw_sprite_ext(minimapSprite, 0, minimapX + (xx * minimapRoomWidth * minimapScale), 
-                       (minimapY + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1);
-            /* Draw doors */
+            doorScale = (minimapScale* scaleFactor) * 0.7;
+            draw_sprite_ext(minimapSprite, 0, baseX, 
+                       baseY,minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,1);
+            // FINISH REPLACING LONG CODE
+            // Draw doors 
             // Left
             if(xx - 1 >= 0) {
                 if(ds_grid_get(obj_level_generator.mapGrid, xx - 1, yy) != 0 && global.foundRoomsGrid[# xx - 1, yy] != 'found') {
-                    draw_sprite_ext(spr_door, 0, minimapX + (xx * minimapRoomWidth * minimapScale), 
-                           (minimapY + (minimapRoomHeight) + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1); 
+                    draw_sprite_ext(spr_door, 0, baseX, 
+                           baseY + ((minimapRoomHeight * minimapScale * scaleFactor)/2),doorScale,doorScale,0,c_white,1); 
                 }
             }
             
             // Right
             if(xx + 1 < mapWidth) { 
                 if(ds_grid_get(obj_level_generator.mapGrid, xx + 1, yy) != 0 && global.foundRoomsGrid[# xx + 1, yy] != 'found') {
-                    draw_sprite_ext(spr_door, 0, minimapX + (xx * minimapRoomWidth * minimapScale) + (minimapRoomWidth * 2), 
-                           (minimapY + (minimapRoomHeight) + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1); 
+                    draw_sprite_ext(spr_door, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor) + (minimapRoomWidth * minimapScale * scaleFactor), 
+                           ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor) + ((minimapRoomHeight * minimapScale * scaleFactor)/2),doorScale,doorScale,0,c_white,1); 
                 }
             }  
             
             // Up
             if(yy - 1 >= 0) { 
                 if(ds_grid_get(obj_level_generator.mapGrid, xx, yy - 1) != 0 && global.foundRoomsGrid[# xx, yy - 1] != 'found') {
-                    draw_sprite_ext(spr_door, 0, minimapX + (xx * minimapRoomWidth * minimapScale) + minimapRoomWidth, 
-                           (minimapY + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1); 
+                    draw_sprite_ext(spr_door, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor) + ((minimapRoomWidth * minimapScale * scaleFactor)/2), 
+                           ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor),doorScale,doorScale,0,c_white,1); 
                 }
             }     
             
             // Down
             if(yy + 1 < mapHeight) { 
                 if(ds_grid_get(obj_level_generator.mapGrid, xx, yy + 1) != 0 && global.foundRoomsGrid[# xx, yy + 1] != 'found') {
-                    draw_sprite_ext(spr_door, 0, minimapX + (xx * minimapRoomWidth * minimapScale) + minimapRoomWidth, 
-                           (minimapY + (minimapRoomHeight * 2) + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1); 
+                    draw_sprite_ext(spr_door, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor) + ((minimapRoomWidth * minimapScale * scaleFactor)/2), 
+                           ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor) +(minimapRoomHeight * minimapScale * scaleFactor),doorScale,doorScale,0,c_white,1); 
                 }
-            }           
+            }       
         }
                        
         /* Draw player minimap dot */
@@ -98,21 +114,26 @@ for(xx = 0; xx < mapWidth; xx++) {
            if(global.foundRoomsGrid[# xx, yy] != 'found') {
                 global.foundRoomsGrid[# xx, yy] = 'found';
            }
-           draw_set_color(c_red);
             
             if(dotRadius > dotRadiusMax) {
-                dotRadiusIncrement = -1/10;
+                dotRadiusIncrement = -dotRadiusIncrement;
             }
             if(dotRadius < dotRadiusMin) {
-                dotRadiusIncrement = 1/10;
+                dotRadiusIncrement = abs(dotRadiusIncrement);
             }
             
             dotRadius += dotRadiusIncrement;
-            draw_sprite_ext(spr_map_selected, 0, minimapX + (xx * minimapRoomWidth * minimapScale), 
-                       (minimapY + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale),minimapScale,minimapScale,0,c_white,1);
-            draw_circle(minimapX + (xx * minimapRoomWidth * minimapScale) + ((minimapRoomWidth * minimapScale) / 2), 
-                        (minimapY + (vertBlock * 2)) + (yy * minimapRoomHeight * minimapScale) + ((minimapRoomHeight * minimapScale) / 2), dotRadius, false);
+            draw_sprite_ext(spr_map_selected, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor), 
+                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor),minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,1);
+            draw_set_color(c_white);
+            draw_circle(((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor)+ ((minimapRoomWidth * minimapScale * scaleFactor)/2), 
+                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1) * minimapRoomHeight * minimapScale * scaleFactor) + ((minimapRoomHeight * minimapScale * scaleFactor)/2), dotRadius * minimapScale * scaleFactor * 1.4, false);
         
+            draw_set_color(c_red);
+            draw_circle(((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor)+ ((minimapRoomWidth * minimapScale * scaleFactor)/2), 
+                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1) * minimapRoomHeight * minimapScale * scaleFactor) + ((minimapRoomHeight * minimapScale * scaleFactor)/2), dotRadius * minimapScale * scaleFactor, false);
+            
+           
            
         }
     }

@@ -69,8 +69,8 @@ attackDamage = 1;
 attackProjectile = noone;
 
 /* Hit timer */
-kbAmount = 2;
-kbCounter = kbAmount;
+baseKnockback = 2;
+knockbackCounter = baseKnockback;
 
 /* Death */
 deathTime = 20;

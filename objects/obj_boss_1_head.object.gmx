@@ -36,8 +36,8 @@ image_speed = 0.4;
 dead = false;
 state = states.death;
 hp = 0;
-kbAmount = 0;
-kbCounter = 0;
+baseKnockback = 0;
+knockbackCounter = baseKnockback;
 headCount = 3;
 </string>
           </argument>

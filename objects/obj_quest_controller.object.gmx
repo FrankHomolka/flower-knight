@@ -25,10 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>skeletonKills = 0;
+            <string>// KILLS
+skeletonKills = 0;
+skeletonBombKills = 0;
+eyeturretKills = 0;
+
+// DODGES
+eyemissileDodges = 0
+
+// COLLECTED
 numHeartsCollected = 0;
+numChestsOpened = 0;
+
+// OTHER
+beatLevelLowHp = false;
+level = 0;
 questList = ds_list_create();
 counter = 100;
+/// DONT FORGET TO CLEAR ALL VARS ON RESTART
 </string>
           </argument>
         </arguments>

@@ -1,4 +1,4 @@
 ///scr_burn_enemy_quest
-if(numHeartsCollected >= 3) {
+if(skeletonBombKills > 0) {
     scr_quest_unlock_item();
 }
