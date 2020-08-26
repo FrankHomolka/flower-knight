@@ -35,6 +35,7 @@ unlockedItem = false;
 unlockedItemMap = '';
 unlockedItemCounter = 450;
 unlockedItemQueue = ds_queue_create();
+questProgress[3] = '';
 </string>
           </argument>
         </arguments>
@@ -117,15 +118,18 @@ if(showQuests) {
     draw_set_color(c_black);
     draw_rectangle(0, 0, gw, gh, false);
     draw_set_alpha(1);
-    draw_set_color(c_white);
     draw_set_valign(fa_top);
     draw_set_halign(fa_center);
+    draw_set_color(c_white);
     draw_text_transformed(gw / 2 , vertBlock, 'Quests', 6 * scaleFactor, 6 * scaleFactor, 0);
     draw_set_halign(fa_left);
     for(r = 0; r &lt; ds_list_size(obj_quest_controller.questList); r++) {
         item = obj_quest_controller.questList[| r];
-        draw_text_transformed(gw / 2 - (3.5*horBlock), 6 * vertBlock * (r + 1), item[? 'questText'], 3 * scaleFactor, 3 * scaleFactor, 0);
-        draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4 * horBlock), (6 * vertBlock * (r + 1)) + vertBlock, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+        draw_set_color(c_white);
+        draw_text_transformed(gw / 2 - (3.2*horBlock), 5 * vertBlock * (r + 1), item[? 'questText'], 4 * scaleFactor, 4 * scaleFactor, 0);
+        draw_set_color(c_yellow);
+        draw_text_transformed(gw / 2 - (3.2*horBlock), 5 * vertBlock * (r + 1.5), questProgress[r], 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4 * horBlock), (5 * vertBlock * (r + 1)) + vertBlock, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
     }
     
     if(room == rm_quest) {

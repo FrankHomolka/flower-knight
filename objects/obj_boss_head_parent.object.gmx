@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-headCount = 0;
 </string>
           </argument>
         </arguments>
@@ -53,7 +52,10 @@ headCount = 0;
 
 if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
     audio_play_sound(snd_pickup_head, 10, false);
-    scr_set_and_save_money(headCount, true);
+    if(instance_exists(obj_quest_controller)) {
+        obj_quest_controller.bossHeadsCollected++;
+        instance_destroy();   
+    }
 }
 </string>
           </argument>

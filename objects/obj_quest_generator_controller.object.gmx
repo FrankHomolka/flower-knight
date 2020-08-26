@@ -58,7 +58,7 @@ while(i &lt; numQuests) {
     itemTest = questSelectionList[| rand];
     itemExists = ds_list_find_index(obj_quest_controller.questList, itemTest);
     if(itemExists == -1) {
-        show_debug_message('QUEST ---------------');
+        show_debug_message('QUEST ' + string(i));
         show_debug_message(itemTest[? 'name']);
         ds_list_add(obj_quest_controller.questList, itemTest);
         i++;

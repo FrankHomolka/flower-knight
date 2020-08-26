@@ -36,7 +36,7 @@
     ds_list_clear(obj_focus_controller.playerDashingFocusList);
     ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
     instance_create(x,y,obj_player);
-    obj_money_controller.coins = 0;
+    obj_quest_controller.gold = 0;
     room_goto(rm_shop);
 }
 

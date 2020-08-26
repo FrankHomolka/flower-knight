@@ -78,7 +78,7 @@ if(destructSprite != "none") {
     part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
     part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
     scr_spawn_item_drop();
-    mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+    if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
     instance_destroy();
 }
 </string>

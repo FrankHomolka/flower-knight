@@ -242,25 +242,30 @@ for(genX = 0; genX < 24; genX++) {//20
         
         // If BOMB room
         if(argument2 == spr_bomb_room) {
+            /* Left side */
             if(genX == 0 && doorLeft) {
                 if(genY >= 5 && genY < 10) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                    instance_create(startX + ((genX - 1) * 16), startY + (genY * 16), obj_bombable_wall);
                 }
             /* Right Side */
             } else if(genX == 24 - 1 && doorRight) {
                 if(genY >= 5 && genY < 10) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                    instance_create(startX + ((genX + 1) * 16), startY + (genY * 16), obj_bombable_wall);
                 }
             }
             /* Up side */
             if(genY == 0 && doorUp) {
                 if(genX >= 10 && genX < 14) {
                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                   instance_create(startX + (genX * 16), startY + ((genY - 1) * 16), obj_bombable_wall);
                 }
             /* Down Side */
             } else if(genY == 16 - 1 && doorDown) {
                 if(genX >= 10 && genX < 14) {
                     instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
+                    instance_create(startX + (genX * 16), startY + ((genY + 1) * 16), obj_bombable_wall);
                 }
             }
         }

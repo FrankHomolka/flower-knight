@@ -25,24 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// KILLS
-skeletonKills = 0;
-skeletonBombKills = 0;
-eyeturretKills = 0;
+            <string>
+// Set vars to 0
+scr_reset_quest_vars();
 
-// DODGES
-eyemissileDodges = 0
-
-// COLLECTED
-numHeartsCollected = 0;
-numChestsOpened = 0;
-
-// OTHER
-beatLevelLowHp = false;
-level = 0;
+// Create list
 questList = ds_list_create();
-counter = 100;
-/// DONT FORGET TO CLEAR ALL VARS ON RESTART
 </string>
           </argument>
         </arguments>
@@ -70,10 +58,9 @@ counter = 100;
 if(room == rm_shop) {
     if(ds_list_size(questList) &gt; 0) {
         ds_list_clear(questList);
-        show_debug_message('cleared quest list');
+        // Set vars to 0
+        scr_reset_quest_vars();
     }
-    skeletonKills = 0;
-    numHeartsCollected = 0;
 }
 
 counter--;
@@ -83,7 +70,9 @@ if(counter &lt;= 0) {
     for(i = 0; i &lt; ds_list_size(questList); i++) {
         item = questList[| i];
         if(ds_list_find_index(global.itemsUnlocked, item) == -1) {
-            script_execute(item[? 'questScript']);
+            if(instance_exists(obj_quest_display_controller)) {
+                obj_quest_display_controller.questProgress[i] = script_execute(item[? 'questScript']); 
+            }
         }
     }
 }

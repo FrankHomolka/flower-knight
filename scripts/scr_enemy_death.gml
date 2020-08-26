@@ -5,6 +5,11 @@ if(!dead) {
     path_end();
     dead = true;
     obj_player.enemiesKilled++;
+    if(lastDamageSource == obj_fire) {
+        if(instance_exists(obj_quest_controller)) {
+            obj_quest_controller.enemiesBurned++;
+        }
+    }
     image_xscale = 1;
     for(var i = 0; i < goldDropOnDeath * goldMultiplier; i++)
         instance_create(x,y,obj_enemy_drop);

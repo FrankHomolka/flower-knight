@@ -81,7 +81,7 @@ currentRoom = room;
             case 1:
                 with(instance_create(x,y,obj_blank)) {
                     enemyList = ds_list_create();
-                    ds_list_add(enemyList, obj_enemy_skeleton, obj_enemy_bomber, obj_enemy_eye_turret );
+                    ds_list_add(enemyList, obj_enemy_skeleton, obj_enemy_eye_turret_burst, obj_enemy_eye_turret );
                     roomList = ds_list_create();
                     for(i = 0; i &lt; 5; i++) 
                         ds_list_add(roomList, spr_room_pillar);

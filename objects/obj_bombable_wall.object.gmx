@@ -29,7 +29,12 @@
     if(instance_exists(obj_bomb_room)) {
         obj_bomb_room.hidden = false;
     }
-    instance_destroy();
+    if(instance_exists(obj_quest_controller)) {
+        obj_quest_controller.bombRoomRevealed = true;
+    }
+    with(obj_bombable_wall) {
+        instance_destroy();
+    }
 }
 </string>
           </argument>

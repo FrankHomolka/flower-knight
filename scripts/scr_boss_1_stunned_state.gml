@@ -7,4 +7,5 @@ stunCounter--;
 if(stunCounter < 0) {
     stunCounter = stunLength;
     stunned = false;
+    if(instance_exists(obj_quest_controller)) obj_quest_controller.timesStunnedBoss1++;
 }

@@ -2,15 +2,15 @@
 <sprite>
   <type>0</type>
   <xorig>22</xorig>
-  <yorigin>7</yorigin>
+  <yorigin>6</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>0</bbox_left>
-  <bbox_right>44</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>14</bbox_bottom>
+  <bbox_left>44</bbox_left>
+  <bbox_right>0</bbox_right>
+  <bbox_top>12</bbox_top>
+  <bbox_bottom>0</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>45</width>
-  <height>15</height>
+  <height>13</height>
   <frames>
     <frame index="0">images\spr_button_0.png</frame>
   </frames>

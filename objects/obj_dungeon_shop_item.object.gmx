@@ -33,7 +33,6 @@ message = "";
 counter = random_range(0, 10);
 startY = y;
 startX = x;
-moneyMultiplier = 100;
 
 price = 0;
 
@@ -63,14 +62,14 @@ counter = random(300);
           <argument>
             <kind>1</kind>
             <string>
-price = (itemMap[? "price"] * itemMap[? "numBought"] * moneyMultiplier);
+price = (itemMap[? "price"] * itemMap[? "numBought"]);
 
 if(unlocked) {
     if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
-        if((obj_money_controller.coins &gt;= price)) {
+        if((obj_quest_controller.gold &gt;= price)) {
             show_debug_message('itemMap[? "name"]');
             show_debug_message(itemMap[? "name"]);
-            obj_money_controller.coins -= price;
+            obj_quest_controller.gold -= price;
             audio_play_sound(snd_buy_item, 5, false);
             alreadyBought = ds_list_find_index(global.equippedItemsList, itemMap);
             show_debug_message('alreadyBought = ' + string(alreadyBought));
@@ -147,7 +146,7 @@ if(unlocked) {
     draw_set_color(c_black);
     draw_ellipse(drawX - (horBlock / 2), drawY + (vertBlock / 2), drawX + (horBlock / 2), drawY + (vertBlock * 1.5), false);
     draw_set_alpha(1);
-    if((obj_money_controller.coins &gt;= price)) {
+    if((obj_quest_controller.gold &gt;= price)) {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
         draw_set_color(c_black);
         draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, price, 2 * scaleFactor, 2 * scaleFactor, 0);
@@ -196,37 +195,7 @@ if(unlocked) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if(unlocked) {
-    depth = -3000;
-    scr_draw_entity_shadow(10, 4, 0, 0);
-    if((obj_money_controller.coins &gt;= price)) {
-        draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_white, 1); 
-    } else {
-        draw_sprite_ext(itemMap[? "sprite"], 0,  x, y, 1, 1, 0, c_gray, 1); 
-    }
-    
-    if(mouseInside) {
-        message = "Buy " + string(itemMap[? "name"]) + " [" + string(price) + " COINS]";
-        
-        draw_set_alpha(1);
-        draw_set_color(c_white);
-        draw_set_halign(fa_center);
-        draw_set_valign(fa_middle);
-        draw_set_color(c_black);
-        draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
-        draw_set_color(c_white);
-        draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
-        
-        if((obj_money_controller.coins &lt; price)) {
-            draw_set_color(c_red);
-            draw_text_transformed(mouse_x, mouse_y - 8, "(need more money)", 0.5, 0.5, 0);
-        }
-        
-        draw_set_color(c_black);
-        draw_set_valign(fa_top);
-        draw_set_halign(fa_left);
-    }
-}
+            <string>//
 </string>
           </argument>
         </arguments>

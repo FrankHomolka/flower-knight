@@ -1,4 +1,4 @@
-//scr_add_item
+///scr_add_item(list, name, sprite, script, price, effectOnBuy, numBought, effectScript, *questScript, *questText, *questRarity)
 var list = argument[0];
 var name = argument[1];
 var sprite = argument[2];

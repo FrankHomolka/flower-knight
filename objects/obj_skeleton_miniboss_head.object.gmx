@@ -40,7 +40,6 @@ baseKnockback = 0;
 knockbackCounter = baseKnockback;
 image_xscale = 2;
 image_yscale = 2;
-headCount = 1;
 </string>
           </argument>
         </arguments>

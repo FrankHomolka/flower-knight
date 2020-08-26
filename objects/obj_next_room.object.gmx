@@ -55,6 +55,11 @@ if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
     if(obj_player.hp &lt;= 10) {
         if(instance_exists(obj_quest_controller)) obj_quest_controller.beatLevelLowHp = true;
     }
+    if(instance_exists(obj_quest_controller)) {
+        if(obj_quest_controller.playerHit == false) {
+            obj_quest_controller.beatFirstLevelPerfect = true;
+        }
+    }
 }
 
 if(obj_gui_controller.drawingLoadingScreen = true) {
@@ -104,8 +109,9 @@ draw_self();
 if(place_meeting(x,y,obj_player)) {
     draw_set_color(c_white);
     draw_set_alpha(1);
+    draw_set_font(fnt_ui);
     draw_set_halign(fa_center);
-    draw_text_transformed(x,y-20,"'E' to go deeper...", 0.5, 0.5, 0);
+    draw_text_transformed(x-8,y-20,"'E' to go deeper...", 0.5, 0.5, 0);
 }
 </string>
           </argument>

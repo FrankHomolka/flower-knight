@@ -35,15 +35,8 @@ landingDir = false;
 move_towards_point(obj_player.x, obj_player.y, 3);
 image_angle = point_direction(x, y, obj_player.x, obj_player.y);
 life = 0;
-spawnMinion = false;
-if(random(100) &gt; 70) {
-    spawnMinion = true;
-    scr_magic_ball_particle();
-    part_type_direction(fireParticle, 0, 360, 0, 0.2);
-    part_emitter_region(fireSystem, fireEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-    part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(40, 60));
-    scr_destructible_particle(spr_crate_particle);
-}
+scr_magic_ball_particle();
+scr_destructible_particle(spr_crate_particle);
 </string>
           </argument>
         </arguments>
@@ -81,14 +74,12 @@ if(place_meeting(x,y,obj_player_basic_attack)) {
     } else {
         if(obj_player.canParry == false) {
             if(!reflected) {
+                if(instance_exists(obj_quest_controller)) obj_quest_controller.skeletonSpearsReflected++;
                 var rand = random_range(20, 20);
                 direction -= (180 + rand);
                 image_angle -= (180 + rand);
                 reflected = true;
                 reflectedCounter = 10;
-                healValue = 5;
-                scr_show_damage_number(healValue, c_green, obj_player);
-                scr_heal_player(5);
             }
         }
     }

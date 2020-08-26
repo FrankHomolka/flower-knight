@@ -29,7 +29,7 @@
 depth = -obj_player.y -1000;
 light = surface_create(view_wview, view_hview);
 lightColor = c_ltgray;
-dungeonColor = make_colour_hsv(0,0,180);
+dungeonColor = make_colour_hsv(0, 0, 255);//make_colour_hsv(0,0,180);
 shopColor = make_colour_hsv(0,0,80);
 focusColor = c_ltgray;
 </string>

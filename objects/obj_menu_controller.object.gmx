@@ -27,23 +27,7 @@
             <kind>1</kind>
             <string>currentRoom = noone;
 
-// REMOVE TO TEST WITH SAME SEED
-randomize();
-
-view_wview[0] = 320;
-view_hview[0] = 180;
-
-view_wport[0] = 1600;
-view_hport[0] = 900;
-view_xview[0] = 0;
-view_yview[0] = 0;
-view_hspeed[0] = 100;
-view_vspeed[0] = 100;
-view_visible[0] = true;
-view_enabled = true;
-
 instance_create(x,y,obj_settings_controller);
-instance_create(x,y,obj_view_controller);
 </string>
           </argument>
         </arguments>
@@ -72,7 +56,7 @@ if(room != currentRoom) {
     if(room == rm_menu) {
         with(instance_create(0,0,obj_blank)) {
             text = "START";
-            offsetY = -10;
+            offsetY = 10;
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_game_start;
@@ -80,7 +64,7 @@ if(room != currentRoom) {
         }
         with(instance_create(0,0,obj_blank)) {
             text = "SETTINGS";
-            offsetY = 20;
+            offsetY = 30;
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_settings_room;
@@ -172,14 +156,14 @@ if(room != currentRoom) {
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_white);
-draw_set_font(fnt_1);
+draw_set_font(fnt_ui);
 if(room == rm_menu) {
     tutorialTextSize = 0.8;
-    draw_text_transformed(room_width / 5, 80, "Arrow keys to move", tutorialTextSize, tutorialTextSize, 0);
-    draw_text_transformed(room_width / 5, 100, "'Q' to attack", tutorialTextSize, tutorialTextSize, 0);
-    draw_text_transformed(room_width / 5, 120, "'W' to dash", tutorialTextSize, tutorialTextSize, 0);
-    draw_text_transformed(room_width / 5, 140, "'V' for fullscreen", tutorialTextSize, tutorialTextSize, 0);
 } else {
+    depth = 0;
+    draw_set_color(c_black);
+    draw_rectangle(0,0,room_width,room_height,false);
+    draw_set_color(c_white);
     draw_text_transformed(room_width / 2, 20, "SETTINGS", 2, 2, 0);
 }
 </string>

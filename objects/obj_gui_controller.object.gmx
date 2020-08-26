@@ -129,13 +129,10 @@ if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) 
     draw_set_color(c_white);
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
-    /* Bosses killed */
-    /*draw_sprite_ext(spr_enemies_killed, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
-    draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_money_controller.money, 3 * scaleFactor, 3 * scaleFactor, 0);
     
-    /* Money gained */
+    /* Gold gained */
     draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
-    draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_money_controller.coins, 3 * scaleFactor, 3 * scaleFactor, 0);
+    draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_quest_controller.gold, 3 * scaleFactor, 3 * scaleFactor, 0);
     
     /* Player hp */
     draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, 1);

@@ -85,6 +85,7 @@ show_debug_message('made fire');
         hitCooldown = hitCooldownMax;
         with(target) {
             damageSource = other;
+            lastDamageSource = obj_fire;
             scr_try_hit_enemy(other.hitDamage, self, false, 0);
         }
     }

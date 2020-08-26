@@ -5,6 +5,7 @@ if(!dead) {
     speed = 0;
     instance_create(spawnX, spawnY, obj_next_room);
     obj_boss_2.inFight = false;
+    obj_quest_controller.beatBoss2 = true;
 } else {
     event_inherited();
 }

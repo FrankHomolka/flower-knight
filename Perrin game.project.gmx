@@ -185,6 +185,12 @@
         <sprite>sprites\spr_artillery_hit</sprite>
         <sprite>sprites\spr_artillery_death</sprite>
       </sprites>
+      <sprites name="Eye Turret Burst">
+        <sprite>sprites\spr_burst_idle</sprite>
+        <sprite>sprites\spr_burst_death</sprite>
+        <sprite>sprites\spr_burst_attack</sprite>
+        <sprite>sprites\spr_burst_ball</sprite>
+      </sprites>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_wall</sprite>
@@ -196,6 +202,7 @@
       <sprite>sprites\spr_barrel</sprite>
       <sprite>sprites\spr_barrel_particle</sprite>
       <sprite>sprites\spr_crate</sprite>
+      <sprite>sprites\spr_wall_door</sprite>
       <sprite>sprites\spr_crate_two</sprite>
       <sprite>sprites\spr_crate_particle</sprite>
       <sprite>sprites\spr_treasure</sprite>
@@ -258,11 +265,13 @@
         <sprite>sprites\spr_gui_bomb_room</sprite>
         <sprite>sprites\spr_gui_start_room</sprite>
         <sprite>sprites\spr_map_selected</sprite>
+        <sprite>sprites\spr_current_room</sprite>
       </sprites>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_button</sprite>
       <sprite>sprites\spr_wide_button</sprite>
+      <sprite>sprites\spr_story</sprite>
     </sprites>
     <sprites name="player">
       <sprites name="Player Attack">
@@ -298,6 +307,13 @@
       <sprite>sprites\spr_shop</sprite>
       <sprite>sprites\spr_enter_dungeon</sprite>
       <sprite>sprites\spr_shop_blown_up</sprite>
+    </sprites>
+    <sprites name="Tutorial">
+      <sprite>sprites\spr_control_square</sprite>
+      <sprite>sprites\spr_plus</sprite>
+      <sprite>sprites\spr_next_action</sprite>
+      <sprite>sprites\spr_tutorial_dodge</sprite>
+      <sprite>sprites\spr_tutorial_attack</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -365,10 +381,14 @@
       <scripts name="Enemy Attack">
         <script>scripts\scr_enemy_melee_attack.gml</script>
         <script>scripts\scr_enemy_ranged_attack.gml</script>
-        <script>scripts\scr_miniboss_1_attack.gml</script>
         <script>scripts\scr_try_hit_enemy.gml</script>
       </scripts>
       <script>scripts\scr_check_pit_enemy.gml</script>
+      <scripts name="Unique States">
+        <script>scripts\scr_miniboss_1_attack.gml</script>
+        <script>scripts\scr_burst_turret_attack.gml</script>
+        <script>scripts\scr_skeleton_boss_attack.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Particles">
       <script>scripts\scr_player_walk_particle.gml</script>
@@ -387,13 +407,16 @@
       <scripts name="One time">
         <script>scripts\scr_focus_speed.gml</script>
         <script>scripts\scr_focus_attack_speed.gml</script>
-        <script>scripts\scr_speed_quest.gml</script>
         <script>scripts\scr_focus_parry.gml</script>
         <script>scripts\scr_focus_damage.gml</script>
         <script>scripts\scr_focus_crit_chance_increase.gml</script>
         <script>scripts\scr_focus_angel.gml</script>
-        <script>scripts\scr_damage_quest.gml</script>
         <script>scripts\scr_crit_chance_quest.gml</script>
+        <script>scripts\scr_speed_quest.gml</script>
+        <script>scripts\scr_damage_quest.gml</script>
+        <script>scripts\scr_angel_quest.gml</script>
+        <script>scripts\scr_parry_quest.gml</script>
+        <script>scripts\scr_attack_speed_quest.gml</script>
       </scripts>
       <scripts name="Player Hit Enemy">
         <script>scripts\scr_focus_knockback.gml</script>
@@ -402,17 +425,23 @@
         <script>scripts\scr_focus_greed_effect.gml</script>
         <script>scripts\scr_focus_vampire.gml</script>
         <script>scripts\scr_focus_vampire_effect.gml</script>
+        <script>scripts\scr_vampire_quest.gml</script>
         <script>scripts\scr_focus_freeze_enemy_effect.gml</script>
         <script>scripts\scr_focus_freeze_enemy.gml</script>
         <script>scripts\scr_focus_burn_enemy.gml</script>
         <script>scripts\scr_focus_burn_enemy_effect.gml</script>
         <script>scripts\scr_burn_enemy_quest.gml</script>
+        <script>scripts\scr_knockback_quest.gml</script>
+        <script>scripts\scr_greed_quest.gml</script>
+        <script>scripts\scr_freeze_quest.gml</script>
       </scripts>
       <scripts name="Dashing">
         <script>scripts\scr_focus_slime.gml</script>
         <script>scripts\scr_focus_slime_effect.gml</script>
         <script>scripts\scr_focus_rhino.gml</script>
         <script>scripts\scr_focus_rhino_effect.gml</script>
+        <script>scripts\scr_slime_quest.gml</script>
+        <script>scripts\scr_rhino_quest.gml</script>
       </scripts>
       <scripts name="Player Hit">
         <script>scripts\scr_focus_shadow.gml</script>
@@ -425,12 +454,16 @@
         <script>scripts\scr_focus_bomb.gml</script>
         <script>scripts\scr_focus_bomb_effect.gml</script>
         <script>scripts\scr_thorns_quest.gml</script>
+        <script>scripts\scr_bomb_quest.gml</script>
+        <script>scripts\scr_shadow_quest.gml</script>
       </scripts>
       <scripts name="Player Attack">
         <script>scripts\scr_focus_strike.gml</script>
         <script>scripts\scr_focus_strike_effect.gml</script>
         <script>scripts\scr_focus_fireball.gml</script>
         <script>scripts\scr_focus_fireball_effect.gml</script>
+        <script>scripts\scr_fireball_quest.gml</script>
+        <script>scripts\scr_strike_quest.gml</script>
       </scripts>
       <script>scripts\scr_find_item.gml</script>
       <script>scripts\scr_quest_unlock_item.gml</script>
@@ -440,7 +473,6 @@
       <script>scripts\scr_load_json_from_file.gml</script>
       <script>scripts\scr_add_item.gml</script>
       <script>scripts\scr_save_item_list.gml</script>
-      <script>scripts\scr_set_and_save_money.gml</script>
       <script>scripts\scr_set_and_save_settings.gml</script>
     </scripts>
     <scripts name="Visuals">
@@ -510,6 +542,9 @@
       <script>scripts\scr_draw_heart.gml</script>
       <script>scripts\scr_draw_minimap.gml</script>
       <script>scripts\scr_draw_bought_items.gml</script>
+    </scripts>
+    <scripts name="Quests">
+      <script>scripts\scr_reset_quest_vars.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -583,7 +618,6 @@
       <object>objects\obj_deactivate_controller</object>
       <object>objects\obj_area_controller</object>
       <object>objects\obj_view_controller</object>
-      <object>objects\obj_money_controller</object>
       <object>objects\obj_gameover_controller</object>
       <object>objects\obj_win_controller</object>
       <object>objects\obj_blank</object>
@@ -600,17 +634,19 @@
         <object>objects\obj_enemy_archer</object>
         <object>objects\obj_enemy_bomber</object>
         <object>objects\obj_enemy_eye_turret</object>
+        <object>objects\obj_enemy_eye_turret_burst</object>
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
         <object>objects\obj_magic_ball</object>
+        <object>objects\obj_magic_ball_burst</object>
         <object>objects\obj_enemy_slime_trail</object>
         <object>objects\obj_enemy_archer_attack</object>
-        <object>objects\obj_enemy_drop</object>
         <object>objects\obj_artillery_attack</object>
         <object>objects\obj_skeleton_attack</object>
         <object>objects\obj_eyeball</object>
         <object>objects\obj_enemy_bomb_explosion</object>
+        <object>objects\obj_enemy_drop</object>
       </objects>
     </objects>
     <objects name="Focus">
@@ -660,12 +696,28 @@
       <object>objects\obj_button</object>
       <object>objects\obj_settings_controller</object>
       <object>objects\obj_menu_controller</object>
+      <object>objects\obj_story_controller</object>
+    </objects>
+    <objects name="Tutorial">
+      <object>objects\obj_tutorial_destructible</object>
+      <object>objects\obj_tutorial_controller</object>
+      <object>objects\obj_control_display</object>
+      <object>objects\obj_plus</object>
+      <object>objects\obj_tutorial_next_room</object>
+      <object>objects\obj_next_arrow</object>
+      <object>objects\obj_tutorial_dodge</object>
+      <object>objects\obj_tutorial_attack</object>
+      <object>objects\obj_tutorial_crossbow</object>
+      <object>objects\obj_tutorial_arrow</object>
+      <object>objects\obj_hint</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_intro</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_settings</room>
     <room>rooms\rm_game_start</room>
+    <room>rooms\rm_tutorial</room>
     <room>rooms\rm_shop</room>
     <room>rooms\rm_quest</room>
     <room>rooms\rm_procedural</room>

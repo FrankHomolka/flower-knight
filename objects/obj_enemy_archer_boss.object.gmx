@@ -126,6 +126,7 @@ if(foundPlayer) {
         case states.death:
             inFight = false;
             if(!instance_exists(obj_next_room)) {
+                if(instance_exists(obj_quest_controller)) obj_quest_controller.beatMiniboss2 = true;
                 instance_create(x,y-15,obj_archer_miniboss_head);
                 instance_create(spawnX, spawnY, obj_next_room);
             }

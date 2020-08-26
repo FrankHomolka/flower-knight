@@ -55,7 +55,7 @@ deathSprite = spr_skeleton_miniboss_death;
 hitSprite = spr_skeleton_walk;
 walkAnimationSpeed = 0.1;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
-minDistance = 30;
+minDistance = 50;
 
 /* Sounds */
 walkSound = snd_slime;
@@ -72,6 +72,7 @@ attackTime = 40;
 attackCounter = attackTime;
 attackFrame = 5;
 attackPause = true;
+spawnCounter = 0;
 
 /* Knockback */
 baseKnockback = 2;
@@ -160,7 +161,7 @@ if(foundPlayer) {
             }
             break;
         case states.attack:
-            scr_enemy_ranged_attack();
+            scr_skeleton_boss_attack();
             break;
         case states.hit:
             scr_enemy_hit();
@@ -168,6 +169,7 @@ if(foundPlayer) {
         case states.death:
             inFight = false;
             if(!instance_exists(obj_next_room)) {
+                if(instance_exists(obj_quest_controller)) obj_quest_controller.beatMiniboss1 = true;
                 instance_create(x,y-15,obj_skeleton_miniboss_head);
                 instance_create(spawnX, spawnY, obj_next_room);
             }

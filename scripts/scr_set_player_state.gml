@@ -46,11 +46,15 @@ if(tryHit) {
             var item = obj_focus_controller.playerHitFocusList[| i];
             script_execute(item[? 'effectScript']);
         }
+        if(instance_exists(obj_quest_controller)) {
+            obj_quest_controller.playerHit = true;
+        }
         hit = true;
         shake = true;
         currentHp = hp;
     } else {
         damageSource = false;
+        if(tryHit && instance_exists(obj_quest_controller)) obj_quest_controller.attacksDodged++;
         tryHit = false;
     }
 }

@@ -14,7 +14,7 @@ move_y = 0;
 sprite = spr_player_right;
 hitSprite = spr_player_down;
 deathSprite = spr_player_death;
-lightSize = 200;
+lightSize = 300;
 drawSelf = true;
 
 /* Sounds */

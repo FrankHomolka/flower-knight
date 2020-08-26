@@ -57,21 +57,6 @@ uniqueColor = make_colour_hsv(34, 133, 247);
 } else {
     mouseInside = false;
 }
-
-if(!unlocked) {
-    if(mouseInside &amp;&amp; mouse_check_button(mb_left)) {
-        if(obj_money_controller.money &gt;= itemMap[? "price"]) {
-        
-            itemBought = true;
-            scr_set_and_save_money(-itemMap[? "price"], false);
-            
-            show_debug_message("UNLOCKED " + string(itemMap[? "name"]));
-            ds_list_add(global.itemsUnlocked, itemMap);
-            scr_save_item_list();
-            unlocked = true;
-        }
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -120,11 +105,6 @@ if(mouseInside) {
     draw_text_transformed(mouse_x - 0.5, mouse_y - 0.5 - 16, message, 1, 1, 0);
     draw_set_color(c_white);
     draw_text_transformed(mouse_x, mouse_y - 16, message, 1, 1, 0);
-    
-    if(obj_money_controller.money &lt; itemMap[? "price"] &amp;&amp; !unlocked) {
-        draw_set_color(c_red);
-        draw_text_transformed(mouse_x, mouse_y - 8, "(need more heads)", 0.5, 0.5, 0);
-    }
     
     draw_set_color(c_black);
     draw_set_valign(fa_top);

@@ -61,7 +61,7 @@ if(!view_enabled) {
 }
 
 if(instance_exists(obj_player)) {
-    if(room == rm_shop) {
+    if(room == rm_shop || room == rm_tutorial) {
         view_object[0] = obj_player;
     } else {
         view_xview[0] = floor(obj_player.x - (view_wview[0] / 2));

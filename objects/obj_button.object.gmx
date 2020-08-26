@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>x = room_width / 2 + offsetX;
 y = room_height / 2 + offsetY;
+depth = -10000;
 textScale = 0.8;
 xScale = 1.5;
 yScale = 1.5;
@@ -106,7 +107,7 @@ if(mouseInside) {
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_set_font(fnt_1);
+draw_set_font(fnt_ui);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);

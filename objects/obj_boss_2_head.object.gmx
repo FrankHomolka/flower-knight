@@ -45,7 +45,6 @@ hitSprite = spr_boss_2_top;
 baseKnockback = 0;
 knockbackCounter = baseKnockback;
 attacking = true;
-headCount = 6;
 </string>
           </argument>
         </arguments>
