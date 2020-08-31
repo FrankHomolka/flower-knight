@@ -27,38 +27,31 @@
             <kind>1</kind>
             <string>event_inherited();
 
-
-with(instance_create(x,y,obj_eyeball)) {
-    source = other;
-    startX = other.x;
-    startY = other.y - 7;
-    depth = (-other.y) - 100;
-}
-
 /* Mob values */
-chaseDistance = 250;
-moveSpeed = 0;
+chaseDistance = 400;
+moveSpeed = 0.6;
 hp = 40;
 attackDamage = 20;
-customWalk = true;
+customWalk = false;
 attackObject = obj_magic_ball_burst;
-goldDropOnDeath = 12;
+goldDropOnDeath = 20;
 
 /* Animation and Sprites */
 sprite = spr_burst_idle;
 idleSprite = spr_burst_idle;
-walkSprite = spr_burst_idle;
-walkUpSprite = spr_burst_idle;
+walkSprite = spr_burst_walk;
+walkUpSprite = spr_burst_walk;
 attackSprite = spr_burst_attack;
 attackUpSprite = spr_burst_attack;
 deathSprite = spr_burst_death;
 hitSprite = spr_burst_idle;
 walkAnimationSpeed = 0.1;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
+minDistance = 35;
 
 /* Sounds */
 walkSound = snd_step;
-deathSound = snd_enemy_death;
+deathSound = snd_eyeball_die;
 attackSound = snd_eyeball_attack;
 hurtSound = snd_enemy_hit;
 
@@ -67,7 +60,7 @@ attackCooldownMax = 100;
 attackDistance = 80;
 attackTime = 100;
 attackCounter = attackTime;
-attackFrame = 7;
+attackFrame = 0;
 numShots = 0;
 maxNumShots = 3;
 
@@ -126,28 +119,6 @@ switch(state) {
         break;
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_enemy_general_parent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>

@@ -25,12 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* Sets the keys for player input */
+            <string>event_inherited();
+
+/* Sets the keys for player input */
 scr_set_player_input();
 scr_set_player_variables();
 
 /* Create weapon */
 instance_create(x,y,obj_player_dash);
+
+audio_listener_orientation(0,1,0, 0,0,1);
+global.mainEmitter=audio_emitter_create();
 </string>
           </argument>
         </arguments>
@@ -115,6 +120,10 @@ scr_get_player_input();
 
 /* Changes state based on inputs */
 scr_set_player_state();
+
+audio_listener_position(x,y,0);
+
+audio_emitter_position(global.mainEmitter,x,y,0);
 </string>
           </argument>
         </arguments>

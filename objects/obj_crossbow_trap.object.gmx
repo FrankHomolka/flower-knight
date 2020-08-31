@@ -34,6 +34,8 @@ attackPointY = 0;
 attackDamage = 20;
 attackCooldown = 40;
 canAttack = true;
+destroySound = -1;
+destroyed = false;
 
 switch(attackDir) {
     // right
@@ -82,33 +84,38 @@ scr_destructible_particle(spr_barrel_particle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x, y, obj_non_living_damage_parent)) {
-    audio_play_sound(snd_destructible, 8, false);
-    part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-    part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
-    scr_spawn_item_drop();
-    mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
-    instance_destroy();
-}
+            <string>event_inherited();
 
-if(collision_line(x,y,x + attackPointX, y + attackPointY, obj_player, false, false) &amp;&amp; 
- !collision_line(x,y,obj_player.x, obj_player.y, obj_wall, false, false) &amp;&amp; canAttack) {
-    show_debug_message('ATTACK');
-    with(instance_create(x,y,obj_enemy_archer_attack)) {
-        audio_play_sound(snd_arrow_shot, 10, false);
-        move_towards_point(other.x + other.attackPointX, other.y + other.attackPointY, 3);
-        source = noone;
-        attackDamage = other.attackDamage;
+if(!audio_is_playing(destroySound)) { 
+    if(destroyed) instance_destroy();
+    if(place_meeting(x, y, obj_non_living_damage_parent)) {
+        destroySound = audio_play_sound_on(myEmitter, snd_destructible, false, 10);
+        part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
+        part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
+        scr_spawn_item_drop();
+        mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+        destroyed = true;
     }
-    canAttack = false;
-}
-
-if(attackCooldown &gt; 0 &amp;&amp; !canAttack) {
-    attackCooldown--;
-} else {
-    canAttack = true;
-    attackCooldown = 40;
-}
+    
+    if(collision_line(x,y,x + attackPointX, y + attackPointY, obj_player, false, false) &amp;&amp; 
+     !collision_line(x,y,obj_player.x, obj_player.y, obj_wall, false, false) &amp;&amp; canAttack) {
+        show_debug_message('ATTACK');
+        with(instance_create(x,y,obj_enemy_archer_attack)) {
+            audio_play_sound_on(myEmitter, snd_arrow_shot, false, 1);
+            move_towards_point(other.x + other.attackPointX, other.y + other.attackPointY, 3);
+            source = noone;
+            attackDamage = other.attackDamage;
+        }
+        canAttack = false;
+    }
+    
+    if(attackCooldown &gt; 0 &amp;&amp; !canAttack) {
+        attackCooldown--;
+    } else {
+        canAttack = true;
+        attackCooldown = 40;
+    }
+} 
 </string>
           </argument>
         </arguments>
@@ -131,8 +138,10 @@ if(attackCooldown &gt; 0 &amp;&amp; !canAttack) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(12, 6, 0, -2);
-draw_self();
+            <string>if(!destroyed) {
+    scr_draw_entity_shadow(12, 6, 0, -2);
+    draw_self();
+}
 </string>
           </argument>
         </arguments>

@@ -6,5 +6,6 @@ if(instance_exists(obj_dungeon_shop)) {
     obj_dungeon_shop.spawnedItems = false;
 }
 if(instance_exists(obj_quest_display_controller)) {
+    audio_play_sound(snd_unlock_item, 10, false);
     ds_queue_enqueue(obj_quest_display_controller.unlockedItemQueue, item);
 }

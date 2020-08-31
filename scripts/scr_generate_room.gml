@@ -88,6 +88,16 @@ for(genX = 0; genX < 24; genX++) {//20
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 instance_create(startX + (genX * 16), startY + (genY * 16), enemyList[| 2]);
                 break; 
+            // Level enemy 4 R:75
+            case $00004b:
+                tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                instance_create(startX + (genX * 16), startY + (genY * 16), enemyList[| 3]);
+                break; 
+            // Level enemy 5 R:50
+            case $000032:
+                tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                instance_create(startX + (genX * 16), startY + (genY * 16), enemyList[| 4]);
+                break; 
             // Spikes
             case $3c3204:
                 tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);

@@ -36,6 +36,7 @@ unlockedItemMap = '';
 unlockedItemCounter = 450;
 unlockedItemQueue = ds_queue_create();
 questProgress[3] = '';
+obj_quest_controller.counter = 0;
 </string>
           </argument>
         </arguments>
@@ -142,7 +143,7 @@ if(showQuests) {
         if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
             gw / 3, gh / 1.5, gw / 1.5, gh / 1.2)) {
             if(!mouseInside) {
-                audio_play_sound(snd_hover_item, 10, false);
+                audio_play_sound(snd_hover_item, false, 1);
             }
             mouseInside = true;
         } else {

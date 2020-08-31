@@ -95,7 +95,7 @@ deathCounter = deathTime;
             <string>event_inherited();
 
 if(state == states.attack &amp;&amp; !audio_is_playing(snd_bomb_fuse))
-    sound = audio_play_sound(snd_bomb_fuse, 10, false);
+    sound = audio_play_sound_on(myEmitter, snd_bomb_fuse, false, 1);
     
 if(state == states.death &amp;&amp; audio_is_playing(sound))
     audio_stop_sound(sound);

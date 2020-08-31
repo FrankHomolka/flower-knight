@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>critChance = 0;
+            <string>event_inherited();
+
+critChance = 0;
 </string>
           </argument>
         </arguments>

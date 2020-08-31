@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>life = 500;
+            <string>event_inherited();
+
+life = 500;
 lifeStartAnimaton = 350;
 lifeCounter = life;
 damage = 25;
@@ -55,7 +57,9 @@ state = states.hit;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifeCounter--;
+            <string>event_inherited();
+
+lifeCounter--;
 if(lifeCounter&lt;0){
     instance_destroy();
 }

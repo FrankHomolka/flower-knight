@@ -34,6 +34,8 @@
       <sound>sound\snd_skeleton_attack</sound>
       <sound>sound\snd_eyeball_attack</sound>
       <sound>sound\snd_pickup_head</sound>
+      <sound>sound\snd_eyeball_die</sound>
+      <sound>sound\snd_eye_channel</sound>
     </sounds>
     <sounds name="Environment">
       <sound>sound\snd_destructible</sound>
@@ -55,6 +57,7 @@
       <sound>sound\snd_buy_item</sound>
       <sound>sound\snd_open_shop</sound>
       <sound>sound\snd_close_shop</sound>
+      <sound>sound\snd_unlock_item</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -187,9 +190,17 @@
       </sprites>
       <sprites name="Eye Turret Burst">
         <sprite>sprites\spr_burst_idle</sprite>
+        <sprite>sprites\spr_burst_walk</sprite>
         <sprite>sprites\spr_burst_death</sprite>
         <sprite>sprites\spr_burst_attack</sprite>
         <sprite>sprites\spr_burst_ball</sprite>
+      </sprites>
+      <sprite>sprites\spr_magic_ball_single</sprite>
+      <sprites name="Skeleton Bomber">
+        <sprite>sprites\spr_skeleton_bomber_idle</sprite>
+        <sprite>sprites\spr_skeleton_bomber_attack</sprite>
+        <sprite>sprites\spr_skeleton_bomber_death</sprite>
+        <sprite>sprites\spr_skeleton_bomber_walk</sprite>
       </sprites>
     </sprites>
     <sprites name="Environment">
@@ -235,22 +246,34 @@
     <sprites name="Level Gen">
       <sprites name="Rooms">
         <sprites name="Dungeon 1">
-          <sprite>sprites\spr_room_empty</sprite>
-          <sprite>sprites\spr_room_spikes</sprite>
-          <sprite>sprites\spr_room_maze</sprite>
-          <sprite>sprites\spr_room_pillars</sprite>
-          <sprite>sprites\spr_room_pillar</sprite>
-          <sprite>sprites\spr_room_group</sprite>
-          <sprite>sprites\spr_room_bombers</sprite>
-          <sprite>sprites\spr_room_corners</sprite>
+          <sprites name="Level 0">
+            <sprite>sprites\spr_room_boom_boom</sprite>
+            <sprite>sprites\spr_room_eye_corners</sprite>
+            <sprite>sprites\spr_room_group</sprite>
+            <sprite>sprites\spr_room_hallway</sprite>
+            <sprite>sprites\spr_room_spike_treasure</sprite>
+            <sprite>sprites\spr_room_traps_enemies</sprite>
+            <sprite>sprites\spr_room_turret_hallway</sprite>
+            <sprite>sprites\spr_room_skeletons</sprite>
+          </sprites>
+          <sprites name="Level 1">
+            <sprite>sprites\spr_room_burst_challenge</sprite>
+            <sprite>sprites\spr_room_burst</sprite>
+            <sprite>sprites\spr_room_dodge_challenge</sprite>
+            <sprite>sprites\spr_room_all</sprite>
+          </sprites>
+          <sprites name="Level 2">
+            <sprite>sprites\spr_room_final_challenge</sprite>
+            <sprite>sprites\spr_room_homing</sprite>
+          </sprites>
         </sprites>
         <sprites name="General">
           <sprite>sprites\spr_bomb_room</sprite>
           <sprite>sprites\spr_room_boss_map</sprite>
           <sprite>sprites\spr_room_shop_map</sprite>
-          <sprite>sprites\spr_room_focus</sprite>
           <sprite>sprites\spr_room_start_map</sprite>
           <sprite>sprites\spr_room_wings</sprite>
+          <sprite>sprites\spr_room_maze</sprite>
         </sprites>
         <sprites name="Dungeon 2">
           <sprite>sprites\spr_room_group_2</sprite>
@@ -466,7 +489,6 @@
         <script>scripts\scr_strike_quest.gml</script>
       </scripts>
       <script>scripts\scr_find_item.gml</script>
-      <script>scripts\scr_quest_unlock_item.gml</script>
     </scripts>
     <scripts name="Save &amp; Load">
       <script>scripts\scr_save_string_to_file.gml</script>
@@ -544,6 +566,7 @@
       <script>scripts\scr_draw_bought_items.gml</script>
     </scripts>
     <scripts name="Quests">
+      <script>scripts\scr_quest_unlock_item.gml</script>
       <script>scripts\scr_reset_quest_vars.gml</script>
     </scripts>
   </scripts>
@@ -572,6 +595,7 @@
         <object>objects\obj_dynamic_depth_parent</object>
         <object>objects\obj_static_depth_parent</object>
         <object>objects\obj_show_message</object>
+        <object>objects\obj_sound_parent</object>
       </objects>
     </objects>
     <objects name="Player">
@@ -633,13 +657,16 @@
         <object>objects\obj_enemy_charger</object>
         <object>objects\obj_enemy_archer</object>
         <object>objects\obj_enemy_bomber</object>
+        <object>objects\obj_skeleton_bomber</object>
         <object>objects\obj_enemy_eye_turret</object>
         <object>objects\obj_enemy_eye_turret_burst</object>
+        <object>objects\obj_enemy_eye_turret_single</object>
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
+        <object>objects\obj_magic_ball_single</object>
         <object>objects\obj_enemy_slime_trail</object>
         <object>objects\obj_enemy_archer_attack</object>
         <object>objects\obj_artillery_attack</object>

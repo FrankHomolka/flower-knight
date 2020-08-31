@@ -32,7 +32,7 @@ critChance = 0;
 scr_magic_ball_particle();
 life = 0;
 image_speed = 0.12;
-spd = 6;
+spd = 8;
 attackDamage = 20;
 playerDodged = false;
 part_type_direction(fireParticle, 0, 360, 0, 0.2);

@@ -77,28 +77,52 @@ currentRoom = room;
     
     // Set level variables
     if(room == rm_procedural) {
+        show_debug_message('LEVEL = ' + string(level));
+        
         switch(area) {
             case 1:
                 with(instance_create(x,y,obj_blank)) {
                     enemyList = ds_list_create();
-                    ds_list_add(enemyList, obj_enemy_skeleton, obj_enemy_eye_turret_burst, obj_enemy_eye_turret );
                     roomList = ds_list_create();
-                    for(i = 0; i &lt; 5; i++) 
-                        ds_list_add(roomList, spr_room_pillar);
-                    for(i = 0; i &lt; 10; i++) 
-                        ds_list_add(roomList, spr_room_pillars);
-                    for(i = 0; i &lt; 10; i++) 
-                        ds_list_add(roomList, spr_room_group);
-                    for(i = 0; i &lt; 4; i++) 
-                        ds_list_add(roomList, spr_room_empty);
-                    for(i = 0; i &lt; 2; i++) 
-                        ds_list_add(roomList, spr_room_spikes);
-                    for(i = 0; i &lt; 10; i++) 
-                        ds_list_add(roomList, spr_room_corners); 
-                        
-                    ds_list_add(roomList, spr_room_bombers);
-                    ds_list_add(roomList, spr_room_maze);
                     maxNumRooms = 8;
+                    for(i = 0; i &lt; 5; i++) 
+                        ds_list_add(roomList, spr_room_eye_corners);
+                    for(i = 0; i &lt; 4; i++) 
+                        ds_list_add(roomList, spr_room_group);
+                    for(i = 0; i &lt; 2; i++) 
+                        ds_list_add(roomList, spr_room_hallway);
+                    for(i = 0; i &lt; 2; i++) 
+                        ds_list_add(roomList, spr_room_traps_enemies);
+                    for(i = 0; i &lt; 2; i++) 
+                        ds_list_add(roomList, spr_room_turret_hallway);
+                    for(i = 0; i &lt; 2; i++) 
+                        ds_list_add(roomList, spr_room_skeletons);
+                    ds_list_add(roomList, spr_room_boom_boom);
+                    ds_list_add(roomList, spr_room_spike_treasure);
+                    ds_list_add(roomList, spr_room_maze);
+                    
+                    ds_list_add(enemyList, obj_enemy_skeleton, obj_skeleton_bomber, obj_enemy_eye_turret_single);
+                    
+                    if(other.level &gt;= 1) {
+                        ds_list_add(enemyList, obj_enemy_eye_turret_burst);
+                        for(i = 0; i &lt; 3; i++) 
+                            ds_list_add(roomList, spr_room_burst_challenge);
+                        for(i = 0; i &lt; 3; i++) 
+                            ds_list_add(roomList, spr_room_burst);
+                        for(i = 0; i &lt; 2; i++) 
+                            ds_list_add(roomList, spr_room_dodge_challenge);
+                        for(i = 0; i &lt; 2; i++) 
+                            ds_list_add(roomList, spr_room_all);
+                        maxNumRooms = 9;
+                    }
+                    if(other.level == 2) {
+                        ds_list_add(enemyList, obj_enemy_eye_turret);
+                        for(i = 0; i &lt; 4; i++) 
+                            ds_list_add(roomList, spr_room_homing);
+                        for(i = 0; i &lt; 2; i++) 
+                            ds_list_add(roomList, spr_room_final_challenge);
+                        maxNumRooms = 10;
+                    }
                     tileSheet = bck_area_1;
                     if(other.level == 2) {
                         boss = obj_boss_1;
@@ -115,19 +139,19 @@ currentRoom = room;
                     ds_list_add(enemyList, obj_enemy_slime, obj_enemy_archer, obj_enemy_artillery);
                     roomList = ds_list_create();
                     for(i = 0; i &lt; 3; i++) 
-                        ds_list_add(roomList, spr_room_pillar);
+                        ds_list_add(roomList, spr_room_group);
                     for(i = 0; i &lt; 6; i++) 
                         ds_list_add(roomList, spr_room_open)
                     for(i = 0; i &lt; 5; i++) 
-                        ds_list_add(roomList, spr_room_pillars)
+                        ds_list_add(roomList, spr_room_traps_enemies)
                     for(i = 0; i &lt; 6; i++) 
                         ds_list_add(roomList, spr_room_group_2)
                     for(i = 0; i &lt; 5; i++) 
                         ds_list_add(roomList, spr_room_pit_ring)
                     for(i = 0; i &lt; 6; i++) 
-                        ds_list_add(roomList, spr_room_corners); 
+                        ds_list_add(roomList, spr_room_hallway); 
                     for(i = 0; i &lt; 3; i++) 
-                        ds_list_add(roomList, spr_room_empty)
+                        ds_list_add(roomList, spr_room_eye_corners)
                     ds_list_add(roomList, spr_room_wings);
                     ds_list_add(roomList, spr_room_run);
                     maxNumRooms = 14;

@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>damage = 10;
+            <string>event_inherited();
+damage = 10;
 animationLength = 80;
 animationCounter = animationLength;
-audio_play_sound(snd_explosion, 5, false);
+audio_play_sound_on(myEmitter, snd_explosion, false, 1); 
 critChance = 0;
 </string>
           </argument>
@@ -52,7 +53,8 @@ critChance = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x,y,obj_player)) {
+            <string>event_inherited();
+if(place_meeting(x,y,obj_player)) {
     scr_try_hit_player(damage, noone);
 }
 

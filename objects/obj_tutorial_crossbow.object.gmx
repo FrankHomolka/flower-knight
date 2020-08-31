@@ -82,8 +82,10 @@ scr_destructible_particle(spr_barrel_particle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x, y, obj_non_living_damage_parent)) {
-    audio_play_sound(snd_destructible, 8, false);
+            <string>event_inherited();
+
+if(place_meeting(x, y, obj_non_living_damage_parent)) {
+    audio_play_sound_on(myEmitter, snd_destructible, false, 8);
     part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
     part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
     scr_spawn_item_drop();
@@ -92,7 +94,7 @@ scr_destructible_particle(spr_barrel_particle)
 
 if(canAttack &amp;&amp; distance_to_point(obj_player.x,obj_player.y) &lt; 200) {
     with(instance_create(x,y,obj_tutorial_arrow)) {
-        audio_play_sound(snd_arrow_shot, 10, false);
+        audio_play_sound_on(myEmitter, snd_arrow_shot, false, 8);
         move_towards_point(other.x + other.attackPointX, other.y + other.attackPointY, 3);
         source = noone;
         attackDamage = other.attackDamage;

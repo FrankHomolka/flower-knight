@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>healAmount = 25;
-pickedUp = false;
+            <string>pickedUp = false;
 life = 150;
 event_inherited();
 bounce=2;
@@ -66,13 +65,13 @@ image_index = random(image_number);
     obj_quest_controller.gold++;
     switch(choose(1,2,3)) {
         case 1:
-            audio_play_sound(snd_coin_pickup_1, 5, false);
+            audio_play_sound(snd_buy_item, 5, false);
             break;
         case 2:
-            audio_play_sound(snd_coin_pickup_2, 5, false);
+            audio_play_sound(snd_buy_item, 5, false);
             break;
         case 3:
-            audio_play_sound(snd_coin_pickup_3, 5, false);
+            audio_play_sound(snd_buy_item, 5, false);
             break;
     }
     pickedUp = true;

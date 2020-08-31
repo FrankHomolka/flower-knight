@@ -30,6 +30,8 @@
 /* Set sprite */
 randomSprite = choose(1, 2, 3, 4);
 destructSprite = "none";
+destroySound = -1;
+destroyed = false;
 switch(randomSprite) {
     case 1:
         sprite_index = spr_barrel;
@@ -73,13 +75,19 @@ if(destructSprite != "none") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x, y, obj_non_living_damage_parent)) {
-    audio_play_sound(snd_destructible, 8, false);
-    part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-    part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
-    scr_spawn_item_drop();
-    if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
-    instance_destroy();
+            <string>event_inherited();
+
+
+if(!audio_is_playing(destroySound)) { 
+    if(destroyed) instance_destroy();
+    if(place_meeting(x, y, obj_non_living_damage_parent)) {
+        destroySound = audio_play_sound_on(myEmitter, snd_destructible, false, 1);
+        part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
+        part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
+        scr_spawn_item_drop();
+        if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+        destroyed = true;
+    }
 }
 </string>
           </argument>
@@ -103,8 +111,10 @@ if(destructSprite != "none") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(sprite_width - 1, sprite_height / 3.5, 7, 7);
-draw_self();
+            <string>if(!destroyed) {
+    scr_draw_entity_shadow(sprite_width - 1, sprite_height / 3.5, 7, 7);
+    draw_self();
+}
 </string>
           </argument>
         </arguments>

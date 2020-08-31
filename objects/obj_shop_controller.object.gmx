@@ -85,7 +85,7 @@ instance_create(x,y,obj_shop);
 if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
     if(obj_player.interact) {
         if(!activated) {
-            audio_play_sound(snd_open_shop, 10, false);
+            audio_play_sound_on(myEmitter, snd_open_shop, false, 1); 
             activated = true;
             with(obj_shop_item) {
                 visible = true;
@@ -93,7 +93,7 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
         }
     } else if(obj_player.close) {
         activated = false;
-            audio_play_sound(snd_close_shop, 10, false);
+        audio_play_sound_on(myEmitter, snd_close_shop, false, 1); 
         with(obj_shop_item) {
             visible = false;
         }

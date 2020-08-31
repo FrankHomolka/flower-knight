@@ -31,7 +31,7 @@ attackDamage = 50;
 critChance = 0;
 enemyHit = -1;
 image_speed = 0.5;
-audio_play_sound(snd_explosion, 5, false);
+audio_play_sound_on(myEmitter, snd_explosion, false, 1); 
 </string>
           </argument>
         </arguments>

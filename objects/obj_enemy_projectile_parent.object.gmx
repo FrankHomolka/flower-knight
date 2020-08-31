@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>reflected = false;
+            <string>event_inherited();
+
+reflected = false;
 reflectedCounter = 0;
 </string>
           </argument>
@@ -49,7 +51,8 @@ reflectedCounter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>event_inherited();
+
 if(obj_player.canParry == true) {
     if(place_meeting(x,y,obj_player_basic_attack) &amp;&amp; !reflected) {
         var rand = random_range(100, 220);

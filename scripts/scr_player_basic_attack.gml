@@ -3,7 +3,7 @@ if(isAttacking) {
         
     /* Done once */
     if(basicAttackCounter == basicAttackLength && !spawnedAttack) {
-        audio_play_sound(snd_player_attack, 10, false);
+        audio_play_sound_on(myEmitter, snd_player_attack, false, 10);
         attackObject = instance_create(x, y, obj_player_basic_attack);
         attackFacing = direction_facing;
         spawnedAttack = true;

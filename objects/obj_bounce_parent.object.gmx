@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_sound_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    ///Properties
+            <string>event_inherited();
+    ///Properties
     timer=0;
     z=0;
     start_x=x;
@@ -65,7 +66,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    if(timer&lt;length)
+            <string>event_inherited();
+
+    if(timer&lt;length)
       timer++;
     else
     {

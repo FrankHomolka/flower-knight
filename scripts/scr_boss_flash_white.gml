@@ -7,9 +7,9 @@ yScale = argument2;
 /* Done once */
 if(object.flashCounter == object.flashTime) {
     if(hp > 0) {
-        audio_play_sound(object.hurtSound, 10, false);
+        audio_play_sound_on(myEmitter, object.hurtSound, false, 1);
     } else {
-        audio_play_sound(object.deathSound, 10, false);
+        audio_play_sound_on(myEmitter, object.deathSound, false, 1);
         sprite_index = deathSprite;
     }
 }

@@ -26,18 +26,27 @@
           <argument>
             <kind>1</kind>
             <string>if(obj_player.restart) {
-    with(obj_player) {
+    if(room == rm_tutorial) {
+        obj_player.x = obj_pit_respawn.x;
+        obj_player.y = obj_pit_respawn.y;
+        obj_player.hp = 100;
+        obj_player.state = states.idle;
+        obj_player.dead = false;
         instance_destroy();
+    } else {
+        with(obj_player) {
+            instance_destroy();
+        }
+        ds_list_clear(global.equippedItemsList);
+        ds_list_clear(obj_focus_controller.playerHitFocusList);
+        ds_list_clear(obj_focus_controller.playerAttackFocusList);
+        ds_list_clear(obj_focus_controller.playerDashFocusList);
+        ds_list_clear(obj_focus_controller.playerDashingFocusList);
+        ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
+        instance_create(x,y,obj_player);
+        obj_quest_controller.gold = 0;
+        room_goto(rm_shop);
     }
-    ds_list_clear(global.equippedItemsList);
-    ds_list_clear(obj_focus_controller.playerHitFocusList);
-    ds_list_clear(obj_focus_controller.playerAttackFocusList);
-    ds_list_clear(obj_focus_controller.playerDashFocusList);
-    ds_list_clear(obj_focus_controller.playerDashingFocusList);
-    ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
-    instance_create(x,y,obj_player);
-    obj_quest_controller.gold = 0;
-    room_goto(rm_shop);
 }
 
 if(room == rm_shop) {
@@ -72,6 +81,13 @@ if(room == rm_shop) {
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
+if(room == rm_tutorial) {
+    text = "Press 'R' to respawn";
+} else {
+    text = "Press 'R' to return to shop";
+}
+
+draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_color(c_black);
@@ -79,9 +95,9 @@ draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "YOU ARE DEAD", 13., 13,
 draw_set_color(c_white);
 draw_text_transformed(gw / 2, (gh / 2) - 100, "YOU ARE DEAD", 13, 13, 0);
 draw_set_color(c_black);
-draw_text_transformed((gw / 2) - 6, (gh / 2) + 100 - 6, "Press 'R' to return to shop", 7, 7, 0);
+draw_text_transformed((gw / 2) - 6, (gh / 2) + 100 - 6, text, 7, 7, 0);
 draw_set_color(c_white);
-draw_text_transformed(gw / 2, (gh / 2) + 100, "Press 'R' to return to shop", 7, 7, 0);
+draw_text_transformed(gw / 2, (gh / 2) + 100, text, 7, 7, 0);
 draw_set_color(c_black);
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);

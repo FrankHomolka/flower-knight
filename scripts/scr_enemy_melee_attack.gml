@@ -19,7 +19,7 @@ if(attackCounter == attackTime) {
 /* Play attack sound */
 if(image_index == attackFrame && !playedSound) {
     playedSound = true;
-    audio_play_sound(attackSound, 10, false);
+    audio_play_sound_on(myEmitter, attackSound, false, 1);
 }
 
 /* Try and hit player */

@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attackDamage = 20;
+            <string>event_inherited();
+
+attackDamage = 20;
 image_speed = 0.2;
-audio_play_sound(snd_strike, 10, false);
+audio_play_sound_on(myEmitter, snd_strike, false, 1); 
 </string>
           </argument>
         </arguments>
@@ -50,7 +52,9 @@ audio_play_sound(snd_strike, 10, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_index == 5) {
+            <string>event_inherited();
+
+if(image_index == 5) {
     with(obj_enemy_general_parent) {
         if(place_meeting(x,y,other)) {
             scr_try_hit_enemy(other.attackDamage, self, false, 0);

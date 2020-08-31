@@ -29,7 +29,7 @@
 bounce=3;
 height=64;
 life = 0;
-audio_play_sound(snd_boss_2_shoot, 5, false);
+audio_play_sound_on(myEmitter, snd_boss_2_shoot, false, 1); 
 scr_artillery_particle();
 damage = 40;
 </string>

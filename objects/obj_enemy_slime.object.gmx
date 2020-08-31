@@ -104,7 +104,7 @@ if(state == states.walk) {
         scr_basic_enemy_walk();
     } else {
         if(!audio_is_playing(walkSound)) {
-            audio_play_sound(walkSound, 10, false);
+            audio_play_sound_on(myEmitter, walkSound, false, 1);
         }
         path_end();
         speed = 0;

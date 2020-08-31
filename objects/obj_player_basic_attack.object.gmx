@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>critChance = obj_player.critChance;
+            <string>event_inherited();
+
+critChance = obj_player.critChance;
 enemyHit = -1;
 </string>
           </argument>

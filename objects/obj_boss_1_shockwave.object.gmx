@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scale = 0.01
+            <string>event_inherited();
+
+scale = 0.01
 image_xscale = scale;
 image_yscale = scale;
 life = 300;
@@ -84,7 +86,8 @@ damage = 20;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>event_inherited();
+
 scale += 0.04;
 image_xscale = scale;
 image_yscale = scale;

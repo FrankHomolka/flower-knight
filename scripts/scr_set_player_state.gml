@@ -63,12 +63,13 @@ if(hit) {
     state = states.hit;
 }
 
+scr_check_pit();
+
 /* Death State */
 if(hp <= 0) {
     state = states.death;
 }
 
-scr_check_pit();
 
 if(room == rm_game_start || room == rm_win || room == rm_quest) {
     state = states.inactive;

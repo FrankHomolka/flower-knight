@@ -25,7 +25,7 @@ if(image_index == attackFrame && !spawnedAttack) {
     } else {
         image_xscale = 1;
     }
-    audio_play_sound(attackSound, 10, false);
+    audio_play_sound_on(myEmitter, attackSound, false, 1);
     attackProjectile = instance_create(x + lengthdir_x(5, image_angle), y + lengthdir_y(5, image_angle), attackObject);
     with(attackProjectile) {
         source = other;

@@ -24,7 +24,7 @@ if(image_index == attackFrame && !spawnedAttack) {
     } else {
         image_xscale = 1;
     }
-    audio_play_sound(attackSound, 10, false);
+    audio_play_sound_on(myEmitter, attackSound, false, 1);
     
     with(instance_create(x,y,obj_blank)) {
         spawnOthers = true;

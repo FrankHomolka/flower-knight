@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 
-
 /* Mob values */
 chaseDistance = 150;
 moveSpeed = 1.2;
@@ -112,8 +111,8 @@ switch(state) {
         break;
     case states.hit:
         scr_enemy_hit();
-        if(attacking)
-            scr_enemy_ranged_attack();
+        //if(attacking)
+        //    scr_enemy_ranged_attack();
         break;
     case states.death:
         if(!dead) {

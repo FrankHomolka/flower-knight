@@ -139,7 +139,7 @@
     <instance objName="obj_plus" x="486" y="149" name="inst_1D6E8B29" locked="0" code="step = 3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hint" x="698" y="81" name="inst_9A7D57E8" locked="0" code="step = 5;&#xA;text = 'HINT: Dodging makes you invincible';&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="736" y="80" name="inst_1D659628" locked="0" code="" scaleX="10" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="832" y="112" name="inst_071FE405" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="848" y="112" name="inst_071FE405" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="736" y="112" name="inst_62A41872" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="896" y="48" name="inst_BC66725B" locked="0" code="" scaleX="2" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="128" name="inst_DE94B068" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
@@ -148,7 +148,7 @@
     <instance objName="obj_wall" x="704" y="176" name="inst_050FB489" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="736" y="128" name="inst_2CD3B0CF" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="880" y="48" name="inst_09AF5DDD" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_next_arrow" x="832" y="160" name="inst_F25859CA" locked="0" code="step = 5;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_next_arrow" x="832" y="128" name="inst_F25859CA" locked="0" code="step = 5;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tutorial_crossbow" x="889" y="104" name="inst_D6B860C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hint" x="863" y="147" name="inst_2890BA63" locked="0" code="step = 6;&#xA;text = 'Tutorial Complete! Enter the ladder.';&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
@@ -1176,12 +1176,10 @@
     <tile bgName="bck_area_1" x="800" y="224" w="16" h="16" xo="48" yo="0" id="10002918" name="inst_F52167D4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="800" y="208" w="16" h="16" xo="48" yo="0" id="10002919" name="inst_0B02DA3E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="784" y="208" w="16" h="16" xo="48" yo="0" id="10002920" name="inst_3334BE3B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bck_area_1" x="832" y="128" w="16" h="16" xo="0" yo="16" id="10002921" name="inst_1F43557C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="848" y="128" w="16" h="16" xo="0" yo="16" id="10002922" name="inst_F79845A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="864" y="128" w="16" h="16" xo="0" yo="16" id="10002923" name="inst_482AC842" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="880" y="128" w="16" h="16" xo="0" yo="16" id="10002924" name="inst_A65D55E9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="896" y="128" w="16" h="16" xo="0" yo="16" id="10002925" name="inst_A3401266" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bck_area_1" x="832" y="112" w="16" h="16" xo="16" yo="0" id="10002926" name="inst_D40090B5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="848" y="112" w="16" h="16" xo="16" yo="0" id="10002927" name="inst_352A153B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="864" y="112" w="16" h="16" xo="16" yo="0" id="10002928" name="inst_21449F93" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="880" y="112" w="16" h="16" xo="16" yo="0" id="10002929" name="inst_9B581E8B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1306,6 +1304,8 @@
     <tile bgName="bck_area_1" x="912" y="192" w="16" h="16" xo="48" yo="32" id="10003059" name="inst_B27718D2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="912" y="208" w="16" h="16" xo="48" yo="32" id="10003060" name="inst_C147A2A1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bck_area_1" x="912" y="224" w="16" h="16" xo="48" yo="32" id="10003061" name="inst_F5D41D75" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bck_area_1" x="832" y="112" w="16" h="16" xo="16" yo="32" id="10003062" name="inst_2E3E4F03" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bck_area_1" x="832" y="128" w="16" h="16" xo="16" yo="32" id="10003063" name="inst_92170065" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

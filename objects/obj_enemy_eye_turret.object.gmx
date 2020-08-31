@@ -36,7 +36,7 @@ with(instance_create(x,y,obj_eyeball)) {
 }
 
 /* Mob values */
-chaseDistance = 250;
+chaseDistance = 400;
 moveSpeed = 0;
 hp = 40;
 attackDamage = 20;
@@ -57,8 +57,10 @@ walkAnimationSpeed = 0.1;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
 
 /* Sounds */
+channelSoundIndex = -1;
+channelSound = snd_eye_channel;
 walkSound = snd_step;
-deathSound = snd_enemy_death;
+deathSound = snd_eyeball_die;
 attackSound = snd_eyeball_attack;
 hurtSound = snd_enemy_hit;
 
@@ -103,15 +105,20 @@ deathCounter = deathTime;
 /* Execute State */
 switch(state) {
     case states.idle:
+        if(audio_is_playing(channelSoundIndex)) audio_stop_sound(channelSoundIndex);
         scr_enemy_idle();
         break;
     case states.walk:
+        if(audio_is_playing(channelSoundIndex)) audio_stop_sound(channelSoundIndex);
         scr_enemy_walk();
         break;
     case states.attack:
         if(!instance_exists(attackProjectile)) {
             scr_enemy_ranged_attack();
         } else {
+            if(!audio_is_playing(channelSoundIndex)) {
+                channelSoundIndex = audio_play_sound_on(myEmitter, channelSound, true, 1);
+            }
             sprite_index = spr_eye_turret_channeling;
         }
         break;
@@ -120,10 +127,14 @@ switch(state) {
         if(!instance_exists(attackProjectile)) {
             scr_enemy_ranged_attack();
         } else {
+            if(!audio_is_playing(channelSoundIndex)) {
+                channelSoundIndex = audio_play_sound_on(myEmitter, channelSound, true, 1);
+            }
             sprite_index = spr_eye_turret_channeling;
         }
         break;
     case states.death:
+        if(audio_is_playing(channelSoundIndex)) audio_stop_sound(channelSoundIndex);
         if(!dead) obj_quest_controller.eyeturretKills++;
         if(instance_exists(attackProjectile))
             with(attackProjectile)

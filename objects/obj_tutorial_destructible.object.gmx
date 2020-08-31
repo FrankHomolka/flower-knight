@@ -70,8 +70,10 @@ if(destructSprite != "none") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x, y, obj_non_living_damage_parent)) {
-    audio_play_sound(snd_destructible, 8, false);
+            <string>event_inherited();
+
+if(place_meeting(x, y, obj_non_living_damage_parent)) {
+    audio_play_sound_on(myEmitter, snd_destructible, false, 1); 
     part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
     part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
     scr_spawn_item_drop();

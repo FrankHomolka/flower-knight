@@ -11,7 +11,7 @@ if(object.flashCounter == object.flashTime) {
         if(object == obj_player) {
             audio_play_sound(object.hurtSound, 100, false);
         } else {
-            audio_play_sound(object.hurtSound, 10, false);
+            audio_play_sound_on(myEmitter, object.hurtSound, false, 1);
         }
         if(hitSprite != false)
             sprite_index = hitSprite;
@@ -19,7 +19,7 @@ if(object.flashCounter == object.flashTime) {
         if(object == obj_player) {
             audio_play_sound(object.deathSound, 100, false);
         } else {
-            audio_play_sound(object.deathSound, 10, false);
+            audio_play_sound_on(myEmitter, object.deathSound, false, 1);
         }
         sprite_index = deathSprite;
     }

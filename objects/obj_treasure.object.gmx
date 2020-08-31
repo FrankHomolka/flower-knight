@@ -67,7 +67,9 @@ fireEmitter = part_emitter_create(fireParticle);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!opened) {
+            <string>event_inherited();
+
+if(!opened) {
     if(distance_to_point(obj_player.x, obj_player.y) &lt; 15) {
         interactable = true;
     } else {
@@ -80,12 +82,12 @@ fireEmitter = part_emitter_create(fireParticle);
         part_type_direction(fireParticle, 40, 140, 0, 0.2);
         part_emitter_region(fireSystem, fireEmitter, x + 8, x + 8,  y + 4, y + 4, ps_shape_ellipse, ps_distr_linear);
         part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(30, 50));
-        audio_play_sound(snd_open_shop, 10, false);
+        audio_play_sound_on(myEmitter, snd_open_shop, false, 1);
     }
 } else {
     if(counter &lt; 120) {
         if(counter % 3 == 0) {
-            audio_play_sound(snd_open_chest, 10, false);
+            audio_play_sound_on(myEmitter, snd_open_chest, false, 1);
             part_emitter_burst(fireSystem, fireEmitter, fireParticle, random_range(3, 7));
             instance_create(x + 8,y - 8, obj_enemy_drop);
         }
