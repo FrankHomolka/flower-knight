@@ -35,6 +35,7 @@ graceTimeMax = 3;
 graceTime = graceTimeMax;
 critChance = 0;
 state = states.hit;
+depth = -y + sprite_width;
 </string>
           </argument>
         </arguments>

@@ -28,13 +28,14 @@
             <string>event_inherited();
 
 /* Mob values */
-chaseDistance = 400;
+chaseDistance = 250;
 moveSpeed = 0.6;
 hp = 40;
 attackDamage = 20;
 customWalk = false;
 attackObject = obj_magic_ball_burst;
 goldDropOnDeath = 20;
+drawCounter = random(100);
 
 /* Animation and Sprites */
 sprite = spr_burst_idle;
@@ -118,6 +119,8 @@ switch(state) {
         scr_enemy_death();
         break;
 }
+
+drawCounter += 0.1;
 </string>
           </argument>
         </arguments>
@@ -143,7 +146,11 @@ switch(state) {
             <string>if(!pit) {
     scr_draw_entity_shadow(13, 4, 0, 0);
 }
-event_inherited();
+draw_sprite_ext(sprite_index, image_index, x, y + sin(drawCounter), image_xscale, image_yscale, image_angle, drawColor, image_alpha);
+
+if((state == states.hit || state == states.death)){
+    scr_flash_white(self, image_xscale, image_yscale, previousState);
+}
 </string>
           </argument>
         </arguments>

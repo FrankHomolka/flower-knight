@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>life = 500;
+            <string>event_inherited();
+
+depth = -y + sprite_width;
+life = 500;
 lifeStartAnimaton = 350;
 lifeCounter = life;
 damage = 25;
@@ -54,7 +57,8 @@ critChance = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifeCounter--;
+            <string>event_inherited();
+lifeCounter--;
 if(lifeCounter&lt;0){
     instance_destroy();
 }
