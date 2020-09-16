@@ -29,7 +29,7 @@
 
 // REMOVE TO TEST WITH SAME SEED
 randomize();
-
+skipStory = true;
 view_wview[0] = 320;
 view_hview[0] = 180;
 
@@ -73,7 +73,7 @@ instance_create(x,y,obj_view_controller);
 if(image_index &gt; 0 &amp;&amp; mouse_check_button_pressed(mb_right)) {
     image_index--;
 }
-if(image_index &gt; image_number - 1) {
+if(image_index &gt; image_number - 1 || skipStory) {
     room_goto_next();
 }
 counter+=0.1;

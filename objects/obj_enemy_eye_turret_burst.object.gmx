@@ -46,7 +46,7 @@ attackSprite = spr_burst_attack;
 attackUpSprite = spr_burst_attack;
 deathSprite = spr_burst_death;
 hitSprite = spr_burst_idle;
-walkAnimationSpeed = 0.1;
+walkAnimationSpeed = 0.2;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
 minDistance = 35;
 
@@ -61,7 +61,7 @@ attackCooldownMax = 100;
 attackDistance = 80;
 attackTime = 100;
 attackCounter = attackTime;
-attackFrame = 0;
+attackFrame = 4;
 numShots = 0;
 maxNumShots = 3;
 
@@ -70,7 +70,7 @@ baseKnockback = 0;
 knockbackCounter = baseKnockback;
 
 /* Death */
-deathTime = 20;
+deathTime = 45;
 deathCounter = deathTime;
 </string>
           </argument>
@@ -113,9 +113,6 @@ switch(state) {
         break;
     case states.death:
         if(!dead) obj_quest_controller.eyeturretKills++;
-        if(instance_exists(attackProjectile))
-            with(attackProjectile)
-                instance_destroy();
         scr_enemy_death();
         break;
 }

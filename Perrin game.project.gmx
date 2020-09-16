@@ -188,7 +188,7 @@
         <sprite>sprites\spr_artillery_hit</sprite>
         <sprite>sprites\spr_artillery_death</sprite>
       </sprites>
-      <sprites name="Eye Turret Burst">
+      <sprites name="Floater">
         <sprite>sprites\spr_burst_idle</sprite>
         <sprite>sprites\spr_burst_walk</sprite>
         <sprite>sprites\spr_burst_death</sprite>
@@ -330,6 +330,9 @@
       <sprite>sprites\spr_shop</sprite>
       <sprite>sprites\spr_enter_dungeon</sprite>
       <sprite>sprites\spr_shop_blown_up</sprite>
+      <sprite>sprites\spr_progress_book</sprite>
+      <sprite>sprites\spr_unlocked_items</sprite>
+      <sprite>sprites\spr_question_mark</sprite>
     </sprites>
     <sprites name="Tutorial">
       <sprite>sprites\spr_control_square</sprite>

@@ -62,8 +62,18 @@ if(!view_enabled) {
 
 if(instance_exists(obj_player)) {
     if(room == rm_shop || room == rm_tutorial) {
+        if(light != noone &amp;&amp; view_wview[0] != 216) {
+            if(surface_exists(light)) {
+                surface_resize(light, 384, 216);
+            }
+        }
+        view_wview[0] = 384;
+        view_hview[0] = 216;
+        
         view_object[0] = obj_player;
     } else {
+        view_wview[0] = 320;
+        view_hview[0] = 180;
         view_xview[0] = floor(obj_player.x - (view_wview[0] / 2));
         view_yview[0] = floor(obj_player.y - (view_hview[0] / 2));
     }

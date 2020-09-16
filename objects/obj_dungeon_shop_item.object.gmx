@@ -30,7 +30,6 @@ depth = -10000000;
 mouseInside = false;
 message = "";
 
-counter = random_range(0, 10);
 startY = y;
 startX = x;
 
