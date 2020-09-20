@@ -31,7 +31,8 @@
 /* Mob values */
 chaseDistance = 200;
 moveSpeed = 0.55;
-hp = 45;
+maxHp = 45;
+hp = maxHp;
 attackDamage = 10;
 customWalk = false;
 attackObject = obj_enemy_archer_attack;

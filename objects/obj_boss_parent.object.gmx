@@ -41,7 +41,6 @@ playedCutscene = false;
 /* Draw hp */
 initial_gw = 1600;
 initial_gh = 900;
-hpColor = make_colour_rgb(197, 53, 70);
 loadingText = false;
 life = 200;
 lifeCounter = life;

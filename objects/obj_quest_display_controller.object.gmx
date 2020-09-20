@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>numQuests = 3;
+counter = 0;
 i = 0;
 initial_gw = 1600;
 initial_gh = 900;
@@ -36,6 +37,7 @@ unlockedItemMap = '';
 unlockedItemCounter = 450;
 unlockedItemQueue = ds_queue_create();
 questProgress[3] = '';
+objectiveTextColor = make_colour_hsv(170, 184, 94);
 obj_quest_controller.counter = 0;
 </string>
           </argument>
@@ -82,9 +84,11 @@ obj_quest_controller.counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(ord('H'))) {
+            <string>if(keyboard_check_pressed(ord('H')) &amp;&amp; room != rm_quest) {
     showQuests = !showQuests;
 }
+if(showQuests)
+    counter+=0.02;
 </string>
           </argument>
         </arguments>
@@ -114,32 +118,36 @@ if(showQuests) {
     horBlock = gw / 32;
     vertBlock = gh / 32;
     scaleFactor = (gw / initial_gw);
+    draw_set_font(fnt_ui);
     
     draw_set_alpha(0.4);
     draw_set_color(c_black);
     draw_rectangle(0, 0, gw, gh, false);
     draw_set_alpha(1);
+    draw_sprite_ext(spr_quest_background, 0, gw / 2, gh / 2, 7.2 * scaleFactor, 7.2 * scaleFactor, 0, c_white, 1);
     draw_set_valign(fa_top);
     draw_set_halign(fa_center);
     draw_set_color(c_white);
-    draw_text_transformed(gw / 2 , vertBlock, 'Quests', 6 * scaleFactor, 6 * scaleFactor, 0);
     draw_set_halign(fa_left);
     for(r = 0; r &lt; ds_list_size(obj_quest_controller.questList); r++) {
         item = obj_quest_controller.questList[| r];
+        draw_set_color(objectiveTextColor);
+        draw_text_ext_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1)) + (3.2 * vertBlock), item[? 'questText'], 14, 170, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1.5)) - (1 * vertBlock), questProgress[r], 2.5 * scaleFactor, 2.5 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_transformed(gw / 2 - (3.2*horBlock), 5 * vertBlock * (r + 1), item[? 'questText'], 4 * scaleFactor, 4 * scaleFactor, 0);
-        draw_set_color(c_yellow);
-        draw_text_transformed(gw / 2 - (3.2*horBlock), 5 * vertBlock * (r + 1.5), questProgress[r], 3 * scaleFactor, 3 * scaleFactor, 0);
-        draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4 * horBlock), (5 * vertBlock * (r + 1)) + vertBlock, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+        draw_text_ext_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1)) + (3.1 * vertBlock), item[? 'questText'], 14, 170, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4.4 * horBlock), (6 * vertBlock * (r + 1)) + (3 * vertBlock), 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1);
     }
     
     if(room == rm_quest) {
-        draw_set_color(c_white);
+        /*draw_set_color(c_white);
         draw_set_alpha(1);
-        draw_rectangle(gw / 3, gh / 1.5, gw / 1.5, gh / 1.2, false);
-        draw_set_color(c_black);
+        draw_rectangle(gw / 3, gh / 1.5, gw / 1.5, gh / 1.2, false);*/
         draw_set_halign(fa_center);
-        draw_text_transformed(gw / 2, gh / 1.45, 'Accept Quests', 5 * scaleFactor, 5 * scaleFactor, 0);
+        draw_set_color(objectiveTextColor);
+        draw_text_transformed(gw / 2, gh / 1.19, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
+        draw_set_color(c_white);
+        draw_text_transformed(gw / 2, gh / 1.2, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
         if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
             gw / 3, gh / 1.5, gw / 1.5, gh / 1.2)) {
             if(!mouseInside) {

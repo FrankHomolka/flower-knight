@@ -44,6 +44,7 @@ pitLagCounter = pitLagTime;
 goldDropOnDeath = 10;
 goldMultiplier = 1;
 lastDamageSource = '';
+hpColor = make_colour_rgb(197, 53, 70);
 
 // Hit vars
 damageAmount = 0;
@@ -115,6 +116,13 @@ previousState = states.idle;
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, drawColor, image_alpha);
+if(hp &gt; 0) {
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_rectangle(x-10, y - (sprite_height / 1.3), (x + 10), y - (sprite_height / 1.3) + 2, false );
+    draw_set_color(hpColor);
+    draw_rectangle(x-10, y - (sprite_height / 1.3), (x - 10) + (20 * (hp/maxHp)), y - (sprite_height / 1.3) + 2, false );
+}
 
 if((state == states.hit || state == states.death)){
     scr_flash_white(self, image_xscale, image_yscale, previousState);

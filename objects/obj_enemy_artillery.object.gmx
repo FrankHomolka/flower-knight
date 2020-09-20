@@ -31,7 +31,8 @@
 /* Mob values */
 chaseDistance = 300;
 moveSpeed = 0;
-hp = 30;
+maxHp = 30;
+hp = maxHp;
 attackDamage = 60;
 customWalk = false;
 attackObject = obj_artillery_attack;

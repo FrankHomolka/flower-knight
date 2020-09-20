@@ -38,7 +38,8 @@ with(instance_create(x,y,obj_eyeball)) {
 /* Mob values */
 chaseDistance = 400;
 moveSpeed = 0;
-hp = 40;
+maxHp = 40;
+hp = maxHp;
 attackDamage = 20;
 customWalk = true;
 attackObject = obj_magic_ball;

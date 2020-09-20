@@ -341,6 +341,9 @@
       <sprite>sprites\spr_tutorial_dodge</sprite>
       <sprite>sprites\spr_tutorial_attack</sprite>
     </sprites>
+    <sprites name="Quests">
+      <sprite>sprites\spr_quest_background</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_outside</background>
@@ -715,7 +718,6 @@
       </objects>
     </objects>
     <objects name="Shop">
-      <object>objects\obj_shop</object>
       <object>objects\obj_shop_controller</object>
       <object>objects\obj_shop_item</object>
       <object>objects\obj_dungeon_shop_item</object>

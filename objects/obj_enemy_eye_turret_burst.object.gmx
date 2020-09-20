@@ -30,7 +30,8 @@
 /* Mob values */
 chaseDistance = 250;
 moveSpeed = 0.6;
-hp = 40;
+maxHp = 40;
+hp = maxHp;
 attackDamage = 20;
 customWalk = false;
 attackObject = obj_magic_ball_burst;

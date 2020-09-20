@@ -30,7 +30,8 @@
 /* Mob values */
 chaseDistance = 100;
 moveSpeed = 0.9;
-hp = 40;
+maxHp = 40;
+hp = maxHp;
 customWalk = true;
 attackDamage = 40;
 slimeCounter = 0;

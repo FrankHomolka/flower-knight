@@ -30,7 +30,7 @@ y += 25;
 activated = false;
 spawnedItems = false;
 rowLength = 7;
-instance_create(x,y,obj_shop);
+image_speed = 0.1;
 
 initial_gw = 1600;
 initial_gh = 900;
@@ -190,6 +190,7 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
           <argument>
             <kind>1</kind>
             <string>// don't remove me
+draw_sprite(spr_shop, image_index, x, y);
 </string>
           </argument>
         </arguments>

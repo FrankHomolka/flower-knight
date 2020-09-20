@@ -30,7 +30,8 @@
 /* Mob values */
 chaseDistance = 150;
 moveSpeed = 1.2;
-hp = 30;
+maxHp = 30;
+hp = maxHp;
 attackDamage = 10;
 customWalk = false;
 attackObject = obj_skeleton_attack;

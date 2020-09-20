@@ -32,6 +32,7 @@ scr_enemy_hit_particle();
 state = states.idle;
 dead = false;
 canAttack = true;
+currentAttack = 'burst';
 
 /* Mob values */
 moveSpeed = 0.3;

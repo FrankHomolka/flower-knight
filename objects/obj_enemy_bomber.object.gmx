@@ -32,7 +32,8 @@ sound = noone;
 /* Mob values */
 chaseDistance = 170;
 moveSpeed = 1.2;
-hp = 25;
+maxHp = 25;
+hp = maxHp;
 attackDamage = 40;
 customWalk = false;
 attackObject = obj_enemy_bomb_explosion;
