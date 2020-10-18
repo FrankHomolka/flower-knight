@@ -67,7 +67,7 @@ for(genX = 0; genX < 24; genX++) {//20
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_destructible);
                 break;
             }
-            // Enemy Random
+            // Enemy Random R:255
             case $0000ff:
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 enemyChoice = floor(random(ds_list_size(enemyList)));

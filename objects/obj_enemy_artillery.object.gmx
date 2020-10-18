@@ -29,7 +29,7 @@
 
 
 /* Mob values */
-chaseDistance = 300;
+chaseDistance = 200;
 moveSpeed = 0;
 maxHp = 30;
 hp = maxHp;

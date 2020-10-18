@@ -9,8 +9,10 @@ if(hp <= 0) {
     state = states.walk;
     
     /* Choose attack State */
-    if(attackCooldownCounter < 0) 
+    if(attackCooldownCounter < 0) {
+        slashAttack = false;
         state = states.chooseAttack;
+    }
     
     /* Stunned state */
     if(stunned) {

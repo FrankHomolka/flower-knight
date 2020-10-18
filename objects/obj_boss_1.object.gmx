@@ -32,10 +32,11 @@ previousState = state;
 goldDropOnDeath = 200;
 
 moveSpeed = 0.7;
-attackCooldown = 165;
+attackCooldown = 250;
 attackCooldownCounter = attackCooldown;
 currentAttack = "spin";
 spinAttackLength = 100;
+slashAttack = false;
 shockwaveAttackLength = 300;
 slashCooldownMax = 40;
 slashCooldown = 0;
@@ -53,8 +54,8 @@ attackDamage = 20;
 /* Hit timer */
 baseKnockback = 0;
 knockbackCounter = baseKnockback;
-hurtSound = snd_enemy_hit;
-deathSound = snd_enemy_death;
+hurtSound = snd_boss_1_hit;
+deathSound = snd_boss_1_death;
 deathSprite = spr_boss_1_death;
 hitSprite = false;
 hitDamage = 0;
@@ -109,7 +110,7 @@ scr_boss_1_execute_state();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(25, 8, 0,8);
+            <string>scr_draw_entity_shadow(38, 14, 0,20);
 
 event_inherited();
 </string>

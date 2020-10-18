@@ -29,7 +29,8 @@
 
 chaseAttackLength = 100;
 attackLength = chaseAttackLength;
-hp = 80;
+maxHp = 80;
+hp = maxHp;
 hit = false;
 chargeTime = 150;
 chargeCounter = chargeTime;

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.showBossRoom = false;
+            <string>global.showBossRoom = true;
 global.showTutorial = true;
 global.playMusic = true;
 global.difficulty = 'HARD';
@@ -71,7 +71,9 @@ playNext = themeMusic;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.playMusic) {
+            <string>if(room == rm_shop) playNext = themeMusic;
+
+if(global.playMusic) {
     if(currentMusic != playNext) {
         audio_stop_sound(currentMusic);
         currentMusic = playNext;

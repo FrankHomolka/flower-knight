@@ -104,7 +104,6 @@ if(place_meeting(x,y,obj_player) &amp;&amp; !hitPlayer) {
     if(lagtime &lt; 0) {
         hitPlayer = true;
         if(obj_player.state != states.dash) {
-            color = c_red;
             scr_try_hit_player(damage, noone);
         }
     }

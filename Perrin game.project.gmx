@@ -36,6 +36,12 @@
       <sound>sound\snd_pickup_head</sound>
       <sound>sound\snd_eyeball_die</sound>
       <sound>sound\snd_eye_channel</sound>
+      <sound>sound\snd_shockwave</sound>
+      <sound>sound\snd_spin_move</sound>
+      <sound>sound\snd_boss_1_hit</sound>
+      <sound>sound\snd_boss_1_prepare</sound>
+      <sound>sound\snd_boss_1_slash</sound>
+      <sound>sound\snd_boss_1_death</sound>
     </sounds>
     <sounds name="Environment">
       <sound>sound\snd_destructible</sound>
@@ -122,6 +128,7 @@
         <sprite>sprites\spr_boss_1_spin_attack</sprite>
         <sprite>sprites\spr_boss_1_shockwave_attack</sprite>
         <sprite>sprites\spr_boss_1_slash</sprite>
+        <sprite>sprites\spr_boss_shock</sprite>
       </sprites>
       <sprites name="Boss 2">
         <sprite>sprites\spr_boss_2_top</sprite>
@@ -184,9 +191,11 @@
       </sprites>
       <sprites name="Artillery">
         <sprite>sprites\spr_artillery_idle</sprite>
+        <sprite>sprites\spr_artillery_target</sprite>
         <sprite>sprites\spr_artillery_attack</sprite>
         <sprite>sprites\spr_artillery_hit</sprite>
         <sprite>sprites\spr_artillery_death</sprite>
+        <sprite>sprites\spr_small_explosion</sprite>
       </sprites>
       <sprites name="Floater">
         <sprite>sprites\spr_burst_idle</sprite>
@@ -195,12 +204,35 @@
         <sprite>sprites\spr_burst_attack</sprite>
         <sprite>sprites\spr_burst_ball</sprite>
       </sprites>
-      <sprite>sprites\spr_magic_ball_single</sprite>
       <sprites name="Skeleton Bomber">
         <sprite>sprites\spr_skeleton_bomber_idle</sprite>
         <sprite>sprites\spr_skeleton_bomber_attack</sprite>
         <sprite>sprites\spr_skeleton_bomber_death</sprite>
         <sprite>sprites\spr_skeleton_bomber_walk</sprite>
+      </sprites>
+      <sprites name="Wizard">
+        <sprite>sprites\spr_wizard_walk</sprite>
+        <sprite>sprites\spr_wizard_channel</sprite>
+      </sprites>
+      <sprites name="Necromancer">
+        <sprite>sprites\spr_necromancer_channel</sprite>
+        <sprite>sprites\spr_necromancer_ball</sprite>
+        <sprite>sprites\spr_necromancer_walk</sprite>
+        <sprite>sprites\spr_necromancer_death</sprite>
+        <sprite>sprites\spr_necromancer_hit</sprite>
+        <sprite>sprites\spr_green_particle</sprite>
+      </sprites>
+      <sprites name="Grabber">
+        <sprite>sprites\spr_grabber_base</sprite>
+        <sprite>sprites\spr_grabber_attack</sprite>
+        <sprite>sprites\spr_grabber_death</sprite>
+      </sprites>
+      <sprites name="Fairy">
+        <sprite>sprites\spr_fairy_death</sprite>
+        <sprite>sprites\spr_fairy_walk</sprite>
+        <sprite>sprites\spr_fairy_attack</sprite>
+        <sprite>sprites\spr_fairy_ball</sprite>
+        <sprite>sprites\spr_purple_particle</sprite>
       </sprites>
     </sprites>
     <sprites name="Environment">
@@ -276,10 +308,20 @@
           <sprite>sprites\spr_room_maze</sprite>
         </sprites>
         <sprites name="Dungeon 2">
-          <sprite>sprites\spr_room_group_2</sprite>
-          <sprite>sprites\spr_room_open</sprite>
-          <sprite>sprites\spr_room_run</sprite>
-          <sprite>sprites\spr_room_pit_ring</sprite>
+          <sprites name="Level 1">
+            <sprite>sprites\spr_room_open</sprite>
+            <sprite>sprites\spr_room_group_2</sprite>
+            <sprite>sprites\spr_room_pit_ring</sprite>
+            <sprite>sprites\spr_room_run</sprite>
+          </sprites>
+          <sprites name="Level 2">
+            <sprite>sprites\spr_room_2_1</sprite>
+            <sprite>sprites\spr_room_2_2</sprite>
+          </sprites>
+          <sprites name="Level 3">
+            <sprite>sprites\spr_room_3_1</sprite>
+            <sprite>sprites\spr_room_3_2</sprite>
+          </sprites>
         </sprites>
       </sprites>
       <sprites name="GUI">
@@ -657,29 +699,39 @@
     </objects>
     <objects name="Enemy">
       <objects name="Characters">
-        <object>objects\obj_enemy_skeleton</object>
-        <object>objects\obj_enemy_slime</object>
-        <object>objects\obj_enemy_artillery</object>
         <object>objects\obj_enemy_charger</object>
-        <object>objects\obj_enemy_archer</object>
         <object>objects\obj_enemy_bomber</object>
-        <object>objects\obj_skeleton_bomber</object>
-        <object>objects\obj_enemy_eye_turret</object>
-        <object>objects\obj_enemy_eye_turret_burst</object>
-        <object>objects\obj_enemy_eye_turret_single</object>
+        <objects name="Area 1">
+          <object>objects\obj_enemy_eye_turret_burst</object>
+          <object>objects\obj_enemy_eye_turret_single</object>
+          <object>objects\obj_enemy_skeleton</object>
+          <object>objects\obj_skeleton_bomber</object>
+          <object>objects\obj_enemy_eye_turret</object>
+        </objects>
+        <objects name="Area 2">
+          <object>objects\obj_enemy_slime</object>
+          <object>objects\obj_enemy_archer</object>
+          <object>objects\obj_enemy_artillery</object>
+          <object>objects\obj_enemy_grabber</object>
+          <object>objects\obj_enemy_fairy</object>
+        </objects>
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
         <object>objects\obj_magic_ball_single</object>
+        <object>objects\obj_fairy_attack</object>
         <object>objects\obj_enemy_slime_trail</object>
         <object>objects\obj_enemy_archer_attack</object>
         <object>objects\obj_artillery_attack</object>
+        <object>objects\obj_artillery_missile</object>
         <object>objects\obj_skeleton_attack</object>
         <object>objects\obj_eyeball</object>
         <object>objects\obj_enemy_bomb_explosion</object>
         <object>objects\obj_enemy_drop</object>
+        <object>objects\obj_artillery_explosion</object>
+        <object>objects\obj_artillery</object>
       </objects>
     </objects>
     <objects name="Focus">

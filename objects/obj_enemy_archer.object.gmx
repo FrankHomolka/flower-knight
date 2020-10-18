@@ -57,11 +57,11 @@ attackSound = snd_arrow_shot;
 hurtSound = snd_enemy_hit;
 
 /* Attack Values */
-attackCooldownMax = 80;
+attackCooldownMax = 90;
 attackDistance = 80;
-attackTime = 20;
+attackTime = 50;
 attackCounter = attackTime;
-attackFrame = 2;
+attackFrame = 4;
 
 /* Knockback */
 baseKnockback = 3;

@@ -30,7 +30,7 @@ object.flashCounter--;
 /* Only draw flash for first half */
 if(object.flashCounter > (object.flashTime / 2)) {
     shader_set(shd_white_hit);
-    draw_sprite_ext(sprite_index,image_index,x,y,xScale,yScale,0,c_white,1);
+    draw_sprite_ext(sprite_index,image_index,x,y,xScale,yScale,image_angle,c_white,1);
     shader_reset();
 }
 

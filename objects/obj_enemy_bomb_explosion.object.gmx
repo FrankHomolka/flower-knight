@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 critChance = 0;
-attackDamage = 50;
+attackDamage = 25;
 critChance = 0;
 enemyHit = -1;
 image_speed = 0.5;

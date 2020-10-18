@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 
-depth = -y + sprite_width;
+depth = -y - 50;
 life = 500;
 lifeStartAnimaton = 350;
 lifeCounter = life;

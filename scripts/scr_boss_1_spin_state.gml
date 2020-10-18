@@ -3,7 +3,7 @@
 
 /* Done Once */
 if(attackLength == spinAttackLength) {
-    image_speed = 0.1;
+    image_speed = 0.15;
     sprite_index = spr_boss_1_spin;
     attackObject = instance_create(x, y, obj_boss_1_spin);
     with(attackObject) {
@@ -32,6 +32,7 @@ if(attackLength == spinAttackLength) {
     if(y > obj_player.y) {
         ymove *= -1;
     }
+    atkSound = audio_play_sound_on(myEmitter, snd_spin_move, true, 1);
 }
 
 attackLength--;
@@ -41,6 +42,7 @@ attackObject.image_angle += 10;
 
 if(place_meeting(x + xmove, y + ymove, obj_wall) 
 || place_meeting(x + xmove, y + ymove, obj_pit)) {
+    audio_stop_sound(atkSound);
     with(attackObject) {
         instance_destroy();
     }
@@ -55,6 +57,7 @@ y += ymove * 1.5;
 
 /* EXIT STATE */
 if(attackLength < 0) {
+    audio_stop_sound(atkSound);
     with(attackObject) {
         instance_destroy();
     }

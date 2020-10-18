@@ -79,12 +79,14 @@ if(destructSprite != "none") {
 
 
 if(!audio_is_playing(destroySound)) { 
-    if(destroyed) instance_destroy();
+    if(destroyed) {
+        scr_spawn_item_drop();
+        instance_destroy();
+    }
     if(place_meeting(x, y, obj_non_living_damage_parent)) {
         destroySound = audio_play_sound_on(myEmitter, snd_destructible, false, 1);
         part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
         part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
-        scr_spawn_item_drop();
         if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
         destroyed = true;
     }

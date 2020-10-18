@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>target = instance_create(obj_player.x,obj_player.y,obj_boss_2_artillery);
-with(instance_create(x,y,obj_boss_2_missile)) {
+            <string>target = instance_create(obj_player.x,obj_player.y,obj_artillery);
+with(instance_create(x,y,obj_artillery_missile)) {
     damage = 20;
     target = other.target;
     target_x = target.x;

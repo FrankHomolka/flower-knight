@@ -140,19 +140,17 @@ if(showQuests) {
     }
     
     if(room == rm_quest) {
-        /*draw_set_color(c_white);
-        draw_set_alpha(1);
-        draw_rectangle(gw / 3, gh / 1.5, gw / 1.5, gh / 1.2, false);*/
         draw_set_halign(fa_center);
+        draw_set_alpha(1);
         draw_set_color(objectiveTextColor);
         draw_text_transformed(gw / 2, gh / 1.19, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
         draw_set_color(c_white);
         draw_text_transformed(gw / 2, gh / 1.2, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
+        /*draw_set_color(c_black);
+        draw_set_alpha(0.2);
+        draw_rectangle(gw / 3, gh / 1.25, gw / 1.5, gh / 1.05, false);*/
         if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
-            gw / 3, gh / 1.5, gw / 1.5, gh / 1.2)) {
-            if(!mouseInside) {
-                audio_play_sound(snd_hover_item, false, 1);
-            }
+            gw / 3, gh / 1.25, gw / 1.5, gh / 1.05)) {
             mouseInside = true;
         } else {
             mouseInside = false;

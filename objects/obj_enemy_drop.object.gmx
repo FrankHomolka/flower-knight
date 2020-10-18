@@ -28,14 +28,18 @@
             <string>pickedUp = false;
 life = 150;
 event_inherited();
-bounce=2;
-height=15;
+bounce=floor(random_range(1,6));
+height=floor(random_range(15,20));
 shadow_scale=0.35;
 shadow_scale_min=0.1;
 shadow_scale_max=0.35;
 length=room_speed / 3;
-target_x = x + random_range(-20,20);
-target_y = y + random_range(-20,20);
+
+a = random(1) * 2 * pi;
+radius = 20 * sqrt(random(1));
+
+target_x = x + (radius * cos(a));
+target_y = y + (radius * sin(a));
 spd = 0.08;
 image_speed = 0.2;
 image_index = random(image_number);
