@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xOff = 0;
+            <string>event_inherited();
+xOff = 0;
 yOff = 0;
 lightSize = 50;
 critChance = obj_player.critChance;

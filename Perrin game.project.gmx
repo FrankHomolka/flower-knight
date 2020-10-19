@@ -75,6 +75,7 @@
       <sprite>sprites\spr_focus_crit_chance</sprite>
       <sprite>sprites\spr_focus_strike</sprite>
       <sprite>sprites\spr_focus_fireball</sprite>
+      <sprite>sprites\spr_focus_missile</sprite>
       <sprite>sprites\spr_focus_freeze</sprite>
       <sprite>sprites\spr_focus_fire</sprite>
       <sprite>sprites\spr_focus_angel</sprite>
@@ -89,6 +90,7 @@
       <sprite>sprites\spr_fireball</sprite>
       <sprite>sprites\spr_fire_particle</sprite>
       <sprite>sprites\spr_fire</sprite>
+      <sprite>sprites\spr_missile</sprite>
       <sprite>sprites\spr_strike</sprite>
       <sprite>sprites\spr_focus_greed</sprite>
     </sprites>
@@ -203,6 +205,7 @@
         <sprite>sprites\spr_burst_death</sprite>
         <sprite>sprites\spr_burst_attack</sprite>
         <sprite>sprites\spr_burst_ball</sprite>
+        <sprite>sprites\spr_blue_particle</sprite>
       </sprites>
       <sprites name="Skeleton Bomber">
         <sprite>sprites\spr_skeleton_bomber_idle</sprite>
@@ -335,6 +338,7 @@
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_small_button</sprite>
       <sprite>sprites\spr_wide_button</sprite>
       <sprite>sprites\spr_story</sprite>
     </sprites>
@@ -518,7 +522,9 @@
         <script>scripts\scr_focus_shadow.gml</script>
         <script>scripts\scr_focus_shadow_effect.gml</script>
         <script>scripts\scr_focus_thorns.gml</script>
+        <script>scripts\scr_focus_missile.gml</script>
         <script>scripts\scr_focus_thorns_effect.gml</script>
+        <script>scripts\scr_focus_missile_effect.gml</script>
         <script>scripts\scr_focus_shield.gml</script>
         <script>scripts\scr_focus_shield_effect.gml</script>
         <script>scripts\scr_shield_quest.gml</script>
@@ -607,6 +613,10 @@
       <script>scripts\scr_toggle_difficulty.gml</script>
       <script>scripts\scr_goto_menu.gml</script>
       <script>scripts\scr_clear_save.gml</script>
+      <script>scripts\scr_music_gain_up.gml</script>
+      <script>scripts\scr_sounds_gain_up.gml</script>
+      <script>scripts\scr_music_gain_down.gml</script>
+      <script>scripts\scr_sounds_gain_down.gml</script>
     </scripts>
     <scripts name="GUI">
       <script>scripts\scr_draw_heart.gml</script>
@@ -742,6 +752,7 @@
       <object>objects\obj_player_slime</object>
       <object>objects\obj_player_fireball</object>
       <object>objects\obj_player_strike</object>
+      <object>objects\obj_player_missile</object>
     </objects>
     <objects name="Bosses">
       <objects name="Boss 1">
@@ -812,6 +823,10 @@
   <help>
     <rtf>help.rtf</rtf>
   </help>
+  <audiogroups name="audiogroups">
+    <audiogroup name="audiogroup_default"/>
+    <audiogroup name="audiogroup_music"/>
+  </audiogroups>
   <TutorialState>
     <IsTutorial>0</IsTutorial>
     <TutorialName></TutorialName>

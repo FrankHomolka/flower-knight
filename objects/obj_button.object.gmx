@@ -38,6 +38,9 @@ switch(type) {
     case "wide":
         sprite_index = spr_wide_button;
         break;
+    case "small":
+        sprite_index = spr_small_button;
+        break;
     default:
         sprite_index = spr_button;
         break;

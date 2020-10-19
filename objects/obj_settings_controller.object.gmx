@@ -29,17 +29,24 @@
 global.showTutorial = true;
 global.playMusic = true;
 global.difficulty = 'HARD';
-global.unlockAllItems = true;
+global.unlockAllItems = false;
+global.paused = false;
+global.musicGain = 0.5;
+global.soundsGain = 0.5;
 /* Read saved settings */
 if(file_exists("settings.ini")) {
     ini_open("settings.ini");
     global.playMusic = ini_read_real("sound", "playMusic", true);
     global.showTutorial = ini_read_real("general", "showTutorial", true);
+    global.musicGain = ini_read_real("general", "musicGain", 0.5);
+    global.soundsGain = ini_read_real("general", "soundsGain", 0.5);
     ini_close(); 
 } else {
     ini_open("settings.ini");
     ini_write_real("sound", "playMusic", true);
     ini_write_real("general", "showTutorial", true);
+    ini_write_real("general", "musicGain", 0.5);
+    ini_write_real("general", "soundsGain", 0.5);
     ini_close(); 
     show_debug_message("settings file does not exist");
 }
@@ -49,6 +56,15 @@ bossMusic = snd_boss_music_1;
 
 currentMusic = false;
 playNext = themeMusic;
+
+if (!audio_group_is_loaded(audiogroup_music)) {
+    audio_group_load(audiogroup_music);
+}
+if (!audio_group_is_loaded(audiogroup_default)) {
+    audio_group_load(audiogroup_default);
+}
+audio_group_set_gain(audiogroup_music, global.musicGain, 0);
+audio_group_set_gain(audiogroup_default, global.soundsGain, 0);
 </string>
           </argument>
         </arguments>
@@ -88,6 +104,19 @@ if(global.playMusic) {
     if(audio_is_playing(currentMusic)) 
         audio_pause_sound(currentMusic);
     currentMusic = false;
+}
+
+if(keyboard_check_pressed(vk_up)) {
+    
+}
+if(keyboard_check_pressed(vk_down)) {
+    audio_group_set_gain(audiogroup_music, 0.2, 0);
+}
+if(keyboard_check_pressed(vk_right)) {
+    audio_group_set_gain(audiogroup_default, 1, 0);
+}
+if(keyboard_check_pressed(vk_left)) {
+    audio_group_set_gain(audiogroup_default, 0.2, 0);
 }
 </string>
           </argument>

@@ -1,4 +1,4 @@
 ///scr_player_inactive_state
 drawSelf = false;
 
-scr_get_global_player_inputs();
+if(global.paused == false) scr_get_global_player_inputs();

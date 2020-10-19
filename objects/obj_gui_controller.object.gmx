@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-/* Minimap */
+            <string>/* Minimap */
 minimapRoomWidth = 24;
 minimapRoomHeight = 16;
 minimapScale = 2.5;
@@ -91,6 +90,20 @@ hpColor = make_colour_rgb(242, 79, 70);
        minimapY = 0;
     }
 }
+
+if(room == rm_procedural) {
+    if(keyboard_check_pressed(ord('P')) &amp;&amp; global.paused == false) {
+        instance_deactivate_object(obj_sound_parent);
+        instance_activate_object(obj_player);
+        instance_activate_object(obj_dungeon_shop);
+        global.paused = true;
+    }
+    if(keyboard_check_pressed(vk_escape) &amp;&amp; global.paused == true) {
+        instance_activate_object(obj_sound_parent); 
+        global.paused = false;
+    }
+}
+
 </string>
           </argument>
         </arguments>
@@ -120,90 +133,105 @@ horBlock = gw / 32;
 vertBlock = gh / 32;
 scaleFactor = (gw / initial_gw);
 
-depth = -10000;
-draw_set_alpha(1);
-
-/* UI */
-if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) {
-    draw_set_font(fnt_ui);
-    draw_set_color(c_white);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-    
-    /* Gold gained */
-    draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
-    draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_quest_controller.gold, 3 * scaleFactor, 3 * scaleFactor, 0);
-    
-    /* Player hp */
-    draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, 1);
-    draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, 1);
-    if(obj_player.hp &gt; 0) {
-        hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
-        draw_set_color(c_black);
-        draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-        draw_set_color(c_white);
-        draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-    } else {
-        hpText = 'HP 0/' + string(obj_player.maxHp);
-        draw_set_color(c_black);
-        draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-        draw_set_color(c_white);
-        draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-    }
-    draw_set_font(fnt_1);
-    
-}
-
-/* Draw minimap background */
-if(loading == false &amp;&amp; room == rm_procedural &amp;&amp; instance_exists(obj_level_generator)) {
-    scr_draw_minimap();
-}
-
-/* Draw bought items */
-scr_draw_bought_items();
-
-/* Debug Draw */
-if(drawDebug) {
-    draw_set_color(c_white);
-    if(floor(get_timer()) % 10 == 0) {
-        realFps = floor(fps_real);
-        fakeFps = floor(fps);
-    }
-    draw_text_transformed(horBlock * 2, gh - (2 * vertBlock), "area: " + string(obj_area_controller.area), 3, 3, 0);
-    draw_text_transformed(horBlock * 2, gh - (4 * vertBlock), "level: " + string(obj_area_controller.level + 1), 3, 3, 0);
-    draw_text_transformed(horBlock * 2, gh - (6 * vertBlock), "real fps: " + string(realFps), 3, 3, 0);
-    draw_text_transformed(horBlock * 2, gh - (8 * vertBlock), "fps: " + string(fakeFps), 3, 3, 0);
-}
-
-if(obj_player.godMode) {
-    draw_set_color(c_white);
-    draw_text_transformed(horBlock * 4, gh - (10 * vertBlock), "GODMODE ACTIVE", 3, 3, 0);
-}
-
-/* Draw gameover screen */
-if(obj_player.dead) {
-    if(!instance_exists(obj_gameover_controller)) {
-        instance_create(x,y,obj_gameover_controller);
-    }
-}
-
-/* Draw loading Screen */
-depth = -10000000;
-if(loading) {
+if(global.paused == false) {
+    depth = -10000;
     draw_set_alpha(1);
-    /* Black background */
-    draw_set_color(c_black);
-    draw_rectangle(0,0,gw,gh, false);
-    draw_set_color(c_white);
     
-    /* LOADING text */
+    /* UI */
+    if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) {
+        draw_set_font(fnt_ui);
+        draw_set_color(c_white);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_middle);
+        
+        /* Gold gained */
+        draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+        draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_quest_controller.gold, 3 * scaleFactor, 3 * scaleFactor, 0);
+        
+        /* Player hp */
+        draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, 1);
+        draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, 1);
+        if(obj_player.hp &gt; 0) {
+            hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
+            draw_set_color(c_black);
+            draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+            draw_set_color(c_white);
+            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+        } else {
+            hpText = 'HP 0/' + string(obj_player.maxHp);
+            draw_set_color(c_black);
+            draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+            draw_set_color(c_white);
+            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+        }
+        draw_set_font(fnt_1);
+        
+    }
+    
+    /* Draw minimap background */
+    if(loading == false &amp;&amp; room == rm_procedural &amp;&amp; instance_exists(obj_level_generator)) {
+        scr_draw_minimap();
+    }
+    
+    /* Draw bought items */
+    scr_draw_bought_items();
+    
+    /* Debug Draw */
+    if(drawDebug) {
+        draw_set_color(c_white);
+        if(floor(get_timer()) % 10 == 0) {
+            realFps = floor(fps_real);
+            fakeFps = floor(fps);
+        }
+        draw_text_transformed(horBlock * 2, gh - (2 * vertBlock), "area: " + string(obj_area_controller.area), 3, 3, 0);
+        draw_text_transformed(horBlock * 2, gh - (4 * vertBlock), "level: " + string(obj_area_controller.level + 1), 3, 3, 0);
+        draw_text_transformed(horBlock * 2, gh - (6 * vertBlock), "real fps: " + string(realFps), 3, 3, 0);
+        draw_text_transformed(horBlock * 2, gh - (8 * vertBlock), "fps: " + string(fakeFps), 3, 3, 0);
+    }
+    
+    if(obj_player.godMode) {
+        draw_set_color(c_white);
+        draw_text_transformed(horBlock * 4, gh - (10 * vertBlock), "GODMODE ACTIVE", 3, 3, 0);
+    }
+    
+    /* Draw gameover screen */
+    if(obj_player.dead) {
+        if(!instance_exists(obj_gameover_controller)) {
+            instance_create(x,y,obj_gameover_controller);
+        }
+    }
+    
+    /* Draw loading Screen */
+    depth = -10000000;
+    if(loading) {
+        draw_set_alpha(1);
+        /* Black background */
+        draw_set_color(c_black);
+        draw_rectangle(0,0,gw,gh, false);
+        draw_set_color(c_white);
+        
+        /* LOADING text */
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "LOADING...", 7, 7, 0);
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        findMapStart = true;
+        drawingLoadingScreen = true;
+    }
+} else {
+    draw_set_alpha(1);
+    draw_set_color($7b7bc1);
+    draw_rectangle(0,0,gw,gh,false);
+    
+    draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "LOADING...", 7, 7, 0);
+    draw_text_transformed((gw / 2) - 6, (gh / 2) - (6 * vertBlock), "PAUSED", 7, 7, 0);
+    draw_text_transformed((gw / 2) - 6, (gh / 2), "Press 'Escape' to close", 6, 6, 0);
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);
-    findMapStart = true;
-    drawingLoadingScreen = true;
+    
 }
 </string>
           </argument>

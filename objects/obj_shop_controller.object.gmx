@@ -38,20 +38,17 @@ var unlocked = false;
 
 /*                         DEFAULT UNLOCKED ITEMS               */
 if(ds_list_size(global.itemsUnlocked) == 0) {
-    /*ds_list_add(global.itemsUnlocked, global.itemList[| 0]);
-    ds_list_add(global.itemsUnlocked, global.itemList[| 1]);
-    ds_list_add(global.itemsUnlocked, global.itemList[| 2]);
-    ds_list_add(global.itemsUnlocked, global.itemList[| 3]);
-    ds_list_add(global.itemsUnlocked, global.itemList[| 4]);
-    ds_list_add(global.itemsUnlocked, global.itemList[| 5]);*/
+    
+    scr_find_item('MISSILE');
+    ds_list_add(global.itemsUnlocked, item);
     scr_save_item_list();
 }
 
-/*if(global.unlockAllItems) {
+if(global.unlockAllItems) {
     for(var j = 0; j &lt; ds_list_size(global.itemList); j++) {
         ds_list_add(global.itemsUnlocked, global.itemList[| j]);  
     }
-}*/
+}
 
 // If less than 2 items to unlock
 if(ds_list_size(global.itemList) - ds_list_size(global.itemsUnlocked) &lt; 3) {

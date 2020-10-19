@@ -100,6 +100,23 @@ if(room != currentRoom) {
             onClick = scr_toggle_music;
             instance_change(obj_button, true);
         }
+        // Music volume
+        with(instance_create(20,20,obj_blank)) {
+            text = "-";
+            offsetY = -10;
+            offsetX = 80;
+            type = "small";
+            onClick = scr_music_gain_down;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "+";
+            offsetY = -10;
+            offsetX = 110;
+            type = "small";
+            onClick = scr_music_gain_up;
+            instance_change(obj_button, true);
+        }
         with(instance_create(20,20,obj_blank)) {
             if(global.showTutorial) {
                 text = "TURN TUTORIAL OFF";
@@ -110,6 +127,23 @@ if(room != currentRoom) {
             offsetY = 20;
             offsetX = 0;
             onClick = scr_toggle_tutorial;
+            instance_change(obj_button, true);
+        }
+        // Sound volume
+        with(instance_create(20,20,obj_blank)) {
+            text = "-";
+            offsetY = 20;
+            offsetX = 80;
+            type = "small";
+            onClick = scr_sounds_gain_down;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "+";
+            offsetY = 20;
+            offsetX = 110;
+            type = "small";
+            onClick = scr_sounds_gain_up;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -132,7 +166,6 @@ if(room != currentRoom) {
         instance_destroy();
     }
 }
-
 </string>
           </argument>
         </arguments>
@@ -165,6 +198,10 @@ if(room == rm_menu) {
     draw_rectangle(0,0,room_width,room_height,false);
     draw_set_color(c_white);
     draw_text_transformed(room_width / 2, 20, "SETTINGS", 2, 2, 0);
+    draw_text_transformed((room_width / 2) + 130, (room_height / 2) - 20, "Music Volume", 0.3, 0.3, 0);
+    draw_text_transformed((room_width / 2) + 130, (room_height / 2) - 10, string(global.musicGain * 100) + "/100", 0.3, 0.3, 0);
+    draw_text_transformed((room_width / 2) + 130, (room_height / 2) + 10, "Sound Volume", 0.3, 0.3, 0);
+    draw_text_transformed((room_width / 2) + 130, (room_height / 2) + 20, string(global.soundsGain * 100) + "/100", 0.3, 0.3, 0);
 }
 </string>
           </argument>

@@ -14,7 +14,7 @@ if(keyboard_check_pressed(ord('B'))) {
     room_goto(rm_shop);
 }
 
-if(keyboard_check_pressed(ord('P'))) {
+if(keyboard_check_pressed(ord('T'))) {
     if(obj_gui_controller.drawDebug == true) {
         obj_gui_controller.drawDebug = false;
     } else {
