@@ -32,6 +32,8 @@ global.itemList = ds_list_create();
 // Item Double Damage
 // Working here
 scr_add_item(global.itemList, "MISSILE", spr_focus_missile, scr_focus_missile, 200, false, 1, scr_focus_missile_effect, '', '', 0);
+scr_add_item(global.itemList, "HEART SEEKER", spr_focus_heart_seeker, scr_focus_heart_seeker, 200, true, 1, scr_focus_heart_seeker, '', '', 0);
+scr_add_item(global.itemList, "MEGA HEART", spr_focus_mega_heart, scr_focus_mega_heart, 200, true, 1, scr_focus_mega_heart, '', '', 0);
 scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 200, true, 1, scr_focus_speed, scr_speed_quest, 'Defeat 10 eye turrets', 100);
 scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 100, true, 1, scr_focus_damage, scr_damage_quest, 'Beat the first level', 100);
 scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 200, false, 1, scr_focus_burn_enemy_effect, scr_burn_enemy_quest, 'Blow up a skeleton', 100);

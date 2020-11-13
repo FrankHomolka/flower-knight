@@ -112,12 +112,12 @@ if(showQuests)
           <argument>
             <kind>1</kind>
             <string>depth = -1000000;
+gw = display_get_gui_width();
+gh = display_get_gui_height();
+horBlock = gw / 32;
+vertBlock = gh / 32;
+scaleFactor = (gw / initial_gw);
 if(showQuests) {
-    gw = display_get_gui_width();
-    gh = display_get_gui_height();
-    horBlock = gw / 32;
-    vertBlock = gh / 32;
-    scaleFactor = (gw / initial_gw);
     draw_set_font(fnt_ui);
     
     draw_set_alpha(0.4);

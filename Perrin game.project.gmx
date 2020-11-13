@@ -85,6 +85,7 @@
       <sprite>sprites\spr_focus_shadow</sprite>
       <sprite>sprites\spr_focus_bomb</sprite>
       <sprite>sprites\spr_focus_knockback</sprite>
+      <sprite>sprites\spr_focus_mega_heart</sprite>
       <sprite>sprites\spr_focus_slime</sprite>
       <sprite>sprites\spr_focus_attack_speed</sprite>
       <sprite>sprites\spr_fireball</sprite>
@@ -237,6 +238,18 @@
         <sprite>sprites\spr_fairy_ball</sprite>
         <sprite>sprites\spr_purple_particle</sprite>
       </sprites>
+      <sprites name="Flame Turret">
+        <sprite>sprites\spr_flame_turret_attack</sprite>
+        <sprite>sprites\spr_flame_turret</sprite>
+      </sprites>
+      <sprites name="Sniper">
+        <sprite>sprites\spr_sniper</sprite>
+        <sprite>sprites\spr_sniper_attack</sprite>
+      </sprites>
+      <sprites name="Hell Charger">
+        <sprite>sprites\spr_hell_charger_slash</sprite>
+        <sprite>sprites\spr_hell_charger_attack_side</sprite>
+      </sprites>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_wall</sprite>
@@ -274,6 +287,8 @@
     <sprites name="Items">
       <sprite>sprites\spr_shadow</sprite>
       <sprite>sprites\spr_heart_pickup</sprite>
+      <sprite>sprites\spr_focus_heart_seeker</sprite>
+      <sprite>sprites\spr_big_heart_pickup</sprite>
       <sprite>sprites\spr_gold</sprite>
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_bomb_explosion</sprite>
@@ -460,8 +475,11 @@
       </scripts>
       <script>scripts\scr_check_pit_enemy.gml</script>
       <scripts name="Unique States">
+        <script>scripts\scr_hell_charger_attack.gml</script>
         <script>scripts\scr_miniboss_1_attack.gml</script>
         <script>scripts\scr_burst_turret_attack.gml</script>
+        <script>scripts\scr_flame_turret_attack.gml</script>
+        <script>scripts\scr_sniper_attack.gml</script>
         <script>scripts\scr_skeleton_boss_attack.gml</script>
       </scripts>
     </scripts>
@@ -481,6 +499,8 @@
     <scripts name="Focus">
       <scripts name="One time">
         <script>scripts\scr_focus_speed.gml</script>
+        <script>scripts\scr_focus_mega_heart.gml</script>
+        <script>scripts\scr_focus_heart_seeker.gml</script>
         <script>scripts\scr_focus_attack_speed.gml</script>
         <script>scripts\scr_focus_parry.gml</script>
         <script>scripts\scr_focus_damage.gml</script>
@@ -725,11 +745,17 @@
           <object>objects\obj_enemy_grabber</object>
           <object>objects\obj_enemy_fairy</object>
         </objects>
+        <objects name="Area 3">
+          <object>objects\obj_enemy_flame_turret</object>
+          <object>objects\obj_enemy_sniper</object>
+          <object>objects\obj_enemy_hell_charger</object>
+        </objects>
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
+        <object>objects\obj_flame_turret_attack</object>
         <object>objects\obj_magic_ball_single</object>
         <object>objects\obj_fairy_attack</object>
         <object>objects\obj_enemy_slime_trail</object>
@@ -737,6 +763,7 @@
         <object>objects\obj_artillery_attack</object>
         <object>objects\obj_artillery_missile</object>
         <object>objects\obj_skeleton_attack</object>
+        <object>objects\obj_hell_charger_attack</object>
         <object>objects\obj_eyeball</object>
         <object>objects\obj_enemy_bomb_explosion</object>
         <object>objects\obj_enemy_drop</object>

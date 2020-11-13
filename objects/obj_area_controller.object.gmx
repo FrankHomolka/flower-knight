@@ -70,7 +70,7 @@ currentRoom = room;
     }
     
     // Go to win screen
-    if(area == 3) {
+    if(area == 4) {
         show_debug_message("YOU WIN");
         room_goto(rm_win);
     }
@@ -198,21 +198,63 @@ currentRoom = room;
             case 3:
                 with(instance_create(x,y,obj_blank)) { 
                     enemyList = ds_list_create();
-                    ds_list_add(enemyList, obj_enemy_slime, obj_enemy_charger, obj_enemy_archer);
+                    ds_list_add(enemyList, obj_enemy_flame_turret, obj_enemy_sniper, obj_enemy_hell_charger);
                     roomList = ds_list_create();
-                    for(i = 0; i &lt; 2; i++) 
+                    for(i = 0; i &lt; 3; i++) 
+                        ds_list_add(roomList, spr_room_group);
+                    for(i = 0; i &lt; 6; i++) 
                         ds_list_add(roomList, spr_room_open)
-                    for(i = 0; i &lt; 4; i++) 
-                        ds_list_add(roomList, spr_room_pillars)
-                    for(i = 0; i &lt; 4; i++) 
-                        ds_list_add(roomList, spr_room_group)
-                    for(i = 0; i &lt; 4; i++) 
-                        ds_list_add(roomList, spr_room_empty)
-                    ds_list_add(roomList, spr_room_maze);
+                    for(i = 0; i &lt; 5; i++) 
+                        ds_list_add(roomList, spr_room_traps_enemies)
+                    for(i = 0; i &lt; 3; i++) 
+                        ds_list_add(roomList, spr_room_group_2)
+                    for(i = 0; i &lt; 5; i++) 
+                        ds_list_add(roomList, spr_room_pit_ring)
+                    for(i = 0; i &lt; 6; i++) 
+                        ds_list_add(roomList, spr_room_hallway); 
+                    for(i = 0; i &lt; 3; i++) 
+                        ds_list_add(roomList, spr_room_eye_corners)
                     ds_list_add(roomList, spr_room_wings);
+                    ds_list_add(roomList, spr_room_run);
+                    maxNumRooms = 14;
+                    
+                    if(other.level &gt;= 1) {
+                        ds_list_add(enemyList, obj_enemy_grabber);
+                        for(i = 0; i &lt; 4; i++) 
+                            ds_list_add(roomList, spr_room_burst_challenge);
+                        for(i = 0; i &lt; 4; i++) 
+                            ds_list_add(roomList, spr_room_burst);
+                        for(i = 0; i &lt; 3; i++) 
+                            ds_list_add(roomList, spr_room_dodge_challenge);
+                        for(i = 0; i &lt; 3; i++) 
+                            ds_list_add(roomList, spr_room_all);
+                        for(i = 0; i &lt; 8; i++) 
+                            ds_list_add(roomList, spr_room_2_1);
+                        for(i = 0; i &lt; 8; i++) 
+                            ds_list_add(roomList, spr_room_2_2);
+                        maxNumRooms = 15;
+                    }
+                    if(other.level == 2) {
+                        ds_list_add(enemyList, obj_enemy_fairy);
+                        for(i = 0; i &lt; 4; i++) 
+                            ds_list_add(roomList, spr_room_homing);
+                        for(i = 0; i &lt; 2; i++) 
+                            ds_list_add(roomList, spr_room_final_challenge);
+                        for(i = 0; i &lt; 8; i++) 
+                            ds_list_add(roomList, spr_room_3_1);
+                        for(i = 0; i &lt; 8; i++) 
+                            ds_list_add(roomList, spr_room_3_2);
+                        maxNumRooms = 16;
+                    }
+                    
+                    tileSheet = bck_area_2;
+                    if(other.level == 2) {
+                        boss = obj_boss_2;
+                    } else {
+                        boss = obj_enemy_archer_boss;
+                    }
                     maxNumRooms = 15;
                     tileSheet = bck_area_3;
-                    boss = obj_boss_2;
                     background_color = $2e2eb0;
                     instance_change(obj_level_generator,true);
                 }

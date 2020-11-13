@@ -110,7 +110,8 @@ switch(state) {
         break;
     case states.hit:
         scr_enemy_hit();
-        scr_burst_turret_attack();
+        if(attacking)
+            scr_burst_turret_attack();
         break;
     case states.death:
         if(!dead) obj_quest_controller.eyeturretKills++;

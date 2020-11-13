@@ -38,8 +38,11 @@ var unlocked = false;
 
 /*                         DEFAULT UNLOCKED ITEMS               */
 if(ds_list_size(global.itemsUnlocked) == 0) {
-    
+    scr_find_item('HEART SEEKER');
+    ds_list_add(global.itemsUnlocked, item);
     scr_find_item('MISSILE');
+    ds_list_add(global.itemsUnlocked, item);
+    scr_find_item('MEGA HEART');
     ds_list_add(global.itemsUnlocked, item);
     scr_save_item_list();
 }

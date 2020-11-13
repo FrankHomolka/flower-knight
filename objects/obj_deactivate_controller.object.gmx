@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>level = room;
-counter = 50;
+counter = 60;
 width = 768;
 height = 512;
 </string>
@@ -52,28 +52,27 @@ height = 512;
           <argument>
             <kind>1</kind>
             <string>if(global.paused == false) {
+    startX = obj_player.x - (width / 2);
+    startY = obj_player.y - (height / 2);
     if(room != level) {
         level = room;
-        //show_debug_message("deactivated objects");
         instance_deactivate_object(obj_enemy_parent);
         instance_deactivate_object(obj_wall);
         instance_deactivate_object(obj_boss_parent);
         instance_deactivate_object(obj_torch);
         instance_deactivate_object(obj_destructible);
-        instance_activate_region(obj_player.x - (width/2), obj_player.y - (height/2), width, height, true);
+        instance_activate_region(startX, startY, width, height, true);
     }
     
     counter--;
     if(counter &lt; 0) {
         counter = 60;
-        //show_debug_message("deactivated objects");
         instance_deactivate_object(obj_enemy_parent);
         instance_deactivate_object(obj_wall);
         instance_deactivate_object(obj_boss_parent);
         instance_deactivate_object(obj_torch);
         instance_deactivate_object(obj_destructible);
-        
-        instance_activate_region(obj_player.x - (width/2), obj_player.y - (height/2), width, height, true);
+        instance_activate_region(startX, startY, width, height, true);
     }
 }
 </string>

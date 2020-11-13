@@ -130,7 +130,7 @@ draw_set_halign(fa_left);
 if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
     drawX - (4 * scaleFactor * 8), drawY - (4 * scaleFactor * 8), 
     drawX + (4 * scaleFactor * 8), drawY + (4 * scaleFactor * 8))) {
-    if(!mouseInside) {
+    if(!mouseInside &amp;&amp; unlocked) {
         audio_play_sound(snd_hover_item, 10, false);
     }
     mouseInside = true;
