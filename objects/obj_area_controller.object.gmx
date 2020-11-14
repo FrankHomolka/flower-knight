@@ -57,7 +57,7 @@ currentRoom = room;
     // Reset level
     if(room == rm_shop) {
         level = 0;
-        area = 1;
+        area = 3;
     }
     
     // Unlock item
@@ -219,7 +219,7 @@ currentRoom = room;
                     maxNumRooms = 14;
                     
                     if(other.level &gt;= 1) {
-                        ds_list_add(enemyList, obj_enemy_grabber);
+                        ds_list_add(enemyList, obj_enemy_little_guy_spawner);
                         for(i = 0; i &lt; 4; i++) 
                             ds_list_add(roomList, spr_room_burst_challenge);
                         for(i = 0; i &lt; 4; i++) 

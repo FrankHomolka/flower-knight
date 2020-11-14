@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_static_depth_parent</parentName>
+  <parentName>obj_sound_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>life = 500;
+            <string>event_inherited();
+life = 500;
 lifeStartAnimaton = 350;
 lifeCounter = life;
 damage = 3;
@@ -57,7 +58,8 @@ image_yscale = yscale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifeCounter--;
+            <string>event_inherited();
+lifeCounter--;
 if(lifeCounter&lt;0){
     instance_destroy();
 }

@@ -98,6 +98,7 @@
     <sprites name="Enemy">
       <sprites name="Slime">
         <sprite>sprites\spr_slime</sprite>
+        <sprite>sprites\spr_littler_slime</sprite>
         <sprite>sprites\spr_enemy_slime_trail</sprite>
         <sprite>sprites\spr_slime_hit</sprite>
         <sprite>sprites\spr_slime_attack</sprite>
@@ -729,7 +730,6 @@
     </objects>
     <objects name="Enemy">
       <objects name="Characters">
-        <object>objects\obj_enemy_charger</object>
         <object>objects\obj_enemy_bomber</object>
         <objects name="Area 1">
           <object>objects\obj_enemy_eye_turret_burst</object>
@@ -747,8 +747,11 @@
         </objects>
         <objects name="Area 3">
           <object>objects\obj_enemy_flame_turret</object>
+          <object>objects\obj_enemy_little_guy</object>
+          <object>objects\obj_enemy_littler_guy</object>
           <object>objects\obj_enemy_sniper</object>
           <object>objects\obj_enemy_hell_charger</object>
+          <object>objects\obj_enemy_little_guy_spawner</object>
         </objects>
       </objects>
       <objects name="Other">

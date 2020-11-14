@@ -27,12 +27,17 @@
             <kind>1</kind>
             <string>target = false;
 numEnemies = instance_number(obj_enemy_general_parent);
-while(target == false) {
+for(var i = 0; i &lt; numEnemies; i++) {
     enemy = instance_find(obj_enemy_general_parent, floor(random(numEnemies)));
     if(distance_to_point(enemy.x, enemy.y) &lt; 150) {
         target = enemy;
     }
 }
+
+if(target == false) {
+    target = instance_nearest(x,y,obj_wall);
+}
+
 attackDamage = 5;
 enemyHit = false;
 lockedOn = false;
@@ -41,6 +46,7 @@ yOffset = 0;
 targetX = target.x;
 targetY = target.y;
 fired = false;
+timeToDestroy = 800;
 </string>
           </argument>
         </arguments>
@@ -82,6 +88,8 @@ if(counter &gt; 0) {
         instance_destroy();
     }
 }
+timeToDestroy--;
+if(timeToDestroy &lt; 0) instance_destroy();
 </string>
           </argument>
         </arguments>
