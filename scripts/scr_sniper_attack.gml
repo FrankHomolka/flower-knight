@@ -20,7 +20,8 @@ if(attackCounter == attackTime) {
 if(image_index == attackFrame && !spawnedAttack) {
     audio_play_sound_on(myEmitter, attackSound, false, 1);
     
-    if(!collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,false)) scr_try_hit_player(40, noone);
+    if(!collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,false)) 
+        instance_create(x,y,obj_sniper_shot);
     spawnedAttack = true;
 }
 

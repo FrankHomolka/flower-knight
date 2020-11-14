@@ -29,7 +29,7 @@
 
 /* Mob values */
 chaseDistance = 150;
-moveSpeed = 1.4;
+moveSpeed = 1;
 maxHp = 20;
 hp = maxHp;
 customWalk = true;
@@ -122,13 +122,18 @@ switch(state) {
 
 if(state == states.walk) {
     slimeCounter++;
-    if(!place_meeting(x,y,obj_boss_2_slime) &amp;&amp; (slimeCounter % 5 == 0)) {
+    if(!place_meeting(x,y,obj_enemy_slime_trail) &amp;&amp; (slimeCounter % 5 == 0)) {
         with(instance_create(x,y,obj_enemy_slime_trail)) {
             image_angle = other.direction + 90;
         }
     }
     if(image_index &gt; 1) {
-        scr_basic_enemy_walk();
+        if(distance_to_point(parent.x,parent.y) &gt; 16) {
+            move_towards_point(parent.x, parent.y, 1);
+        } else {
+            speed = 0; 
+            scr_basic_enemy_walk();
+        }
     } else {
         if(!audio_is_playing(walkSound)) {
             audio_play_sound_on(myEmitter, walkSound, false, 1);

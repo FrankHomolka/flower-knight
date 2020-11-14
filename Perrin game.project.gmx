@@ -759,6 +759,7 @@
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
         <object>objects\obj_flame_turret_attack</object>
+        <object>objects\obj_sniper_shot</object>
         <object>objects\obj_magic_ball_single</object>
         <object>objects\obj_fairy_attack</object>
         <object>objects\obj_enemy_slime_trail</object>
