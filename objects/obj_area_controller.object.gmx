@@ -57,7 +57,7 @@ currentRoom = room;
     // Reset level
     if(room == rm_shop) {
         level = 0;
-        area = 3;
+        area = 1;
     }
     
     // Unlock item

@@ -43,9 +43,9 @@ sprite = spr_flame_turret;
 idleSprite = spr_flame_turret;
 walkSprite = spr_flame_turret;
 walkUpSprite = spr_flame_turret;
-attackSprite = spr_flame_turret;
-attackUpSprite = spr_flame_turret;
-deathSprite = spr_flame_turret;
+attackSprite = spr_flame_turret_attack;
+attackUpSprite = spr_flame_turret_attack;
+deathSprite = spr_flame_turret_death;
 hitSprite = spr_flame_turret;
 walkAnimationSpeed = 0;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
@@ -54,15 +54,15 @@ minDistance = 35;
 /* Sounds */
 walkSound = snd_step;
 deathSound = snd_eyeball_die;
-attackSound = snd_eyeball_attack;
+attackSound = snd_shockwave;
 hurtSound = snd_enemy_hit;
 
 /* Attack Values */
-attackCooldownMax = 60;
+attackCooldownMax = 20;
 attackDistance = 80;
-attackTime = 60;
+attackTime = 75;
 attackCounter = attackTime;
-attackFrame = 0;
+attackFrame = 7;
 numShots = 0;
 maxNumShots = 3;
 
@@ -71,7 +71,7 @@ baseKnockback = 0;
 knockbackCounter = baseKnockback;
 
 /* Death */
-deathTime = 45;
+deathTime = 25;
 deathCounter = deathTime;
 </string>
           </argument>
@@ -162,8 +162,8 @@ switch(state) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!pit) {
-    scr_draw_entity_shadow(13, 4, 0, 0);
+            <string>if(!pit &amp;&amp; state != states.death) {
+    scr_draw_entity_shadow(20, 5, 0, 5);
 }
 event_inherited();
 </string>

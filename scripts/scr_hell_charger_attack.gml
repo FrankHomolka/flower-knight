@@ -33,9 +33,9 @@ attackX = x + lengthdir_x(slideDist, slideDir);
 attackY = y + lengthdir_y(slideDist, slideDir);
 
 
-if(image_index == 7 || image_index == 10 || image_index = 13) speed = 0;
+if(image_index == 6 || image_index == 9 || image_index = 12) speed = 0;
 
-if(image_index == 5 && !spawnedAttack) {
+if(image_index == 4 && !spawnedAttack) {
     if(!collision_line(x,y,attackX, attackY, obj_wall, false, false) && distance_to_point(attackX, attackY) > 16) {
         move_towards_point(attackX, attackY, slideSpeed);
     } else {
@@ -52,7 +52,7 @@ if(image_index == 5 && !spawnedAttack) {
     spawnedAttack = true;
 }
 
-if(image_index == 8 && spawnedAttack) {
+if(image_index == 7 && spawnedAttack) {
     if(!collision_line(x,y,attackX, attackY, obj_wall, false, false) && distance_to_point(attackX, attackY) > 16) {
         move_towards_point(attackX, attackY, slideSpeed);
     } else {
@@ -68,7 +68,7 @@ if(image_index == 8 && spawnedAttack) {
     spawnedAttack = false;
 }
 
-if(image_index == 11 && !spawnedAttack) {
+if(image_index == 10 && !spawnedAttack) {
     if(!collision_line(x,y,attackX, attackY, obj_wall, false, false) && distance_to_point(attackX, attackY) > 16) {
         move_towards_point(attackX, attackY, slideSpeed);
     } else {
