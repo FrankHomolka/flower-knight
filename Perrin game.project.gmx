@@ -248,6 +248,8 @@
       <sprites name="Sniper">
         <sprite>sprites\spr_sniper</sprite>
         <sprite>sprites\spr_sniper_attack</sprite>
+        <sprite>sprites\spr_sniper_walk</sprite>
+        <sprite>sprites\spr_sniper_death</sprite>
       </sprites>
       <sprites name="Hell Charger">
         <sprite>sprites\spr_hell_charger_slash</sprite>
@@ -258,6 +260,17 @@
         <sprite>sprites\spr_cultist_attack</sprite>
         <sprite>sprites\spr_cultist_death</sprite>
         <sprite>sprites\spr_cultist_walk</sprite>
+      </sprites>
+      <sprites name="Priest">
+        <sprite>sprites\spr_priest_attack</sprite>
+        <sprite>sprites\spr_priest_teleport</sprite>
+        <sprite>sprites\spr_priest_death</sprite>
+        <sprite>sprites\spr_priest</sprite>
+        <sprite>sprites\spr_buffed</sprite>
+      </sprites>
+      <sprites name="Snake">
+        <sprite>sprites\spr_snake_head_attack</sprite>
+        <sprite>sprites\spr_snake_head</sprite>
       </sprites>
     </sprites>
     <sprites name="Environment">
@@ -299,6 +312,7 @@
       <sprite>sprites\spr_focus_heart_seeker</sprite>
       <sprite>sprites\spr_big_heart_pickup</sprite>
       <sprite>sprites\spr_gold</sprite>
+      <sprite>sprites\spr_gold_bag</sprite>
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_bomb_explosion</sprite>
     </sprites>
@@ -756,8 +770,10 @@
         <objects name="Area 3">
           <object>objects\obj_enemy_flame_turret</object>
           <object>objects\obj_enemy_little_guy</object>
+          <object>objects\obj_enemy_snake</object>
           <object>objects\obj_enemy_littler_guy</object>
           <object>objects\obj_enemy_sniper</object>
+          <object>objects\obj_enemy_priest</object>
           <object>objects\obj_enemy_hell_charger</object>
           <object>objects\obj_enemy_little_guy_spawner</object>
         </objects>
@@ -779,6 +795,7 @@
         <object>objects\obj_eyeball</object>
         <object>objects\obj_enemy_bomb_explosion</object>
         <object>objects\obj_enemy_drop</object>
+        <object>objects\obj_gold_bag</object>
         <object>objects\obj_artillery_explosion</object>
         <object>objects\obj_artillery</object>
       </objects>

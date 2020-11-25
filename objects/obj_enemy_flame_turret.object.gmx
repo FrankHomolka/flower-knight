@@ -30,6 +30,7 @@
 /* Mob values */
 chaseDistance = 1000;
 moveSpeed = 0;
+initalMoveSpeed = moveSpeed;
 maxHp = 80;
 hp = maxHp;
 attackDamage = 20;
@@ -61,8 +62,9 @@ hurtSound = snd_enemy_hit;
 attackCooldownMax = 20;
 attackDistance = 80;
 attackTime = 75;
+initalAttackTime = attackTime;
 attackCounter = attackTime;
-attackFrame = 7;
+attackFrame = 6;
 numShots = 0;
 maxNumShots = 3;
 

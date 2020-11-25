@@ -31,22 +31,24 @@
 /* Mob values */
 chaseDistance = 200;
 moveSpeed = 0.55;
+initalMoveSpeed = moveSpeed;
 maxHp = 45;
 hp = maxHp;
 attackDamage = 10;
+initalAttackDamage = attackDamage;
 customWalk = false;
 attackObject = obj_enemy_archer_attack;
 goldDropOnDeath = 20;
 
 /* Animation and Sprites */
 sprite = spr_sniper;
-idleSprite = spr_sniper;
-walkSprite = spr_sniper;
-walkUpSprite = spr_sniper;
+idleSprite = spr_sniper_walk;
+walkSprite = spr_sniper_walk;
+walkUpSprite = spr_sniper_walk;
 attackSprite = spr_sniper_attack;
 attackUpSprite = spr_sniper_attack;
-deathSprite = spr_sniper;
-hitSprite = spr_archer_hit;
+deathSprite = spr_sniper_death;
+hitSprite = spr_sniper;
 walkAnimationSpeed = 0.1;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
 
@@ -60,6 +62,7 @@ hurtSound = snd_enemy_hit;
 attackCooldownMax = 90;
 attackDistance = 250;
 attackTime = 100;
+initalAttackTime = attackTime;
 attackCounter = attackTime;
 attackFrame = 9;
 
@@ -142,9 +145,15 @@ switch(state) {
 event_inherited();
 draw_set_alpha(1);
 if(state == states.attack &amp;&amp; !collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,false)) {
-    draw_set_color(c_green);
+    
+    draw_set_alpha(1);
+    draw_set_color(c_white);
     if(image_index &gt; attackFrame - 1) draw_set_color(c_red)
-    draw_line_width(x,y,obj_player.x,obj_player.y, (image_index / attackFrame) * 3 );
+    draw_line_width(x,y,obj_player.x,obj_player.y, 1 );
+    draw_set_color($d891e5);
+    if(image_index &gt; attackFrame - 1) draw_set_color(c_red)
+    draw_set_alpha(0.4);
+    draw_line_width(x,y,obj_player.x,obj_player.y, (image_index / attackFrame) * 6 );
 }
 </string>
           </argument>

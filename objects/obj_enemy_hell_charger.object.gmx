@@ -30,6 +30,7 @@
 /* Mob values */
 chaseDistance = 150;
 moveSpeed = 1.2;
+initalMoveSpeed = moveSpeed;
 maxHp = 30;
 hp = maxHp;
 attackDamage = 10;
@@ -62,6 +63,7 @@ attackCooldownMax = 45;
 attackCooldownCounter = 0;
 attackDistance = 50;
 attackTime = 80;
+initalAttackTime = attackTime;
 attackCounter = attackTime;
 attackFrame = 5;
 attackPause = true;

@@ -25,15 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>numSpawn = random_range(4,6);
+            <string>numSpawn = 3;
 minDistance = 0;
 moveSpeed = 0.4;
 path = path_add();
-for(var i = 0; i &lt; numSpawn; i++) {
-    with(instance_create(x + random_range(-12,12),y+ random_range(-12,12), obj_enemy_little_guy)) {
+/*for(var i = 0; i &lt; numSpawn; i++) {
+    with(instance_create(x + random_range(-12,12),y+ random_range(-12,12), obj_enemy_snake)) {
         parent = other;
     }
-}
+}*/
 chase = false;
 </string>
           </argument>
@@ -57,7 +57,7 @@ chase = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(chase == false &amp;&amp; distance_to_object(obj_player) &lt; 200 &amp;&amp; !collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,false)) chase = true;
+            <string>if(chase == false &amp;&amp; distance_to_object(obj_player) &lt; 100 &amp;&amp; !collision_line(x,y,obj_player.x,obj_player.y,obj_wall,false,false)) chase = true;
 if(chase) scr_basic_enemy_walk();
 </string>
           </argument>
