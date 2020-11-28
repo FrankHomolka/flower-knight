@@ -1,7 +1,7 @@
-//scr_generate_room(startX, startY, room)
+//scr_generate_room(startX, startY, room, subimg)
 
 surface_set_target(surface);
-roomSprite = draw_sprite(argument2, 0, 0, 0);
+roomSprite = draw_sprite(argument2, argument3, 0, 0);
 surface_reset_target();
 startX = argument0;
 startY = argument1;
