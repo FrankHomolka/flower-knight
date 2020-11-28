@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.showBossRoom = true;
-global.showTutorial = false;
+            <string>global.showBossRoom = false;
+global.showTutorial = true;
 global.playMusic = true;
 global.difficulty = 'HARD';
-global.unlockAllItems = true;
+global.unlockAllItems = false;
 global.paused = false;
 global.musicGain = 0.5;
 global.soundsGain = 0.5;

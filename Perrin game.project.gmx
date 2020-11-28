@@ -272,6 +272,13 @@
         <sprite>sprites\spr_snake_head_attack</sprite>
         <sprite>sprites\spr_snake_head</sprite>
       </sprites>
+      <sprites name="Summoner">
+        <sprite>sprites\spr_summoner</sprite>
+        <sprite>sprites\spr_skeleton_summoner</sprite>
+      </sprites>
+      <sprites name="Final Boss">
+        <sprite>sprites\spr_final_boss</sprite>
+      </sprites>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_wall</sprite>
@@ -318,7 +325,7 @@
     </sprites>
     <sprites name="Level Gen">
       <sprites name="Rooms">
-        <sprites name="Dungeon 1">
+        <sprites name="Area 1">
           <sprites name="Level 0">
             <sprite>sprites\spr_room_boom_boom</sprite>
             <sprite>sprites\spr_room_eye_corners</sprite>
@@ -340,15 +347,7 @@
             <sprite>sprites\spr_room_homing</sprite>
           </sprites>
         </sprites>
-        <sprites name="General">
-          <sprite>sprites\spr_bomb_room</sprite>
-          <sprite>sprites\spr_room_boss_map</sprite>
-          <sprite>sprites\spr_room_shop_map</sprite>
-          <sprite>sprites\spr_room_start_map</sprite>
-          <sprite>sprites\spr_room_wings</sprite>
-          <sprite>sprites\spr_room_maze</sprite>
-        </sprites>
-        <sprites name="Dungeon 2">
+        <sprites name="Area 2">
           <sprites name="Level 1">
             <sprite>sprites\spr_room_open</sprite>
             <sprite>sprites\spr_room_group_2</sprite>
@@ -363,6 +362,21 @@
             <sprite>sprites\spr_room_3_1</sprite>
             <sprite>sprites\spr_room_3_2</sprite>
           </sprites>
+        </sprites>
+        <sprites name="Area 3">
+          <sprites name="Level 1">
+            <sprite>sprites\spr_a3_lvl1_rare</sprite>
+            <sprite>sprites\spr_a3_lvl1_uncommon</sprite>
+            <sprite>sprites\spr_a3_lvl1_common</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="General">
+          <sprite>sprites\spr_bomb_room</sprite>
+          <sprite>sprites\spr_room_boss_map</sprite>
+          <sprite>sprites\spr_room_shop_map</sprite>
+          <sprite>sprites\spr_room_start_map</sprite>
+          <sprite>sprites\spr_room_wings</sprite>
+          <sprite>sprites\spr_room_maze</sprite>
         </sprites>
       </sprites>
       <sprites name="GUI">
@@ -744,6 +758,7 @@
       <object>objects\obj_area_controller</object>
       <object>objects\obj_view_controller</object>
       <object>objects\obj_gameover_controller</object>
+      <object>objects\obj_final_boss_controller</object>
       <object>objects\obj_win_controller</object>
       <object>objects\obj_blank</object>
       <object>objects\obj_quest_controller</object>
@@ -769,13 +784,12 @@
         </objects>
         <objects name="Area 3">
           <object>objects\obj_enemy_flame_turret</object>
-          <object>objects\obj_enemy_little_guy</object>
           <object>objects\obj_enemy_snake</object>
-          <object>objects\obj_enemy_littler_guy</object>
           <object>objects\obj_enemy_sniper</object>
           <object>objects\obj_enemy_priest</object>
+          <object>objects\obj_enemy_summoner</object>
           <object>objects\obj_enemy_hell_charger</object>
-          <object>objects\obj_enemy_little_guy_spawner</object>
+          <object>objects\obj_enemy_minion</object>
         </objects>
       </objects>
       <objects name="Other">
@@ -798,6 +812,7 @@
         <object>objects\obj_gold_bag</object>
         <object>objects\obj_artillery_explosion</object>
         <object>objects\obj_artillery</object>
+        <object>objects\obj_skeleton_summoner</object>
       </objects>
     </objects>
     <objects name="Focus">
@@ -835,6 +850,9 @@
         <object>objects\obj_enemy_archer_boss</object>
         <object>objects\obj_archer_miniboss_attack</object>
       </objects>
+      <objects name="Final Boss">
+        <object>objects\obj_final_boss</object>
+      </objects>
     </objects>
     <objects name="Shop">
       <object>objects\obj_shop_controller</object>
@@ -870,6 +888,7 @@
     <room>rooms\rm_game_start</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_shop</room>
+    <room>rooms\rm_final_boss</room>
     <room>rooms\rm_quest</room>
     <room>rooms\rm_procedural</room>
     <room>rooms\rm_choose_focus</room>
