@@ -136,7 +136,7 @@ if(loadingText) {
 }
 
 if(!inFight &amp;&amp; playedCutscene) {
-    obj_settings_controller.playNext = obj_settings_controller.themeMusic;
+    obj_settings_controller.playNext = obj_settings_controller.currentLevelMusic;
 }
 </string>
           </argument>

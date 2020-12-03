@@ -16,6 +16,7 @@
       <sound>sound\music_1</sound>
       <sound>sound\music_2</sound>
       <sound>sound\snd_boss_music_1</sound>
+      <sound>sound\music_level_2</sound>
     </sounds>
     <sounds name="Enemy">
       <sound>sound\snd_wolf_attack</sound>
@@ -368,6 +369,11 @@
             <sprite>sprites\spr_a3_lvl1_rare</sprite>
             <sprite>sprites\spr_a3_lvl1_uncommon</sprite>
             <sprite>sprites\spr_a3_lvl1_common</sprite>
+          </sprites>
+          <sprites name="Level 2">
+            <sprite>sprites\spr_a3_lvl2_common</sprite>
+            <sprite>sprites\spr_a3_lvl2_uncommon</sprite>
+            <sprite>sprites\spr_a3_lvl2_rare</sprite>
           </sprites>
         </sprites>
         <sprites name="General">
