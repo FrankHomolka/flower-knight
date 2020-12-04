@@ -7,7 +7,7 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>27</bbox_left>
+  <bbox_left>24</bbox_left>
   <bbox_right>54</bbox_right>
   <bbox_top>26</bbox_top>
   <bbox_bottom>53</bbox_bottom>
@@ -20,6 +20,7 @@
   <width>80</width>
   <height>80</height>
   <frames>
-    <frame index="0">images\spr_summoner_0.png</frame>
+    <frame index="0">images\spr_summoner_walk_0.png</frame>
+    <frame index="1">images\spr_summoner_walk_1.png</frame>
   </frames>
 </sprite>

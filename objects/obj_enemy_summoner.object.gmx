@@ -40,15 +40,16 @@ initalAttackDamage = attackDamage;
 customWalk = false;
 attackObject = obj_enemy_archer_attack;
 goldDropOnDeath = 20;
+dodging = false;
 
 /* Animation and Sprites */
 sprite = spr_summoner;
 idleSprite = spr_summoner;
-walkSprite = spr_summoner;
-walkUpSprite = spr_summoner;
-attackSprite = spr_summoner;
-attackUpSprite = spr_summoner;
-deathSprite = spr_summoner;
+walkSprite = spr_summoner_walk;
+walkUpSprite = spr_summoner_walk;
+attackSprite = spr_summoner_attack;
+attackUpSprite = spr_summoner_attack;
+deathSprite = spr_summoner_death;
 hitSprite = spr_summoner;
 walkAnimationSpeed = 0.1;
 deathSpriteLength = sprite_get_number(deathSprite) - 0.5;
@@ -60,9 +61,9 @@ attackSound = snd_arrow_shot;
 hurtSound = snd_enemy_hit;
 
 /* Attack Values */
-attackCooldownMax = 50;
+attackCooldownMax = 100;
 attackDistance = 250;
-attackTime = 500;
+attackTime = 250;
 initalAttackTime = attackTime * 2;
 attackCounter = attackTime;
 attackFrame = 3;
@@ -72,7 +73,7 @@ baseKnockback = 3;
 knockbackCounter = baseKnockback;
 
 /* Death */
-deathTime = 20;
+deathTime = 70;
 deathCounter = deathTime;
 </string>
           </argument>
@@ -98,46 +99,53 @@ deathCounter = deathTime;
             <kind>1</kind>
             <string>event_inherited();
 
+/* DOdge */
+if(distance_to_object(obj_player) &lt; 20 &amp;&amp; state != states.death &amp;&amp; state != states.hit &amp;&amp; state != states.attack) {
+    state = states.walk;
+    if(!dodging) {
+        dodging = true;
+        path_end();
+        tempDir = point_direction(x,y,obj_player.x,obj_player.y);
+        targetX = x - lengthdir_x(70, tempDir);
+        targetY = y - lengthdir_y(70, tempDir);
+        show_debug_message('chose dodge target');
+    }
+}
+if(state != states.death) sprite_index = spr_necromancer_walk;
+
 /* Execute State */
 switch(state) {
     case states.idle:
         scr_enemy_idle();
         break;
     case states.walk:
-        if(canTeleport) {
-            sprite_index = walkSprite;
-            image_speed = walkAnimationSpeed;
-            if(floor(image_index) == 5) {
-                canTeleport = false;
-                foundSpot = false;
-                while(foundSpot == false &amp;&amp; teleportAttempts &gt; 0) {
-                    randDirX = random(1);
-                    randDirY = random(1);
-                    if(randDirX &gt; 0.5) {
-                        randX = random_range(-100,-50);
-                    } else {
-                        randX = random_range(50,100);
-                    }
-                    if(randDirY &gt; 0.5) {
-                        randY = random_range(-100,-50);
-                    } else {
-                        randY = random_range(50,100);
-                    }
-                    teleportAttempts--;
-                    if(!collision_line(x,y,x + randX,x + randY,obj_wall,false,false)) {
-                        x = x + randX;
-                        y = y + randY;
-                        foundSpot = true;
-                        sprite_index = spr_priest
-                    }
+        if(dodging) {
+            // Start path
+            if(distance_to_point(targetX, targetY) &gt; minDistance) {
+                if(mp_grid_path(global.grid, path, x, y, targetX, targetY, 1)) {
+                    path_start(path, moveSpeed * 1.5, path_action_stop, false);
                 }
-            }  
+            } else {
+                dodging = false;
+                path_end();
+            }
+            if(mp_grid_get_cell(global.grid, targetX / 16, targetY / 16) == -1 
+               || collision_line(x,y,targetX, targetY, obj_wall, false, false)) {
+                //dodging = false;
+                show_debug_message('ended path');
+                path_end();
+                tempDir = point_direction(x,y,obj_player.x,obj_player.y);
+                targetX = x + lengthdir_x(70, tempDir);
+                targetY = y + lengthdir_y(70, tempDir);
+            }
+        } else { 
+            scr_basic_enemy_walk();
         }
          
         break;
     case states.attack:
         sprite_index = attackSprite;
-        image_speed = 0.1;
+        image_speed = 0.2;
         
         /* happens once */
         if(attackCounter == attackTime) {

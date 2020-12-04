@@ -276,6 +276,9 @@
       <sprites name="Summoner">
         <sprite>sprites\spr_summoner</sprite>
         <sprite>sprites\spr_skeleton_summoner</sprite>
+        <sprite>sprites\spr_summoner_attack</sprite>
+        <sprite>sprites\spr_summoner_death</sprite>
+        <sprite>sprites\spr_summoner_walk</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprite>sprites\spr_final_boss</sprite>
