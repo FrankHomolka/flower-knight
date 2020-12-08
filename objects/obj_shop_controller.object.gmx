@@ -38,11 +38,13 @@ var unlocked = false;
 
 /*                         DEFAULT UNLOCKED ITEMS               */
 if(ds_list_size(global.itemsUnlocked) == 0) {
-    scr_find_item('HEART SEEKER');
+    scr_find_item('SHIELD');
     ds_list_add(global.itemsUnlocked, item);
-    scr_find_item('MISSILE');
+    scr_find_item('ASSASSIN');
     ds_list_add(global.itemsUnlocked, item);
-    scr_find_item('MEGA HEART');
+    scr_find_item('RUNNER');
+    ds_list_add(global.itemsUnlocked, item);
+    scr_find_item('MORTAL KOMBAT');
     ds_list_add(global.itemsUnlocked, item);
     scr_save_item_list();
 }

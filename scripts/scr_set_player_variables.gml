@@ -114,4 +114,4 @@ pitLagCounter = pitLagTime;
 ignorePit = false;
 canParry = false;
 spawnBigHeartChance = 0;
-heartSpawnChance = 0.5;
+heartSpawnChance = 0.2;

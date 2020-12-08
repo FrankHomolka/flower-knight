@@ -20,6 +20,9 @@ if(!dead) {
             instance_create(x,y,obj_enemy_drop);
         }
     }
+    if(random(1) < chanceToDropHeart) {
+        instance_create(x,y + 20,obj_heart_pickup);
+    }
     if(!pit) {
         part_type_direction(enemyHitParticle, point_direction(x, y, obj_player.x, obj_player.y) - 50, point_direction(x, y, obj_player.x, obj_player.y) + 50, 0, 0.2);
         part_emitter_region(enemyHit, enemyHitEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);

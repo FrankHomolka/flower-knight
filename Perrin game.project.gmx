@@ -84,9 +84,11 @@
       <sprite>sprites\spr_focus_shield</sprite>
       <sprite>sprites\spr_focus_rhino</sprite>
       <sprite>sprites\spr_focus_shadow</sprite>
+      <sprite>sprites\spr_focus_ninja</sprite>
       <sprite>sprites\spr_focus_bomb</sprite>
       <sprite>sprites\spr_focus_knockback</sprite>
       <sprite>sprites\spr_focus_mega_heart</sprite>
+      <sprite>sprites\spr_focus_mortal_kombat</sprite>
       <sprite>sprites\spr_focus_slime</sprite>
       <sprite>sprites\spr_focus_attack_speed</sprite>
       <sprite>sprites\spr_fireball</sprite>
@@ -276,9 +278,12 @@
       <sprites name="Summoner">
         <sprite>sprites\spr_summoner</sprite>
         <sprite>sprites\spr_skeleton_summoner</sprite>
+        <sprite>sprites\spr_cultist_summoner</sprite>
+        <sprite>sprites\spr_explosion_summoner</sprite>
         <sprite>sprites\spr_summoner_attack</sprite>
         <sprite>sprites\spr_summoner_death</sprite>
         <sprite>sprites\spr_summoner_walk</sprite>
+        <sprite>sprites\spr_summoner_boss_head</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprite>sprites\spr_final_boss</sprite>
@@ -527,6 +532,8 @@
         <script>scripts\scr_flame_turret_attack.gml</script>
         <script>scripts\scr_sniper_attack.gml</script>
         <script>scripts\scr_skeleton_boss_attack.gml</script>
+        <script>scripts\scr_summoner_attack.gml</script>
+        <script>scripts\scr_summoner_boss_attack.gml</script>
       </scripts>
     </scripts>
     <scripts name="Particles">
@@ -563,7 +570,9 @@
         <script>scripts\scr_focus_knockback.gml</script>
         <script>scripts\scr_focus_knockback_effect.gml</script>
         <script>scripts\scr_focus_greed.gml</script>
+        <script>scripts\scr_focus_mortal_kombat.gml</script>
         <script>scripts\scr_focus_greed_effect.gml</script>
+        <script>scripts\scr_focus_mortal_kombat_effect.gml</script>
         <script>scripts\scr_focus_vampire.gml</script>
         <script>scripts\scr_focus_vampire_effect.gml</script>
         <script>scripts\scr_vampire_quest.gml</script>
@@ -814,6 +823,7 @@
         <object>objects\obj_artillery_attack</object>
         <object>objects\obj_artillery_missile</object>
         <object>objects\obj_skeleton_attack</object>
+        <object>objects\obj_minion_attack</object>
         <object>objects\obj_hell_charger_attack</object>
         <object>objects\obj_eyeball</object>
         <object>objects\obj_enemy_bomb_explosion</object>
@@ -853,11 +863,15 @@
       </objects>
       <objects name="Minibosses">
         <object>objects\obj_skeleton_general</object>
+        <object>objects\obj_enemy_summoner_boss</object>
         <object>objects\obj_skeleton_miniboss_head</object>
         <object>objects\obj_archer_miniboss_head</object>
+        <object>objects\obj_summoner_boss_head</object>
         <object>objects\obj_enemy_skeleton_general_attack</object>
         <object>objects\obj_enemy_archer_boss</object>
         <object>objects\obj_archer_miniboss_attack</object>
+        <object>objects\obj_cultist_summoner</object>
+        <object>objects\obj_explosion_summoner</object>
       </objects>
       <objects name="Final Boss">
         <object>objects\obj_final_boss</object>
@@ -869,6 +883,7 @@
       <object>objects\obj_dungeon_shop_item</object>
       <object>objects\obj_enter_dungeon</object>
       <object>objects\obj_dungeon_shop</object>
+      <object>objects\obj_heads_display</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>

@@ -28,6 +28,7 @@
             <string>event_inherited();
 
 move_towards_point(xTarget, yTarget, 1.5);
+playerDodged = false;
 </string>
           </argument>
         </arguments>
@@ -52,10 +53,16 @@ move_towards_point(xTarget, yTarget, 1.5);
             <kind>1</kind>
             <string>event_inherited();
 
-if(place_meeting(x, y, obj_player) 
-    &amp;&amp; obj_player.state != states.dash) {
-    scr_try_hit_player(attackDamage, noone);
-    instance_destroy();
+if(place_meeting(x, y, obj_player)) {
+    if(obj_player.state == states.dash) {
+        if(playerDodged == false) {
+            playerDodged = true;
+            if(instance_exists(obj_quest_controller)) obj_quest_controller.eyemissileDodges++;
+        }
+    } else {
+        scr_try_hit_player(attackDamage, noone);
+        instance_destroy();
+    }
 }
 
 if(place_meeting(x, y, obj_wall)) {

@@ -136,7 +136,6 @@ switch(state) {
         break;
     case states.death:
         if(audio_is_playing(channelSoundIndex)) audio_stop_sound(channelSoundIndex);
-        if(!dead) obj_quest_controller.eyeturretKills++;
         if(instance_exists(attackProjectile))
             with(attackProjectile)
                 instance_destroy();

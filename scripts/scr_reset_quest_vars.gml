@@ -25,6 +25,7 @@ beatBoss1 = false;
 beatBoss2 = false;
 beatMiniboss1 = false;
 beatMiniboss2 = false;
+beatMiniboss3 = false;
 playerHit = false;
 
 // OTHER

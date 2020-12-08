@@ -150,7 +150,6 @@ switch(state) {
         }
         break;
     case states.death:
-        if(!dead) obj_quest_controller.eyeturretKills++;
         scr_enemy_death();
         break;
     default:

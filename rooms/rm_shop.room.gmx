@@ -82,6 +82,7 @@
     <instance objName="obj_wall" x="332" y="144" name="inst_B9E561EC" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="16" y="48" name="inst_C424773B" locked="0" code="" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="31" y="183" name="inst_A5E60ADE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heads_display" x="32" y="128" name="inst_267CF77D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="&lt;undefined&gt;" x="0" y="192" w="16" h="16" xo="0" yo="0" id="10001496" name="inst_0A3EEF1A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

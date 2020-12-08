@@ -35,7 +35,7 @@ maxHp = 10;
 hp = maxHp;
 attackDamage = 5;
 customWalk = false;
-attackObject = obj_skeleton_attack;
+attackObject = obj_minion_attack;
 goldDropOnDeath = 10;
 
 /* Animation and Sprites */

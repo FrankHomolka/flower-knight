@@ -43,6 +43,7 @@ pitLagTime = 10;
 pitLagCounter = pitLagTime;
 goldDropOnDeath = 10;
 goldMultiplier = 1;
+chanceToDropHeart = 0;
 lastDamageSource = '';
 hpColor = make_colour_rgb(197, 53, 70);
 

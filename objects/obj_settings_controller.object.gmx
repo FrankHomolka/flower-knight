@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.showBossRoom = false;
+            <string>global.showBossRoom = true;
 global.showTutorial = true;
 global.playMusic = true;
 global.difficulty = 'HARD';
@@ -33,6 +33,13 @@ global.unlockAllItems = false;
 global.paused = false;
 global.musicGain = 0.5;
 global.soundsGain = 0.5;
+boss1head = false;
+boss2head = false;
+boss3head = false;
+miniboss1head = false;
+miniboss2head = false;
+miniboss3head = false;
+
 /* Read saved settings */
 if(file_exists("settings.ini")) {
     ini_open("settings.ini");
@@ -40,6 +47,12 @@ if(file_exists("settings.ini")) {
     global.showTutorial = ini_read_real("general", "showTutorial", true);
     global.musicGain = ini_read_real("general", "musicGain", 0.5);
     global.soundsGain = ini_read_real("general", "soundsGain", 0.5);
+    boss1head = ini_read_real("collectable", "boss1head", false);
+    boss2head = ini_read_real("collectable", "boss2head", false);
+    boss3head = ini_read_real("collectable", "boss3head", false);
+    miniboss1head = ini_read_real("collectable", "miniboss1head", false);
+    miniboss2head = ini_read_real("collectable", "miniboss2head", false);
+    miniboss3head = ini_read_real("collectable", "miniboss3head", false);
     ini_close(); 
 } else {
     ini_open("settings.ini");
@@ -47,6 +60,12 @@ if(file_exists("settings.ini")) {
     ini_write_real("general", "showTutorial", true);
     ini_write_real("general", "musicGain", 0.5);
     ini_write_real("general", "soundsGain", 0.5);
+    ini_write_real("collectable", "boss1head", false);
+    ini_write_real("collectable", "boss2head", false);
+    ini_write_real("collectable", "boss3head", false);
+    ini_write_real("collectable", "miniboss1head", false);
+    ini_write_real("collectable", "miniboss2head", false);
+    ini_write_real("collectable", "miniboss3head", false);
     ini_close(); 
     show_debug_message("settings file does not exist");
 }
