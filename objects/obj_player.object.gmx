@@ -84,7 +84,7 @@ global.mainEmitter=audio_emitter_create();
             <kind>1</kind>
             <string>
 /* Draw Player Light */
-scr_draw_light(light, lightSize, color);
+if(room != rm_shop) scr_draw_light(light, lightSize, color);
 
 if(state == states.hit) {  
     if(shake) {

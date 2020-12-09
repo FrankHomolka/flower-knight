@@ -757,6 +757,7 @@
       </objects>
       <objects name="Decoration">
         <object>objects\obj_torch</object>
+        <object>objects\obj_light</object>
       </objects>
       <objects name="Control">
         <object>objects\obj_level_generator</object>
