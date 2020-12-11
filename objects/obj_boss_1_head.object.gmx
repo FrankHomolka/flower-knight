@@ -67,6 +67,18 @@ if(deathCounter &lt; 0 || place_meeting(x,y,obj_wall)) {
     speed = 0;
     gravity = 0;
     event_inherited();
+    if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
+        with(instance_create(x,y,obj_blank)) {
+            soundToPlay = snd_pickup_head;
+            instance_change(obj_sound_emitter,true);
+        }
+        if(instance_exists(obj_quest_controller)) {
+            obj_quest_controller.bossHeadsCollected++;
+            obj_settings_controller.boss1head = true;
+            scr_set_and_save_settings('collectable', 'boss1head', true);
+            instance_destroy();   
+        }
+    }
 } else {
     image_angle+=2;
 }
@@ -104,7 +116,8 @@ if(place_meeting(x,y,obj_player) &amp;&amp; dead) {
     draw_set_color(c_white);
     draw_set_alpha(1);
     draw_set_halign(fa_center);
-    draw_text_transformed(x,y-30,"'E' to gather head", 1, 1, 0);
+    draw_set_valign(fa_middle);
+    draw_text_transformed(obj_player.x,obj_player.y-32,"'E' to gather head", 0.5, 0.5, 0);
 }
 </string>
           </argument>

@@ -291,10 +291,13 @@
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_dungeon_door</sprite>
       <sprite>sprites\spr_boss_wall</sprite>
       <sprite>sprites\spr_pit</sprite>
       <sprite>sprites\spr_torch</sprite>
+      <sprite>sprites\spr_big_torch</sprite>
       <sprite>sprites\spr_next_room</sprite>
+      <sprite>sprites\spr_tutorial_next_room</sprite>
       <sprite>sprites\spr_focus_buy_item</sprite>
       <sprite>sprites\spr_barrel</sprite>
       <sprite>sprites\spr_barrel_particle</sprite>
@@ -311,6 +314,7 @@
       <sprite>sprites\spr_crossbow_right</sprite>
       <sprite>sprites\spr_crossbow_down</sprite>
       <sprite>sprites\spr_crossbow_up</sprite>
+      <sprite>sprites\spr_bone_stack</sprite>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_enemies_killed</sprite>
@@ -757,6 +761,7 @@
       </objects>
       <objects name="Decoration">
         <object>objects\obj_torch</object>
+        <object>objects\obj_big_torch</object>
         <object>objects\obj_light</object>
       </objects>
       <objects name="Control">
@@ -765,6 +770,7 @@
         <object>objects\obj_bomb_room</object>
         <object>objects\obj_boss_activator</object>
       </objects>
+      <object>objects\obj_bone_stack</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_controller_spawner</object>
@@ -883,8 +889,10 @@
       <object>objects\obj_shop_item</object>
       <object>objects\obj_dungeon_shop_item</object>
       <object>objects\obj_enter_dungeon</object>
-      <object>objects\obj_dungeon_shop</object>
       <object>objects\obj_heads_display</object>
+      <object>objects\obj_dungeon_shop</object>
+      <object>objects\obj_dungeon_shop_visual</object>
+      <object>objects\obj_tome_visual</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>
@@ -905,6 +913,7 @@
       <object>objects\obj_tutorial_arrow</object>
       <object>objects\obj_hint</object>
     </objects>
+    <object>objects\obj_sound_emitter</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_intro</room>

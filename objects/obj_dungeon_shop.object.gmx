@@ -30,10 +30,15 @@ y += 25;
 activated = false;
 spawnedItems = false;
 rowLength = 7;
-image_speed = 0.1;
-
+depth = -2000;
 initial_gw = 1600;
 initial_gh = 900;
+gw = display_get_gui_width();
+gh = display_get_gui_height();
+horBlock = gw / 32;
+vertBlock = gh / 32;
+scaleFactor = (gw / initial_gw);
+instance_create(x,y,obj_dungeon_shop_visual);
 </string>
           </argument>
         </arguments>
@@ -146,26 +151,20 @@ if(!spawnedItems) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -2000;
+            <string>
 gw = display_get_gui_width();
 gh = display_get_gui_height();
 horBlock = gw / 32;
 vertBlock = gh / 32;
 scaleFactor = (gw / initial_gw);
 
-if(activated)
+if(activated) {
     draw_sprite_ext(spr_shop_blown_up, 0, gw / 2, gh / 2, 5.5 * scaleFactor, 5.5 * scaleFactor, 0, c_white, 1);
-
-if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
     draw_set_font(fnt_1);
     draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    if(!activated) {
-        draw_text_transformed(gw / 2, gh / 5, "'E' to open shop", 3 * scaleFactor, 3 * scaleFactor, 0);
-    } else {
-        draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close shop", 3 * scaleFactor, 3 * scaleFactor, 0);
-    }
+    draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close shop", 3 * scaleFactor, 3 * scaleFactor, 0);
 }
 </string>
           </argument>
@@ -190,7 +189,14 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
           <argument>
             <kind>1</kind>
             <string>// don't remove me
-draw_sprite(spr_shop, image_index, x, y);
+//draw_sprite(spr_shop, image_index, x, y);
+if(distance_to_point(obj_player.x, obj_player.y) &lt; 20 &amp;&amp; !activated) {
+    draw_set_font(fnt_1);
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text_transformed(obj_player.x,obj_player.y - 32, "'E' to open shop", 0.5, 0.5, 0);
+}
 </string>
           </argument>
         </arguments>

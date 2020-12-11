@@ -111,7 +111,8 @@ if(place_meeting(x,y,obj_player)) {
     draw_set_alpha(1);
     draw_set_font(fnt_ui);
     draw_set_halign(fa_center);
-    draw_text_transformed(x-8,y-20,"'E' to go deeper...", 0.5, 0.5, 0);
+    draw_set_valign(fa_middle);
+    draw_text_transformed(obj_player.x, obj_player.y-32,"'E' to go deeper...", 0.5, 0.5, 0);
 }
 </string>
           </argument>

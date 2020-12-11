@@ -65,6 +65,13 @@ spawnedItems = false;
 rowLength = 10;
 initial_gw = 1600;
 initial_gh = 900;
+depth = -2000;
+gw = display_get_gui_width();
+gh = display_get_gui_height();
+horBlock = gw / 32;
+vertBlock = gh / 32;
+scaleFactor = (gw / initial_gw);
+instance_create(x,y,obj_tome_visual);
 </string>
           </argument>
         </arguments>
@@ -181,26 +188,21 @@ if(object_exists(obj_focus_controller)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -2000;
+            <string>
 gw = display_get_gui_width();
 gh = display_get_gui_height();
 horBlock = gw / 32;
 vertBlock = gh / 32;
 scaleFactor = (gw / initial_gw);
 
-if(activated)
+if(activated) {
+    depth = -2000;
     draw_sprite_ext(spr_unlocked_items, 0, gw / 2, gh / 2, 5.5 * scaleFactor, 5.5 * scaleFactor, 0, c_white, 1);
-
-if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
-    draw_set_font(fnt_1);
+    draw_set_font(fnt_ui);
     draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    if(!activated) {
-        draw_text_transformed(gw / 2, gh / 5, "'E' to open tome", 3 * scaleFactor, 3 * scaleFactor, 0);
-    } else {
-        draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close tome", 3 * scaleFactor, 3 * scaleFactor, 0);
-    }
+    draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close tome", 3 * scaleFactor, 3 * scaleFactor, 0);
 }
 </string>
           </argument>
@@ -224,8 +226,14 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_entity_shadow(18, 6, 0, 4);
-draw_sprite(spr_progress_book, 0, x, startY + sin(counter));
+            <string>
+draw_set_font(fnt_ui);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+if(distance_to_point(obj_player.x, obj_player.y) &lt; 15 &amp;&amp; !activated) {
+    draw_text_transformed(obj_player.x,obj_player.y - 32, "'E' to open tome", 0.5, 0.5, 0);
+}
 </string>
           </argument>
         </arguments>

@@ -142,7 +142,17 @@ drawCounter += 0.1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!pit) {
+            <string>if(hp &gt; 0) {
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_rectangle(x-10, y - (sprite_height / 1.3), (x + 10), y - (sprite_height / 1.3) + 2, false );
+    draw_set_color(hpColor);
+    draw_rectangle(x-10, y - (sprite_height / 1.3), (x - 10) + (20 * (hp/maxHp)), y - (sprite_height / 1.3) + 2, false );
+}
+
+if(buffed) draw_sprite(spr_buffed, image_index,x,y);
+
+if(!pit) {
     scr_draw_entity_shadow(13, 4, 0, 0);
 }
 draw_sprite_ext(sprite_index, image_index, x, y + sin(drawCounter), image_xscale, image_yscale, image_angle, drawColor, image_alpha);

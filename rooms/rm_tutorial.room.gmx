@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
-  <colour>8453888</colour>
+  <colour>1578513</colour>
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>0</enableViews>
@@ -61,7 +61,7 @@
     <instance objName="obj_torch" x="256" y="224" name="inst_E93A9157" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="320" y="80" name="inst_A10D27B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="272" y="176" name="inst_FC0586DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tutorial_next_room" x="864" y="176" name="inst_FE512E1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tutorial_next_room" x="872" y="200" name="inst_FE512E1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_control_display" x="176" y="176" name="inst_D4A2F899" locked="0" code="letter = obj_player.setUp;&#xA;step = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_control_display" x="160" y="192" name="inst_A887CA63" locked="0" code="letter = obj_player.setLeft;&#xA;step = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_control_display" x="176" y="192" name="inst_64EE140E" locked="0" code="letter = obj_player.setDown;&#xA;step = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

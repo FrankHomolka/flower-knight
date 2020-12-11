@@ -61,7 +61,7 @@ if(!view_enabled) {
 }
 
 if(instance_exists(obj_player)) {
-    if(room == rm_shop || room == rm_tutorial) {
+    if(room == rm_shop ) {
         if(light != noone &amp;&amp; view_wview[0] != room_width) {
             if(surface_exists(light)) {
                 surface_resize(light, room_width, room_height);

@@ -70,6 +70,19 @@ attacking = true;
             <kind>1</kind>
             <string>event_inherited();
 
+if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
+    with(instance_create(x,y,obj_blank)) {
+        soundToPlay = snd_pickup_head;
+        instance_change(obj_sound_emitter,true);
+    }
+    if(instance_exists(obj_quest_controller)) {
+        obj_quest_controller.bossHeadsCollected++;
+        obj_settings_controller.boss2head = true;
+        scr_set_and_save_settings('collectable', 'boss2head', true);
+        instance_destroy();   
+    }
+}
+
 if(chargeCounter &lt; 0) {
     
     if(hp &lt;= 0) {

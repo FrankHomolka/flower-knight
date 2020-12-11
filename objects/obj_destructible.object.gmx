@@ -77,20 +77,18 @@ if(destructSprite != "none") {
             <kind>1</kind>
             <string>event_inherited();
 
-
-if(!audio_is_playing(destroySound)) { 
-    if(destroyed) {
-        scr_spawn_item_drop();
-        instance_destroy();
+if(place_meeting(x, y, obj_non_living_damage_parent)) {
+    with(instance_create(x,y,obj_blank)) {
+        soundToPlay = snd_destructible;
+        instance_change(obj_sound_emitter,true);
     }
-    if(place_meeting(x, y, obj_non_living_damage_parent)) {
-        destroySound = audio_play_sound_on(myEmitter, snd_destructible, false, 1);
-        part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
-        part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
-        if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
-        destroyed = true;
-    }
+    part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
+    part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
+    if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+    scr_spawn_item_drop();
+    instance_destroy();
 }
+
 </string>
           </argument>
         </arguments>

@@ -49,7 +49,7 @@ count = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_1);
+            <string>draw_set_font(fnt_ui);
 depth = -10000;
 if(distance_to_object(obj_player) &lt; 70) {
     if(obj_tutorial_controller.step == step) {
@@ -63,9 +63,11 @@ if(distance_to_object(obj_player) &lt; 70) {
     alpha = 0;
 }
 count+=0.03;
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
 draw_set_alpha(alpha);
 draw_set_color(c_white);
-draw_text_transformed(x,y + sin(count),text, 0.8, 0.8, 0);
+draw_text_transformed(x,y + sin(count),text, 0.5, 0.5, 0);
 </string>
           </argument>
         </arguments>

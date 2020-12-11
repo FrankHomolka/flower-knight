@@ -66,13 +66,11 @@ if(place_meeting(x, y, obj_player)
     &amp;&amp; hitWall == false
     &amp;&amp; obj_player.state != states.dash) {
     scr_try_hit_player(attackDamage, source);
-    audio_play_sound_on(myEmitter, snd_arrow_land, false, 1);
     hitPlayer = true;
 }
 
 if(place_meeting(x, y, obj_wall) &amp;&amp; !hitWall) {
     speed = 0;
-    audio_play_sound_on(myEmitter, snd_arrow_land, false, 1);
     hitWall = true;
 }
 
