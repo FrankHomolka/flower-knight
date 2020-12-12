@@ -89,6 +89,14 @@ if(room != currentRoom) {
         }
     } else if(room == rm_settings) {
         with(instance_create(20,20,obj_blank)) {
+            text = "REBIND KEYS";
+            type = "wide";
+            offsetY = -40;
+            offsetX = 0;
+            onClick = scr_goto_rebind_keys;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
             if(global.playMusic) {
                 text = "TURN MUSIC OFF";
             } else {
@@ -156,10 +164,101 @@ if(room != currentRoom) {
         }
         with(instance_create(20,20,obj_blank)) {
             text = "BACK";
-            offsetY = 80;
+            offsetY = 85;
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_menu;
+            instance_change(obj_button, true);
+        }
+    } else if(room == rm_rebind_keys) {
+        with(instance_create(20,20,obj_blank)) {
+            text = "UP - ";
+            type = "small";
+            offsetY = -50;
+            offsetX = 0;
+            currentKey = obj_settings_controller.moveUp;
+            onSave = scr_save_moveUp;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "RIGHT - ";
+            type = "small";
+            offsetY = -35;
+            offsetX = 0;
+            currentKey = obj_settings_controller.moveRight;
+            onSave = scr_save_moveRight;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "DOWN - ";
+            type = "small";
+            offsetY = -20;
+            offsetX = 0;
+            currentKey = obj_settings_controller.moveDown;
+            onSave = scr_save_moveDown;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "LEFT - ";
+            type = "small";
+            offsetY = -5;
+            offsetX = 0;
+            currentKey = obj_settings_controller.moveLeft;
+            onSave = scr_save_moveLeft;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "ATTACK - ";
+            type = "small";
+            offsetY = 10;
+            offsetX = 0;
+            currentKey = obj_settings_controller.attack;
+            onSave = scr_save_attack;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "DODGE - ";
+            type = "small";
+            offsetY = 25;
+            offsetX = 0;
+            currentKey = obj_settings_controller.dodge;
+            onSave = scr_save_dodge;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "MAP - ";
+            type = "small";
+            offsetY = 40;
+            offsetX = 0;
+            currentKey = obj_settings_controller.viewMap;
+            onSave = scr_save_viewMap;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "QUESTS - ";
+            type = "small";
+            offsetY = 55;
+            offsetX = 0;
+            currentKey = obj_settings_controller.viewQuests;
+            onSave = scr_save_viewQuests;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "PAUSE - ";
+            type = "small";
+            offsetY = 70;
+            offsetX = 0;
+            currentKey = obj_settings_controller.pause;
+            onSave = scr_save_pause;
+            instance_change(obj_key_rebind, true);
+        }
+        // ADD INTERACT BUTTON AND RESTART BUTTON, and FULLSCREEN
+        with(instance_create(20,20,obj_blank)) {
+            text = "BACK";
+            offsetY = 85;
+            offsetX = 0;
+            type = "normal";
+            onClick = scr_goto_settings_room;
             instance_change(obj_button, true);
         }
     } else {
@@ -192,7 +291,7 @@ if(room != currentRoom) {
 draw_set_font(fnt_ui);
 if(room == rm_menu) {
     tutorialTextSize = 0.8;
-} else {
+} else if(room == rm_settings) {
     depth = 0;
     draw_set_color(c_black);
     draw_rectangle(0,0,room_width,room_height,false);
@@ -202,6 +301,12 @@ if(room == rm_menu) {
     draw_text_transformed((room_width / 2) + 130, (room_height / 2) - 10, string(global.musicGain * 100) + "/100", 0.3, 0.3, 0);
     draw_text_transformed((room_width / 2) + 130, (room_height / 2) + 10, "Sound Volume", 0.3, 0.3, 0);
     draw_text_transformed((room_width / 2) + 130, (room_height / 2) + 20, string(global.soundsGain * 100) + "/100", 0.3, 0.3, 0);
+} else if(room == rm_rebind_keys) {
+    depth = 0;
+    draw_set_color(c_black);
+    draw_rectangle(0,0,room_width,room_height,false);
+    draw_set_color(c_white);
+    draw_text_transformed(room_width / 2, 20, "REBIND KEYS", 2, 2, 0);
 }
 </string>
           </argument>

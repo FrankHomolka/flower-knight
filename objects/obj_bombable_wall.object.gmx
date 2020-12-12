@@ -8,6 +8,31 @@
   <parentName>obj_wall</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+image_speed = 0;
+destroy = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,7 +50,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x,y,obj_bomb_explosion) || place_meeting(x,y,obj_enemy_bomb_explosion)) {
+            <string>if((place_meeting(x,y,obj_bomb_explosion) || place_meeting(x,y,obj_enemy_bomb_explosion)) &amp;&amp; destroy == false) {
+    
+    if(!audio_is_playing(snd_unlocked_item)) {
+        with(instance_create(x,y,obj_blank)) {
+            soundToPlay = snd_unlocked_item;
+            instance_change(obj_sound_emitter,true);
+        }
+    }
     if(instance_exists(obj_bomb_room)) {
         obj_bomb_room.hidden = false;
     }
@@ -33,8 +65,25 @@
         obj_quest_controller.bombRoomRevealed = true;
     }
     with(obj_bombable_wall) {
-        instance_destroy();
+        destroy = true;
     }
+}
+
+if(destroy) {
+    
+    tile = tile_layer_find(1000000, x, y);
+    tile1 = tile_layer_find(1000001, x, y);
+    if(tile != -1) {
+        tile_delete(tile);
+        show_debug_message('found &amp; deleted tile');
+    }
+    if(tile1 != -1) {
+        tile_delete(tile1);
+        show_debug_message('found &amp; deleted tile');
+    }
+    tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x,y, -y + 8);
+    mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+    instance_destroy();
 }
 </string>
           </argument>

@@ -696,6 +696,19 @@
       <script>scripts\scr_sounds_gain_up.gml</script>
       <script>scripts\scr_music_gain_down.gml</script>
       <script>scripts\scr_sounds_gain_down.gml</script>
+      <script>scripts\scr_goto_rebind_keys.gml</script>
+      <script>scripts\scr_convert_unicode.gml</script>
+      <scripts name="Key rebinds">
+        <script>scripts\scr_save_moveUp.gml</script>
+        <script>scripts\scr_save_moveRight.gml</script>
+        <script>scripts\scr_save_moveDown.gml</script>
+        <script>scripts\scr_save_moveLeft.gml</script>
+        <script>scripts\scr_save_attack.gml</script>
+        <script>scripts\scr_save_dodge.gml</script>
+        <script>scripts\scr_save_viewMap.gml</script>
+        <script>scripts\scr_save_viewQuests.gml</script>
+        <script>scripts\scr_save_pause.gml</script>
+      </scripts>
     </scripts>
     <scripts name="GUI">
       <script>scripts\scr_draw_heart.gml</script>
@@ -896,6 +909,7 @@
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>
+      <object>objects\obj_key_rebind</object>
       <object>objects\obj_settings_controller</object>
       <object>objects\obj_menu_controller</object>
       <object>objects\obj_story_controller</object>
@@ -919,6 +933,7 @@
     <room>rooms\rm_intro</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_settings</room>
+    <room>rooms\rm_rebind_keys</room>
     <room>rooms\rm_game_start</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_shop</room>

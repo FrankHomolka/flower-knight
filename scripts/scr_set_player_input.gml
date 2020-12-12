@@ -1,24 +1,26 @@
 //scr_set_player_input
 // Player specific variables
 
-setUp = 'W';
-setDown = 'S';
-setLeft = 'A';
-setRight = 'D';
-setAttack = 'K';
+setUp = obj_settings_controller.moveUp;
+setDown = obj_settings_controller.moveDown;
+setLeft = obj_settings_controller.moveLeft;
+setRight = obj_settings_controller.moveRight;
+setAttack = obj_settings_controller.attack;
 setInteract = 'E';
-setDodge = 'L';
+setDodge = obj_settings_controller.dodge;
 setRestart = 'R';
 setClose = vk_escape;
-setMap = 'M';
+setMap = obj_settings_controller.viewMap;
+setQuests = obj_settings_controller.viewQuests;
 
-keyUp = ord(setUp);
-keyDown = ord(setDown);
-keyLeft = ord(setLeft);
-keyRight = ord(setRight);
-keyAttack = ord(setAttack);
+keyUp = setUp;
+keyDown = setDown;
+keyLeft = setLeft;
+keyRight = setRight;
+keyAttack = setAttack;
 keyInteract = ord(setInteract);
-keyDodge = ord(setDodge);
+keyDodge = setDodge;
 keyRestart = ord(setRestart);
 keyClose = setClose;
-keyMap = ord(setMap);
+keyMap = setMap;
+keyQuests = setQuests;

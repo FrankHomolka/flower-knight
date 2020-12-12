@@ -61,7 +61,7 @@ counter = random(300);
           <argument>
             <kind>1</kind>
             <string>
-price = (itemMap[? "price"] * itemMap[? "numBought"]);
+price = (itemMap[? "price"] * (itemMap[? "numBought"] + 1));
 
 if(unlocked) {
     if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
@@ -80,6 +80,7 @@ if(unlocked) {
                 }
             } else {
                 show_debug_message(itemMap[? "script"]);
+                ds_map_replace( itemMap, 'numBought', itemMap[? "numBought"] + 1);
                 ds_list_add(global.equippedItemsList, itemMap);
                 script_execute(itemMap[? "script"]);
             }

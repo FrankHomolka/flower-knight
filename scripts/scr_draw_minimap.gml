@@ -124,9 +124,9 @@ for(xx = 0; xx < mapWidth; xx++) {
             
             dotRadius += dotRadiusIncrement;
             draw_sprite_ext(spr_map_selected, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor), 
-                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor),minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,1);
+                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor),minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,0.6);
             draw_sprite_ext(spr_current_room, 0, ((xx + minimapX - smallestX + 1) * minimapRoomWidth * minimapScale * scaleFactor), 
-                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor) + (dotRadius*2),minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,1);
+                       ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1)* minimapRoomHeight * minimapScale * scaleFactor) + (dotRadius*2),minimapScale* scaleFactor,minimapScale* scaleFactor,0,c_white,0.6);
            
         }
     }

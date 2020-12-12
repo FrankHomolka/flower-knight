@@ -31,32 +31,32 @@ global.itemList = ds_list_create();
 
 // Item Double Damage
 // Working here
-scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 100, false, 1, scr_focus_shield_effect, '', '', 0);
-scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 100, true, 1, scr_focus_damage, '', '', 0);
-scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 200, true, 1, scr_focus_speed, '', '', 0);
-scr_add_item(global.itemList, "MORTAL KOMBAT", spr_focus_mortal_kombat, scr_focus_mortal_kombat, 200, true, 1, scr_focus_mortal_kombat_effect, '', '', 0);
+scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 100, false, 0, scr_focus_shield_effect, '', '', 0);
+scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 100, true, 0, scr_focus_damage, '', '', 0);
+scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 200, true, 0, scr_focus_speed, '', '', 0);
+scr_add_item(global.itemList, "MORTAL KOMBAT", spr_focus_mortal_kombat, scr_focus_mortal_kombat, 200, true, 0, scr_focus_mortal_kombat_effect, '', '', 0);
 
 //scr_add_item(global.itemList, "NINJA", spr_focus_ninja, scr_focus_mortal_kombat, 200, true, 1, scr_focus_mortal_kombat_effect, '', '', 0);
 
-scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 100, false, 1, scr_focus_thorns_effect, scr_thorns_quest, 'Finish a level with 10 or less HP', 100);
-scr_add_item(global.itemList, "HEART SEEKER", spr_focus_heart_seeker, scr_focus_heart_seeker, 200, true, 1, scr_focus_heart_seeker, scr_damage_quest, 'Beat the first level', 100);
-scr_add_item(global.itemList, "MEGA HEART", spr_focus_mega_heart, scr_focus_mega_heart, 200, true, 1, scr_focus_mega_heart, scr_speed_quest, 'Defeat 10 tentacle monsters', 100);
-scr_add_item(global.itemList, "MISSILE", spr_focus_missile, scr_focus_missile, 200, false, 1, scr_focus_missile_effect, scr_shield_quest, 'Dodge through 15 magic attacks', 100);
-scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 200, false, 1, scr_focus_burn_enemy_effect, scr_burn_enemy_quest, 'Blow up a skeleton', 100);
-scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 200, true, 1, scr_focus_crit_chance_increase, scr_crit_chance_quest, 'Find a treasure chest', 100);
-scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 400, false, 1, scr_focus_vampire_effect, scr_vampire_quest, 'Slay 50 skeletons', 40);
-scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 400, false, 1, scr_focus_bomb_effect, scr_bomb_quest, 'Reveal a secret room', 20);
-scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 200, false, 1, scr_focus_shadow_effect, scr_shadow_quest, 'Dodge 100 attacks', 20);
-scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 200, false, 1, scr_focus_freeze_enemy_effect, scr_freeze_quest, 'Beat the second level', 20);
-scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 300, false, 1, scr_focus_fireball_effect, scr_fireball_quest, 'Burn 40 enemies to a crisp', 20);
-scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 200, false, 1, scr_focus_knockback_effect, scr_knockback_quest, 'Collect 20 Boss heads', 20);
-scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 300, true, 1, scr_focus_angel, scr_angel_quest, 'Gather 30 hearts', 20);
-scr_add_item(global.itemList, "SLIME", spr_focus_slime, scr_focus_slime, 400, false, 1, scr_focus_slime_effect, scr_slime_quest, 'Defeat PLANT KING', 20);
-scr_add_item(global.itemList, "RHINO", spr_focus_rhino, scr_focus_rhino, 400, false, 1, scr_focus_rhino_effect, scr_rhino_quest, 'Stun KING KNIGHT 20 times', 20);
-scr_add_item(global.itemList, "STRIKE", spr_focus_strike, scr_focus_strike, 300, false, 1, scr_focus_strike_effect, scr_strike_quest, 'Beat the first level without taking any damage', 20);
-scr_add_item(global.itemList, "ZOOM ZOOM", spr_focus_attack_speed, scr_focus_attack_speed, 200, true, 1, scr_focus_attack_speed, scr_attack_speed_quest, 'Beat every boss', 20);
-scr_add_item(global.itemList, "PARRY", spr_focus_parry, scr_focus_parry, 300, true, 1, scr_focus_parry, scr_parry_quest, 'Deflect 20 giant spears', 20);
-scr_add_item(global.itemList, "GREED", spr_focus_greed, scr_focus_greed, 200, false, 1, scr_focus_greed_effect, scr_greed_quest, 'Horde 2000 gold pieces at once', 20);
+scr_add_item(global.itemList, "THORNS", spr_focus_thorns, scr_focus_thorns, 100, false, 0, scr_focus_thorns_effect, scr_thorns_quest, 'Finish a level with 10 or less HP', 100);
+scr_add_item(global.itemList, "HEART SEEKER", spr_focus_heart_seeker, scr_focus_heart_seeker, 200, true, 0, scr_focus_heart_seeker, scr_damage_quest, 'Beat the first level', 100);
+scr_add_item(global.itemList, "MEGA HEART", spr_focus_mega_heart, scr_focus_mega_heart, 200, true, 0, scr_focus_mega_heart, scr_speed_quest, 'Defeat 10 tentacle monsters', 100);
+scr_add_item(global.itemList, "MISSILE", spr_focus_missile, scr_focus_missile, 200, false, 0, scr_focus_missile_effect, scr_shield_quest, 'Dodge through 15 magic attacks', 100);
+scr_add_item(global.itemList, "BURN BABY BURN", spr_focus_fire, scr_focus_burn_enemy, 200, false, 0, scr_focus_burn_enemy_effect, scr_burn_enemy_quest, 'Blow up a skeleton', 100);
+scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_crit_chance_increase, 200, true, 0, scr_focus_crit_chance_increase, scr_crit_chance_quest, 'Find a treasure chest', 100);
+scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 400, false, 0, scr_focus_vampire_effect, scr_vampire_quest, 'Slay 50 skeletons', 40);
+scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 400, false, 0, scr_focus_bomb_effect, scr_bomb_quest, 'Reveal a secret room', 20);
+scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 200, false, 0, scr_focus_shadow_effect, scr_shadow_quest, 'Dodge 100 attacks', 20);
+scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 200, false, 0, scr_focus_freeze_enemy_effect, scr_freeze_quest, 'Beat the second level', 20);
+scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 300, false, 0, scr_focus_fireball_effect, scr_fireball_quest, 'Burn 40 enemies to a crisp', 20);
+scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 200, false, 0, scr_focus_knockback_effect, scr_knockback_quest, 'Collect 20 Boss heads', 20);
+scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 300, true, 0, scr_focus_angel, scr_angel_quest, 'Gather 30 hearts', 20);
+scr_add_item(global.itemList, "SLIME", spr_focus_slime, scr_focus_slime, 400, false, 0, scr_focus_slime_effect, scr_slime_quest, 'Defeat PLANT KING', 20);
+scr_add_item(global.itemList, "RHINO", spr_focus_rhino, scr_focus_rhino, 400, false, 0, scr_focus_rhino_effect, scr_rhino_quest, 'Stun KING KNIGHT 20 times', 20);
+scr_add_item(global.itemList, "STRIKE", spr_focus_strike, scr_focus_strike, 300, false, 0, scr_focus_strike_effect, scr_strike_quest, 'Beat the first level without taking any damage', 20);
+scr_add_item(global.itemList, "ZOOM ZOOM", spr_focus_attack_speed, scr_focus_attack_speed, 200, true, 0, scr_focus_attack_speed, scr_attack_speed_quest, 'Beat every boss', 20);
+scr_add_item(global.itemList, "PARRY", spr_focus_parry, scr_focus_parry, 300, true, 0, scr_focus_parry, scr_parry_quest, 'Deflect 20 giant spears', 20);
+scr_add_item(global.itemList, "GREED", spr_focus_greed, scr_focus_greed, 200, false, 0, scr_focus_greed_effect, scr_greed_quest, 'Horde 2000 gold pieces at once', 20);
 
 /*             List of items bought this run                  */
 global.equippedItemsList = ds_list_create();

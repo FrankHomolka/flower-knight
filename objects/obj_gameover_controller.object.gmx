@@ -38,6 +38,10 @@
             instance_destroy();
         }
         ds_list_clear(global.equippedItemsList);
+        for(var k = 0; k &lt; ds_list_size(global.itemList); k++) {
+            item = global.itemList[| k];
+            ds_map_replace( item, 'numBought', 0);
+        }
         ds_list_clear(obj_focus_controller.playerHitFocusList);
         ds_list_clear(obj_focus_controller.playerAttackFocusList);
         ds_list_clear(obj_focus_controller.playerDashFocusList);

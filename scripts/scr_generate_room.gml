@@ -7,11 +7,6 @@ startX = argument0;
 startY = argument1;
 temp = false;
 
-if(argument2 == spr_bomb_room) {
-    temp = tileSheet;
-    tileSheet = bck_treasure_room;
-}
-
 for(genX = 0; genX < 24; genX++) {//20
     for(genY = 0; genY < 16; genY++) {//14
         color = surface_getpixel(surface, genX, genY);
@@ -19,7 +14,14 @@ for(genX = 0; genX < 24; genX++) {//20
         switch(color) {
             // Background
             case $ffffff:
+                if(argument2 == spr_bomb_room) {
+                    temp = tileSheet;
+                    tileSheet = bck_treasure_room;
+                }
                 tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                if(argument2 == spr_bomb_room) {
+                    tileSheet = temp;
+                }
                 break;
             // Wall
             case $000000:
@@ -115,13 +117,27 @@ for(genX = 0; genX < 24; genX++) {//20
                 break;
             // Torch
             case $ff0099:
-                instance_create(startX + (genX * 16), startY + (genY * 16), obj_torch);
+                if(argument2 == spr_bomb_room) {
+                    temp = tileSheet;
+                    tileSheet = bck_treasure_room;
+                }
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                if(argument2 == spr_bomb_room) {
+                    tileSheet = temp;
+                }
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_torch);
                 break;
             // Treasure
             case $000040:
-                instance_create(startX + (genX * 16), startY + (genY * 16), obj_treasure);
+                if(argument2 == spr_bomb_room) {
+                    temp = tileSheet;
+                    tileSheet = bck_treasure_room;
+                }
                 tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                if(argument2 == spr_bomb_room) {
+                    tileSheet = temp;
+                }
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_treasure);
                 break;
             // Door
             case $00ffff:
@@ -135,7 +151,14 @@ for(genX = 0; genX < 24; genX++) {//20
                 break;
             // Bomb room 
             case $d5db64:
+                if(argument2 == spr_bomb_room) {
+                    temp = tileSheet;
+                    tileSheet = bck_treasure_room;
+                }
                 tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                if(argument2 == spr_bomb_room) {
+                    tileSheet = temp;
+                }
                 instance_create(startX + (genX * 16), startY + (genY * 16), obj_bomb_room);
                 break;
             // Player spawn
@@ -255,27 +278,107 @@ for(genX = 0; genX < 24; genX++) {//20
             /* Left side */
             if(genX == 0 && doorLeft) {
                 if(genY >= 5 && genY < 10) {
-                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
-                    instance_create(startX + ((genX - 1) * 16), startY + (genY * 16), obj_bombable_wall);
+                    tile1 = tile_layer_find(1000000, startX + ((genX - 1) * 16), startY + (genY * 16));
+                    tile2 = tile_layer_find(1000000, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile1 = tile_layer_find(1000001, startX + ((genX - 1) * 16), startY + (genY * 16));
+                    tile2 = tile_layer_find(1000001, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX - 1) * 16), startY + (genY * 16), 1000000);
+                    with(instance_create(startX + ((genX - 1) * 16), startY + (genY * 16), obj_bombable_wall)) {
+                        tileSheet = other.tileSheet;
+                        image_index = 1;
+                    }
                 }
             /* Right Side */
             } else if(genX == 24 - 1 && doorRight) {
                 if(genY >= 5 && genY < 10) {
-                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
-                    instance_create(startX + ((genX + 1) * 16), startY + (genY * 16), obj_bombable_wall);
+                    tile1 = tile_layer_find(1000000, startX + ((genX + 1) * 16), startY + (genY * 16));
+                    tile2 = tile_layer_find(1000000, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile1 = tile_layer_find(1000001, startX + ((genX + 1) * 16), startY + (genY * 16));
+                    tile2 = tile_layer_find(1000001, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX + 1) * 16), startY + (genY * 16), 1000000); 
+                    with(instance_create(startX + ((genX + 1) * 16), startY + (genY * 16), obj_bombable_wall)) {
+                        tileSheet = other.tileSheet;
+                        image_index = 3;
+                    }
                 }
             }
             /* Up side */
             if(genY == 0 && doorUp) {
                 if(genX >= 10 && genX < 14) {
-                   instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
-                   instance_create(startX + (genX * 16), startY + ((genY - 1) * 16), obj_bombable_wall);
+                    tile1 = tile_layer_find(1000000, startX + (genX * 16), startY + ((genY - 1) * 16));
+                    tile2 = tile_layer_find(1000000, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile1 = tile_layer_find(1000001, startX + (genX * 16), startY + ((genY - 1) * 16));
+                    tile2 = tile_layer_find(1000001, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + ((genY - 1) * 16), 1000000);
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    with(instance_create(startX + (genX * 16), startY + ((genY - 1) * 16), obj_bombable_wall)) {
+                        tileSheet = other.tileSheet;
+                        image_index = 2;
+                    }
                 }
             /* Down Side */
             } else if(genY == 16 - 1 && doorDown) {
                 if(genX >= 10 && genX < 14) {
-                    instance_create(startX + (genX * 16), startY + (genY * 16), obj_bombable_wall);
-                    instance_create(startX + (genX * 16), startY + ((genY + 1) * 16), obj_bombable_wall);
+                    tile1 = tile_layer_find(1000000, startX + (genX * 16), startY + ((genY + 1) * 16));
+                    tile2 = tile_layer_find(1000000, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile1 = tile_layer_find(1000001, startX + (genX * 16), startY + ((genY + 1) * 16));
+                    tile2 = tile_layer_find(1000001, startX + (genX  * 16), startY + (genY * 16));
+                    if(tile1 != -1) {
+                        tile_delete(tile1);
+                    }
+                    if(tile2 != -1) {
+                        tile_delete(tile2);
+                    }
+                    tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 16, 16, 16, startX + (genX * 16), startY + ((genY + 1) * 16), 1000000);
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    with(instance_create(startX + (genX * 16), startY + ((genY + 1) * 16), obj_bombable_wall)) {
+                        tileSheet = other.tileSheet;
+                        image_index = 0;
+                    }
                 }
             }
         }

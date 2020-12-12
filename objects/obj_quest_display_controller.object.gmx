@@ -84,9 +84,12 @@ obj_quest_controller.counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(ord('H')) &amp;&amp; room != rm_quest) {
-    showQuests = !showQuests;
+            <string>if(instance_exists(obj_player)) {
+    if(obj_player.quests &amp;&amp; room != rm_quest) {
+        showQuests = !showQuests;
+    }
 }
+
 if(showQuests)
     counter+=0.02;
 </string>
