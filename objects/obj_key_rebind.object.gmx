@@ -29,7 +29,7 @@
 y = room_height / 2 + offsetY;
 depth = -10000;
 textScale = 0.8;
-xScale = 2;
+xScale = 3;
 yScale = 1;
 activated = false;
 switch(type) {

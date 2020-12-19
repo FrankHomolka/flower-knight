@@ -708,6 +708,8 @@
         <script>scripts\scr_save_viewMap.gml</script>
         <script>scripts\scr_save_viewQuests.gml</script>
         <script>scripts\scr_save_pause.gml</script>
+        <script>scripts\scr_save_interact.gml</script>
+        <script>scripts\scr_save_fullscreen.gml</script>
       </scripts>
     </scripts>
     <scripts name="GUI">
@@ -786,6 +788,7 @@
       <object>objects\obj_bone_stack</object>
     </objects>
     <objects name="Controllers">
+      <object>objects\obj_fade_controller</object>
       <object>objects\obj_controller_spawner</object>
       <object>objects\obj_game_start_controller</object>
       <object>objects\obj_focus_controller</object>

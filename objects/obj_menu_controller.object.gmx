@@ -181,6 +181,15 @@ if(room != currentRoom) {
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
+            text = "FULLSCREEN - ";
+            type = "small";
+            offsetY = -50;
+            offsetX = 100;
+            currentKey = obj_settings_controller.fullscreen;
+            onSave = scr_save_fullscreen;
+            instance_change(obj_key_rebind, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
             text = "RIGHT - ";
             type = "small";
             offsetY = -35;
@@ -189,6 +198,15 @@ if(room != currentRoom) {
             onSave = scr_save_moveRight;
             instance_change(obj_key_rebind, true);
         }
+        /*with(instance_create(20,20,obj_blank)) {
+            text = "INTERACT - ";
+            type = "small";
+            offsetY = -35;
+            offsetX = 100;
+            currentKey = obj_settings_controller.interact;
+            onSave = scr_save_interact;
+            instance_change(obj_key_rebind, true);
+        }*/
         with(instance_create(20,20,obj_blank)) {
             text = "DOWN - ";
             type = "small";

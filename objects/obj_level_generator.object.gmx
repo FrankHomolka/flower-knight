@@ -162,6 +162,9 @@ ds_list_destroy(enemyList);
 ds_list_destroy(roomList);
 surface_free(surface);
 instance_create(x,y,obj_tile_depth_controller);
+with(instance_create(x,y,obj_fade_controller)) {
+    fadeIn = true;
+}
 </string>
           </argument>
         </arguments>

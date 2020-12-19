@@ -36,6 +36,7 @@ smallestY = 100;
 minimapSprite = false;
 findMapStart = false;
 enlargeMap = false;
+spriteAlpha = 1;
 
 dotRadiusMin = 1;
 dotRadius = 1.5;
@@ -139,18 +140,25 @@ if(global.paused == false) {
     
     /* UI */
     if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) {
+        if(instance_exists(obj_fade_controller)) {
+            draw_set_alpha(1 - obj_fade_controller.drawAlpha);
+            spriteAlpha = 1 - obj_fade_controller.drawAlpha;
+        } else {
+            draw_set_alpha(1);
+            spriteAlpha = 1;
+        }
         draw_set_font(fnt_ui);
         draw_set_color(c_white);
         draw_set_halign(fa_left);
         draw_set_valign(fa_middle);
         
         /* Gold gained */
-        draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+        draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, spriteAlpha);
         draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_quest_controller.gold, 3 * scaleFactor, 3 * scaleFactor, 0);
         
         /* Player hp */
-        draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, 1);
-        draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, 1);
+        draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, spriteAlpha);
+        draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, spriteAlpha);
         if(obj_player.hp &gt; 0) {
             hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
             draw_set_color(c_black);
@@ -165,12 +173,16 @@ if(global.paused == false) {
             draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
         }
         draw_set_font(fnt_1);
-        
     }
+    draw_set_alpha(1);
     
     /* Draw minimap background */
     if(loading == false &amp;&amp; room == rm_procedural &amp;&amp; instance_exists(obj_level_generator)) {
-        scr_draw_minimap();
+        if(instance_exists(obj_dungeon_shop)) {
+            if(obj_dungeon_shop.activated == false) scr_draw_minimap();
+        } else {
+            scr_draw_minimap();
+        }
     }
     
     /* Draw bought items */
@@ -211,9 +223,10 @@ if(global.paused == false) {
         draw_set_color(c_white);
         
         /* LOADING text */
-        draw_set_halign(fa_center);
-        draw_set_valign(fa_middle);
-        draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "LOADING...", 7, 7, 0);
+        draw_set_halign(fa_right);
+        draw_set_valign(fa_bottom);
+        draw_set_font(fnt_ui);
+        draw_text_transformed(gw - 20, gh - 20, "LOADING...", 3, 3, 0);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         findMapStart = true;

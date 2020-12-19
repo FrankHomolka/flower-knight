@@ -12,6 +12,7 @@ switch(state) {
     case states.hit:
         scr_boss_1_hit_state();
         scr_boss_1_attack_state();
+        if(!attacking) scr_boss_1_chase_state();
         break; 
     case states.chooseAttack:
         scr_boss_1_choose_attack_state();

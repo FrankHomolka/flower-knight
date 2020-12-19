@@ -79,18 +79,19 @@ if(instance_exists(obj_player)) {
     }
 }
 
-if(keyboard_check_pressed(ord('V'))) {
-      if window_get_fullscreen() {
-        window_set_fullscreen(false);
-      } else {
-        window_set_fullscreen(true);
-      }
-    if(light != noone) {
-        if(surface_exists(light)) {
-            surface_resize(light, view_wview, view_hview);
-        }
+if(instance_exists(obj_settings_controller)) {
+    if(keyboard_check_pressed(obj_settings_controller.fullscreen)) {
+          if window_get_fullscreen() {
+            window_set_fullscreen(false);
+          } else {
+            window_set_fullscreen(true);
+          }
+        if(light != noone) {
+            if(surface_exists(light)) {
+                surface_resize(light, view_wview, view_hview);
+            }
+        }   
     }
-    
 }
 </string>
           </argument>

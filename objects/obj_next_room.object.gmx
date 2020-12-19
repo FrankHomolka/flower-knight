@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+activated = false;
 </string>
           </argument>
         </arguments>
@@ -50,8 +51,11 @@
             <kind>1</kind>
             <string>event_inherited();
 
-if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
-    obj_gui_controller.loading = true;
+if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact &amp;&amp; !activated) {
+    activated = true;
+    with(instance_create(x,y,obj_fade_controller)) {
+        fadeIn = false;
+    }
     if(obj_player.hp &lt;= 10) {
         if(instance_exists(obj_quest_controller)) obj_quest_controller.beatLevelLowHp = true;
     }
@@ -106,7 +110,8 @@ if(obj_gui_controller.drawingLoadingScreen = true) {
             <kind>1</kind>
             <string>event_inherited();
 draw_self();
-if(place_meeting(x,y,obj_player)) {
+
+if(place_meeting(x,y,obj_player) &amp;&amp; !activated) {
     draw_set_color(c_white);
     draw_set_alpha(1);
     draw_set_font(fnt_ui);

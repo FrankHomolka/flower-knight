@@ -62,8 +62,10 @@ if(file_exists("settings.ini")) {
     attack = ini_read_real("controls", "attack", ord('K'));
     dodge = ini_read_real("controls", "dodge", ord('L'));
     viewQuests = ini_read_real("controls", "viewQuests", ord('H'));
-    viewMap = ini_read_real("controls", "viewQuests", ord('M'));
+    viewMap = ini_read_real("controls", "viewMap", ord('M'));
     pause = ini_read_real("controls", "pause", ord('P'));
+    interact = ini_read_real("controls", "interact", ord('E'));
+    fullscreen = ini_read_real("controls", "fulscreen", ord('F'));
     ini_close(); 
 } else {
     ini_open("settings.ini");
@@ -86,8 +88,10 @@ if(file_exists("settings.ini")) {
     ini_write_real("controls", "attack", ord('K'));
     ini_write_real("controls", "dodge", ord('L'));
     ini_write_real("controls", "viewQuests", ord('H'));
-    ini_write_real("controls", "viewQuests", ord('M'));
+    ini_write_real("controls", "viewMap", ord('M'));
     ini_write_real("controls", "pause", ord('P'));
+    ini_write_real("controls", "interact", ord('E'));
+    ini_write_real("controls", "fullscreen", ord('F'));
     
     ini_close(); 
     show_debug_message("settings file does not exist");
@@ -153,9 +157,7 @@ if(global.playMusic) {
 
 if keyboard_lastkey != -1
     {
-    show_debug_message(keyboard_lastchar);
     show_debug_message(keyboard_lastkey);
-    show_debug_message(vk_right);
     keyboard_lastkey = -1;
     }
 </string>
