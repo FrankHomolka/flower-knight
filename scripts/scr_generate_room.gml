@@ -5,8 +5,15 @@ roomSprite = draw_sprite(argument2, argument3, 0, 0);
 surface_reset_target();
 startX = argument0;
 startY = argument1;
-temp = false;
-
+temp = tileSheet;
+if(argument2 == spr_room_boss_map) {
+    show_debug_message('spr room boss map');
+    switch(area) {
+        case 1:
+            tileSheet = bck_area_1_boss;
+            break;
+    }
+}
 for(genX = 0; genX < 24; genX++) {//20
     for(genY = 0; genY < 16; genY++) {//14
         color = surface_getpixel(surface, genX, genY);
@@ -22,6 +29,10 @@ for(genX = 0; genX < 24; genX++) {//20
                 if(argument2 == spr_bomb_room) {
                     tileSheet = temp;
                 }
+                if(random(1) > 0.93) {
+                    tile_add(bck_area_1_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, startX + (genX * 16), startY + (genY * 16), 1000002);
+                }
+                
                 break;
             // Wall
             case $000000:
@@ -176,6 +187,7 @@ for(genX = 0; genX < 24; genX++) {//20
         if(numDoors < 4) {
             tile1 = tile_layer_find(1000000, startX + (genX * 16), startY + (genY * 16));
             tile2 = tile_layer_find(1000001, startX + (genX * 16), startY + (genY * 16));
+            tile3 = tile_layer_find(1000002, startX + (genX * 16), startY + (genY * 16));
             /* Left Side */
             if(genX == 0 && !doorLeft) {
                 if(genY >= 4 && genY < 10) {
@@ -185,6 +197,9 @@ for(genX = 0; genX < 24; genX++) {//20
                     }
                     if(tile2 != -1) {
                         tile_delete(tile2);
+                    }
+                    if(tile3 != -1) {
+                        tile_delete(tile3);
                     }
                     tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
@@ -197,6 +212,9 @@ for(genX = 0; genX < 24; genX++) {//20
                     }
                     if(tile2 != -1) {
                         tile_delete(tile2);
+                    }
+                    if(tile3 != -1) {
+                        tile_delete(tile3);
                     }
                     tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
@@ -211,6 +229,9 @@ for(genX = 0; genX < 24; genX++) {//20
                     if(tile2 != -1) {
                         tile_delete(tile2);
                     }
+                    if(tile3 != -1) {
+                        tile_delete(tile3);
+                    }
                     tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 16, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
             /* Down Side */
@@ -222,6 +243,9 @@ for(genX = 0; genX < 24; genX++) {//20
                     }
                     if(tile2 != -1) {
                         tile_delete(tile2);
+                    }
+                    if(tile3 != -1) {
+                        tile_delete(tile3);
                     }
                     tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
                 }
@@ -294,8 +318,8 @@ for(genX = 0; genX < 24; genX++) {//20
                     if(tile2 != -1) {
                         tile_delete(tile2);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX - 1) * 16), startY + (genY * 16), 1000000);
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX - 1) * 16), startY + (genY * 16), 1000001);
                     with(instance_create(startX + ((genX - 1) * 16), startY + (genY * 16), obj_bombable_wall)) {
                         tileSheet = other.tileSheet;
                         image_index = 1;
@@ -320,8 +344,8 @@ for(genX = 0; genX < 24; genX++) {//20
                     if(tile2 != -1) {
                         tile_delete(tile2);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX + 1) * 16), startY + (genY * 16), 1000000); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + ((genX + 1) * 16), startY + (genY * 16), 1000001); 
                     with(instance_create(startX + ((genX + 1) * 16), startY + (genY * 16), obj_bombable_wall)) {
                         tileSheet = other.tileSheet;
                         image_index = 3;
@@ -347,8 +371,8 @@ for(genX = 0; genX < 24; genX++) {//20
                     if(tile2 != -1) {
                         tile_delete(tile2);
                     }
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + ((genY - 1) * 16), 1000000);
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + ((genY - 1) * 16), 1000001);
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001); 
                     with(instance_create(startX + (genX * 16), startY + ((genY - 1) * 16), obj_bombable_wall)) {
                         tileSheet = other.tileSheet;
                         image_index = 2;
@@ -374,7 +398,7 @@ for(genX = 0; genX < 24; genX++) {//20
                         tile_delete(tile2);
                     }
                     tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 16, 16, 16, startX + (genX * 16), startY + ((genY + 1) * 16), 1000000);
-                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000); 
+                    tile_add(tileSheet, 16 * 3, 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 100000); 
                     with(instance_create(startX + (genX * 16), startY + ((genY + 1) * 16), obj_bombable_wall)) {
                         tileSheet = other.tileSheet;
                         image_index = 0;
@@ -384,5 +408,6 @@ for(genX = 0; genX < 24; genX++) {//20
         }
     }
 }
-if(temp != false) tileSheet = temp;
+tileSheet = temp;
+
 roomSprite = draw_clear(argument0);

@@ -132,6 +132,7 @@ currentRoom = room;
                         boss = obj_skeleton_general;
                     }
                     background_color = $181611;
+                    area = other.area;
                     instance_change(obj_level_generator,true);
                 }
                 break;
@@ -196,6 +197,7 @@ currentRoom = room;
                         boss = obj_enemy_archer_boss;
                     }
                     background_color = $3a1a2e;
+                    area = other.area;
                     instance_change(obj_level_generator,true);
                 }
                 break;
@@ -261,6 +263,7 @@ currentRoom = room;
                     maxNumRooms = 15;
                     tileSheet = bck_area_3;
                     background_color = $2e2eb0;
+                    area = other.area;
                     instance_change(obj_level_generator,true);
                 }
                 break;

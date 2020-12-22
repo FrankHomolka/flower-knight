@@ -28,6 +28,7 @@
             <string>event_inherited();
 image_speed = 0;
 destroy = false;
+depth = -y - 10000;
 </string>
           </argument>
         </arguments>
@@ -71,8 +72,8 @@ destroy = false;
 
 if(destroy) {
     
-    tile = tile_layer_find(1000000, x, y);
-    tile1 = tile_layer_find(1000001, x, y);
+    tile = tile_layer_find(-y + 100000, x, y);
+    tile1 = tile_layer_find(-y - 20, x, y);
     if(tile != -1) {
         tile_delete(tile);
         show_debug_message('found &amp; deleted tile');
@@ -81,6 +82,62 @@ if(destroy) {
         tile_delete(tile1);
         show_debug_message('found &amp; deleted tile');
     }
+    
+    switch(image_index) {
+        case 0: // bottom
+            tile = tile_layer_find(-y + 16 + 100000, x, y + 16);
+            tile1 = tile_layer_find(-y + 16 - 20, x, y + 16);
+            if(tile != -1) {
+                tile_delete(tile);
+                show_debug_message('found &amp; deleted tile');
+            }
+            if(tile1 != -1) {
+                tile_delete(tile1);
+                show_debug_message('found &amp; deleted tile');
+            }
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x,y + 16, -y + 8);
+            break;
+        case 1: // right
+            tile = tile_layer_find(-y + 100000, x + 16, y);
+            tile1 = tile_layer_find(-y - 20, x + 16, y);
+            if(tile != -1) {
+                tile_delete(tile);
+                show_debug_message('found &amp; deleted tile');
+            }
+            if(tile1 != -1) {
+                tile_delete(tile1);
+                show_debug_message('found &amp; deleted tile');
+            }
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x + 16,y, -y + 8);
+            break;
+        case 2: // top
+            tile = tile_layer_find(-y - 16 + 100000, x, y - 16);
+            tile1 = tile_layer_find(-y - 16 - 20, x, y - 16);
+            if(tile != -1) {
+                tile_delete(tile);
+                show_debug_message('found &amp; deleted tile');
+            }
+            if(tile1 != -1) {
+                tile_delete(tile1);
+                show_debug_message('found &amp; deleted tile');
+            }
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x,y - 16, -y + 8);
+            break;
+        case 3: // left
+            tile = tile_layer_find(-y + 100000, x - 16, y);
+            tile1 = tile_layer_find(-y - 20, x - 16, y);
+            if(tile != -1) {
+                tile_delete(tile);
+                show_debug_message('found &amp; deleted tile');
+            }
+            if(tile1 != -1) {
+                tile_delete(tile1);
+                show_debug_message('found &amp; deleted tile');
+            }
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x - 16,y, -y + 8);
+            break;
+    }
+    
     tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, x,y, -y + 8);
     mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
     instance_destroy();

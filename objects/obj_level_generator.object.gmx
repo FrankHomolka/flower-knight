@@ -112,7 +112,7 @@ surface = surface_create(room_width, room_height);
 for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
     for(yy = 0; yy &lt; ds_grid_height(mapGrid); yy++) {
         if(ds_grid_get(mapGrid, xx, yy) != 0) {
-        
+            
             // Get room rarity
             roomSprite = roomList[| floor(random(ds_list_size(roomList)))];
             
@@ -133,8 +133,6 @@ for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
                 // Boss Room
                 ds_grid_set(mapGrid, bossCellX, bossCellY, "boss");
                 scr_generate_room(startX, startY, spr_room_boss_map, 0);
-                show_debug_message('bossCellX = ' + string(bossCellX) + ' bossCellY = ' + string(bossCellY));
-                show_debug_message('boss room');
             } else if(xx == shopCellX &amp;&amp; yy == shopCellY){
                 // Shop Room
                 scr_generate_room(startX, startY, spr_room_shop_map, 0);

@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>currentRoom = noone;
-
-instance_create(x,y,obj_settings_controller);
 </string>
           </argument>
         </arguments>

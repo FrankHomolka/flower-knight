@@ -78,6 +78,7 @@
       <sprite>sprites\spr_focus_fireball</sprite>
       <sprite>sprites\spr_focus_missile</sprite>
       <sprite>sprites\spr_focus_freeze</sprite>
+      <sprite>sprites\spr_focus_chain_lightning</sprite>
       <sprite>sprites\spr_focus_fire</sprite>
       <sprite>sprites\spr_focus_angel</sprite>
       <sprite>sprites\spr_focus_vampire</sprite>
@@ -97,6 +98,7 @@
       <sprite>sprites\spr_missile</sprite>
       <sprite>sprites\spr_strike</sprite>
       <sprite>sprites\spr_focus_greed</sprite>
+      <sprite>sprites\spr_chain_lightning</sprite>
     </sprites>
     <sprites name="Enemy">
       <sprites name="Slime">
@@ -462,13 +464,12 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\bck_outside</background>
-    <background>background\bck_dungeon</background>
     <background>background\bck_area_1</background>
+    <background>background\bck_area_1_boss</background>
+    <background>background\bck_area_1_decoration</background>
     <background>background\bck_treasure_room</background>
     <background>background\bck_area_2</background>
     <background>background\bck_area_3</background>
-    <background>background\background7</background>
     <background>background\bck_shop</background>
     <background>background\bck_menu</background>
   </backgrounds>
@@ -528,7 +529,6 @@
         <script>scripts\scr_enemy_ranged_attack.gml</script>
         <script>scripts\scr_try_hit_enemy.gml</script>
       </scripts>
-      <script>scripts\scr_check_pit_enemy.gml</script>
       <scripts name="Unique States">
         <script>scripts\scr_hell_charger_attack.gml</script>
         <script>scripts\scr_miniboss_1_attack.gml</script>
@@ -539,6 +539,7 @@
         <script>scripts\scr_summoner_attack.gml</script>
         <script>scripts\scr_summoner_boss_attack.gml</script>
       </scripts>
+      <script>scripts\scr_check_pit_enemy.gml</script>
     </scripts>
     <scripts name="Particles">
       <script>scripts\scr_player_walk_particle.gml</script>
@@ -582,8 +583,10 @@
         <script>scripts\scr_vampire_quest.gml</script>
         <script>scripts\scr_focus_freeze_enemy_effect.gml</script>
         <script>scripts\scr_focus_freeze_enemy.gml</script>
+        <script>scripts\scr_focus_chain_lightning.gml</script>
         <script>scripts\scr_focus_burn_enemy.gml</script>
         <script>scripts\scr_focus_burn_enemy_effect.gml</script>
+        <script>scripts\scr_focus_chain_lightning_effect.gml</script>
         <script>scripts\scr_burn_enemy_quest.gml</script>
         <script>scripts\scr_knockback_quest.gml</script>
         <script>scripts\scr_greed_quest.gml</script>
@@ -862,6 +865,7 @@
       <object>objects\obj_bomb</object>
       <object>objects\obj_bomb_explosion</object>
       <object>objects\obj_fire</object>
+      <object>objects\obj_chain_lightning</object>
       <object>objects\obj_player_slime</object>
       <object>objects\obj_player_fireball</object>
       <object>objects\obj_player_strike</object>

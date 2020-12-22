@@ -39,6 +39,17 @@ boss3head = false;
 miniboss1head = false;
 miniboss2head = false;
 miniboss3head = false;
+moveUp = ord('W');
+moveRight = ord('D');
+moveDown = ord('S');
+moveLeft = ord('A');
+attack = ord('K');
+dodge = ord('L');
+viewQuests = ord('H');
+viewMap = ord('M');
+pause = ord('P');
+interact = ord('E');
+fullscreen = ord('F');
 
 /* Read saved settings */
 if(file_exists("settings.ini")) {
@@ -65,7 +76,7 @@ if(file_exists("settings.ini")) {
     viewMap = ini_read_real("controls", "viewMap", ord('M'));
     pause = ini_read_real("controls", "pause", ord('P'));
     interact = ini_read_real("controls", "interact", ord('E'));
-    fullscreen = ini_read_real("controls", "fulscreen", ord('F'));
+    fullscreen = ini_read_real("controls", "fullscreen", ord('F'));
     ini_close(); 
 } else {
     ini_open("settings.ini");
@@ -96,12 +107,12 @@ if(file_exists("settings.ini")) {
     ini_close(); 
     show_debug_message("settings file does not exist");
 }
+
 level1Music = music_1;
 level2Music = music_level_2;
 level3Music = music_2;
 bossMusic = snd_boss_music_1;
 currentLevelMusic = level1Music;
-
 
 currentMusic = false;
 playNext = level1Music;
@@ -154,12 +165,6 @@ if(global.playMusic) {
         audio_pause_sound(currentMusic);
     currentMusic = false;
 }
-
-if keyboard_lastkey != -1
-    {
-    show_debug_message(keyboard_lastkey);
-    keyboard_lastkey = -1;
-    }
 </string>
           </argument>
         </arguments>

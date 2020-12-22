@@ -35,6 +35,7 @@ scr_add_item(global.itemList, "SHIELD", spr_focus_shield, scr_focus_shield, 100,
 scr_add_item(global.itemList, "ASSASSIN", spr_focus_double_damage, scr_focus_damage, 100, true, 0, scr_focus_damage, '', '', 0);
 scr_add_item(global.itemList, "RUNNER", spr_focus_speed, scr_focus_speed, 200, true, 0, scr_focus_speed, '', '', 0);
 scr_add_item(global.itemList, "MORTAL KOMBAT", spr_focus_mortal_kombat, scr_focus_mortal_kombat, 200, true, 0, scr_focus_mortal_kombat_effect, '', '', 0);
+scr_add_item(global.itemList, "CHAIN LIGHTNING", spr_focus_chain_lightning, scr_focus_chain_lightning, 400, true, 0, scr_focus_chain_lightning_effect, '', '', 0);
 
 //scr_add_item(global.itemList, "NINJA", spr_focus_ninja, scr_focus_mortal_kombat, 200, true, 1, scr_focus_mortal_kombat_effect, '', '', 0);
 

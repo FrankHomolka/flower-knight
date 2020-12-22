@@ -60,6 +60,10 @@ if(ds_list_size(global.itemList) - ds_list_size(global.itemsUnlocked) &lt; 3) {
     numItems = ds_list_size(global.itemList) - ds_list_size(global.itemsUnlocked);
 }
 
+with(instance_create(x,y,obj_fade_controller)) {
+    fadeIn = true;
+}
+
 activated = false;
 spawnedItems = false;
 rowLength = 10;
