@@ -4,11 +4,11 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,46 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_player.restart) {
-    if(room == rm_tutorial) {
-        obj_player.x = obj_pit_respawn.x;
-        obj_player.y = obj_pit_respawn.y;
-        obj_player.hp = 100;
-        obj_player.state = states.idle;
-        obj_player.dead = false;
-        instance_destroy();
-    } else {
-        with(obj_player) {
-            instance_destroy();
-        }
-        ds_list_clear(global.equippedItemsList);
-        for(var k = 0; k &lt; ds_list_size(global.itemList); k++) {
-            item = global.itemList[| k];
-            ds_map_replace( item, 'numBought', 0);
-        }
-        ds_list_clear(obj_focus_controller.playerHitFocusList);
-        ds_list_clear(obj_focus_controller.playerAttackFocusList);
-        ds_list_clear(obj_focus_controller.playerDashFocusList);
-        ds_list_clear(obj_focus_controller.playerDashingFocusList);
-        ds_list_clear(obj_focus_controller.playerHitEnemyFocusList);
-        instance_create(x,y,obj_player);
-        obj_quest_controller.gold = 0;
-        room_goto(rm_shop);
-    }
-}
-
-if(room == rm_shop) {
-    obj_player.x = obj_player_spawn.x;
-    obj_player.y = obj_player_spawn.y;
-    
-    instance_destroy();
-}
+            <string>alpha = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,30 +48,20 @@ if(room == rm_shop) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Get gui height and width
-var gw = display_get_gui_width();
-var gh = display_get_gui_height();
-
-if(room == rm_tutorial) {
-    text = "Press 'R' to respawn";
+            <string>draw_set_font(fnt_ui);
+depth = -y - 100;
+if(obj_tutorial_controller.step == step) {
+    alpha = 1;
+} else if(obj_tutorial_controller.step &gt; step){
+    alpha = 0.4;
 } else {
-    text = "Press 'R' to try again";
+    alpha = 0;
 }
-
-draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_set_color(c_black);
-draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "YOU ARE DEAD", 13., 13, 0);
+draw_set_alpha(alpha);
 draw_set_color(c_white);
-draw_text_transformed(gw / 2, (gh / 2) - 100, "YOU ARE DEAD", 13, 13, 0);
-draw_set_color(c_black);
-draw_text_transformed((gw / 2) - 6, (gh / 2) + 100 - 6, text, 7, 7, 0);
-draw_set_color(c_white);
-draw_text_transformed(gw / 2, (gh / 2) + 100, text, 7, 7, 0);
-draw_set_color(c_black);
-draw_set_valign(fa_top);
-draw_set_halign(fa_left);
+draw_text_transformed(x,y,text, 1, 1, 0);
 </string>
           </argument>
         </arguments>

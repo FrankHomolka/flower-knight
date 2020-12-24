@@ -69,7 +69,7 @@ if(fadeCounter &lt;= 0) {
         drawAlpha = 1 - (fadeCounter / fadeCounterMax);
     }
     draw_set_alpha(drawAlpha);
-    draw_rectangle(0,0,gw,gh,false);
+    draw_rectangle(0,0,gw + 400,gh + 400,false);
 }
 </string>
           </argument>

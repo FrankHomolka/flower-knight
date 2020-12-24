@@ -31,19 +31,21 @@ depth = -10000;
 textScale = 0.8;
 xScale = 1.5;
 yScale = 1.5;
-switch(type) {
-    case "normal":
-        sprite_index = spr_button;
-        break;
-    case "wide":
-        sprite_index = spr_wide_button;
-        break;
-    case "small":
-        sprite_index = spr_small_button;
-        break;
-    default:
-        sprite_index = spr_button;
-        break;
+if(spriteButton = false) {
+    switch(type) {
+        case "normal":
+            sprite_index = spr_button;
+            break;
+        case "wide":
+            sprite_index = spr_wide_button;
+            break;
+        case "small":
+            sprite_index = spr_small_button;
+            break;
+        default:
+            sprite_index = spr_button;
+            break;
+    }
 }
 </string>
           </argument>
@@ -114,7 +116,11 @@ draw_set_font(fnt_ui);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_text_transformed(x,y,text, textScale, textScale, 0);
+if(spriteButton) {
+    draw_sprite_ext(sprite, 0, x, y, textScale, textScale, 0, c_white, 1);
+} else {
+    draw_text_transformed(x,y,text, textScale, textScale, 0);
+}
 </string>
           </argument>
         </arguments>

@@ -76,6 +76,7 @@ if(place_meeting(x, y, obj_non_living_damage_parent)) {
     audio_play_sound_on(myEmitter, snd_destructible, false, 1); 
     part_emitter_region(destructSystem, destructEmitter, x, x,  y, y, ps_shape_ellipse, ps_distr_linear);
     part_emitter_burst(destructSystem, destructEmitter, destructParticle, random_range(5, 8));
+    instance_create(x + 8,y + 4,obj_heart_pickup);
     if(room == rm_procedural) mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
     instance_destroy();
 }

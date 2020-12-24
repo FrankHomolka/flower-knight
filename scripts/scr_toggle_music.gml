@@ -1,10 +1,10 @@
 ///scr_toggle_music
 if(global.playMusic) {
-    text = "TURN MUSIC ON";
+    sprite = spr_music_on;
     global.playMusic = false;
     scr_set_and_save_settings("sound", "playMusic", false);
 } else {
-    text = "TURN MUSIC OFF";
+    sprite = spr_music_off;
     global.playMusic = true;
     scr_set_and_save_settings("sound", "playMusic", true);
 }

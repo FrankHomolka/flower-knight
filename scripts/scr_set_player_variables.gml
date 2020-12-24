@@ -59,7 +59,7 @@ hit = false;
 if(global.difficulty == 'HARD') {
     maxHp = 100;
 } else {
-    maxHp = 300;
+    maxHp = 400;
 }
 hp = maxHp;
 dead = false;

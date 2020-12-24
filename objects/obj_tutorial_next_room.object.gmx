@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 activated = false;
+image_speed = 0.02;
 </string>
           </argument>
         </arguments>
@@ -57,7 +58,7 @@ activated = false;
 }
 
 if(obj_gui_controller.drawingLoadingScreen = true) {
-    room_goto_next();
+    room_goto(rm_shop);
 }
 
 </string>

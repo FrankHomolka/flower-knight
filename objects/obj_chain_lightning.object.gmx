@@ -26,9 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-hitCooldownMax = 90;
-hitCooldown = hitCooldownMax;
-life = hitCooldown * 4;
+life = 10;
 critChance = 0;
 image_speed = 1;
 lightSize = 70;
@@ -43,7 +41,11 @@ while(i &lt; 300 &amp;&amp; lightningTarget == noone) {
     }
     i++;
 }
-
+with(target) {
+    damageSource = other;
+    lastDamageSource = obj_fire;
+    scr_try_hit_enemy(5, self, false, 0);
+}
 </string>
           </argument>
         </arguments>
@@ -92,15 +94,6 @@ while(i &lt; 300 &amp;&amp; lightningTarget == noone) {
             <string>if(target.state != states.death) {
     x = target.x;
     y = target.y;
-    hitCooldown--;
-    if(hitCooldown &lt; 0) {
-        hitCooldown = hitCooldownMax;
-        with(target) {
-            damageSource = other;
-            lastDamageSource = obj_fire;
-            scr_try_hit_enemy(1, self, false, 0);
-        }
-    }
     life--;
     if(life &lt; 0)
         instance_destroy();

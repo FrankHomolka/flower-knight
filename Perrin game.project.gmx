@@ -462,6 +462,12 @@
     <sprites name="Quests">
       <sprite>sprites\spr_quest_background</sprite>
     </sprites>
+    <sprites name="Icons">
+      <sprite>sprites\spr_music_on</sprite>
+      <sprite>sprites\spr_music_off</sprite>
+      <sprite>sprites\spr_sound_on</sprite>
+      <sprite>sprites\spr_sound_off</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_area_1</background>
@@ -923,6 +929,7 @@
     </objects>
     <objects name="Tutorial">
       <object>objects\obj_tutorial_destructible</object>
+      <object>objects\obj_tutorial_heart_dropper</object>
       <object>objects\obj_tutorial_controller</object>
       <object>objects\obj_control_display</object>
       <object>objects\obj_plus</object>
@@ -933,6 +940,7 @@
       <object>objects\obj_tutorial_crossbow</object>
       <object>objects\obj_tutorial_arrow</object>
       <object>objects\obj_hint</object>
+      <object>objects\obj_tutorial_text</object>
     </objects>
     <object>objects\obj_sound_emitter</object>
   </objects>

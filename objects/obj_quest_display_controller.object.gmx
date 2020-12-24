@@ -146,12 +146,9 @@ if(showQuests) {
         draw_set_halign(fa_center);
         draw_set_alpha(1);
         draw_set_color(objectiveTextColor);
-        draw_text_transformed(gw / 2, gh / 1.19, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
+        draw_text_transformed(gw / 2, gh / 1.19, "'Enter' to Accept Quests", 3.5 * (1 + abs(sin(counter) / 5)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_transformed(gw / 2, gh / 1.2, 'Accept Quests', 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
-        /*draw_set_color(c_black);
-        draw_set_alpha(0.2);
-        draw_rectangle(gw / 3, gh / 1.25, gw / 1.5, gh / 1.05, false);*/
+        draw_text_transformed(gw / 2, gh / 1.2, "'Enter' to Accept Quests", 3.5 * (1 + abs(sin(counter) / 5)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
         if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
             gw / 3, gh / 1.25, gw / 1.5, gh / 1.05)) {
             mouseInside = true;
@@ -159,7 +156,7 @@ if(showQuests) {
             mouseInside = false;
         }
         
-        if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
+        if((mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_enter)) {
             showQuests = false;
             audio_play_sound(snd_button_click, 10, false);
             room_goto(rm_procedural);

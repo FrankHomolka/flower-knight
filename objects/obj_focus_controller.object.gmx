@@ -48,7 +48,7 @@ scr_add_item(global.itemList, "LUCKY DUCK", spr_focus_crit_chance, scr_focus_cri
 scr_add_item(global.itemList, "VAMPIRE", spr_focus_vampire, scr_focus_vampire, 400, false, 0, scr_focus_vampire_effect, scr_vampire_quest, 'Slay 50 skeletons', 40);
 scr_add_item(global.itemList, "BOMB", spr_focus_bomb, scr_focus_bomb, 400, false, 0, scr_focus_bomb_effect, scr_bomb_quest, 'Reveal a secret room', 20);
 scr_add_item(global.itemList, "SHADOW", spr_focus_shadow, scr_focus_shadow, 200, false, 0, scr_focus_shadow_effect, scr_shadow_quest, 'Dodge 100 attacks', 20);
-scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 200, false, 0, scr_focus_freeze_enemy_effect, scr_freeze_quest, 'Beat the second level', 20);
+scr_add_item(global.itemList, "FREEZE", spr_focus_freeze, scr_focus_freeze_enemy, 200, false, 0, scr_focus_freeze_enemy_effect, scr_freeze_quest, 'Survive the dungeon', 20);
 scr_add_item(global.itemList, "FIREBALL", spr_focus_fireball, scr_focus_fireball, 300, false, 0, scr_focus_fireball_effect, scr_fireball_quest, 'Burn 40 enemies to a crisp', 20);
 scr_add_item(global.itemList, "WHACK", spr_focus_knockback, scr_focus_knockback, 200, false, 0, scr_focus_knockback_effect, scr_knockback_quest, 'Collect 20 Boss heads', 20);
 scr_add_item(global.itemList, "ANGEL", spr_focus_angel, scr_focus_angel, 300, true, 0, scr_focus_angel, scr_angel_quest, 'Gather 30 hearts', 20);

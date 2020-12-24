@@ -32,6 +32,7 @@ miniboss1head = obj_settings_controller.miniboss1head;
 miniboss2head = obj_settings_controller.miniboss2head;
 miniboss3head = obj_settings_controller.miniboss3head;
 color = c_black;
+show_debug_message('heads');
 </string>
           </argument>
         </arguments>

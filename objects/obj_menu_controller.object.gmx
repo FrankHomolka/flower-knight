@@ -58,6 +58,7 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_game_start;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(0,0,obj_blank)) {
@@ -66,6 +67,7 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_settings_room;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(0,0,obj_blank)) {
@@ -74,15 +76,16 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "normal";
             onClick = scr_quit_game;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(0,0,obj_blank)) {
-            text = "HARD";
+            text = "Difficulty: HARD";
             offsetY = 20;
             offsetX = 90;
             type = "normal"; 
             onClick = scr_toggle_difficulty;
-            
+            spriteButton = false;
             instance_change(obj_button, true);
         }
     } else if(room == rm_settings) {
@@ -92,18 +95,20 @@ if(room != currentRoom) {
             offsetY = -40;
             offsetX = 0;
             onClick = scr_goto_rebind_keys;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
             if(global.playMusic) {
-                text = "TURN MUSIC OFF";
+                sprite = spr_music_off;
             } else {
-                text = "TURN MUSIC ON";
+                sprite = spr_music_on;
             }
-            type = "wide";
+            type = "small";
             offsetY = -10;
             offsetX = 0;
             onClick = scr_toggle_music;
+            spriteButton = true;
             instance_change(obj_button, true);
         }
         // Music volume
@@ -113,6 +118,7 @@ if(room != currentRoom) {
             offsetX = 80;
             type = "small";
             onClick = scr_music_gain_down;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -121,6 +127,7 @@ if(room != currentRoom) {
             offsetX = 110;
             type = "small";
             onClick = scr_music_gain_up;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -129,6 +136,7 @@ if(room != currentRoom) {
             } else {
                 text = "TURN TUTORIAL ON";
             }
+            spriteButton = false;
             type = "wide";
             offsetY = 20;
             offsetX = 0;
@@ -142,6 +150,7 @@ if(room != currentRoom) {
             offsetX = 80;
             type = "small";
             onClick = scr_sounds_gain_down;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -150,6 +159,7 @@ if(room != currentRoom) {
             offsetX = 110;
             type = "small";
             onClick = scr_sounds_gain_up;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -158,6 +168,7 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "wide";
             onClick = scr_clear_save;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -166,6 +177,7 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_menu;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
     } else if(room == rm_rebind_keys) {
@@ -176,6 +188,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.moveUp;
             onSave = scr_save_moveUp;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -185,6 +198,7 @@ if(room != currentRoom) {
             offsetX = 100;
             currentKey = obj_settings_controller.fullscreen;
             onSave = scr_save_fullscreen;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -194,6 +208,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.moveRight;
             onSave = scr_save_moveRight;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         /*with(instance_create(20,20,obj_blank)) {
@@ -212,6 +227,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.moveDown;
             onSave = scr_save_moveDown;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -221,6 +237,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.moveLeft;
             onSave = scr_save_moveLeft;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -230,6 +247,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.attack;
             onSave = scr_save_attack;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -239,6 +257,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.dodge;
             onSave = scr_save_dodge;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -248,6 +267,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.viewMap;
             onSave = scr_save_viewMap;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -257,6 +277,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.viewQuests;
             onSave = scr_save_viewQuests;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         with(instance_create(20,20,obj_blank)) {
@@ -266,6 +287,7 @@ if(room != currentRoom) {
             offsetX = 0;
             currentKey = obj_settings_controller.pause;
             onSave = scr_save_pause;
+            spriteButton = false;
             instance_change(obj_key_rebind, true);
         }
         // ADD INTERACT BUTTON AND RESTART BUTTON, and FULLSCREEN
@@ -275,6 +297,7 @@ if(room != currentRoom) {
             offsetX = 0;
             type = "normal";
             onClick = scr_goto_settings_room;
+            spriteButton = false;
             instance_change(obj_button, true);
         }
     } else {
