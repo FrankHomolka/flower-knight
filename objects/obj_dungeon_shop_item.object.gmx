@@ -64,7 +64,7 @@ counter = random(300);
 price = (itemMap[? "price"] * (itemMap[? "numBought"] + 1));
 
 if(unlocked) {
-    if(mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) {
+    if(obj_dungeon_shop.selectedItemIndex == itemNumber &amp;&amp; keyboard_check_pressed(vk_enter)) {
         if((obj_quest_controller.gold &gt;= price)) {
             show_debug_message('itemMap[? "name"]');
             show_debug_message(itemMap[? "name"]);
@@ -109,8 +109,7 @@ if(unlocked) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-gw = display_get_gui_width();
+            <string>gw = display_get_gui_width();
 gh = display_get_gui_height();
 horBlock = gw / 32;
 vertBlock = gh / 32;
@@ -118,11 +117,11 @@ vertBlock = gh / 32;
 drawX = (gw / 5) + (horBlock * rowX * 2);
 drawY = (gh / 3) + (vertBlock /2) * rowY + (sin(counter) * 4);
 
-if(!mouseInside) {
+if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
+    scaleFactor = (gw / initial_gw) * 1.3;
+} else {
     counter += 0.1;
     scaleFactor = (gw / initial_gw);
-} else {
-    scaleFactor = (gw / initial_gw) * 1.3;
 }
 
 draw_set_valign(fa_top);
@@ -149,28 +148,45 @@ if(unlocked) {
     if((obj_quest_controller.gold &gt;= price)) {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
         draw_set_color(c_black);
-        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
         draw_set_color(c_yellow);
-        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
     } else {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_gray, 1); 
         draw_set_color(c_black);
-        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
         draw_set_color(c_red);
-        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), price, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
     }
     
-    if(mouseInside) {
-        message = "Buy " + string(itemMap[? "name"]);
-        
-        draw_set_alpha(1);
-        draw_set_color(c_white);
+    if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
+        depth = -10000;
+        message = string(itemMap[? "name"]);
+        description = string(itemMap[? "description"]);
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
+        draw_set_font(fnt_ui);
+        draw_set_alpha(0.8);
         draw_set_color(c_black);
-        draw_text_transformed(drawX, drawY - (2 * vertBlock) - 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_rectangle(drawX - 250, drawY - 210, drawX + 250, drawY - 40, false);
+        draw_set_alpha(1);
+        // Draw price
+        if((obj_quest_controller.gold &gt;= price)) {
+            draw_set_color(c_yellow);
+        } else {
+            draw_set_color(c_red);
+        }
+        draw_text_transformed(drawX + 200, drawY - (6.5 * vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        // Draw name
+        draw_set_color(c_black);
+        draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_transformed(drawX, drawY - (2 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(drawX, drawY - (5 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        // Draw description
+        draw_set_color(c_black);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4, description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_set_color(c_white);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock), description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
     }
 }
 </string>

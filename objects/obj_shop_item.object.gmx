@@ -64,12 +64,18 @@ vertBlock = gh / 32;
 drawX = (gw / 4.5) + (horBlock * rowX * 2);
 drawY = (gh / 3) + (vertBlock /2) * rowY + (sin(counter) * 4);
 
-if(!mouseInside) {
+if(obj_shop_controller.selectedItemIndex == itemNumber) {
+    scaleFactor = (gw / initial_gw) * 1.3;
+} else {
     counter += 0.1;
     scaleFactor = (gw / initial_gw);
-} else {
-    scaleFactor = (gw / initial_gw) * 1.3;
 }
+/*
+if(!mouseInside) {
+    
+} else {
+    
+}*/
 
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
@@ -85,7 +91,7 @@ if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
     mouseInside = false;
 }
 
-depth = -3000;
+depth = -5000;
 // Draw shadow
 draw_set_alpha(0.3);
 draw_set_color(c_black);
@@ -99,21 +105,33 @@ if(unlocked) {
     draw_sprite_ext(spr_question_mark, 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
 }
 
-if(mouseInside) {
+if(obj_shop_controller.selectedItemIndex == itemNumber) {
     if(unlocked) {
         message = string(itemMap[? "name"]);
+        description = string(itemMap[? "description"]);
     } else {
         message = '???';
+        description = '???';
     }
+    depth = -10000;
     
-    draw_set_alpha(1);
-    draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
+    draw_set_font(fnt_ui);
+    draw_set_alpha(0.8);
     draw_set_color(c_black);
-    draw_text_transformed(drawX, drawY - (2 * vertBlock) - 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+    draw_rectangle(drawX - 250, drawY - 180, drawX + 250, drawY - 40, false);
+    draw_set_alpha(1);
+    // Draw name
+    draw_set_color(c_black);
+    draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
     draw_set_color(c_white);
-    draw_text_transformed(drawX, drawY - (2 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
+    draw_text_transformed(drawX, drawY - (5 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
+    // Draw description
+    draw_set_color(c_black);
+    draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4, description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
+    draw_set_color(c_white);
+    draw_text_ext_transformed(drawX, drawY - (3 * vertBlock), description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
 }
 </string>
           </argument>

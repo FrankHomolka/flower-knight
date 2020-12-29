@@ -76,6 +76,30 @@ horBlock = gw / 32;
 vertBlock = gh / 32;
 scaleFactor = (gw / initial_gw);
 instance_create(x,y,obj_tome_visual);
+selectedItemIndex = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_clear(items);
 </string>
           </argument>
         </arguments>
@@ -108,6 +132,12 @@ if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
             activated = true;
             with(obj_shop_item) {
                 visible = true;
+            }
+        } else {
+            activated = false;
+            audio_play_sound_on(myEmitter, snd_close_shop, false, 1); 
+            with(obj_shop_item) {
+                visible = false;
             }
         }
     } else if(obj_player.close) {
@@ -153,6 +183,8 @@ if(object_exists(obj_focus_controller)) {
                     
                     // Create frame and item
                     with(instance_create(x,y, obj_shop_item)) {
+                        itemNumber = other.i + other.j;
+                        show_debug_message(itemNumber);
                         rowX = other.i;
                         rowY = other.j;
                         unlocked = other.unlocked;
@@ -169,6 +201,27 @@ if(object_exists(obj_focus_controller)) {
             spawnedItems = true;
         }
     }
+}
+
+if(keyboard_check_pressed(vk_up)) {
+    if(selectedItemIndex &gt;= rowLength) {
+        selectedItemIndex -= rowLength;
+    } else {
+        selectedItemIndex = 0;
+    }
+}
+if(keyboard_check_pressed(vk_right)) {
+    if(selectedItemIndex &lt; ds_list_size(global.itemList) - 1) selectedItemIndex += 1
+}
+if(keyboard_check_pressed(vk_down)) {
+    if(selectedItemIndex + rowLength &lt; ds_list_size(global.itemList)) {
+        selectedItemIndex += rowLength;
+    } else {
+        selectedItemIndex = ds_list_size(global.itemList) - 1;
+    }
+}
+if(keyboard_check_pressed(vk_left)) {
+    if(selectedItemIndex &gt; 0) selectedItemIndex -= 1;
 }
 </string>
           </argument>

@@ -60,7 +60,7 @@ hurtSound = snd_enemy_hit;
 /* Attack Values */
 attackCooldownMax = 140;
 attackDistance = 80;
-attackTime = 70;
+attackTime = 100;
 attackCounter = attackTime;
 attackFrame = 5;
 

@@ -1,4 +1,4 @@
-///scr_add_item(list, name, sprite, script, price, effectOnBuy, numBought, effectScript, *questScript, *questText, *questRarity)
+///scr_add_item(list, name, sprite, script, price, effectOnBuy, numBought, effectScript, *questScript, *questText, *questRarity, *description)
 var list = argument[0];
 var name = argument[1];
 var sprite = argument[2];
@@ -12,6 +12,7 @@ if(argument_count > 8) {
     var questScript = argument[8];
     var questText = argument[9];
     var questRarity = argument[10];
+    var description = argument[11]
 }
 
 var map = ds_map_create();
@@ -21,6 +22,7 @@ if(argument_count > 8) {
     ds_map_add(map,"questScript", questScript);
     ds_map_add(map,"questText", questText);
     ds_map_add(map,"questRarity", questRarity);  
+    ds_map_add(map,"description", description);  
 }
 
 /* Adding diff data */
