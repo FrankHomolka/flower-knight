@@ -327,6 +327,7 @@
       <sprite>sprites\spr_no_heart</sprite>
       <sprite>sprites\spr_hp_gui</sprite>
       <sprite>sprites\spr_hp_bar</sprite>
+      <sprite>sprites\spr_next_arrow</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shadow</sprite>
@@ -844,6 +845,7 @@
       </objects>
       <objects name="Other">
         <object>objects\obj_damage_number</object>
+        <object>objects\obj_player_dodged</object>
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
         <object>objects\obj_flame_turret_attack</object>

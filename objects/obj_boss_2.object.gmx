@@ -81,6 +81,57 @@ scr_boss_2_execute_state();
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(inFight) {
+    gw = display_get_gui_width();
+    gh = display_get_gui_height();
+    horBlock = gw / 32;
+    vertBlock = gh / 32;
+    scaleFactor = (gw / initial_gw);
+    
+    draw_set_alpha(alpha);
+    
+    draw_set_color(c_white);
+    draw_rectangle((gw / 3) - (horBlock / 10), (vertBlock / 2) - (vertBlock / 8), (gw / 3) + (gw / 3) + (horBlock / 10), (vertBlock * 2) + (vertBlock / 8), false);
+    draw_set_color(hpColor);
+    if(instance_exists(obj_boss_2_head)) {
+        hpWidth = (gw / 3) + ((gw / 3) * (obj_boss_2_head.hp / obj_boss_2_head.maxHp));
+    } else {
+        hpWidth = (gw / 3) + ((gw / 3) * (hp / maxHp));
+    }
+    if(hpWidth &gt; 0) draw_rectangle((gw / 3), (vertBlock / 2), hpWidth, vertBlock * 2, false);
+
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_black);
+    draw_text_transformed((gw / 2) - 6, (gh / 6) - (vertBlock * 2) - 6, name, 4 * scaleFactor, 4* scaleFactor, 0);
+    draw_set_color(c_white);
+    draw_text_transformed(gw / 2, (gh / 6) - (vertBlock * 2), name, 4* scaleFactor, 4* scaleFactor, 0);
+    draw_set_color(c_black);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>

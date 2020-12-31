@@ -54,5 +54,7 @@ if(dashCounter > 1.3) {
 if(dashCounter <= 1.3) {
     isDashing = false;
     dashCounter = dashTime;
+    showDodge = false;
+    spawnedShowDodge = false;
     state = states.idle;
 }

@@ -36,6 +36,7 @@ if(dodge && state != states.attack && state != states.idle && (move_x != 0 || mo
 }
 
 if(isDashing) {
+    if(tryHit) showDodge = true;
     state = states.dash;
 }
 
@@ -54,7 +55,9 @@ if(tryHit) {
         currentHp = hp;
     } else {
         damageSource = false;
-        if(tryHit && instance_exists(obj_quest_controller)) obj_quest_controller.attacksDodged++;
+        if(tryHit && instance_exists(obj_quest_controller)) {
+            obj_quest_controller.attacksDodged++;
+        }
         tryHit = false;
     }
 }

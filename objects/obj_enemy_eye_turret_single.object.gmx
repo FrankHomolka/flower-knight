@@ -62,7 +62,7 @@ attackCooldownMax = 140;
 attackDistance = 80;
 attackTime = 100;
 attackCounter = attackTime;
-attackFrame = 5;
+attackFrame = 7;
 
 /* Knockback */
 baseKnockback = 0;

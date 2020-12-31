@@ -184,9 +184,9 @@ if(unlocked) {
         draw_text_transformed(drawX, drawY - (5 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
         // Draw description
         draw_set_color(c_black);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4, description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock), description, 14, 190, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock), description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
     }
 }
 </string>

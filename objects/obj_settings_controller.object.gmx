@@ -49,7 +49,7 @@ viewQuests = ord('H');
 viewMap = ord('M');
 pause = ord('P');
 interact = ord('E');
-fullscreen = ord('F');
+fullscreen = ord('Y');
 
 /* Read saved settings */
 if(file_exists("settings.ini")) {
@@ -76,7 +76,7 @@ if(file_exists("settings.ini")) {
     viewMap = ini_read_real("controls", "viewMap", ord('M'));
     pause = ini_read_real("controls", "pause", ord('P'));
     interact = ini_read_real("controls", "interact", ord('E'));
-    fullscreen = ini_read_real("controls", "fullscreen", ord('F'));
+    fullscreen = ini_read_real("controls", "fullscreen", ord('Y'));
     ini_close(); 
 } else {
     ini_open("settings.ini");
@@ -102,7 +102,7 @@ if(file_exists("settings.ini")) {
     ini_write_real("controls", "viewMap", ord('M'));
     ini_write_real("controls", "pause", ord('P'));
     ini_write_real("controls", "interact", ord('E'));
-    ini_write_real("controls", "fullscreen", ord('F'));
+    ini_write_real("controls", "fullscreen", ord('Y'));
     
     ini_close(); 
     show_debug_message("settings file does not exist");
