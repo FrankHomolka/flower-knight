@@ -38,7 +38,13 @@ unlockedItemCounter = 450;
 unlockedItemQueue = ds_queue_create();
 questProgress[3] = '';
 objectiveTextColor = make_colour_hsv(170, 184, 94);
+startedTransition = false;
 obj_quest_controller.counter = 0;
+obj_gui_controller.loading = false;
+obj_gui_controller.drawingLoadingScreen = false;
+with(instance_create(x,y,obj_fade_controller)) {
+    fadeIn = true;
+}
 </string>
           </argument>
         </arguments>
@@ -114,7 +120,7 @@ if(showQuests)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -1000000;
+            <string>depth = -2000;
 gw = display_get_gui_width();
 gh = display_get_gui_height();
 horBlock = gw / 32;
@@ -156,11 +162,19 @@ if(showQuests) {
             mouseInside = false;
         }
         
-        if((mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_enter)) {
-            showQuests = false;
+        if(!startedTransition &amp;&amp; ((mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_enter))) {
+            startedTransition = true;
             audio_play_sound(snd_button_click, 10, false);
-            room_goto(rm_procedural);
+            with(instance_create(x,y,obj_fade_controller)) {
+                fadeIn = false;
+            }
         }  
+        
+        if(obj_gui_controller.drawingLoadingScreen) {
+            showQuests = false;
+            room_goto(rm_procedural);
+        }
+        
     }  
 }
 
