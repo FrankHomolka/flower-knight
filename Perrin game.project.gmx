@@ -290,6 +290,7 @@
       <sprites name="Final Boss">
         <sprite>sprites\spr_final_boss</sprite>
       </sprites>
+      <sprite>sprites\spr_exclamation</sprite>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_wall</sprite>
@@ -344,6 +345,7 @@
         <sprites name="Area 1">
           <sprites name="Level 0">
             <sprite>sprites\spr_room_boom_boom</sprite>
+            <sprite>sprites\spr_room_empty_roof</sprite>
             <sprite>sprites\spr_room_eye_corners</sprite>
             <sprite>sprites\spr_room_group</sprite>
             <sprite>sprites\spr_room_hallway</sprite>

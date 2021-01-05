@@ -17,7 +17,7 @@ if(argument2 == spr_room_boss_map) {
 for(genX = 0; genX < 24; genX++) {//20
     for(genY = 0; genY < 16; genY++) {//14
         color = surface_getpixel(surface, genX, genY);
-        
+
         switch(color) {
             // Background
             case $ffffff:

@@ -171,11 +171,12 @@ audio_emitter_position(global.mainEmitter,x,y,0);
     }
     
     if(instance_exists(obj_next_room)) {
+        nextRoomCounter += 0.1;
         if(distance_to_point(obj_next_room.x,obj_next_room.y) &gt; 48) {
             nextArrowDir = point_direction(x,y,obj_next_room.x, obj_next_room.y);
             draw_sprite_ext(spr_next_arrow, 0, x + lengthdir_x(32, nextArrowDir), y + lengthdir_y(32,nextArrowDir), 0.5, 0.5, nextArrowDir - 90, c_white,1);
         } else {
-            draw_sprite_ext(spr_next_arrow, 0, obj_next_room.x + 8, obj_next_room.y - 12, 0.5, 0.5, -180, c_white,1);
+            draw_sprite_ext(spr_next_arrow, 0, obj_next_room.x + 8, obj_next_room.y - 12 + (4 * sin(nextRoomCounter)), 0.5, 0.5, -180, c_white,1);
         }
     }
 }

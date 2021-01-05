@@ -1,5 +1,8 @@
 //scr_set_player_variables
 
+/* Next room arrow */
+nextRoomCounter = 0;
+
 /* Movement Vars */
 moveSpeedStart = 0.3;
 moveSpeedCounter = moveSpeedStart;

@@ -58,6 +58,12 @@ if(hp <= 0) {
         state = states.hit;
     }
     
+    /* Forget about player if too far */
+    if((distance_to_object(obj_player) > chaseDistance + 10) && state == states.walk) {
+        path_end();
+        state = states.idle;
+    }
+    
     /* Player Dead State */
     if(obj_player.state == states.death) {
         path_end();

@@ -131,7 +131,7 @@ currentRoom = room;
                     } else {
                         boss = obj_skeleton_general;
                     }
-                    background_color = $181611;
+                    background_color = $625a55;
                     area = other.area;
                     instance_change(obj_level_generator,true);
                 }

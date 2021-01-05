@@ -92,28 +92,18 @@ if(!spawnedItems) {
         instance_destroy();
     }
     j = 0;
-    while(j &lt; ds_list_size(global.itemList)) {
+    while(j &lt; ds_list_size(global.itemsUnlocked)) {
         for(i = 0; i &lt; rowLength; i++) {
             unlocked = false;
             
             // If at end of list break
-            if(j+i &gt;= ds_list_size(global.itemList)) {
-                j = ds_list_size(global.itemList);
+            if(j+i &gt;= ds_list_size(global.itemsUnlocked)) {
+                j = ds_list_size(global.itemsUnlocked);
                 break;
             }
             
             // Draw item
-            itemMap = global.itemList[| (j + i)];
-            
-            // Check already unlocked
-            for(var k = 0; k &lt; ds_list_size(global.itemsUnlocked); k++) {
-                var checkItem = global.itemsUnlocked[| k];
-                if(itemMap[? "name"] == checkItem[? "name"]) {
-                    //show_debug_message("ALREADY UNLOCKED " + string(checkItem[? "name"]));
-                    unlocked = true;
-                    break;
-                }
-            }
+            itemMap = global.itemsUnlocked[| (j + i)];
             
             // MAKES IT SO SPRITES DONT OVERLAP SELLER GUY
             if((j / rowLength) &gt; 3) {
@@ -125,14 +115,15 @@ if(!spawnedItems) {
                 itemNumber = other.i + other.j;
                 rowX = other.i;
                 rowY = other.j;
-                itemMap = other.itemMap;
-                unlocked = other.unlocked;
+                scr_find_item(other.itemMap[? "name"]);
+                itemMap = item;
+                unlocked = true;
             }
         }
-        if(j+rowLength &lt; ds_list_size(global.itemList)) {
+        if(j+rowLength &lt; ds_list_size(global.itemsUnlocked)) {
             j+=rowLength;
         } else {
-            j = ds_list_size(global.itemList);
+            j = ds_list_size(global.itemsUnlocked);
         }
     }
     spawnedItems = true;
@@ -146,13 +137,13 @@ if(keyboard_check_pressed(vk_up)) {
     }
 }
 if(keyboard_check_pressed(vk_right)) {
-    if(selectedItemIndex &lt; ds_list_size(global.itemList) - 1) selectedItemIndex += 1
+    if(selectedItemIndex &lt; ds_list_size(global.itemsUnlocked) - 1) selectedItemIndex += 1
 }
 if(keyboard_check_pressed(vk_down)) {
-    if(selectedItemIndex + rowLength &lt; ds_list_size(global.itemList)) {
+    if(selectedItemIndex + rowLength &lt; ds_list_size(global.itemsUnlocked)) {
         selectedItemIndex += rowLength;
     } else {
-        selectedItemIndex = ds_list_size(global.itemList) - 1;
+        selectedItemIndex = ds_list_size(global.itemsUnlocked) - 1;
     }
 }
 if(keyboard_check_pressed(vk_left)) {

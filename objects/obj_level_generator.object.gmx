@@ -111,6 +111,9 @@ surface = surface_create(room_width, room_height);
 
 for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
     for(yy = 0; yy &lt; ds_grid_height(mapGrid); yy++) {
+        show_debug_message('xx yy');
+        show_debug_message(xx);
+        show_debug_message(yy);
         if(ds_grid_get(mapGrid, xx, yy) != 0) {
             
             // Get room rarity
@@ -147,6 +150,18 @@ for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
                 // Generate normal room
                 scr_generate_room(startX, startY, roomSprite, roomSubimg);
             }
+        } else {
+            scr_get_adjacent_doors();
+            if(numDoors &gt; 0) {
+                startX = xx * cellWidth;
+                startY = yy * cellHeight;
+                for(genX = 0; genX &lt; 24; genX++) {//24
+                    for(genY = 0; genY &lt; 16; genY++) {//16
+                        tile_add(tileSheet, (16*3), 0, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000001);
+                    }
+                }
+            }
+            
         }
     }
 }
