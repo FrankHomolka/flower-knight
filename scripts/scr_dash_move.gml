@@ -11,6 +11,12 @@ if(dashCounter == dashTime) {
     effectCounter = effectCounterMax;
 }
 
+/* Dash attack */
+if(attack && dashAttack == false && (dashCounter > (dashTime * 0.8))) {
+    dashAttack = true;
+    dashAttackObject = instance_create(x,y,obj_player_basic_attack);
+}
+
 /* Done for duration of dash */
 if(dashCounter > 1.3) {
     
@@ -35,6 +41,13 @@ if(dashCounter > 1.3) {
         dashCounter = 0;
     }
     
+    if(instance_exists(dashAttackObject)) {
+        with(dashAttackObject) {
+            x = other.x;
+            y = other.y;
+        }
+    }
+    
     dashCounter -= 1/10;
     
     if(dashTime % 0.5 == 0) {
@@ -52,6 +65,12 @@ if(dashCounter > 1.3) {
 
 /* End State */
 if(dashCounter <= 1.3) {
+    if(instance_exists(dashAttackObject)) {
+        with(dashAttackObject) {
+            instance_destroy();
+        }
+    }
+    dashAttack = false;
     isDashing = false;
     dashCounter = dashTime;
     showDodge = false;

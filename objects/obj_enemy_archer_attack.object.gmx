@@ -58,30 +58,14 @@ image_angle = point_direction(x, y, obj_player.x, obj_player.y);
             <string>event_inherited();
 
 if(place_meeting(x, y, obj_player) 
-    &amp;&amp; hitPlayer == false 
     &amp;&amp; hitWall == false
     &amp;&amp; obj_player.state != states.dash) {
     scr_try_hit_player(attackDamage, source);
     instance_destroy();
 }
 
-if(hitWall) {
-    despawnTimer--;
-    if(despawnTimer &lt;= 0) {
-        instance_destroy();
-    }
-} else {
-    if(place_meeting(x, y, obj_wall)) {
-        speed = 0;
-        hitWall = true;
-    }
-}
-
-if(hitPlayer &amp;&amp; !hitWall) {
-    if(place_meeting(x,y,obj_enemy_archer_attack))
-        instance_destroy();
-    x = obj_player.x - lengthdir_x(6, landingDir);
-    y = obj_player.y - lengthdir_y(6, landingDir);
+if(place_meeting(x, y, obj_wall)) {
+    instance_destroy();
 }
 </string>
           </argument>

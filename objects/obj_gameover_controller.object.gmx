@@ -29,7 +29,7 @@
     if(room == rm_tutorial) {
         obj_player.x = obj_pit_respawn.x;
         obj_player.y = obj_pit_respawn.y;
-        obj_player.hp = 100;
+        obj_player.hp = obj_player.maxHp;
         obj_player.state = states.idle;
         obj_player.dead = false;
         instance_destroy();

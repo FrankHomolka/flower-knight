@@ -154,7 +154,7 @@ if(global.paused == false) {
         
         /* Gold gained */
         draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, spriteAlpha);
-        draw_text_transformed(horBlock * 1.5, vertBlock * 5, obj_quest_controller.gold, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(horBlock * 1.5, vertBlock * 5, '$' + string(obj_quest_controller.gold), 3 * scaleFactor, 3 * scaleFactor, 0);
         
         /* Player hp */
         draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, spriteAlpha);

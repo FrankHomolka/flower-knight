@@ -56,38 +56,16 @@ image_angle = 180;
             <kind>1</kind>
             <string>event_inherited();
 
-if(distance_to_point(obj_player.x,obj_player.y) &lt; 5 &amp;&amp; landingDir == false) {
-    landingDir = point_direction(x,y,obj_player.x,obj_player.y);
-}
-
 if(place_meeting(x, y, obj_player) 
-    &amp;&amp; hitPlayer == false 
-    &amp;&amp; hitWall == false
     &amp;&amp; obj_player.state != states.dash) {
     scr_try_hit_player(attackDamage, source);
-    audio_play_sound_on(myEmitter, snd_arrow_land, false, 8);
-    hitPlayer = true;
+    instance_destroy();
 }
 
-if(place_meeting(x, y, obj_wall) &amp;&amp; !hitWall) {
-    speed = 0;
-    audio_play_sound_on(myEmitter, snd_arrow_land, false, 8);
-    hitWall = true;
+if(place_meeting(x, y, obj_wall)) {
+    instance_destroy();
 }
 
-if(hitPlayer &amp;&amp; !hitWall) {
-    if(place_meeting(x,y,obj_tutorial_arrow))
-        instance_destroy();
-    x = obj_player.x - lengthdir_x(6, landingDir);
-    y = obj_player.y - lengthdir_y(6, landingDir);
-}
-
-if(hitWall) {
-    despawnTimer--;
-    if(despawnTimer &lt;= 0) {
-        instance_destroy();
-    }
-}
 </string>
           </argument>
         </arguments>

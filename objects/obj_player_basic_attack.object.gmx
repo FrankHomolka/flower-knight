@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_player_basic_attack</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>-1000</depth>
   <persistent>-1</persistent>
   <parentName>obj_player_attack</parentName>

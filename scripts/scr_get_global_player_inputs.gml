@@ -26,37 +26,39 @@ if(keyboard_check_pressed(ord('T'))) {
     }
 }
 
-if(keyboard_check_pressed(ord('O'))) {
-    if(godMode == true) {
-        maxHp = 100;
-        hp = maxHp;
-        attackDamage = 10;
-        godMode = false;
-    } else {
-        maxHp = 100000;
-        hp = maxHp;
-        attackDamage = 25;
-        godMode = true;
+if(global.developerMode) {
+    if(keyboard_check_pressed(ord('O'))) {
+        if(godMode == true) {
+            maxHp = 100;
+            hp = maxHp;
+            attackDamage = 10;
+            godMode = false;
+        } else {
+            maxHp = 100000;
+            hp = maxHp;
+            attackDamage = 25;
+            godMode = true;
+        }
     }
-}
-
-if(keyboard_check_pressed(ord('N'))) {
-    goToNextRoom = true;
-    obj_gui_controller.loading = true;
-    if(instance_exists(obj_level_generator)) {
-        if(ds_exists(obj_level_generator.mapGrid, ds_type_grid))
-            ds_grid_destroy(obj_level_generator.mapGrid);
+    
+    if(keyboard_check_pressed(ord('N'))) {
+        goToNextRoom = true;
+        obj_gui_controller.loading = true;
+        if(instance_exists(obj_level_generator)) {
+            if(ds_exists(obj_level_generator.mapGrid, ds_type_grid))
+                ds_grid_destroy(obj_level_generator.mapGrid);
+                
+            if(ds_exists(global.grid, ds_type_grid)) 
+                ds_grid_destroy(global.grid);
             
-        if(ds_exists(global.grid, ds_type_grid)) 
-            ds_grid_destroy(global.grid);
-        
-        if(ds_exists(global.foundRoomsGrid, ds_type_grid))
-            ds_grid_destroy(global.foundRoomsGrid);
+            if(ds_exists(global.foundRoomsGrid, ds_type_grid))
+                ds_grid_destroy(global.foundRoomsGrid);
+        }
     }
-}
-
-if(keyboard_check_pressed(ord('U'))) {
-    obj_quest_controller.gold+=100000;
+    
+    if(keyboard_check_pressed(ord('U'))) {
+        obj_quest_controller.gold+=100000;
+    }
 }
 
 if(obj_gui_controller.drawingLoadingScreen && goToNextRoom) {

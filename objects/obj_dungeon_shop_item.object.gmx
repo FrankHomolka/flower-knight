@@ -38,6 +38,7 @@ price = 0;
 initial_gw = 1600;
 initial_gh = 900;
 counter = random(300);
+selectedRot = 0;
 </string>
           </argument>
         </arguments>
@@ -139,12 +140,18 @@ if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 }
 
 if(unlocked) {
+    selectedRot += 0.3;
     depth = -3000;
     // Draw shadow
     draw_set_alpha(0.3);
     draw_set_color(c_black);
     draw_ellipse(drawX - (horBlock / 2), drawY + (vertBlock / 2), drawX + (horBlock / 2), drawY + (vertBlock * 1.5), false);
     draw_set_alpha(1);
+    if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
+        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 5 * scaleFactor, 5 * scaleFactor, (selectedRot + 120) * 3, c_white, 0.4); 
+        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, (selectedRot + 60) * 2, c_white, 0.6); 
+        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 3 * scaleFactor, 3 * scaleFactor, selectedRot, c_white, 1); 
+    }
     if((obj_quest_controller.gold &gt;= price)) {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
         draw_set_color(c_black);

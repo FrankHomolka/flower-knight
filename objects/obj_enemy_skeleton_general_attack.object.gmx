@@ -101,13 +101,12 @@ if(reflected
 }
 
 if(place_meeting(x, y, obj_player) 
-    &amp;&amp; hitPlayer == false 
-    &amp;&amp; hitWall == false
-    &amp;&amp; obj_player.state != states.dash) {
+    &amp;&amp; obj_player.state != states.dash &amp;&amp; !hitWall) {
     scr_try_hit_player(attackDamage, source);
     hitPlayer = true;
     if(spawnMinion)
         instance_create(x,y,obj_enemy_skeleton);
+    instance_destroy();
 }
 
 if(place_meeting(x, y, obj_wall) &amp;&amp; !hitWall) {

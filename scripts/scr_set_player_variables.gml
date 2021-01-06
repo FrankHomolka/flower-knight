@@ -1,7 +1,8 @@
 //scr_set_player_variables
 
-/* Next room arrow */
 nextRoomCounter = 0;
+dashAttack = false;
+dashAttackObject = false;
 
 /* Movement Vars */
 moveSpeedStart = 0.3;
@@ -32,11 +33,7 @@ spawnedAttack = false;
 attackDistance = 10;
 basicAttackLength = 7;
 basicAttackCounter = basicAttackLength;
-if(global.difficulty == 'HARD') {
-    attackDamage = 10;
-} else {
-    attackDamage = 25;
-}
+attackDamage = 10;
 hitDamage = 0;
 knockbackMultiplier = 1;
 

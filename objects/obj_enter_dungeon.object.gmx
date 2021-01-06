@@ -28,7 +28,7 @@
             <string>activated = false;
 obj_gui_controller.loading = false;
 obj_gui_controller.drawingLoadingScreen = false;
-obj_player.hp = 100;
+obj_player.hp = obj_player.maxHp;
 </string>
           </argument>
         </arguments>
