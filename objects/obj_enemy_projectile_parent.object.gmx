@@ -62,7 +62,7 @@ if(obj_player.canParry == true) {
         reflectedCounter = 10;
         scr_find_item('PARRY');
         healValue = item[? 'numBought'] * 3;
-        scr_show_damage_number(healValue, c_green, obj_player);
+        scr_show_damage_number(healValue, c_green, obj_player, false);
         scr_heal_player(healValue);
     }
     

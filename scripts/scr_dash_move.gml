@@ -9,12 +9,16 @@ if(dashCounter == dashTime) {
     dashDirection = point_direction(x, y,x_goal,y_goal);
     effectCounterMax = 1;
     effectCounter = effectCounterMax;
+    attackObject = noone;
+    attackFacing = direction_facing;
 }
 
 /* Dash attack */
 if(attack && dashAttack == false && (dashCounter > (dashTime * 0.8))) {
     dashAttack = true;
-    dashAttackObject = instance_create(x,y,obj_player_basic_attack);
+    attackObject = instance_create(x,y,obj_player_basic_attack);
+    image_speed = 0;
+    image_index = 0;
 }
 
 /* Done for duration of dash */
@@ -41,13 +45,60 @@ if(dashCounter > 1.3) {
         dashCounter = 0;
     }
     
-    if(instance_exists(dashAttackObject)) {
-        with(dashAttackObject) {
-            x = other.x;
-            y = other.y;
+    /* Dash Attack */
+    if(dashAttack) {
+        if(image_index < image_number - 1) {
+            image_index = image_number * (1 - (dashCounter / dashTime));
+        }
+        switch(attackFacing) {
+            case facing.left:
+                attackObject.x = x - attackDistance;
+                attackObject.image_angle = 0;
+                sprite_index = spr_player_attack_left;
+                break;
+            case facing.upLeft:
+                attackObject.x = x - attackDistance;
+                attackObject.y = y - attackDistance;
+                attackObject.image_angle = -45;
+                sprite_index = spr_player_attack_left;
+                break;
+            case facing.up:
+                attackObject.y = y - (attackDistance * 0.8);
+                attackObject.image_angle = -90;
+                sprite_index = spr_player_attack_up;
+                break;
+            case facing.upRight:
+                attackObject.x = x + attackDistance;
+                attackObject.y = y - attackDistance;
+                attackObject.image_xscale = -1;
+                attackObject.image_angle = 45;
+                sprite_index = spr_player_attack_right;
+                break;
+            case facing.right:
+                attackObject.x = x + attackDistance;
+                attackObject.image_xscale = -1;
+                sprite_index = spr_player_attack_right;
+                break;
+            case facing.downRight:
+                attackObject.x = x + attackDistance;
+                attackObject.y = y + attackDistance;
+                attackObject.image_xscale = -1;
+                attackObject.image_angle = -45;
+                sprite_index = spr_player_attack_right;
+                break;
+            case facing.down:
+                attackObject.y = y + (attackDistance * 0.8);
+                attackObject.image_angle = 90;
+                sprite_index = spr_player_attack_down;
+                break;
+            case facing.downLeft:
+                attackObject.x = x - attackDistance;
+                attackObject.y = y + attackDistance;
+                attackObject.image_angle = 45;
+                sprite_index = spr_player_attack_left;
+                break;
         }
     }
-    
     dashCounter -= 1/10;
     
     if(dashTime % 0.5 == 0) {
@@ -65,8 +116,8 @@ if(dashCounter > 1.3) {
 
 /* End State */
 if(dashCounter <= 1.3) {
-    if(instance_exists(dashAttackObject)) {
-        with(dashAttackObject) {
+    if(instance_exists(attackObject)) {
+        with(attackObject) {
             instance_destroy();
         }
     }

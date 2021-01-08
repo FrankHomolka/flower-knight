@@ -65,6 +65,7 @@
       <sound>sound\snd_open_shop</sound>
       <sound>sound\snd_close_shop</sound>
       <sound>sound\snd_unlock_item</sound>
+      <sound>sound\snd_cant_afford</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -100,6 +101,7 @@
       <sprite>sprites\spr_focus_greed</sprite>
       <sprite>sprites\spr_chain_lightning</sprite>
       <sprite>sprites\spr_focus_selected</sprite>
+      <sprite>sprites\spr_selected_box</sprite>
     </sprites>
     <sprites name="Enemy">
       <sprites name="Slime">
@@ -132,6 +134,7 @@
         <sprite>sprites\spr_boss_1_slash_attack</sprite>
         <sprite>sprites\spr_boss_1_walk</sprite>
         <sprite>sprites\spr_boss_1_head</sprite>
+        <sprite>sprites\spr_boss_1_head_display</sprite>
         <sprite>sprites\spr_boss_1_death</sprite>
         <sprite>sprites\spr_boss_1_stunned</sprite>
         <sprite>sprites\spr_boss_1_spin</sprite>
@@ -142,6 +145,7 @@
       </sprites>
       <sprites name="Boss 2">
         <sprite>sprites\spr_boss_2_top</sprite>
+        <sprite>sprites\spr_boss_2_head_display</sprite>
         <sprite>sprites\spr_boss_2_top_charge</sprite>
         <sprite>sprites\spr_boss_2_top_dead</sprite>
         <sprite>sprites\spr_boss_2_artillery</sprite>
@@ -161,10 +165,12 @@
           <sprite>sprites\spr_skeleton_miniboss_death</sprite>
           <sprite>sprites\spr_skeleton_spear</sprite>
           <sprite>sprites\spr_skeleton_head</sprite>
+          <sprite>sprites\spr_skeleton_head_display</sprite>
         </sprites>
         <sprites name="Archer">
           <sprite>sprites\spr_archer_miniboss_arrow</sprite>
           <sprite>sprites\spr_archer_miniboss_head</sprite>
+          <sprite>sprites\spr_archer_miniboss_head_display</sprite>
         </sprites>
       </sprites>
       <sprites name="Bomber">
@@ -287,6 +293,7 @@
         <sprite>sprites\spr_summoner_death</sprite>
         <sprite>sprites\spr_summoner_walk</sprite>
         <sprite>sprites\spr_summoner_boss_head</sprite>
+        <sprite>sprites\spr_summoner_boss_head_display</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprite>sprites\spr_final_boss</sprite>
@@ -299,6 +306,7 @@
       <sprite>sprites\spr_boss_wall</sprite>
       <sprite>sprites\spr_pit</sprite>
       <sprite>sprites\spr_torch</sprite>
+      <sprite>sprites\spr_wall_torch</sprite>
       <sprite>sprites\spr_big_torch</sprite>
       <sprite>sprites\spr_next_room</sprite>
       <sprite>sprites\spr_tutorial_next_room</sprite>
@@ -455,6 +463,7 @@
       <sprite>sprites\spr_progress_book</sprite>
       <sprite>sprites\spr_unlocked_items</sprite>
       <sprite>sprites\spr_question_mark</sprite>
+      <sprite>sprites\spr_head_spike</sprite>
     </sprites>
     <sprites name="Tutorial">
       <sprite>sprites\spr_control_square</sprite>
@@ -548,6 +557,7 @@
         <script>scripts\scr_skeleton_boss_attack.gml</script>
         <script>scripts\scr_summoner_attack.gml</script>
         <script>scripts\scr_summoner_boss_attack.gml</script>
+        <script>scripts\scr_bomber_attack.gml</script>
       </scripts>
       <script>scripts\scr_check_pit_enemy.gml</script>
     </scripts>
@@ -789,6 +799,7 @@
       </objects>
       <objects name="Decoration">
         <object>objects\obj_torch</object>
+        <object>objects\obj_wall_torch</object>
         <object>objects\obj_big_torch</object>
         <object>objects\obj_light</object>
       </objects>
@@ -920,10 +931,18 @@
       <object>objects\obj_shop_item</object>
       <object>objects\obj_dungeon_shop_item</object>
       <object>objects\obj_enter_dungeon</object>
-      <object>objects\obj_heads_display</object>
       <object>objects\obj_dungeon_shop</object>
       <object>objects\obj_dungeon_shop_visual</object>
       <object>objects\obj_tome_visual</object>
+      <objects name="Heads">
+        <object>objects\obj_boss1_display</object>
+        <object>objects\obj_boss2_display</object>
+        <object>objects\obj_boss3_display</object>
+        <object>objects\obj_miniboss1_display</object>
+        <object>objects\obj_miniboss2_display</object>
+        <object>objects\obj_miniboss3_display</object>
+        <object>objects\obj_heads_display</object>
+      </objects>
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>
@@ -957,12 +976,12 @@
     <room>rooms\rm_game_start</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_shop</room>
-    <room>rooms\rm_final_boss</room>
     <room>rooms\rm_quest</room>
     <room>rooms\rm_procedural</room>
     <room>rooms\rm_choose_focus</room>
     <room>rooms\rm_loading</room>
     <room>rooms\rm_win</room>
+    <room>rooms\rm_final_boss</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

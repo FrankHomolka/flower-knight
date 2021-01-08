@@ -172,7 +172,15 @@ if(global.paused == false) {
             draw_set_color(c_white);
             draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
         }
-        draw_set_font(fnt_1);
+        
+        /* Draw area and level */
+        if(instance_exists(obj_area_controller)) {
+            areaText = string(obj_area_controller.level) + '-' + string(obj_area_controller.area);
+            draw_set_color(c_black);
+            draw_text_transformed((6.8 * horBlock) + horBlock - 3, (1.8 * vertBlock) + 3, areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
+            draw_set_color(c_white);
+            draw_text_transformed((6.8 * horBlock) + horBlock, (1.8 * vertBlock), areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
+        }
     }
     draw_set_alpha(1);
     

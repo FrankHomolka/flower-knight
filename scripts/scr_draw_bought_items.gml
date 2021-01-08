@@ -1,24 +1,24 @@
 ///scr_draw_bought_items
+itemScale = 3;
+textScale = 3;
+itemSpacing = 60;
 for(i = 0; i < ds_list_size(global.equippedItemsList); i++) {
-    if(i >= 24) {
+    if(i >= 36) {
         xOffset = -300;
-        yOffset =  -(24 * 100);
-        draw_sprite_ext(ds_map_find_value(global.equippedItemsList[| i], "sprite"), 0, gw - horBlock, 100 + (i * 100) + yOffset,5,5,0,c_white,1);
-        
-    } else if(i >= 16) {
+        yOffset =  -(36 * itemSpacing);
+    } else if(i >= 24) {
         xOffset = -200;
-        yOffset =  -(16 * 100);
-        draw_sprite_ext(ds_map_find_value(global.equippedItemsList[| i], "sprite"), 0, gw - horBlock + xOffset, 100 + (i * 100) + yOffset,5,5,0,c_white,1);
-        
-    } else if(i >= 8) {
+        yOffset =  -(24 * itemSpacing);
+    } else if(i >= 12) {
         xOffset = -100;
-        yOffset =  -(8 * 100);
-        draw_sprite_ext(ds_map_find_value(global.equippedItemsList[| i], "sprite"), 0, gw - horBlock + xOffset, 100 + (i * 100) + yOffset,5,5,0,c_white,1);
+        yOffset =  -(12 * itemSpacing);
     } else {
-        draw_sprite_ext(ds_map_find_value(global.equippedItemsList[| i], "sprite"), 0, gw - horBlock, 100 + (i * 100),5,5,0,c_white,1);
-        draw_set_color(c_black);
-        draw_text_transformed(gw - horBlock + 25, 100 + (i * 100) + 25, ds_map_find_value(global.equippedItemsList[| i], "numBought"), 3.5, 3.5,0);
-        draw_set_color(c_white);
-        draw_text_transformed(gw - horBlock + 25, 100 + (i * 100) + 25, ds_map_find_value(global.equippedItemsList[| i], "numBought"), 3, 3,0);
+        xOffset = 0;
+        yOffset = 0;;
     }
+    draw_sprite_ext(ds_map_find_value(global.equippedItemsList[| i], "sprite"), 0, gw - horBlock + xOffset, itemSpacing + (i * itemSpacing) + yOffset,itemScale,itemScale,0,c_white,1);
+    draw_set_color(c_black);
+    draw_text_transformed(gw - horBlock + 25 + xOffset, itemSpacing + (i * itemSpacing) + 25 + yOffset, ds_map_find_value(global.equippedItemsList[| i], "numBought"), textScale + 0.5, textScale + 0.5,0);
+    draw_set_color(c_white);
+    draw_text_transformed(gw - horBlock + 25 + xOffset, itemSpacing + (i * itemSpacing) + 25 + yOffset, ds_map_find_value(global.equippedItemsList[| i], "numBought"), textScale, textScale,0);
 }

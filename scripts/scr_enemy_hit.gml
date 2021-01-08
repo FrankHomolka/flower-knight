@@ -10,6 +10,6 @@ if(x < obj_player.x) {
 /* Knockback */
 scr_enemy_knockback();
 
-scr_set_health(hitDamage, obj_player); // CHANGE THISSSSSSSSSSSS
+scr_set_health(hitDamage, obj_player);
 
 scr_check_pit_enemy();

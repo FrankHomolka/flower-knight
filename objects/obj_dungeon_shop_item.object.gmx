@@ -39,6 +39,8 @@ initial_gw = 1600;
 initial_gh = 900;
 counter = random(300);
 selectedRot = 0;
+flashTime = 0;
+flashTimeMax = 20;
 </string>
           </argument>
         </arguments>
@@ -85,9 +87,13 @@ if(unlocked) {
                 ds_list_add(global.equippedItemsList, itemMap);
                 script_execute(itemMap[? "script"]);
             }
+        } else {
+            flashTime = flashTimeMax;
+            audio_play_sound(snd_cant_afford, 10, false);
         }
     }
 }
+if(flashTime &gt; 0) flashTime--;
 </string>
           </argument>
         </arguments>
@@ -116,28 +122,18 @@ horBlock = gw / 32;
 vertBlock = gh / 32;
 
 drawX = (gw / 5) + (horBlock * rowX * 2);
-drawY = (gh / 3) + (vertBlock /2) * rowY + (sin(counter) * 4);
+counter += 0.1;
 
 if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
     scaleFactor = (gw / initial_gw) * 1.3;
+    drawY = (gh / 3) + (vertBlock /2) * rowY;
 } else {
-    counter += 0.1;
     scaleFactor = (gw / initial_gw);
+    drawY = (gh / 3) + (vertBlock /2) * rowY + (sin(counter) * 4);
 }
 
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
-
-if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
-    drawX - (4 * scaleFactor * 8), drawY - (4 * scaleFactor * 8), 
-    drawX + (4 * scaleFactor * 8), drawY + (4 * scaleFactor * 8))) {
-    if(!mouseInside &amp;&amp; unlocked) {
-        audio_play_sound(snd_hover_item, 10, false);
-    }
-    mouseInside = true;
-} else {
-    mouseInside = false;
-}
 
 if(unlocked) {
     selectedRot += 0.3;
@@ -147,27 +143,35 @@ if(unlocked) {
     draw_set_color(c_black);
     draw_ellipse(drawX - (horBlock / 2), drawY + (vertBlock / 2), drawX + (horBlock / 2), drawY + (vertBlock * 1.5), false);
     draw_set_alpha(1);
-    if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
-        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 5 * scaleFactor, 5 * scaleFactor, (selectedRot + 120) * 3, c_white, 0.4); 
-        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, (selectedRot + 60) * 2, c_white, 0.6); 
-        draw_sprite_ext(spr_focus_selected, 0, drawX, drawY, 3 * scaleFactor, 3 * scaleFactor, selectedRot, c_white, 1); 
-    }
+    
+    /* Draw item sprite */
     if((obj_quest_controller.gold &gt;= price)) {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1); 
-        draw_set_color(c_black);
-        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
-        draw_set_color(c_yellow);
-        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
     } else {
         draw_sprite_ext(itemMap[? "sprite"], 0, drawX, drawY, 4 * scaleFactor, 4 * scaleFactor, 0, c_gray, 1); 
-        draw_set_color(c_black);
-        draw_text_transformed(drawX + (horBlock / 3) - 2, drawY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
-        draw_set_color(c_red);
-        draw_text_transformed(drawX + (horBlock / 3), drawY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+    }
+    
+    /* Draw selected */
+    if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
+        draw_sprite_ext(spr_selected_box, 0, drawX, drawY, (4 + (sin(counter) / 3)) * scaleFactor , (4 + (sin(counter) / 3)) * scaleFactor, 0, c_white, 1); 
+    } else {
+        /* If not selected draw the price */
+        if((obj_quest_controller.gold &gt;= price)) { 
+            draw_set_color(c_black);
+            draw_text_transformed(drawX + (horBlock / 3) - 2, (gh / 3) + (vertBlock /2) * rowY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+            draw_set_color(c_yellow);
+            draw_text_transformed(drawX + (horBlock / 3), (gh / 3) + (vertBlock /2) * rowY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        } else {
+            draw_set_color(c_black);
+            draw_text_transformed(drawX + (horBlock / 3) - 2, (gh / 3) + (vertBlock /2) * rowY - (vertBlock) + 2, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+            draw_set_color(c_red);
+            draw_text_transformed(drawX + (horBlock / 3), (gh / 3) + (vertBlock /2) * rowY - (vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        }
     }
     
     if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
         depth = -10000;
+        itemOffsetY = -70;
         message = string(itemMap[? "name"]);
         description = string(itemMap[? "description"]);
         draw_set_halign(fa_center);
@@ -175,25 +179,32 @@ if(unlocked) {
         draw_set_font(fnt_ui);
         draw_set_alpha(0.8);
         draw_set_color(c_black);
-        draw_rectangle(drawX - 250, drawY - 210, drawX + 250, drawY - 40, false);
+        draw_rectangle(drawX - 250, drawY - 210 + itemOffsetY, drawX + 250, drawY - 40 + itemOffsetY, false);
         draw_set_alpha(1);
         // Draw price
-        if((obj_quest_controller.gold &gt;= price)) {
-            draw_set_color(c_yellow);
+        if(flashTime &gt; 0) {
+            if(flashTime &gt; 0) draw_set_color(c_red);
+            if(flashTime &gt; 5) draw_set_color(c_white);
+            if(flashTime &gt; 10) draw_set_color(c_red);
+            if(flashTime &gt; 15) draw_set_color(c_white);
         } else {
-            draw_set_color(c_red);
+            if((obj_quest_controller.gold &gt;= price)) {
+                draw_set_color(c_yellow);
+            } else {
+                draw_set_color(c_red);
+            }
         }
-        draw_text_transformed(drawX + 200, drawY - (6.5 * vertBlock), '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + 200, drawY - (6.5 * vertBlock) + itemOffsetY, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
         // Draw name
         draw_set_color(c_black);
-        draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4 + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_transformed(drawX, drawY - (5 * vertBlock), message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        draw_text_transformed(drawX, drawY - (5 * vertBlock) + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
         // Draw description
         draw_set_color(c_black);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4 + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock), description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
     }
 }
 </string>

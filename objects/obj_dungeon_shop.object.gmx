@@ -129,24 +129,24 @@ if(!spawnedItems) {
     spawnedItems = true;
 }
 
-if(keyboard_check_pressed(vk_up)) {
+if(keyboard_check_pressed(vk_up) || keyboard_check_pressed(obj_settings_controller.moveUp)) {
     if(selectedItemIndex &gt;= rowLength) {
         selectedItemIndex -= rowLength;
     } else {
         selectedItemIndex = 0;
     }
 }
-if(keyboard_check_pressed(vk_right)) {
+if(keyboard_check_pressed(vk_right) || keyboard_check_pressed(obj_settings_controller.moveRight)) {
     if(selectedItemIndex &lt; ds_list_size(global.itemsUnlocked) - 1) selectedItemIndex += 1
 }
-if(keyboard_check_pressed(vk_down)) {
+if(keyboard_check_pressed(vk_down) || keyboard_check_pressed(obj_settings_controller.moveDown)) {
     if(selectedItemIndex + rowLength &lt; ds_list_size(global.itemsUnlocked)) {
         selectedItemIndex += rowLength;
     } else {
         selectedItemIndex = ds_list_size(global.itemsUnlocked) - 1;
     }
 }
-if(keyboard_check_pressed(vk_left)) {
+if(keyboard_check_pressed(vk_left) || keyboard_check_pressed(obj_settings_controller.moveLeft)) {
     if(selectedItemIndex &gt; 0) selectedItemIndex -= 1;
 }
 </string>

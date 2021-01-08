@@ -10,7 +10,7 @@ if(left || right || up || down) {
 }
 
 /* Attack state */
-if(attack) {
+if(attack && !isDashing) {
     if(!isAttacking) {
         for(i = 0; i < ds_list_size(obj_focus_controller.playerAttackFocusList); i++) {
             var item = obj_focus_controller.playerAttackFocusList[| i];

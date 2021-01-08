@@ -94,12 +94,9 @@
     <instance objName="obj_light" x="315" y="36" name="inst_DE6FD302" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="132" y="31" name="inst_A0CA38C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="66" y="139" name="inst_88F53E19" locked="0" code="" scaleX="3.20000004768372" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_heads_display" x="149" y="6" name="inst_681DD1AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_torch" x="169" y="191" name="inst_F3E88EEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_torch" x="183" y="227" name="inst_5A51C338" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_big_torch" x="284" y="147" name="inst_273E5976" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_big_torch" x="270" y="192" name="inst_108DB18D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_big_torch" x="279" y="233" name="inst_F44ADB0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_big_torch" x="349" y="164" name="inst_F44ADB0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="1" y="192" name="inst_BAACED31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="6" y="115" name="inst_E280B8D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="2" y="46" name="inst_B6842456" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -149,6 +146,16 @@
     <instance objName="obj_wall" x="66" y="145" name="inst_CAC32621" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="69" y="143" name="inst_D7E530D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="129" y="161" name="inst_D543D20E" locked="0" code="" scaleX="1.53333330154419" scaleY="0.800000011920929" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_torch" x="188" y="118" name="inst_78CFF5DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_torch" x="260" y="117" name="inst_A12C4026" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_miniboss2_display" x="289" y="226" name="inst_77785FEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss1_display" x="254" y="209" name="inst_4D1E27F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_miniboss1_display" x="272" y="176" name="inst_B9C6C6BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss2_display" x="301" y="159" name="inst_534F67F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_miniboss3_display" x="322" y="135" name="inst_9A2AD1D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss3_display" x="281" y="126" name="inst_F3DEEC78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_big_torch" x="284" y="173" name="inst_FB5B6840" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_big_torch" x="275" y="248" name="inst_A6B5154F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="&lt;undefined&gt;" x="0" y="192" w="16" h="16" xo="0" yo="0" id="10001496" name="inst_0A3EEF1A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

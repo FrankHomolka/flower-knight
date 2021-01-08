@@ -78,23 +78,25 @@ show_debug_message('made fire');
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(target.state != states.death) {
-    x = target.x;
-    y = target.y;
-    hitCooldown--;
-    if(hitCooldown &lt; 0) {
-        hitCooldown = hitCooldownMax;
-        with(target) {
-            damageSource = other;
-            lastDamageSource = obj_fire;
-            scr_try_hit_enemy(other.hitDamage, self, false, 0);
+            <string>if(instance_exists(target)) {
+    if(target.state != states.death) {
+        x = target.x;
+        y = target.y;
+        hitCooldown--;
+        if(hitCooldown &lt; 0) {
+            hitCooldown = hitCooldownMax;
+            with(target) {
+                damageSource = other;
+                lastDamageSource = obj_fire;
+                scr_try_hit_enemy(other.hitDamage, self, false, 0);
+            }
         }
-    }
-    life--;
-    if(life &lt; 0)
+        life--;
+        if(life &lt; 0)
+            instance_destroy();
+    } else {
         instance_destroy();
-} else {
-    instance_destroy();
+    }
 }
 </string>
           </argument>

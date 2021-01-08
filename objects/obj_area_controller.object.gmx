@@ -129,7 +129,7 @@ currentRoom = room;
                     if(other.level == 2) {
                         boss = obj_boss_1;
                     } else {
-                        boss = obj_skeleton_general;
+                        boss = obj_enemy_archer_boss;
                     }
                     background_color = $625a55;
                     area = other.area;
@@ -194,7 +194,7 @@ currentRoom = room;
                     if(other.level == 2) {
                         boss = obj_boss_2;
                     } else {
-                        boss = obj_enemy_archer_boss;
+                        boss = obj_skeleton_general;
                     }
                     background_color = $3a1a2e;
                     area = other.area;

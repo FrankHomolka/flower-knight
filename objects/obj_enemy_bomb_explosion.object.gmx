@@ -56,12 +56,12 @@ audio_play_sound_on(myEmitter, snd_explosion, false, 1);
             <kind>1</kind>
             <string>event_inherited();
 
-if(place_meeting(x,y,obj_player)) {
+if(place_meeting(x,y,obj_player) &amp;&amp; floor(image_index) &gt;= 3 &amp;&amp; floor(image_index) &lt;= 5 ) {
     scr_try_hit_player(attackDamage, noone);
 }
 
 with(obj_enemy_general_parent) {
-    if(place_meeting(x,y,other)) {
+    if(place_meeting(x,y,other) &amp;&amp; floor(image_index) &gt;= 2 &amp;&amp; floor(image_index) &lt;= 7) {
         lastDamageSource = obj_enemy_bomb_explosion;
         scr_try_hit_enemy(other.attackDamage, self, false, obj_player.knockbackMultiplier * 1.5);
     }

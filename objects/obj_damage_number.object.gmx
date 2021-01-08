@@ -36,6 +36,7 @@ y -= 14;
 xoff = 0.5;
 yoff = xoff;
 depth = -y - 100;
+message = '';
 </string>
           </argument>
         </arguments>
@@ -85,12 +86,19 @@ if(deathCounter &lt; 0) {
           <argument>
             <kind>1</kind>
             <string>
-fontSize = 0.3 + ( 0.3 * (damage / 50));
+if(critAttack) {
+    message = 'CRIT: ' + string(damage);
+    fontSize = 1.2 * (0.3 + ( 0.3 * (damage / 50)));
+    color = c_yellow;
+} else {
+    message = damage;
+    fontSize = 0.3 + ( 0.3 * (damage / 50));
+}
 draw_set_alpha(1);
 draw_set_color(c_white);
-draw_text_transformed(x - xoff, y - yoff, damage, fontSize, fontSize, angle);
+draw_text_transformed(x - xoff, y - yoff, message, fontSize, fontSize, angle);
 draw_set_color(color);
-draw_text_transformed(x, y, damage, fontSize, fontSize, angle);
+draw_text_transformed(x, y, message, fontSize, fontSize, angle);
 </string>
           </argument>
         </arguments>
