@@ -61,6 +61,7 @@ if(place_meeting(x, y, obj_player)
     &amp;&amp; obj_player.state != states.dash) {
     scr_try_hit_player(attackDamage, source);
     hitPlayer = true;
+    instance_destroy();
 }
 
 if(place_meeting(x, y, obj_wall)) {

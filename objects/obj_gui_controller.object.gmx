@@ -175,7 +175,7 @@ if(global.paused == false) {
         
         /* Draw area and level */
         if(instance_exists(obj_area_controller)) {
-            areaText = string(obj_area_controller.level) + '-' + string(obj_area_controller.area);
+            areaText = string(obj_area_controller.area) + '-' + string(obj_area_controller.level);
             draw_set_color(c_black);
             draw_text_transformed((6.8 * horBlock) + horBlock - 3, (1.8 * vertBlock) + 3, areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
             draw_set_color(c_white);
@@ -194,7 +194,7 @@ if(global.paused == false) {
     }
     
     /* Draw button to remind about quests */
-    draw_sprite_ext(spr_quest_background, 0, horBlock, gh - (vertBlock * 1.5), 0.4, 0.4, 0, c_white, 1);
+    draw_sprite_ext(spr_quest_background, 0, horBlock, gh - (vertBlock * 1.5), 0.4 * scaleFactor, 0.4 * scaleFactor, 0, c_white, 1);
     draw_set_color(c_black);
     draw_set_alpha(1);
     draw_set_font(fnt_ui);

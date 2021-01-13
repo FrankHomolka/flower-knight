@@ -98,6 +98,43 @@ if(room != currentRoom) {
             spriteButton = false;
             instance_change(obj_button, true);
         }
+        // Resolution options
+        with(instance_create(20,20,obj_blank)) {
+            text = "1280x720";
+            type = "wide";
+            offsetY = -70;
+            offsetX = -120;
+            onClick = scr_1280x720;
+            spriteButton = false;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "1600x900p";
+            type = "wide";
+            offsetY = -40;
+            offsetX = -120;
+            onClick = scr_1600x900;
+            spriteButton = false;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "1920x1080p";
+            type = "wide";
+            offsetY = -10;
+            offsetX = -120;
+            onClick = scr_1920x1080;
+            spriteButton = false;
+            instance_change(obj_button, true);
+        }
+        with(instance_create(20,20,obj_blank)) {
+            text = "2560x1440p";
+            type = "wide";
+            offsetY = 20;
+            offsetX = -120;
+            onClick = scr_2560x1440;
+            spriteButton = false;
+            instance_change(obj_button, true);
+        }
         with(instance_create(20,20,obj_blank)) {
             if(global.playMusic) {
                 sprite = spr_music_off;

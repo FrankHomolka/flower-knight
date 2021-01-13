@@ -179,7 +179,7 @@ if(unlocked) {
         draw_set_font(fnt_ui);
         draw_set_alpha(0.8);
         draw_set_color(c_black);
-        draw_rectangle(drawX - 250, drawY - 210 + itemOffsetY, drawX + 250, drawY - 40 + itemOffsetY, false);
+        draw_rectangle((drawX - (horBlock * 5) ), (drawY - (vertBlock * 7.5) + itemOffsetY), (drawX + (horBlock * 5)), (drawY - (vertBlock * 1.5) + itemOffsetY), false);
         draw_set_alpha(1);
         // Draw price
         if(flashTime &gt; 0) {
@@ -194,7 +194,7 @@ if(unlocked) {
                 draw_set_color(c_red);
             }
         }
-        draw_text_transformed(drawX + 200, drawY - (6.5 * vertBlock) + itemOffsetY, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        draw_text_transformed(drawX + (horBlock * 4), drawY - (6.5 * vertBlock) + itemOffsetY, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
         // Draw name
         draw_set_color(c_black);
         draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4 + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);

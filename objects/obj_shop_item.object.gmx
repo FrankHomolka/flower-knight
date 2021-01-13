@@ -116,7 +116,7 @@ if(obj_shop_controller.selectedItemIndex == itemNumber) {
     draw_set_font(fnt_ui);
     draw_set_alpha(0.8);
     draw_set_color(c_black);
-    draw_rectangle(drawX - 250, drawY - 180 + itemOffsetY, drawX + 250, drawY - 40 + itemOffsetY, false);
+    draw_rectangle((drawX - (horBlock * 5) ), (drawY - (vertBlock * 6) + itemOffsetY), (drawX + (horBlock * 5)), (drawY - (vertBlock * 1.5) + itemOffsetY), false);
     draw_set_alpha(1);
     // Draw name
     draw_set_color(c_black);

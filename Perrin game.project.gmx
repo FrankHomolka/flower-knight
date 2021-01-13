@@ -734,6 +734,10 @@
         <script>scripts\scr_save_interact.gml</script>
         <script>scripts\scr_save_fullscreen.gml</script>
       </scripts>
+      <script>scripts\scr_1600x900.gml</script>
+      <script>scripts\scr_1280x720.gml</script>
+      <script>scripts\scr_1920x1080.gml</script>
+      <script>scripts\scr_2560x1440.gml</script>
     </scripts>
     <scripts name="GUI">
       <script>scripts\scr_draw_heart.gml</script>
