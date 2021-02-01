@@ -27,12 +27,7 @@
             <kind>1</kind>
             <string>i = 0;
 itemsLocked = 0;
-initial_gw = 1600;
-initial_gh = 900;
 questSelectionList = ds_list_create();
-obj_gui_controller.loading = false;
-show_debug_message('itmeList length' + string(ds_list_size(global.itemList)));
-show_debug_message('itemsUnlocked length' + string(ds_list_size(global.itemsUnlocked)));
 for(j = 0; j &lt; ds_list_size(global.itemList); j++) {
     currentItem = global.itemList[| j];
     if(ds_list_find_index(global.itemsUnlocked, currentItem) == -1) {
@@ -65,7 +60,6 @@ while(i &lt; numQuests) {
 }
 
 ds_list_destroy(questSelectionList);
-instance_create(x,y,obj_quest_display_controller);
 </string>
           </argument>
         </arguments>

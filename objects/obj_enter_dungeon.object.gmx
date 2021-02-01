@@ -65,7 +65,7 @@ if(obj_gui_controller.drawingLoadingScreen) {
         room_goto(rm_choose_focus);
     } else {
         show_debug_message('skipped start room');
-        room_goto(rm_quest);
+        room_goto(rm_procedural);
     }
 }
 </string>

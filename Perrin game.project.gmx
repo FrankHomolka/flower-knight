@@ -54,6 +54,7 @@
     </sounds>
     <sounds name="UI">
       <sound>sound\snd_button_click</sound>
+      <sound>sound\snd_dice_roll</sound>
     </sounds>
     <sounds name="Focus">
       <sound>sound\snd_strike</sound>
@@ -463,7 +464,9 @@
       <sprite>sprites\spr_progress_book</sprite>
       <sprite>sprites\spr_unlocked_items</sprite>
       <sprite>sprites\spr_question_mark</sprite>
+      <sprite>sprites\spr_has_quest</sprite>
       <sprite>sprites\spr_head_spike</sprite>
+      <sprite>sprites\spr_quest_giver</sprite>
     </sprites>
     <sprites name="Tutorial">
       <sprite>sprites\spr_control_square</sprite>
@@ -474,6 +477,8 @@
     </sprites>
     <sprites name="Quests">
       <sprite>sprites\spr_quest_background</sprite>
+      <sprite>sprites\spr_quest_card</sprite>
+      <sprite>sprites\spr_dice</sprite>
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\spr_music_on</sprite>
@@ -806,6 +811,7 @@
         <object>objects\obj_wall_torch</object>
         <object>objects\obj_big_torch</object>
         <object>objects\obj_light</object>
+        <object>objects\obj_big_light</object>
       </objects>
       <objects name="Control">
         <object>objects\obj_level_generator</object>
@@ -947,6 +953,7 @@
         <object>objects\obj_miniboss3_display</object>
         <object>objects\obj_heads_display</object>
       </objects>
+      <object>objects\obj_quest_giver</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_button</object>

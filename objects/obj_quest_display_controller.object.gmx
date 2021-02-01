@@ -39,12 +39,12 @@ unlockedItemQueue = ds_queue_create();
 questProgress[3] = '';
 objectiveTextColor = make_colour_hsv(170, 184, 94);
 startedTransition = false;
+rerolling = false;
 obj_quest_controller.counter = 0;
-obj_gui_controller.loading = false;
-obj_gui_controller.drawingLoadingScreen = false;
-with(instance_create(x,y,obj_fade_controller)) {
-    fadeIn = true;
-}
+animX = 0;
+animY = 0;
+animating = false;
+animating2 = false;
 </string>
           </argument>
         </arguments>
@@ -90,14 +90,60 @@ with(instance_create(x,y,obj_fade_controller)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(obj_player)) {
-    if(obj_player.quests &amp;&amp; room != rm_quest) {
+            <string>// Toggle showing quests
+if(instance_exists(obj_player)) {
+    if(obj_player.quests &amp;&amp; room != rm_shop) {
         showQuests = !showQuests;
     }
 }
 
 if(showQuests)
-    counter+=0.02;
+    counter+=0.025;
+    
+// If player presses enter, accept quests and close
+if(showQuests &amp;&amp; room == rm_shop &amp;&amp; keyboard_check_pressed(vk_enter)) {
+    showQuests = false;
+    audio_play_sound(snd_button_click, 10, false);
+    obj_quest_giver.interacting = false;
+}
+
+// Let player re-roll quests
+if(room == rm_shop &amp;&amp; keyboard_check_pressed(ord('R')) &amp;&amp; !animating) {
+    if(obj_quest_giver.interacting) {
+        animating = true;
+        audio_play_sound(snd_dice_roll, 10, false);
+    }
+}
+
+if(animating) {
+    if(!animating2) {
+        if(animY &gt; 2000) {
+            animX = -2000;
+            animY = 0;
+            animating2 = true;
+            if(ds_list_size(obj_quest_controller.questList) &gt; 0) {
+                ds_list_clear(obj_quest_controller.questList);
+                // Set vars to 0
+                scr_reset_quest_vars();
+                instance_create(x,y,obj_quest_generator_controller);
+            }
+        } else {
+            animY += 40;
+        }
+    } else {
+        if(animY == 0) {
+            if(animX &lt; 0) {
+                animX += 50;
+            } else {
+                show_debug_message('made');
+                animating = false;
+                animating2 = false;
+            }
+        }
+    }
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -127,64 +173,67 @@ horBlock = gw / 32;
 vertBlock = gh / 32;
 scaleFactor = (gw / initial_gw);
 if(showQuests) {
+    // Set draw vars and draw grayed out background
     draw_set_font(fnt_ui);
-    
     draw_set_alpha(0.4);
     draw_set_color(c_black);
     draw_rectangle(0, 0, gw, gh, false);
     draw_set_alpha(1);
-    draw_sprite_ext(spr_quest_background, 0, gw / 2, gh / 2, 7.2 * scaleFactor, 7.2 * scaleFactor, 0, c_white, 1);
     draw_set_valign(fa_top);
     draw_set_halign(fa_center);
     draw_set_color(c_white);
     draw_set_halign(fa_left);
+    
+    // Draw the quests
     for(r = 0; r &lt; ds_list_size(obj_quest_controller.questList); r++) {
         item = obj_quest_controller.questList[| r];
+        if(room == rm_shop) {
+            horBaseline = animX + (gw / 2) - (horBlock * 2.5);
+        } else {
+            horBaseline = animX + (gw / 2);
+        }
+        vertBaseline = animY + ((gh / 3.5) * (r + 1)) - (vertBlock * 3.5);
+        // Draw quest card
+        draw_sprite_ext(spr_quest_card, 0, horBaseline, vertBaseline, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1);
+        // Draw quest text
         draw_set_color(objectiveTextColor);
-        draw_text_ext_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1)) + (3.2 * vertBlock), item[? 'questText'], 14, 170, 3 * scaleFactor, 3 * scaleFactor, 0);
-        draw_text_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1.5)) - (1 * vertBlock), questProgress[r], 2.5 * scaleFactor, 2.5 * scaleFactor, 0);
+        draw_text_ext_transformed(horBaseline - (2.3 *horBlock), vertBaseline + (vertBlock / 8), item[? 'questText'], 14, 140, 1.8 * scaleFactor, 1.8 * scaleFactor, 0);
+        draw_text_ext_transformed(horBaseline - (2.3 *horBlock), vertBaseline + (vertBlock / 12), item[? 'questText'], 14, 140, 1.8 * scaleFactor, 1.8 * scaleFactor, 0);
+        draw_text_transformed(horBaseline - (1.1 * horBlock), vertBaseline - (vertBlock * 2.4), questProgress[r], 1.5 * scaleFactor, 1.5 * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_ext_transformed(gw / 2 - (3.6*horBlock), (6 * vertBlock * (r + 1)) + (3.1 * vertBlock), item[? 'questText'], 14, 170, 3 * scaleFactor, 3 * scaleFactor, 0);
-        draw_sprite_ext(item[? 'sprite'], 0, gw / 2 - (4.4 * horBlock), (6 * vertBlock * (r + 1)) + (3 * vertBlock), 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1);
+        draw_text_ext_transformed(horBaseline - (2.3 * horBlock), vertBaseline, item[? 'questText'], 14, 140, 1.8 * scaleFactor, 1.8 * scaleFactor, 0);
+        // Draw quest sprite
+        draw_sprite_ext(item[? 'sprite'], 0, horBaseline - (3.6 * horBlock), vertBaseline + (vertBlock * 2), 4 * scaleFactor, 4 * scaleFactor, 0, c_white, 1);
     }
     
-    if(room == rm_quest) {
-        draw_set_halign(fa_center);
+    
+    if(room == rm_shop) {
+        // Draw accept quests text
+        draw_set_halign(fa_left);
         draw_set_alpha(1);
+        draw_sprite_ext(spr_focus_unlocked, 0, (gw / 2) + (horBlock * 3), (gh / 2) - (11 * vertBlock), 7 * scaleFactor, 7 * scaleFactor, 0, c_white, 1)
         draw_set_color(objectiveTextColor);
-        draw_text_transformed(gw / 2, gh / 1.19, "'Enter' to Accept Quests", 3.5 * (1 + abs(sin(counter) / 5)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
+        draw_text_transformed((gw / 2) + (horBlock * 4), (gh / 2) - (12 * vertBlock), "'Enter' to Accept Quests", 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 0);
         draw_set_color(c_white);
-        draw_text_transformed(gw / 2, gh / 1.2, "'Enter' to Accept Quests", 3.5 * (1 + abs(sin(counter) / 5)) * scaleFactor, 3.5 * (1 + abs(sin(counter) / 2)) * scaleFactor, 0);
-        if(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 
-            gw / 3, gh / 1.25, gw / 1.5, gh / 1.05)) {
-            mouseInside = true;
-        } else {
-            mouseInside = false;
-        }
+        draw_text_transformed((gw / 2) + (horBlock * 4), (gh / 2) - (12 * vertBlock), "'Enter' to Accept Quests", 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 0);
         
-        if(!startedTransition &amp;&amp; ((mouseInside &amp;&amp; mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_enter))) {
-            startedTransition = true;
-            audio_play_sound(snd_button_click, 10, false);
-            with(instance_create(x,y,obj_fade_controller)) {
-                fadeIn = false;
-            }
-        }  
-        
-        if(obj_gui_controller.drawingLoadingScreen) {
-            showQuests = false;
-            room_goto(rm_procedural);
-        }
-        
+        // Draw re-roll quests text
+        draw_sprite_ext(spr_dice, 0, (gw / 2) + (horBlock * 3), (gh / 2) - (9 * vertBlock), 3 * scaleFactor, 3 * scaleFactor, 0, c_white, 1)
+        draw_set_color(objectiveTextColor);
+        draw_text_transformed((gw / 2) + (horBlock * 4), (gh / 2) - (10 * vertBlock), "'R' to re-roll quests", 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 0);
+        draw_set_color(c_white);
+        draw_text_transformed((gw / 2) + (horBlock * 4), (gh / 2) - (10 * vertBlock), "'R' to re-roll quests", 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 2 * (1 + abs(sin(counter) / 7)) * scaleFactor, 0);
     }  
 }
 
+
+// Text shown when you unlock an item
 if(ds_queue_size(unlockedItemQueue) &gt; 0 &amp;&amp; !unlockedItem) {
     unlockedItem = true;
     unlockedItemMap = ds_queue_dequeue(unlockedItemQueue);
     unlockedItemCounter = 450;
     audio_play_sound(snd_unlocked_item, 10, false);
 }
-
 if(unlockedItem &amp;&amp; unlockedItemCounter &gt; 0) {
     draw_set_halign(fa_center);
     draw_set_valign(fa_top);

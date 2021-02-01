@@ -194,16 +194,17 @@ if(global.paused == false) {
     }
     
     /* Draw button to remind about quests */
-    draw_sprite_ext(spr_quest_background, 0, horBlock, gh - (vertBlock * 1.5), 0.4 * scaleFactor, 0.4 * scaleFactor, 0, c_white, 1);
-    draw_set_color(c_black);
-    draw_set_alpha(1);
-    draw_set_font(fnt_ui);
-    draw_set_valign(fa_bottom);
-    draw_set_halign(fa_left);
-    draw_text_transformed(horBlock * 1.1, gh - (vertBlock * 1.55), scr_convert_unicode(obj_settings_controller.viewQuests), 3, 3, 0);
-    draw_set_color(c_white);
-    draw_text_transformed(horBlock * 1.1, gh - (vertBlock * 1.6), scr_convert_unicode(obj_settings_controller.viewQuests), 3, 3, 0);
-    
+    if(room != rm_shop) {
+        draw_sprite_ext(spr_quest_background, 0, horBlock, gh - (vertBlock * 1.5), 0.4 * scaleFactor, 0.4 * scaleFactor, 0, c_white, 1);
+        draw_set_color(c_black);
+        draw_set_alpha(1);
+        draw_set_font(fnt_ui);
+        draw_set_valign(fa_bottom);
+        draw_set_halign(fa_left);
+        draw_text_transformed(horBlock * 1.1, gh - (vertBlock * 1.55), scr_convert_unicode(obj_settings_controller.viewQuests), 3, 3, 0);
+        draw_set_color(c_white);
+        draw_text_transformed(horBlock * 1.1, gh - (vertBlock * 1.6), scr_convert_unicode(obj_settings_controller.viewQuests), 3, 3, 0);
+    }
     /* Draw bought items */
     scr_draw_bought_items();
     
