@@ -289,7 +289,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if(distance_to_point(obj_player.x, obj_player.y) &lt; 15 &amp;&amp; !activated) {
-    draw_text_transformed(obj_player.x,obj_player.y - 32, "'E' to open tome", 0.5, 0.5, 0);
+    scr_draw_font_outline("Press 'E' to open tome", x, y - 15);
 }
 </string>
           </argument>

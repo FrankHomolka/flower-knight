@@ -51,6 +51,7 @@
       <sound>sound\snd_coin_pickup_3</sound>
       <sound>sound\snd_heart_pickup</sound>
       <sound>sound\snd_open_chest</sound>
+      <sound>sound\snd_boss_door_open</sound>
     </sounds>
     <sounds name="UI">
       <sound>sound\snd_button_click</sound>
@@ -499,6 +500,7 @@
       <script>scripts\scr_shake_screen.gml</script>
       <script>scripts\scr_approach.gml</script>
       <script>scripts\scr_spawn_item_drop.gml</script>
+      <script>scripts\scr_draw_font_outline.gml</script>
     </scripts>
     <scripts name="Player">
       <scripts name="player initialization">
@@ -755,6 +757,8 @@
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
     <font>fonts\fnt_ui</font>
+    <font>fonts\fnt_ui_outline</font>
+    <font>fonts\fnt_test_2</font>
     <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
