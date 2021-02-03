@@ -28,6 +28,10 @@
             <string>wallUp = false;
 tileSheet = bck_area_1;
 image_speed = 0;
+locked = true;
+visible = true;
+wallStart = instance_create(x,y,obj_wall);
+sprite_index = spr_boss_locked_wall;
 </string>
           </argument>
         </arguments>
@@ -50,8 +54,34 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(boss)) {
+            <string>if(!wallUp &amp;&amp; locked) {
+    if(distance_to_object(obj_dungeon_key) &lt; 20 &amp;&amp; obj_player.interact) {
+        boss.unlockedRoom = true;
+        with(obj_dungeon_key) instance_destroy();
+        show_debug_message('destroy');
+        visible = false;
+        locked = false;
+        with(wallStart) {
+            mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+            instance_destroy();
+        }
+    }
+} 
+
+if(instance_exists(boss)) {
+    if(boss.unlockedRoom &amp;&amp; locked) {
+        visible = false;
+        locked = false;
+        with(wallStart) {
+            mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+            instance_destroy();
+        }
+    }
+}
+
+if(instance_exists(boss)) {
     if(boss.foundPlayer == true &amp;&amp; !wallUp) {
+        sprite_index = spr_boss_wall;
         image_speed = 0.13;
         wallUp = true;
         wall = instance_create(x,y,obj_wall);

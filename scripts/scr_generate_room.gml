@@ -30,7 +30,11 @@ for(genX = 0; genX < 24; genX++) {//20
                     tileSheet = temp;
                 }
                 if(random(1) > 0.93) {
-                    tile_add(bck_area_1_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, startX + (genX * 16), startY + (genY * 16), 1000002);
+                    if(argument2 == spr_room_boss_map) {
+                        tile_add(bck_boss_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, startX + (genX * 16), startY + (genY * 16), 1000002);
+                    } else {
+                        tile_add(bck_area_1_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, startX + (genX * 16), startY + (genY * 16), 1000002);
+                    }
                 }
                 
                 break;
@@ -179,6 +183,11 @@ for(genX = 0; genX < 24; genX++) {//20
                 obj_player.y = startY + (genY * 16);
                 instance_create(startX + (genX * 16),startY + (genY * 16),obj_pit_respawn);
                 break;
+            // Key spawn
+            case $5b5b00:
+                instance_create(startX + (genX * 16), startY + (genY * 16), obj_dungeon_key);
+                tile_add(tileSheet, 0, 32, 16, 16, startX + (genX * 16), startY + (genY * 16), 1000000);
+                break;
             default:
                 break;
         }
@@ -256,6 +265,8 @@ for(genX = 0; genX < 24; genX++) {//20
         if(argument2 == spr_room_boss_map) {
             if(genX == 0 && doorLeft) {
                 if(genY >= 5 && genY < 10) {
+                    if(random(1) > 0.4)
+                        tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + ((genX - 1) * 16), startY + (genY * 16), 1000002);
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
@@ -266,6 +277,8 @@ for(genX = 0; genX < 24; genX++) {//20
             /* Right Side */
             } else if(genX == 24 - 1 && doorRight) {
                 if(genY >= 5 && genY < 10) {
+                    if(random(1) > 0.4)
+                        tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + ((genX + 1) * 16), startY + (genY * 16), 1000002);
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
@@ -277,6 +290,8 @@ for(genX = 0; genX < 24; genX++) {//20
             /* Up side */
             if(genY == 0 && doorUp) {
                 if(genX >= 10 && genX < 14) {
+                    if(random(1) > 0.4)
+                        tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + (genX * 16), startY + ((genY - 1) * 16), 1000002);
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }
@@ -287,6 +302,8 @@ for(genX = 0; genX < 24; genX++) {//20
             /* Down Side */
             } else if(genY == 16 - 1 && doorDown) {
                 if(genX >= 10 && genX < 14) {
+                    if(random(1) > 0.4)
+                        tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + (genX * 16), startY + ((genY + 1) * 16), 1000002);
                     with(instance_create(startX + (genX * 16), startY + (genY * 16), obj_boss_wall)) {
                         boss = other.boss;
                     }

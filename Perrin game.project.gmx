@@ -220,6 +220,7 @@
         <sprite>sprites\spr_burst_death</sprite>
         <sprite>sprites\spr_burst_attack</sprite>
         <sprite>sprites\spr_burst_ball</sprite>
+        <sprite>sprites\spr_burst_ball_small</sprite>
         <sprite>sprites\spr_blue_particle</sprite>
       </sprites>
       <sprites name="Skeleton Bomber">
@@ -305,6 +306,7 @@
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_dungeon_door</sprite>
       <sprite>sprites\spr_boss_wall</sprite>
+      <sprite>sprites\spr_boss_locked_wall</sprite>
       <sprite>sprites\spr_pit</sprite>
       <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall_torch</sprite>
@@ -349,30 +351,20 @@
       <sprite>sprites\spr_gold_bag</sprite>
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_bomb_explosion</sprite>
+      <sprite>sprites\spr_dungeon_key</sprite>
     </sprites>
     <sprites name="Level Gen">
       <sprites name="Rooms">
         <sprites name="Area 1">
-          <sprites name="Level 0">
-            <sprite>sprites\spr_room_boom_boom</sprite>
-            <sprite>sprites\spr_room_empty_roof</sprite>
-            <sprite>sprites\spr_room_eye_corners</sprite>
-            <sprite>sprites\spr_room_group</sprite>
-            <sprite>sprites\spr_room_hallway</sprite>
-            <sprite>sprites\spr_room_spike_treasure</sprite>
-            <sprite>sprites\spr_room_traps_enemies</sprite>
-            <sprite>sprites\spr_room_turret_hallway</sprite>
-            <sprite>sprites\spr_room_skeletons</sprite>
-          </sprites>
           <sprites name="Level 1">
-            <sprite>sprites\spr_room_burst_challenge</sprite>
-            <sprite>sprites\spr_room_burst</sprite>
-            <sprite>sprites\spr_room_dodge_challenge</sprite>
-            <sprite>sprites\spr_room_all</sprite>
+            <sprite>sprites\spr_a1_lvl1_common</sprite>
+            <sprite>sprites\spr_a1_lvl1_uncommon</sprite>
+            <sprite>sprites\spr_a1_lvl1_rare</sprite>
           </sprites>
           <sprites name="Level 2">
-            <sprite>sprites\spr_room_final_challenge</sprite>
-            <sprite>sprites\spr_room_homing</sprite>
+            <sprite>sprites\spr_a1_lvl2_common</sprite>
+            <sprite>sprites\spr_a1_lvl2_uncommon</sprite>
+            <sprite>sprites\spr_a1_lvl2_rare</sprite>
           </sprites>
         </sprites>
         <sprites name="Area 2">
@@ -407,6 +399,7 @@
           <sprite>sprites\spr_bomb_room</sprite>
           <sprite>sprites\spr_room_boss_map</sprite>
           <sprite>sprites\spr_room_shop_map</sprite>
+          <sprite>sprites\spr_room_key_map</sprite>
           <sprite>sprites\spr_room_start_map</sprite>
           <sprite>sprites\spr_room_wings</sprite>
           <sprite>sprites\spr_room_maze</sprite>
@@ -491,11 +484,13 @@
     <background>background\bck_area_1</background>
     <background>background\bck_area_1_boss</background>
     <background>background\bck_area_1_decoration</background>
+    <background>background\bck_boss_decoration</background>
     <background>background\bck_treasure_room</background>
     <background>background\bck_area_2</background>
     <background>background\bck_area_3</background>
     <background>background\bck_shop</background>
     <background>background\bck_menu</background>
+    <background>background\bck_boss_room</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -820,6 +815,7 @@
         <object>objects\obj_boss_activator</object>
       </objects>
       <object>objects\obj_bone_stack</object>
+      <object>objects\obj_dungeon_key</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_fade_controller</object>
@@ -872,6 +868,7 @@
         <object>objects\obj_player_dodged</object>
         <object>objects\obj_magic_ball</object>
         <object>objects\obj_magic_ball_burst</object>
+        <object>objects\obj_magic_ball_small</object>
         <object>objects\obj_flame_turret_attack</object>
         <object>objects\obj_sniper_shot</object>
         <object>objects\obj_magic_ball_single</object>

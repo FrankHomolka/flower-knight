@@ -38,8 +38,10 @@ attackCounter--;
 
 /* state end */
 if(attackCounter < 0) {
+    hp = 0;
+    sprite_index = deathSprite;
+    state = states.death;
     attacking = false;
     canAttack = false;
     attackCounter = attackTime;
-    state = states.idle;
 }

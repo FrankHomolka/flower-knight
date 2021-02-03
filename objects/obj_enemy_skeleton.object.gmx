@@ -62,7 +62,7 @@ canAttack = true;
 attackCooldownMax = 45;
 attackCooldownCounter = 0;
 attackDistance = 17;
-attackTime = 40;
+attackTime = 70;
 initalAttackTime = attackTime;
 attackCounter = attackTime;
 attackFrame = 5;
@@ -114,6 +114,7 @@ switch(state) {
         break;
     case states.hit:
         scr_enemy_hit();
+        attacking = false;
         //if(attacking)
         //    scr_enemy_ranged_attack();
         break;

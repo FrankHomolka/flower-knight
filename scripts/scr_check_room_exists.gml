@@ -8,13 +8,14 @@ if(ds_grid_get(mapGrid, currentCellX + xOffset, currentCellY + yOffset) == 0) {
     
     xDistance = abs(currentCellX - centerCellX + xOffset);
     yDistance = abs(currentCellY - centerCellY + yOffset);
-    
     if(sqrt(sqr(xDistance) + sqr(yDistance)) > maxDistance) {
         maxDistance = sqrt(sqr(xDistance) + sqr(yDistance));
+        // Sets shop spawn
         if(bossCellX != 0) {
             shopCellX = bossCellX;
             shopCellY = bossCellY;   
         }
+        // Sets boss room spawn
         bossCellX = currentCellX + xOffset;
         bossCellY = currentCellY + yOffset;   
     }

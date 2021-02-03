@@ -36,29 +36,9 @@ playerDodged = false;
 chasePlayer = true;
 speed = 2;
 image_angle = direction;
-if(spawnOthers) {
-    //move_towards_point(targetX, targetY, 1);
-    direction = point_direction(x,y,targetX,targetY);
-    image_angle = direction;
-    with(instance_create(x,y,obj_blank)) {
-        spawnOthers = false;
-        source = other;
-        attackDamage = other.attackDamage;
-        x = other.x;
-        y = other.y;
-        direction = other.direction + 25;
-        instance_change(obj_magic_ball_burst, true);
-    }
-    with(instance_create(x,y,obj_blank)) {
-        spawnOthers = false;
-        source = other;
-        attackDamage = other.attackDamage;
-        x = other.x + lengthdir_x(5, image_angle);
-        y = other.y + lengthdir_y(5, image_angle);
-        direction = other.direction - 25;
-        instance_change(obj_magic_ball_burst, true);
-    }
-}
+explosionTimer = 50;
+move_towards_point(targetX, targetY, 1.5);
+numExplode = 10;
 </string>
           </argument>
         </arguments>
@@ -107,6 +87,15 @@ if(spawnOthers) {
             <string>event_inherited();
 
 if(place_meeting(x,y,obj_wall)) {
+    for(k = 0; k &lt; numExplode; k++) {
+        with(instance_create(x, y , obj_blank)) {
+            image_angle = (360 / other.numExplode) * other.k;
+            xTarget = x + lengthdir_x(20, image_angle);
+            yTarget = y + lengthdir_y(20, image_angle);
+            source = other;
+            instance_change(obj_magic_ball_small, true);
+        }
+    }
     instance_destroy();
 }
 
@@ -117,10 +106,34 @@ if(place_meeting(x,y,obj_player)) {
             if(instance_exists(obj_quest_controller)) obj_quest_controller.eyemissileDodges++;
         }
     } else {
-        scr_try_hit_player(attackDamage, noone);
+        scr_try_hit_player(attackDamage, noone); 
+        for(k = 0; k &lt; numExplode; k++) {
+            with(instance_create(x, y , obj_blank)) {
+                image_angle = (360 / other.numExplode) * other.k;
+                xTarget = x + lengthdir_x(20, image_angle);
+                yTarget = y + lengthdir_y(20, image_angle);
+                source = other;
+                instance_change(obj_magic_ball_small, true);
+            }
+        }
         instance_destroy();
     }
 } 
+
+if(explosionTimer &lt; 0) {
+    for(k = 0; k &lt; numExplode; k++) {
+        with(instance_create(x, y , obj_blank)) {
+            image_angle = (360 / other.numExplode) * other.k;
+            xTarget = x + lengthdir_x(20, image_angle);
+            yTarget = y + lengthdir_y(20, image_angle);
+            source = other;
+            instance_change(obj_magic_ball_small, true);
+        }
+    }
+    instance_destroy();
+}
+
+explosionTimer--;
 </string>
           </argument>
         </arguments>

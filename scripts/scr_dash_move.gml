@@ -3,7 +3,7 @@
 
 /* Do once */
 if(dashCounter == dashTime) {
-    audio_play_sound(snd_dash, 10, false);
+    audio_play_sound(snd_dash, 20, false);
     x_goal = obj_player_dash.x;
     y_goal = obj_player_dash.y;
     dashDirection = point_direction(x, y,x_goal,y_goal);

@@ -30,6 +30,7 @@
 spawnX = x;
 spawnY = y;
 foundPlayer = false;
+unlockedRoom = false;
 inFight = false;
 chaseDistance = 70;
 shake = false;
