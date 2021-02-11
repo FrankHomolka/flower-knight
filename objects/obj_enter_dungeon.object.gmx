@@ -93,12 +93,7 @@ if(obj_gui_controller.drawingLoadingScreen) {
             <string>event_inherited();
 depth = -2000;
 if(place_meeting(x,y,obj_player) &amp;&amp; !activated) {
-    draw_set_color(c_white);
-    draw_set_alpha(1);
-    draw_set_font(fnt_ui);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text_transformed(obj_player.x,obj_player.y-32,"'E' to enter the dungeon...", 0.5, 0.5, 0);
+    scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to enter the dungeon", x,y-48)
 }
 </string>
           </argument>

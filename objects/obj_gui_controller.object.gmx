@@ -57,6 +57,7 @@ initial_gh = 900;
 currentRoom = room;
 
 hpColor = make_colour_rgb(242, 79, 70);
+alphaCounter = 0;
 </string>
           </argument>
         </arguments>
@@ -105,6 +106,7 @@ if(room == rm_procedural) {
     }
 }
 
+alphaCounter += 0.04;
 </string>
           </argument>
         </arguments>
@@ -151,6 +153,16 @@ if(global.paused == false) {
         draw_set_color(c_white);
         draw_set_halign(fa_left);
         draw_set_valign(fa_middle);
+        
+        /* Warning for low hp */
+        if(obj_player.hp &lt;= (obj_player.maxHp * 0.2)) {
+            bloodGuiAlpha = 0.2 + (0.5 * abs(sin(alphaCounter)));
+            bloodGuiScale = 4 * scaleFactor;
+            draw_sprite_ext(spr_blood_gui_top_left, 0, 0, 0, bloodGuiScale * scaleFactor, bloodGuiScale, 0, c_white, bloodGuiAlpha);
+            draw_sprite_ext(spr_blood_gui_top_right, 0, gw, 0, bloodGuiScale * scaleFactor, bloodGuiScale, 0, c_white, bloodGuiAlpha);
+            draw_sprite_ext(spr_blood_gui_bottom_right, 0, gw, gh, bloodGuiScale * scaleFactor, bloodGuiScale, 0, c_white, bloodGuiAlpha);
+            draw_sprite_ext(spr_blood_gui_bottom_left, 0, 0, gh, bloodGuiScale * scaleFactor, bloodGuiScale, 0, c_white, bloodGuiAlpha);
+        }
         
         /* Gold gained */
         draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, spriteAlpha);

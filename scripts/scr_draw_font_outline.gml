@@ -1,10 +1,13 @@
-///scr_draw_font_outline(outlineText, textX, textY)
-outlineText = argument0;
-textX = argument1;
-textY = argument2;
+///scr_draw_font_outline(outlineText, textX, textY, scale*)
+outlineText = argument[0];
+textX = argument[1];
+textY = argument[2];
 textScale = 0.125;
 textSep = 60;
 textWidth = 800;
+if(argument_count == 4) {
+    textScale = argument[3];
+}
  
 draw_set_font(fnt_ui_outline);
 draw_set_color(c_black);

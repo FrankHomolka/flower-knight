@@ -180,11 +180,7 @@ scaleFactor = (gw / initial_gw);
 
 if(activated) {
     draw_sprite_ext(spr_shop_blown_up, 0, gw / 2, gh / 2, 5.5 * scaleFactor, 5.5 * scaleFactor, 0, c_white, 1);
-    draw_set_font(fnt_1);
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close shop", 3 * scaleFactor, 3 * scaleFactor, 0);
+    scr_draw_font_outline("Press 'ESC' to close shop", gw / 1.4 ,gh / 8, 0.75 * scaleFactor);
 }
 </string>
           </argument>
@@ -209,13 +205,8 @@ if(activated) {
           <argument>
             <kind>1</kind>
             <string>// don't remove me
-//draw_sprite(spr_shop, image_index, x, y);
 if(distance_to_point(obj_player.x, obj_player.y) &lt; 20 &amp;&amp; !activated) {
-    draw_set_font(fnt_1);
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text_transformed(obj_player.x,obj_player.y - 32, "'E' to open shop", 0.5, 0.5, 0);
+    scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to open shop", x, y - 36);
 }
 </string>
           </argument>

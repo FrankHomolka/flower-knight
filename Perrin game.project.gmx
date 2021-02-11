@@ -342,6 +342,10 @@
       <sprite>sprites\spr_hp_gui</sprite>
       <sprite>sprites\spr_hp_bar</sprite>
       <sprite>sprites\spr_next_arrow</sprite>
+      <sprite>sprites\spr_blood_gui_top_left</sprite>
+      <sprite>sprites\spr_blood_gui_top_right</sprite>
+      <sprite>sprites\spr_blood_gui_bottom_right</sprite>
+      <sprite>sprites\spr_blood_gui_bottom_left</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shadow</sprite>

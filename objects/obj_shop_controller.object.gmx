@@ -255,11 +255,7 @@ scaleFactor = (gw / initial_gw);
 if(activated) {
     depth = -2000;
     draw_sprite_ext(spr_unlocked_items, 0, gw / 2, gh / 2, 5.5 * scaleFactor, 5.5 * scaleFactor, 0, c_white, 1);
-    draw_set_font(fnt_ui);
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text_transformed(gw / 1.4 ,gh / 8, "'ESC' to close tome", 3 * scaleFactor, 3 * scaleFactor, 0);
+    scr_draw_font_outline("Press 'ESC' to close tome", gw / 1.4 ,gh / 8, 0.75 * scaleFactor);
 }
 </string>
           </argument>
@@ -289,7 +285,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if(distance_to_point(obj_player.x, obj_player.y) &lt; 15 &amp;&amp; !activated) {
-    scr_draw_font_outline("Press 'E' to open tome", x, y - 15);
+    scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to open tome", x, y - 15);
 }
 </string>
           </argument>

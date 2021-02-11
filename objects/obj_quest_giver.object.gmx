@@ -85,7 +85,7 @@ counter = 0;
 if(!interacting) {
     counter+= 0.12;
     if(distance_to_point(obj_player.x, obj_player.y) &lt; 20) {
-        scr_draw_font_outline("Press 'E' to talk to Garblon", x, y - 20);
+        scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to talk to Garblon", x, y - 20);
     } else {
         draw_sprite(spr_has_quest, 0, x - 4,y - 30 + (-3 * sin(counter)));
     }

@@ -54,21 +54,26 @@ sprite_index = spr_boss_locked_wall;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!wallUp &amp;&amp; locked) {
-    if(distance_to_object(obj_dungeon_key) &lt; 20 &amp;&amp; obj_player.interact) {
-        boss.unlockedRoom = true;
-        with(obj_dungeon_key) instance_destroy();
-        show_debug_message('destroy');
-        visible = false;
-        locked = false;
-        with(wallStart) {
-            mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
-            instance_destroy();
+            <string>if(instance_exists(boss)) {
+    // Unlock door
+    if(!wallUp &amp;&amp; locked) {
+        if(distance_to_object(obj_dungeon_key) &lt; 20) {
+            // Handles player using key
+            if(obj_player.interact) {
+                boss.unlockedRoom = true;
+                with(obj_dungeon_key) instance_destroy();
+                show_debug_message('destroy');
+                visible = false;
+                locked = false;
+                with(wallStart) {
+                    mp_grid_clear_cell(global.grid, floor(x / 16), floor(y / 16));
+                    instance_destroy();
+                }
+            }
         }
-    }
-} 
+    } 
 
-if(instance_exists(boss)) {
+    // Handles if player uses key
     if(boss.unlockedRoom &amp;&amp; locked) {
         visible = false;
         locked = false;
@@ -77,9 +82,8 @@ if(instance_exists(boss)) {
             instance_destroy();
         }
     }
-}
-
-if(instance_exists(boss)) {
+    
+    // Puts wall BACK up when player starts fight
     if(boss.foundPlayer == true &amp;&amp; !wallUp) {
         sprite_index = spr_boss_wall;
         image_speed = 0.13;
