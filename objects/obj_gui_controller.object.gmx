@@ -166,32 +166,36 @@ if(global.paused == false) {
         
         /* Gold gained */
         draw_sprite_ext(spr_gold_gui, 0, horBlock, vertBlock * 5, 3 * scaleFactor, 3 * scaleFactor, 0, c_white, spriteAlpha);
-        draw_text_transformed(horBlock * 1.5, vertBlock * 5, '$' + string(obj_quest_controller.gold), 3 * scaleFactor, 3 * scaleFactor, 0);
+        scr_draw_font_outline('$' + string(obj_quest_controller.gold), horBlock * 1.5, vertBlock * 4.5, 0.6 * scaleFactor, fa_middle, 10, 10000, fa_left);
         
         /* Player hp */
         draw_sprite_ext(spr_hp_gui, 0, (horBlock / 2) , (vertBlock / 2), 5 * scaleFactor, 5 * scaleFactor, 0, c_white, spriteAlpha);
         draw_sprite_part_ext(spr_hp_bar, 0, 0, 0, 49 * (obj_player.hp / obj_player.maxHp), 4, (horBlock / 2) + (2*horBlock), (vertBlock / 2) + (0.7 * vertBlock), 5 * scaleFactor, 5 * scaleFactor, c_white, spriteAlpha);
         if(obj_player.hp &gt; 0) {
             hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
-            draw_set_color(c_black);
+            scr_draw_font_outline(hpText, (1.6 * horBlock) + horBlock, (vertBlock * 2.4), 0.4 * scaleFactor, fa_middle, 10, 10000, fa_left);
+        
+            /*draw_set_color(c_black);
             draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
             draw_set_color(c_white);
-            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);*/
         } else {
             hpText = 'HP 0/' + string(obj_player.maxHp);
-            draw_set_color(c_black);
+            scr_draw_font_outline(hpText, (1.6 * horBlock) + horBlock, (vertBlock * 2.4), 0.4 * scaleFactor, fa_middle, 10, 10000, fa_left);
+            /*draw_set_color(c_black);
             draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
             draw_set_color(c_white);
-            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
+            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);*/
         }
         
         /* Draw area and level */
         if(instance_exists(obj_area_controller)) {
             areaText = string(obj_area_controller.area) + '-' + string(obj_area_controller.level);
-            draw_set_color(c_black);
+            scr_draw_font_outline(areaText, (6.8 * horBlock) + horBlock, (1.45 * vertBlock), 0.45 * scaleFactor, fa_middle, 10, 10000, fa_left);
+            /*draw_set_color(c_black);
             draw_text_transformed((6.8 * horBlock) + horBlock - 3, (1.8 * vertBlock) + 3, areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
             draw_set_color(c_white);
-            draw_text_transformed((6.8 * horBlock) + horBlock, (1.8 * vertBlock), areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
+            draw_text_transformed((6.8 * horBlock) + horBlock, (1.8 * vertBlock), areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);*/
         }
     }
     draw_set_alpha(1);

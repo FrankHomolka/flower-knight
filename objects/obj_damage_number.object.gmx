@@ -95,6 +95,7 @@ if(critAttack) {
     fontSize = 0.3 + ( 0.3 * (damage / 50));
 }
 draw_set_alpha(1);
+draw_set_font(fnt_ui);
 draw_set_color(c_white);
 draw_text_transformed(x - xoff, y - yoff, message, fontSize, fontSize, angle);
 draw_set_color(color);

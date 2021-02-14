@@ -119,15 +119,9 @@ if(obj_shop_controller.selectedItemIndex == itemNumber) {
     draw_rectangle((drawX - (horBlock * 5) ), (drawY - (vertBlock * 6) + itemOffsetY), (drawX + (horBlock * 5)), (drawY - (vertBlock * 1.5) + itemOffsetY), false);
     draw_set_alpha(1);
     // Draw name
-    draw_set_color(c_black);
-    draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4 + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
-    draw_set_color(c_white);
-    draw_text_transformed(drawX, drawY - (5 * vertBlock) + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+    scr_draw_font_outline(message, drawX, drawY - (5 * vertBlock) + 4 + itemOffsetY, 0.55 * scaleFactor, fa_middle);
     // Draw description
-    draw_set_color(c_black);
-    draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4 + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
-    draw_set_color(c_white);
-    draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
+    scr_draw_font_outline(description, drawX, drawY - (3 * vertBlock) + 4 + itemOffsetY, 0.4 * scaleFactor, fa_middle);
 }
 </string>
           </argument>

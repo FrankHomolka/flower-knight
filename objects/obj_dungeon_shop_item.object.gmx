@@ -134,6 +134,7 @@ if(obj_dungeon_shop.selectedItemIndex == itemNumber) {
 
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
+draw_set_font(fnt_ui);
 
 if(unlocked) {
     selectedRot += 0.3;
@@ -183,28 +184,24 @@ if(unlocked) {
         draw_set_alpha(1);
         // Draw price
         if(flashTime &gt; 0) {
-            if(flashTime &gt; 0) draw_set_color(c_red);
-            if(flashTime &gt; 5) draw_set_color(c_white);
-            if(flashTime &gt; 10) draw_set_color(c_red);
-            if(flashTime &gt; 15) draw_set_color(c_white);
+            if(flashTime &gt; 0) costColor = c_red;
+            if(flashTime &gt; 5) costColor = c_white;
+            if(flashTime &gt; 10) costColor = c_red;
+            if(flashTime &gt; 15) costColor = c_white;
+            
         } else {
             if((obj_quest_controller.gold &gt;= price)) {
-                draw_set_color(c_yellow);
+                costColor = c_yellow;
             } else {
-                draw_set_color(c_red);
+                costColor = c_red;
             }
         }
-        draw_text_transformed(drawX + (horBlock * 4), drawY - (6.5 * vertBlock) + itemOffsetY, '$' + string(price), 2 * scaleFactor, 2 * scaleFactor, 0);
+        // Draw cost
+        scr_draw_font_outline('$' + string(price), drawX + (horBlock * 3.5), drawY - (7 * vertBlock) + itemOffsetY, 0.4 * scaleFactor, fa_middle, 15, 800, fa_top, costColor);
         // Draw name
-        draw_set_color(c_black);
-        draw_text_transformed(drawX, drawY - (5 * vertBlock) + 4 + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
-        draw_set_color(c_white);
-        draw_text_transformed(drawX, drawY - (5 * vertBlock) + itemOffsetY, message, 3 * scaleFactor, 3 * scaleFactor, 0);
+        scr_draw_font_outline(message, drawX, drawY - (5 * vertBlock) + itemOffsetY, 0.55 * scaleFactor, fa_middle);
         // Draw description
-        draw_set_color(c_black);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + 4 + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
-        draw_set_color(c_white);
-        draw_text_ext_transformed(drawX, drawY - (3 * vertBlock) + itemOffsetY, description, 14, 175, 2 * scaleFactor, 2 * scaleFactor, 0);
+        scr_draw_font_outline(description, drawX, drawY - (3 * vertBlock) + itemOffsetY, 0.4 * scaleFactor, fa_middle, 60, 800, fa_middle);
     }
 }
 </string>

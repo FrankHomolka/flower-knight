@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_shop_controller" x="175" y="217" name="inst_9130C609" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enter_dungeon" x="222" y="141" name="inst_2D7E25D9" locked="0" code="" scaleX="3.9375" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enter_dungeon" x="223" y="141" name="inst_2D7E25D9" locked="0" code="" scaleX="3.40000009536743" scaleY="4.625" colour="4294967295" rotation="0"/>
     <instance objName="obj_player_spawn" x="221" y="204" name="inst_852553F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="71" y="25" name="inst_46C57495" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="106" y="25" name="inst_C999B485" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -149,18 +149,18 @@
     <instance objName="obj_boss2_display" x="301" y="159" name="inst_534F67F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_miniboss3_display" x="322" y="135" name="inst_9A2AD1D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boss3_display" x="281" y="126" name="inst_F3DEEC78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_quest_giver" x="176" y="156" name="inst_C1F1CF82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_quest_giver" x="157" y="157" name="inst_C1F1CF82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="272" y="256" name="inst_B9F6F68B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="240" y="256" name="inst_2A031D7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="208" y="256" name="inst_9A8F6A00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="176" y="256" name="inst_CB17B35B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light" x="304" y="256" name="inst_893FC7FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_big_light" x="175" y="155" name="inst_029576DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_big_light" x="155" y="156" name="inst_029576DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_light" x="257" y="215" name="inst_BAB51529" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_light" x="140" y="235" name="inst_4C76B95B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_light" x="294" y="213" name="inst_C3C5D8CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_big_light" x="303" y="164" name="inst_55888C0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="163" y="161" name="inst_36A33732" locked="0" code="" scaleX="1.53333330154419" scaleY="0.800000011920929" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="143" y="162" name="inst_36A33732" locked="0" code="" scaleX="1.53333330154419" scaleY="0.800000011920929" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="&lt;undefined&gt;" x="0" y="192" w="16" h="16" xo="0" yo="0" id="10001496" name="inst_0A3EEF1A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

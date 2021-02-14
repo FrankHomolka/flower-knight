@@ -92,19 +92,8 @@ if(room == rm_tutorial) {
 }
 
 draw_set_alpha(1);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_set_color(c_black);
-draw_text_transformed((gw / 2) - 6, (gh / 2) - 100 - 6, "YOU ARE DEAD", 13., 13, 0);
-draw_set_color(c_white);
-draw_text_transformed(gw / 2, (gh / 2) - 100, "YOU ARE DEAD", 13, 13, 0);
-draw_set_color(c_black);
-draw_text_transformed((gw / 2) - 6, (gh / 2) + 100 - 6, text, 7, 7, 0);
-draw_set_color(c_white);
-draw_text_transformed(gw / 2, (gh / 2) + 100, text, 7, 7, 0);
-draw_set_color(c_black);
-draw_set_valign(fa_top);
-draw_set_halign(fa_left);
+scr_draw_font_outline("YOU ARE DEAD", gw / 2, (gh / 2) - 100, 2.5, fa_middle);
+scr_draw_font_outline(text, gw / 2, (gh / 2) + 100, 1, fa_middle);
 </string>
           </argument>
         </arguments>

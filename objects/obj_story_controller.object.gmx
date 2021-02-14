@@ -29,7 +29,7 @@
 
 // REMOVE TO TEST WITH SAME SEED
 randomize();
-skipStory = true;
+skipStory = false;
 view_wview[0] = 320;
 view_hview[0] = 180;
 

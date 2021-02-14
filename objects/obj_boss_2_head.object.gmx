@@ -70,7 +70,7 @@ attacking = true;
             <kind>1</kind>
             <string>event_inherited();
 
-if(place_meeting(x,y,obj_player) &amp;&amp; obj_player.interact) {
+if(distance_to_object(obj_player) &lt; 28 &amp;&amp; obj_player.interact) {
     with(instance_create(x,y,obj_blank)) {
         soundToPlay = snd_pickup_head;
         instance_change(obj_sound_emitter,true);

@@ -28,7 +28,7 @@
             <string>event_inherited();
 opened = false;
 interactable = false;
-image_speed = 0.2;
+image_speed = 0.4;
 counter = 0;
 fireSystem = part_system_create();
 part_system_depth(fireSystem, -y - 100);
@@ -121,7 +121,7 @@ if(!opened) {
 draw_self();
 
 if(interactable &amp;&amp; !opened) {
-    scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to open", x, y - 16);
+    scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to open", x + 8, y - 12);
 }
 </string>
           </argument>

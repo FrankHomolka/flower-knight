@@ -175,16 +175,7 @@ if(!inFight &amp;&amp; playedCutscene) {
     draw_set_color(hpColor);
     hpWidth = (gw / 3) + ((gw / 3) * (hp / maxHp));
     if(hpWidth &gt; 0) draw_rectangle((gw / 3), (vertBlock / 2), hpWidth, vertBlock * 2, false);
-
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_black);
-    draw_text_transformed((gw / 2) - 6, (gh / 6) - (vertBlock * 2) - 6, name, 4 * scaleFactor, 4* scaleFactor, 0);
-    draw_set_color(c_white);
-    draw_text_transformed(gw / 2, (gh / 6) - (vertBlock * 2), name, 4* scaleFactor, 4* scaleFactor, 0);
-    draw_set_color(c_black);
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_left);
+    scr_draw_font_outline(name, (gw / 2) - 6, (gh / 6) - (vertBlock * 2), 0.8 * scaleFactor, fa_middle);
 }
 </string>
           </argument>

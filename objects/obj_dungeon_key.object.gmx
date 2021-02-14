@@ -31,6 +31,7 @@ drawText = false;
 drawOpenText = false;
 sinCounter = 0;
 event_inherited();
+image_speed = 0.25;
 </string>
           </argument>
         </arguments>
@@ -155,7 +156,7 @@ if(inst != -1) {
           <argument>
             <kind>1</kind>
             <string>scr_draw_entity_shadow(8, 2, 8, 6)
-draw_sprite(sprite_index, 0, x, y  + (abs(sin(sinCounter)) * 6))
+draw_sprite(sprite_index, image_index, x, y  + (abs(sin(sinCounter)) * 6))
 if(drawText)
     scr_draw_font_outline("Press '" + string(scr_convert_unicode(obj_settings_controller.interact)) + "' to pick up key", x + 8, y - 8);
 

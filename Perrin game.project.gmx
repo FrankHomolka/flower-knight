@@ -357,6 +357,7 @@
       <sprite>sprites\spr_bomb</sprite>
       <sprite>sprites\spr_bomb_explosion</sprite>
       <sprite>sprites\spr_dungeon_key</sprite>
+      <sprite>sprites\spr_dungeon_key_environment</sprite>
     </sprites>
     <sprites name="Level Gen">
       <sprites name="Rooms">

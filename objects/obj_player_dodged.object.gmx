@@ -91,6 +91,7 @@ if(deathCounter &lt; 0) {
 fontSize = 0.5;
 draw_set_alpha(deathCounter / deathCounterStart);
 draw_set_color(c_white);
+draw_set_font(fnt_ui);
 draw_text_transformed(x - xoff, y - yoff, 'DODGED', fontSize, fontSize, angle);
 draw_set_color(color);
 draw_text_transformed(x, y, 'DODGED', fontSize, fontSize, angle);
