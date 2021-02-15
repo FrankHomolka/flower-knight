@@ -27,6 +27,15 @@
             <kind>1</kind>
             <string>// FIX ME
 
+/*
+for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
+    for(yy = 0; yy &lt; ds_grid_height(mapGrid); yy++) {
+        if(ds_grid_get(mapGrid, xx, yy) != 0) {
+        
+        }
+    }
+}
+
 for(var xx=0; xx&lt;room_width;xx+=16;)
 for(var yy=0; yy&lt;room_height; yy+=16;)
 {

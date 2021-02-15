@@ -28,6 +28,10 @@
             <string>myEmitter = audio_emitter_create();
 audio_falloff_set_model(audio_falloff_linear_distance_clamped);
 audio_emitter_falloff(myEmitter, 50, 400, 1);
+audio_emitter_position(myEmitter,x,y,0);
+emitterCounter = 0;
+emitterX = x;
+emitterY = y;
 </string>
           </argument>
         </arguments>
@@ -75,7 +79,11 @@ audio_emitter_falloff(myEmitter, 50, 400, 1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_emitter_position(myEmitter,x,y,0);
+            <string>if(emitterX != x || emitterY != y) {
+    emitterX = x;
+    emitterY = y;
+    audio_emitter_position(myEmitter,x,y,0);    
+}
 </string>
           </argument>
         </arguments>

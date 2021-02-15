@@ -80,20 +80,32 @@ alphaCounter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_player.map) {
-    enlargeMap = !enlargeMap;
-    if(enlargeMap) {
-       minimapScale = 5;
-       minimapX = 3;
-       minimapY = 1;
-    } else {
-       minimapScale = 2.5;
-       minimapX = 0;
-       minimapY = 0;
-    }
-}
+            <string>// Get gui height and width
+gw = display_get_gui_width();
+gh = display_get_gui_height();
+horBlock = gw / 32;
+vertBlock = gh / 32;
+scaleFactor = (gw / initial_gw);
+depth = -10000;
+
+
 
 if(room == rm_procedural) {
+    // Check for player opening map
+    if(obj_player.map) {
+        enlargeMap = !enlargeMap;
+        if(enlargeMap) {
+           minimapScale = 5;
+           minimapX = 3;
+           minimapY = 1;
+        } else {
+           minimapScale = 2.5;
+           minimapX = 0;
+           minimapY = 0;
+        }
+    }
+
+    // Check for player pausing
     if(keyboard_check_pressed(ord('P')) &amp;&amp; global.paused == false) {
         instance_deactivate_object(obj_sound_parent);
         instance_activate_object(obj_player);
@@ -129,19 +141,12 @@ alphaCounter += 0.04;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Get gui height and width
-gw = display_get_gui_width();
-gh = display_get_gui_height();
-horBlock = gw / 32;
-vertBlock = gh / 32;
-scaleFactor = (gw / initial_gw);
-
-if(global.paused == false) {
-    depth = -10000;
-    draw_set_alpha(1);
+            <string>if(global.paused == false) {
     
     /* UI */
-    if(room != rm_win &amp;&amp; room != rm_game_start &amp;&amp; room != rm_quest) {
+    if(room != rm_win &amp;&amp; room != rm_game_start) {
+    
+        // Sets alpha for fading
         if(instance_exists(obj_fade_controller)) {
             draw_set_alpha(1 - obj_fade_controller.drawAlpha);
             spriteAlpha = 1 - obj_fade_controller.drawAlpha;
@@ -149,10 +154,6 @@ if(global.paused == false) {
             draw_set_alpha(1);
             spriteAlpha = 1;
         }
-        draw_set_font(fnt_ui);
-        draw_set_color(c_white);
-        draw_set_halign(fa_left);
-        draw_set_valign(fa_middle);
         
         /* Warning for low hp */
         if(obj_player.hp &lt;= (obj_player.maxHp * 0.2)) {
@@ -174,28 +175,15 @@ if(global.paused == false) {
         if(obj_player.hp &gt; 0) {
             hpText = 'HP ' + string(obj_player.hp) + '/' + string(obj_player.maxHp);
             scr_draw_font_outline(hpText, (1.6 * horBlock) + horBlock, (vertBlock * 2.4), 0.4 * scaleFactor, fa_middle, 10, 10000, fa_left);
-        
-            /*draw_set_color(c_black);
-            draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-            draw_set_color(c_white);
-            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);*/
         } else {
             hpText = 'HP 0/' + string(obj_player.maxHp);
             scr_draw_font_outline(hpText, (1.6 * horBlock) + horBlock, (vertBlock * 2.4), 0.4 * scaleFactor, fa_middle, 10, 10000, fa_left);
-            /*draw_set_color(c_black);
-            draw_text_transformed((1.6 * horBlock) + horBlock - 3, (vertBlock * 2.6) + 3, hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);
-            draw_set_color(c_white);
-            draw_text_transformed((1.6 * horBlock) + horBlock, (vertBlock * 2.6), hpText, 1.8  * scaleFactor, 1.8  * scaleFactor, 0);*/
         }
         
         /* Draw area and level */
         if(instance_exists(obj_area_controller)) {
             areaText = string(obj_area_controller.area) + '-' + string(obj_area_controller.level);
             scr_draw_font_outline(areaText, (6.8 * horBlock) + horBlock, (1.45 * vertBlock), 0.45 * scaleFactor, fa_middle, 10, 10000, fa_left);
-            /*draw_set_color(c_black);
-            draw_text_transformed((6.8 * horBlock) + horBlock - 3, (1.8 * vertBlock) + 3, areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);
-            draw_set_color(c_white);
-            draw_text_transformed((6.8 * horBlock) + horBlock, (1.8 * vertBlock), areaText, 1.8  * scaleFactor, 2  * scaleFactor, 0);*/
         }
     }
     draw_set_alpha(1);
@@ -221,6 +209,7 @@ if(global.paused == false) {
         draw_set_color(c_white);
         draw_text_transformed(horBlock * 1.1, gh - (vertBlock * 1.6), scr_convert_unicode(obj_settings_controller.viewQuests), 3, 3, 0);
     }
+    
     /* Draw bought items */
     scr_draw_bought_items();
     
@@ -237,6 +226,7 @@ if(global.paused == false) {
         draw_text_transformed(horBlock * 2, gh - (8 * vertBlock), "fps: " + string(fakeFps), 3, 3, 0);
     }
     
+    /* Draw godmod text */
     if(obj_player.godMode) {
         draw_set_color(c_white);
         draw_text_transformed(horBlock * 4, gh - (10 * vertBlock), "GODMODE ACTIVE", 3, 3, 0);
@@ -250,8 +240,8 @@ if(global.paused == false) {
     }
     
     /* Draw loading Screen */
-    depth = -10000000;
     if(loading) {
+        depth = -10000000;
         draw_set_alpha(1);
         /* Black background */
         draw_set_color(c_black);
@@ -269,6 +259,7 @@ if(global.paused == false) {
         drawingLoadingScreen = true;
     }
 } else {
+    /* Pause functionality */
     draw_set_alpha(1);
     draw_set_color($7b7bc1);
     draw_rectangle(0,0,gw,gh,false);

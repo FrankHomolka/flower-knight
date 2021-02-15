@@ -4,11 +4,13 @@
 if(hp <= 0) {
     state = states.death;
 } else {
+    playerInSight = !collision_line(x, y, obj_player.x, obj_player.y, obj_wall, false, false)
+    distanceToPlayer = distance_to_point(obj_player.x, obj_player.y);
+    
     if(state != states.hit) {
     
         /* Chase state */
-        if(distance_to_point(obj_player.x, obj_player.y) < chaseDistance &&
-           !collision_line(x, y, obj_player.x, obj_player.y, obj_wall, false, false)) {
+        if(distanceToPlayer < chaseDistance && playerInSight) {
             state = states.walk;
         } else if(state != states.walk){
             /* Idle state */
@@ -16,8 +18,7 @@ if(hp <= 0) {
         }
         
         /* Attack state */
-        if(distance_to_point(obj_player.x, obj_player.y) < attackDistance && canAttack &&
-        !collision_line(x, y, obj_player.x, obj_player.y, obj_wall, false, false) && !attacking) {
+        if(distanceToPlayer < attackDistance && canAttack && playerInSight && !attacking) {
             attacking = true;
         }
         
@@ -59,7 +60,7 @@ if(hp <= 0) {
     }
     
     /* Forget about player if too far */
-    if((distance_to_object(obj_player) > chaseDistance + 10) && state == states.walk) {
+    if(distanceToPlayer > (chaseDistance + 10) && state == states.walk) {
         path_end();
         state = states.idle;
     }

@@ -107,31 +107,33 @@ checkedBossDistance = false;
 
 scr_set_enemy_state();
 
-/* Boss fight state */
-if(instance_exists(obj_level_generator.boss) &amp;&amp; !checkedBossDistance &amp;&amp; state != states.idle) {
-    if((obj_level_generator.boss).inFight == true) {
-        checkedBossDistance = true;
-        if(distance_to_object(obj_player) &gt; 60) {
-            path_end();
-            state = states.idle;
+if(state != states.idle) {
+    /* Boss fight state */
+    if(instance_exists(obj_level_generator.boss) &amp;&amp; !checkedBossDistance) {
+        if((obj_level_generator.boss).inFight == true) {
+            checkedBossDistance = true;
+            if(distance_to_object(obj_player) &gt; 60) {
+                path_end();
+                state = states.idle;
+            }
         }
     }
-}
-
-if(obj_area_controller.area == 3) {
-    if(buffed) {
-        if(hp &lt; maxHp &amp;&amp; state != states.hit &amp;&amp; state != states.death) hp += 0.4;
-        if(executedBuff == false) {
-            moveSpeed = initalMoveSpeed * 1.5;
-            attackTime = attackTime / 2;
+    
+    if(obj_area_controller.area == 3) {
+        if(buffed) {
+            if(hp &lt; maxHp &amp;&amp; state != states.hit &amp;&amp; state != states.death) hp += 0.4;
+            if(executedBuff == false) {
+                moveSpeed = initalMoveSpeed * 1.5;
+                attackTime = attackTime / 2;
+                attackCounter = attackTime;
+                executedBuff = true;
+            }
+        } else if(moveSpeed != initalMoveSpeed) {
+            executedBuff = false;
+            moveSpeed = initalMoveSpeed;
+            attackTime = initalAttackTime;
             attackCounter = attackTime;
-            executedBuff = true;
         }
-    } else if(moveSpeed != initalMoveSpeed) {
-        executedBuff = false;
-        moveSpeed = initalMoveSpeed;
-        attackTime = initalAttackTime;
-        attackCounter = attackTime;
     }
 }
 </string>

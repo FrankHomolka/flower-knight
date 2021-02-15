@@ -413,6 +413,8 @@
       </sprites>
       <sprites name="GUI">
         <sprite>sprites\spr_gui_room</sprite>
+        <sprite>sprites\spr_gui_shop_room</sprite>
+        <sprite>sprites\spr_undiscovered_room</sprite>
         <sprite>sprites\spr_gui_boss_room</sprite>
         <sprite>sprites\spr_gui_bomb_room</sprite>
         <sprite>sprites\spr_gui_start_room</sprite>
@@ -580,6 +582,10 @@
       <script>scripts\scr_generate_room.gml</script>
       <script>scripts\scr_check_room_exists.gml</script>
       <script>scripts\scr_get_adjacent_doors.gml</script>
+      <script>scripts\scr_instance_from_pixel.gml</script>
+      <script>scripts\scr_generate_room_walls.gml</script>
+      <script>scripts\scr_generate_boss_walls.gml</script>
+      <script>scripts\scr_generate_bomb_walls.gml</script>
     </scripts>
     <scripts name="Focus">
       <scripts name="One time">
@@ -784,6 +790,7 @@
         <object>objects\obj_static_depth_parent</object>
         <object>objects\obj_show_message</object>
         <object>objects\obj_sound_parent</object>
+        <object>objects\obj_static_sound_parent</object>
       </objects>
     </objects>
     <objects name="Player">

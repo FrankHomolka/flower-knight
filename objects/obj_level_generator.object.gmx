@@ -69,8 +69,6 @@ ds_grid_set(mapGrid, centerCellX, centerCellY, "spawn");
 currentCellX = centerCellX; 
 currentCellY = centerCellY;
 
-//show_debug_message("SPAWNING ROOM");
-
 /* Set cell value for other rooms */
 while(numRooms &lt; maxNumRooms) {
     nextRoom = floor(random(4));
@@ -116,9 +114,6 @@ surface = surface_create(room_width, room_height);
 
 for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
     for(yy = 0; yy &lt; ds_grid_height(mapGrid); yy++) {
-        //show_debug_message('xx yy');
-        //show_debug_message(xx);
-        //show_debug_message(yy);
         if(ds_grid_get(mapGrid, xx, yy) != 0) {
             
             // Get room rarity
@@ -143,11 +138,10 @@ for(xx = 0; xx &lt; ds_grid_width(mapGrid); xx++) {
                 scr_generate_room(startX, startY, spr_room_boss_map, 0);
             } else if(xx == shopCellX &amp;&amp; yy == shopCellY){
                 // Shop Room
+                ds_grid_set(mapGrid, shopCellX, shopCellY, "shop");
                 scr_generate_room(startX, startY, spr_room_shop_map, 0);
             } else if(numDoors == 1 &amp;&amp; !secretRoomSpawned){
                 // Bomb room
-                //show_debug_message('startX = ' + string(startX) + ' startY = ' + string(startY));
-                //show_debug_message('bomb room');
                 ds_grid_set(mapGrid, startX / cellWidth, startY / cellHeight, "bomb");
                 scr_generate_room(startX, startY, spr_bomb_room, 0);
                 secretRoomSpawned = true;
@@ -186,7 +180,7 @@ obj_gui_controller.drawingLoadingScreen = false;
 ds_list_destroy(enemyList);
 ds_list_destroy(roomList);
 surface_free(surface);
-instance_create(x,y,obj_tile_depth_controller);
+//instance_create(x,y,obj_tile_depth_controller);
 with(instance_create(x,y,obj_fade_controller)) {
     fadeIn = true;
 }
