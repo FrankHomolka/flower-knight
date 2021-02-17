@@ -29,6 +29,8 @@
 counter = 60;
 width = 768;
 height = 512;
+//lightWidth = width / 2;
+//lightHeight = height / 2;
 </string>
           </argument>
         </arguments>
@@ -54,6 +56,8 @@ height = 512;
             <string>if(global.paused == false) {
     startX = obj_player.x - (width / 2);
     startY = obj_player.y - (height / 2);
+    //lightX = obj_player.x - (width / 3);
+    //lightY = obj_player.y - (height / 3);
     if(room != level) {
         level = room;
         instance_deactivate_object(obj_enemy_parent);
@@ -62,6 +66,8 @@ height = 512;
         instance_deactivate_object(obj_torch);
         instance_deactivate_object(obj_destructible);
         instance_activate_region(startX, startY, width, height, true);
+        //instance_deactivate_object(obj_torch);
+        //instance_activate_region(lightX, lightY, lightWidth, lightHeight, true);
     }
     
     counter--;
@@ -73,6 +79,8 @@ height = 512;
         instance_deactivate_object(obj_torch);
         instance_deactivate_object(obj_destructible);
         instance_activate_region(startX, startY, width, height, true);
+        //instance_deactivate_object(obj_torch);
+        //instance_activate_region(lightX, lightY, lightWidth, lightHeight, true);
     }
 }
 </string>

@@ -21,7 +21,7 @@ for(genX = 0; genX < 24; genX++) {//20
         currRoomX = startX + (genX * 16);
         currRoomY = startY + (genY * 16);
         
-        // Creates instances from each pixel of the room
+        /* Creates instances from each pixel of the room */
         scr_instance_from_pixel(color, roomType);
         
         /* Generate walls if not adjacent */

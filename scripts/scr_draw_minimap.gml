@@ -20,9 +20,16 @@ if(findMapStart) {
     mapWidth = ds_grid_width(global.foundRoomsGrid);
     mapHeight = ds_grid_height(global.foundRoomsGrid);
     findMapStart = false;
+    
+    // Set vars
+    scaledRoomWidth = (minimapRoomWidth * minimapScale * scaleFactor);
+    scaledRoomHeight = (minimapRoomHeight * minimapScale * scaleFactor);
+    minimapScaleFactored = minimapScale * scaleFactor;
+    mapFadingIn = true;
+    draw_set_alpha(1);
 }
 
-
+/* Lets player enlarge map */
 if(enlargeMap) {
     draw_set_alpha(0.4);
     draw_set_color(c_black);
@@ -34,20 +41,14 @@ if(enlargeMap) {
     draw_text_transformed(gw / 2 , vertBlock, 'Dungeon Map', 6 * scaleFactor, 6 * scaleFactor, 0);
 }
 
-// Fade in and out
-
-if(instance_exists(obj_fade_controller)) {
-    draw_set_alpha(1 - obj_fade_controller.drawAlpha);
-} else {
-    draw_set_alpha(1);
+/* Fade in and out */
+if(mapFadingIn) {
+    if(instance_exists(obj_fade_controller)) {
+        draw_set_alpha(1 - obj_fade_controller.drawAlpha);
+    } else {
+        mapFadingIn = false;
+    }
 }
-
-// Set vars
-doorScale = (minimapScale* scaleFactor) * 0.7;
-scaledRoomWidth = (minimapRoomWidth * minimapScale * scaleFactor);
-scaledRoomHeight = (minimapRoomHeight * minimapScale * scaleFactor);
-minimapScaleFactored = minimapScale* scaleFactor;
-draw_set_color(c_black);
 
 // Draw the rooms
 for(xx = 0; xx < mapWidth; xx++) {
@@ -55,22 +56,42 @@ for(xx = 0; xx < mapWidth; xx++) {
         baseX = ((xx + minimapX - smallestX + 1) * scaledRoomWidth);
         baseY = ((vertBlock * 6)) + ((yy + minimapY - smallestY + 1) * scaledRoomHeight);
         
+        tempMapSprite = ds_grid_get(obj_level_generator.mapGrid, xx, yy);
+        
         /* Set minimap sprite */
-        if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "spawn") {
+        // WORKING HERE THIS IS VERY SLOW ON CPU
+        /*if(global.foundRoomsGrid[# xx, yy] == 'found') {
+            switch(tempMapSprite) {
+                case "roomExists": 
+                    minimapSprite = spr_gui_room;
+                    break;
+                case "spawn":
+                    minimapSprite = spr_gui_start_room;
+                    break;
+                case "boss":
+                    minimapSprite = spr_gui_boss_room;
+                    break;
+                default:
+                    break;
+            }
+                
+        }*/
+
+        
+        if(tempMapSprite == "spawn") {
             minimapSprite = spr_gui_start_room;
-        } else if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "boss" && global.showBossRoom) {
+        } else if(tempMapSprite == "boss" && global.showBossRoom) {
             minimapSprite = spr_gui_boss_room;
-        } else if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) != 0) {
+        } else if(tempMapSprite != 0) {
             // Dont show bomb room
-            if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "bomb") {
+            if(tempMapSprite == "bomb") {
                 minimapSprite = false;
             } else if(global.foundRoomsGrid[# xx, yy] == 'found') {
                 minimapSprite = spr_gui_room;
                 // Show shop after finding
-                if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "shop") {
-                    show_debug_message('draw shop');
+                if(tempMapSprite == "shop") {
                     minimapSprite = spr_gui_shop_room;
-                } else if(ds_grid_get(obj_level_generator.mapGrid, xx, yy) == "boss") {
+                } else if(tempMapSprite == "boss") {
                     minimapSprite = spr_gui_boss_room;
                 }
             } else {
@@ -121,11 +142,11 @@ for(xx = 0; xx < mapWidth; xx++) {
         
         // Gets the position of left & right of room
         leftSide = (xx * minimapRoomWidth * 16);
-        rightSide = (xx * minimapRoomWidth * 16) + (minimapRoomWidth * 16);
+        rightSide = leftSide + (minimapRoomWidth * 16);
                 
         // Gets the position of top & bottom of room
         topSide = (yy * minimapRoomHeight * 16);
-        bottomSide = (yy * minimapRoomHeight * 16) + (minimapRoomHeight * 16);
+        bottomSide = topSide + (minimapRoomHeight * 16);
         
         /* If player within room, set bounds & set room to found */
         if(leftSide <= obj_player.x && obj_player.x <= rightSide &&

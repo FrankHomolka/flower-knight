@@ -3,15 +3,13 @@ switch(argument0) {
     // Background
     case $ffffff:
         if(argument1 == spr_bomb_room) {
-            temp = tileSheet;
-            tileSheet = bck_treasure_room;
+            tile_add(bck_treasure_room, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
+        } else {
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
         }
-        tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
-        if(argument1 == spr_bomb_room) {
-            tileSheet = temp;
-        }
+        // Floor decoration
         if(random(1) > 0.93) {
-            tile_add(bck_area_1_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, currRoomX, currRoomY, 1000002);
+            tile_add(bck_area_1_decoration, 0 + (16*choose(0,1,2,3)), 0 + (16*choose(0,1,2,3)), 16, 16, currRoomX, currRoomY, 1000000);
         }
         
         break;
@@ -26,44 +24,40 @@ switch(argument0) {
         if(genY + 1 == 16) {
             // If left or right corner
             if(genX == 0 || genX == 23) {
-                tempTile = tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, 1000001); 
+                tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28); 
             } else if(doorDown) {
-                tempTile = tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, 1000001);
+                tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28);
             } else {
-                tempTile = tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, 1000001);   
+                tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28);   
             }
         } else if(genY + 1 < 16) {
             colorBelow = surface_getpixel(surface, genX, genY + 1);
             if(colorBelow == $808080) {
                 // No edge
-                tempTile = tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, 1000001);   
+                tile_add(tileSheet, 16 * 3, 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28);   
             } else {
                 // Edge bottom
-                tempTile = tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, 1000001);
+                tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28);
             }
         } else {
-            tempTile = tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, 1000001);
+            tile_add(tileSheet, (16*choose(0,1,2)), 0, 16, 16, currRoomX, currRoomY, -currRoomY - 28);
         }
-        tile_set_depth(tempTile,-tile_get_y(tempTile) - 28);
         instance_create(currRoomX, currRoomY, obj_wall);
         break;
     // Make pit
     case $ff00ff:
         if(tile_layer_find(1000002, currRoomX, currRoomY - 16) == -1) {
-            tempTile = tile_add(tileSheet, 16, 48, 16, 16, currRoomX, currRoomY, 1000002);
-            tile_set_depth(tempTile,-tile_get_y(tempTile) + 1000);
+            tile_add(tileSheet, 16, 48, 16, 16, currRoomX, currRoomY, -currRoomY + 1000);
         } else {
-            tempTile = tile_add(tileSheet, 0, 48, 16, 16, currRoomX, currRoomY, 1000002);
-            tile_set_depth(tempTile,-tile_get_y(tempTile) + 1000);
+            tile_add(tileSheet, 0, 48, 16, 16, currRoomX, currRoomY, -currRoomY + 1000);
         }
         instance_create(currRoomX, currRoomY, obj_pit);
         break;
     // Destructible
-    case $00ff00: {
+    case $00ff00: 
         tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
         instance_create(currRoomX, currRoomY, obj_destructible);
         break;
-    }
     // Level enemy 1 R:200
     case $0000c8:
         tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
@@ -98,12 +92,9 @@ switch(argument0) {
     // Torch
     case $ff0099:
         if(argument1 == spr_bomb_room) {
-            temp = tileSheet;
-            tileSheet = bck_treasure_room;
-        }
-        tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
-        if(argument1 == spr_bomb_room) {
-            tileSheet = temp;
+            tile_add(bck_treasure_room, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
+        } else {
+            tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
         }
         instance_create(currRoomX, currRoomY, obj_torch);
         break;
@@ -125,12 +116,9 @@ switch(argument0) {
     // Treasure
     case $000040:
         if(argument1 == spr_bomb_room) {
-            temp = tileSheet;
-            tileSheet = bck_treasure_room;
-        }
-        tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
-        if(argument1 == spr_bomb_room) {
-            tileSheet = temp;
+            tile_add(bck_treasure_room, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
+        } else {
+            tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
         }
         instance_create(currRoomX, currRoomY, obj_treasure);
         break;
@@ -145,14 +133,11 @@ switch(argument0) {
         tile_add(tileSheet, 0, 32, 16, 16, currRoomX, currRoomY, 1000000);
         break;
     // Bomb room 
-    case $d5db64: // CHANGE ME
+    case $d5db64: 
         if(argument1 == spr_bomb_room) {
-            temp = tileSheet;
-            tileSheet = bck_treasure_room;
-        }
-        tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
-        if(argument1 == spr_bomb_room) {
-            tileSheet = temp;
+            tile_add(bck_treasure_room, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
+        } else {
+            tile_add(tileSheet, 0 + (16*choose(0,1,2,3)), 32, 16, 16, currRoomX, currRoomY, 1000000);
         }
         instance_create(currRoomX, currRoomY, obj_bomb_room);
         break;

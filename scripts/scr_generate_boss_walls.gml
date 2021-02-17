@@ -3,8 +3,6 @@
 if(argument0 == spr_room_boss_map) {
     if(genX == 0 && doorLeft) {
         if(genY >= 5 && genY < 10) {
-            if(random(1) > 0.4)
-                tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + ((genX - 1) * 16), currRoomY, 1000002);
             with(instance_create(currRoomX, currRoomY, obj_boss_wall)) {
                 boss = other.boss;
             }
@@ -15,8 +13,6 @@ if(argument0 == spr_room_boss_map) {
     /* Right Side */
     } else if(genX == 24 - 1 && doorRight) {
         if(genY >= 5 && genY < 10) {
-            if(random(1) > 0.4)
-                tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, startX + ((genX + 1) * 16), currRoomY, 1000002);
             with(instance_create(currRoomX, currRoomY, obj_boss_wall)) {
                 boss = other.boss;
             }
@@ -28,8 +24,6 @@ if(argument0 == spr_room_boss_map) {
     /* Up side */
     if(genY == 0 && doorUp) {
         if(genX >= 10 && genX < 14) {
-            if(random(1) > 0.4)
-                tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, currRoomX, startY + ((genY - 1) * 16), 1000002);
             with(instance_create(currRoomX, currRoomY, obj_boss_wall)) {
                 boss = other.boss;
             }
@@ -40,8 +34,6 @@ if(argument0 == spr_room_boss_map) {
     /* Down Side */
     } else if(genY == 16 - 1 && doorDown) {
         if(genX >= 10 && genX < 14) {
-            if(random(1) > 0.4)
-                tile_add(bck_boss_room, 0 + (16*choose(0,1)),0 + (16*choose(0,1)), 16, 16, currRoomX, startY + ((genY + 1) * 16), 1000002);
             with(instance_create(currRoomX, currRoomY, obj_boss_wall)) {
                 boss = other.boss;
             }
